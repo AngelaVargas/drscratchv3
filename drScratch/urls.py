@@ -13,8 +13,8 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
 
     #Statics
-    url(r'^static/(?P<path>.*)$' , serve, 
-                                  {'document_root': settings.MEDIA_ROOT}),
+    #url(r'^/v3/static/(?P<path>.*)$' , serve, 
+    #                              {'document_root': settings.MEDIA_ROOT}),
     url(r'^(.*)/static/(?P<path>.*)$', serve, 
                                 {'document_root' : settings.MEDIA_ROOT}),
 
@@ -85,6 +85,6 @@ urlpatterns = [
     #Learn
     url(r'^learn/(\w+)', app_views.learn, name='learn'),
     url(r'^$', app_views.main, name='main'),
-    url(r'^.*', app_views.redirect_main, name='redirect_main'),
+    #url(r'^.*', app_views.redirect_main, name='redirect_main'),
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
