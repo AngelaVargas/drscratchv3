@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-01-19 17:28+0000\n"
+"POT-Creation-Date: 2019-02-20 14:06+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -236,8 +236,8 @@ msgid "Abstraction"
 msgstr ""
 
 #: app/templates/coder/base.html:281 app/templates/coder/base.html:379
-#: app/templates/learn/Synchronization.html:5 app/templates/learn/base.html:105
-#: app/templates/main/statistics.html:273
+#: app/templates/learn/Synchronization.html:5
+#: app/templates/learn/base.html:105 app/templates/main/statistics.html:273
 #: app/templates/organization/base.html:284
 #: app/templates/organization/base.html:382
 #: app/templates/statistics/statistics.html:272
@@ -303,11 +303,12 @@ msgstr ""
 #: app/templates/coder/base.html:398
 #: app/templates/coder/dashboard-basic.html:248
 #: app/templates/coder/dashboard-developing.html:283
-#: app/templates/coder/dashboard-master.html:325 app/templates/contest.html:197
-#: app/templates/discuss.html:139 app/templates/error/404.html:68
-#: app/templates/error/500.html:68 app/templates/error/analyzing.html:71
-#: app/templates/error/base.html:105 app/templates/learn/base.html:124
-#: app/templates/login/login.html:536 app/templates/main/collaborators.html:443
+#: app/templates/coder/dashboard-master.html:325
+#: app/templates/contest.html:197 app/templates/discuss.html:139
+#: app/templates/error/404.html:68 app/templates/error/500.html:68
+#: app/templates/error/analyzing.html:71 app/templates/learn/base.html:124
+#: app/templates/login/login.html:536
+#: app/templates/main/collaborators.html:443
 #: app/templates/main/dashboard-basic.html:247
 #: app/templates/main/dashboard-developing.html:303
 #: app/templates/main/dashboard-master.html:326
@@ -330,7 +331,7 @@ msgstr ""
 #: app/templates/upload/dashboard-unregistered-basic.html:255
 #: app/templates/upload/dashboard-unregistered-developing.html:292
 #: app/templates/upload/dashboard-unregistered-master.html:353
-msgid "©2014 Dr. Scratch is powered by "
+msgid "©2019 Dr. Scratch"
 msgstr ""
 
 #: app/templates/coder/base.html:425
@@ -504,8 +505,9 @@ msgstr ""
 #: app/templates/organization/dashboard-basic.html:115
 #: app/templates/organization/dashboard-developing.html:124
 #: app/templates/organization/dashboard-master.html:153
-#: app/templates/password/base.html:88 app/templates/sign-password/base.html:89
-#: app/templates/sign/base.html:88 app/templates/statistics/statistics.html:296
+#: app/templates/password/base.html:88
+#: app/templates/sign-password/base.html:89 app/templates/sign/base.html:88
+#: app/templates/statistics/statistics.html:296
 #: app/templates/upload/dashboard-unregistered-basic.html:99
 #: app/templates/upload/dashboard-unregistered-developing.html:110
 #: app/templates/upload/dashboard-unregistered-master.html:148
@@ -815,12 +817,14 @@ msgid "Do you want to analyze one project?"
 msgstr ""
 
 #: app/templates/coder/main.html:14 app/templates/main/main.html:218
-#: app/templates/main/main_new.html:218 app/templates/organization/main.html:14
+#: app/templates/main/main_new.html:218
+#: app/templates/organization/main.html:14
 msgid "There are two options to analyze your Scratch project now!"
 msgstr ""
 
 #: app/templates/coder/main.html:18 app/templates/main/main.html:224
-#: app/templates/main/main_new.html:223 app/templates/organization/main.html:19
+#: app/templates/main/main_new.html:223
+#: app/templates/organization/main.html:19
 msgid ""
 "1. Introduce the <span class='colored-text'><a data-toggle='modal' "
 "href='#modalUrl'>url</a></span> of your Scratch project, you don't have to "
@@ -828,7 +832,8 @@ msgid ""
 msgstr ""
 
 #: app/templates/coder/main.html:19 app/templates/main/main.html:225
-#: app/templates/main/main_new.html:224 app/templates/organization/main.html:20
+#: app/templates/main/main_new.html:224
+#: app/templates/organization/main.html:20
 msgid ""
 "<input name=\"urlProject\" id=\"cf-name\" class=\"form-control input-box "
 "placeholder\" placeholder=\"http:/scratch.mit.edu/projects/your_number\" "
@@ -841,7 +846,8 @@ msgid "Analyze by url"
 msgstr ""
 
 #: app/templates/coder/main.html:25 app/templates/main/main.html:230
-#: app/templates/main/main_new.html:230 app/templates/organization/main.html:26
+#: app/templates/main/main_new.html:230
+#: app/templates/organization/main.html:26
 msgid ""
 "2. If you have your <span class='colored-text'><a data-toggle='modal' "
 "href='#modalProject'>project</a></span> downloaded in the computer you can "
@@ -849,14 +855,16 @@ msgid ""
 msgstr ""
 
 #: app/templates/coder/main.html:26 app/templates/main/main.html:231
-#: app/templates/main/main_new.html:231 app/templates/organization/main.html:27
+#: app/templates/main/main_new.html:231
+#: app/templates/organization/main.html:27
 msgid ""
 "<input  name='zipFile' type='file' class='filestyle' data-buttonText='Choose "
 "Project'>"
 msgstr ""
 
 #: app/templates/coder/main.html:27 app/templates/main/main.html:232
-#: app/templates/main/main_new.html:232 app/templates/organization/main.html:28
+#: app/templates/main/main_new.html:232
+#: app/templates/organization/main.html:28
 msgid "Analyze my project"
 msgstr ""
 
@@ -1013,6 +1021,10 @@ msgid ""
 "this."
 msgstr ""
 
+#: app/templates/error/base.html:105
+msgid "©2014 Dr. Scratch is powered by "
+msgstr ""
+
 #: app/templates/error/sign-up.html:13 app/templates/sign/signup_error.html:13
 msgid "This name already exists. Choose another, please."
 msgstr ""
@@ -1059,7 +1071,8 @@ msgstr ""
 #: app/templates/learn/Abstraction.html:17 app/templates/learn/Data.html:19
 #: app/templates/learn/Flow.html:35 app/templates/learn/Logic.html:17
 #: app/templates/learn/Parallelism.html:17
-#: app/templates/learn/Synchronization.html:18 app/templates/learn/User.html:18
+#: app/templates/learn/Synchronization.html:18
+#: app/templates/learn/User.html:18
 msgid "If you get 0 points..."
 msgstr ""
 
@@ -1084,8 +1097,8 @@ msgstr ""
 #: app/templates/learn/Parallelism.html:21
 #: app/templates/learn/Synchronization.html:21
 #: app/templates/learn/Synchronization.html:27
-#: app/templates/learn/Synchronization.html:45 app/templates/learn/User.html:23
-#: app/templates/learn/attrInit.html:25
+#: app/templates/learn/Synchronization.html:45
+#: app/templates/learn/User.html:23 app/templates/learn/attrInit.html:25
 msgid "when gf clicked"
 msgstr ""
 
@@ -1171,7 +1184,8 @@ msgstr ""
 #: app/templates/learn/Abstraction.html:59 app/templates/learn/Data.html:80
 #: app/templates/learn/Flow.html:55 app/templates/learn/Logic.html:32
 #: app/templates/learn/Parallelism.html:32
-#: app/templates/learn/Synchronization.html:43 app/templates/learn/User.html:36
+#: app/templates/learn/Synchronization.html:43
+#: app/templates/learn/User.html:36
 msgid "If you get 1 point..."
 msgstr ""
 
@@ -1235,7 +1249,8 @@ msgstr ""
 #: app/templates/learn/Abstraction.html:111 app/templates/learn/Data.html:99
 #: app/templates/learn/Flow.html:83 app/templates/learn/Logic.html:47
 #: app/templates/learn/Parallelism.html:65
-#: app/templates/learn/Synchronization.html:67 app/templates/learn/User.html:66
+#: app/templates/learn/Synchronization.html:67
+#: app/templates/learn/User.html:66
 msgid "If you get 2 points..."
 msgstr ""
 
@@ -1413,7 +1428,8 @@ msgstr ""
 msgid "Visibility:"
 msgstr ""
 
-#: app/templates/learn/Data.html:70 app/templates/learn/Synchronization.html:74
+#: app/templates/learn/Data.html:70
+#: app/templates/learn/Synchronization.html:74
 msgid "show"
 msgstr ""
 
@@ -1514,8 +1530,8 @@ msgstr ""
 #: app/templates/learn/Logic.html:55 app/templates/learn/Logic.html:58
 #: app/templates/learn/Parallelism.html:44
 #: app/templates/learn/Parallelism.html:49
-#: app/templates/learn/Synchronization.html:50 app/templates/learn/User.html:50
-#: app/templates/learn/User.html:71
+#: app/templates/learn/Synchronization.html:50
+#: app/templates/learn/User.html:50 app/templates/learn/User.html:71
 msgid "end"
 msgstr ""
 
@@ -2291,7 +2307,8 @@ msgstr ""
 #: app/templates/sign/createOrganization.html:75
 #: app/templates/sign/createOrganization.html:110
 #: app/templates/sign/createOrganization.html:209
-#: app/templates/sign/createUser.html:75 app/templates/sign/createUser.html:110
+#: app/templates/sign/createUser.html:75
+#: app/templates/sign/createUser.html:110
 #: app/templates/sign/createUser.html:208
 #: app/templates/sign/organization.html:134
 #: app/templates/sign/organization.html:241
@@ -2444,8 +2461,9 @@ msgstr ""
 msgid "Multilingual Website"
 msgstr ""
 
-#: app/templates/login/login.html:348 app/templates/main/collaborators.html:211
-#: app/templates/main/main.html:464 app/templates/main/main_new.html:464
+#: app/templates/login/login.html:348
+#: app/templates/main/collaborators.html:211 app/templates/main/main.html:464
+#: app/templates/main/main_new.html:464
 msgid ""
 "We know the importance of receiving feedback on your own language to "
 "understand every little detail or hint, so we'll translate Dr. Scratch to "
