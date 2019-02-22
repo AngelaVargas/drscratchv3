@@ -13,7 +13,6 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-#BASE_DIR = '/var/www/drscratchv3/'
 
 STATIC_URL = '/static/'
 
@@ -56,10 +55,7 @@ TEMPLATES = [
 },
 ]
 
-#ALLOWED_HOSTS = ['localhost', '127.0.0.1', '40.117.142.121']
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', '100.91.170.113', 'www.drscratch.org']
-
-# Application definition
 
 INSTALLED_APPS = (
     'app',
@@ -83,14 +79,11 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-#ROOT_URLCONF = 'drScratch.urls'
 ROOT_URLCONF = 'drScratch.urls'
 
 WSGI_APPLICATION = 'drScratch.wsgi.application'
 
-# Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
-
 DATABASES = {
     'default': {
          'ENGINE': 'django.db.backends.mysql',
@@ -110,7 +103,6 @@ SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
 # Example: "/var/www/example.com/media/"
 MEDIA_ROOT = 'static'
 MEDIA_URL = os.path.join(BASE_DIR,'static/img/')
-# Internationalization
 
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
 
@@ -133,7 +125,6 @@ LANGUAGES = (
 
 SITE_ROOT = os.path.dirname(os.path.realpath(__name__))
 LOCALE_PATHS = (os.path.join(BASE_DIR, 'locale'),)
-
 
 #Send Email
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
