@@ -17,6 +17,7 @@ __pycache__/
 log/*
 db.sqlite3
 configuration/*
+drScratch/settings.py
 .idea/*
 mydatabase
 uploads/*
