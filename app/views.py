@@ -240,7 +240,6 @@ def selector(request):
           return d
         filename = request.FILES['zipFile'].name.encode('utf-8')
         dic = {'url': "",'filename':filename}
-        print d
         d.update(dic)
 
     elif '_url' in request.POST:
@@ -633,16 +632,12 @@ def analyze_project(request, file_name, filename):
         #    list_file = file_name.split(')')
         #    file_name = list_file[0] + '\)' + list_file[1]
 
-        
-        print "LLEGA"
+
         resultMastery = analyzer.main(file_name)
         resultSpriteNaming = spriteNaming.main(file_name)
         resultBackdropNaming = backdropNaming.main(file_name)
-        print "PASA 3"
         resultDuplicateScript = duplicateScripts.main(file_name)
-        print "PASA 4"
         resultDeadCode = deadCode.main(file_name)
-        print "PASA 5"
 
              
         #Create a dictionary with necessary information
@@ -677,8 +672,6 @@ def proc_mastery(request,lines, filename):
     lLines = lLines[2].split(':')[1]
     points = int(lLines.split('/')[0])
     maxi = int(lLines.split('/')[1])
-
-    print maxi
 
     #Save in DB
     filename.score = points
@@ -1122,9 +1115,6 @@ def download_certificate(request):
             language = request.LANGUAGE_CODE
         else:
             language = 'en'
-        print filename
-        print level
-        print language
         pyploma.generate(filename,level,language)
         path_to_file = os.path.dirname(os.path.dirname(__file__)) + "/app/certificate/output.pdf"
         pdf_data = open(path_to_file, 'r')
