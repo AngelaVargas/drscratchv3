@@ -107,7 +107,7 @@
                           <ul role="menu" class="dropdown-menu">
                             <li>
                             <div style="padding: 15px; padding-bottom: 10px;">
-                            <form action="/i18n/setlang/" method="post" type="hidden">
+                            <form action="/v3/i18n/setlang/" method="post" type="hidden">
                               {% csrf_token %}
                               <input name="next" type="hidden" value="{{ redirect_to }}" />
                               <select name="language" type="hidden">
@@ -217,13 +217,15 @@
 
                                 <h5 class="dark-text form-heading"><strong>{% trans "There are two options to analyze your Scratch project now!" %}</strong></h5>
 
-                                <form name="form" class="project-form" enctype="multipart/form-data" method="post" action="/show_dashboard">
+                                <form name="form" class="project-form" enctype="multipart/form-data" method="post" action="/v3/show_dashboard">
 
 
                                     {% csrf_token %}
+				    
+
                                     {% trans "1. Introduce the <span class='colored-text'><a data-toggle='modal' href='#modalUrl'>url</a></span> of your Scratch project, you don't have to download it:" %}
-                                    <!--{% trans '<input name="urlProject" id="cf-name" class="form-control input-box placeholder" placeholder="http:/scratch.mit.edu/projects/your_number" type="text">' %} -->
-                                    <a href="http://40.117.142.121/"  class="btn btn-primary standard-button">{% trans "Coming soon" %}</a>
+                                    {% trans '<input name="urlProject" id="cf-name" class="form-control input-box placeholder" placeholder="http:/scratch.mit.edu/projects/your_number" type="text">' %}
+                                    <!-- <a href="http://40.117.142.121/"  class="btn btn-primary standard-button">{% trans "Coming soon" %}</a> -->
                                     <br><br> 
 
                                     {% csrf_token %}
