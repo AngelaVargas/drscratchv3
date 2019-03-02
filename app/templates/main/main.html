@@ -194,7 +194,7 @@
                             <h1 class="intro white-text">{% trans "This is a Beta version" %}</h1>
 
 			    <h3 align=center class="transparent-text"><strong>{% trans "We are working on it. If you have comments or ideas to share, please contact us on"%} <a href="https://twitter.com/DrScratchTool">Twitter</a>{% trans " or in our" %} <a href="https://drscratchblog.wordpress.com/"> Blog</a>{% trans "!" %} </strong></h3><br><br>
-			
+
                             <h4 align=justify class="transparent-text"><strong>{% trans "Welcome to the Dr. Scratch website, an analytical tool that evaluates your Scratch projects in a variety of computational areas. This analyzer is a helpful tool to evaluate your own projects, or those of your Scratch students." %} </strong></h4>
 
                             <!-- BUTTON -->
@@ -217,16 +217,18 @@
 
                                 <h5 class="dark-text form-heading"><strong>{% trans "There are two options to analyze your Scratch project now!" %}</strong></h5>
 
-                                <form name="form" class="project-form" enctype="multipart/form-data" method="post" action="/v3/show_dashboard">
+                                <form name="form" class="project-form" enctype="multipart/form-data" method="post" action="/show_dashboard">
 
 
                                     {% csrf_token %}
-				    
+
 
                                     {% trans "1. Introduce the <span class='colored-text'><a data-toggle='modal' href='#modalUrl'>url</a></span> of your Scratch project, you don't have to download it:" %}
                                     {% trans '<input name="urlProject" id="cf-name" class="form-control input-box placeholder" placeholder="http:/scratch.mit.edu/projects/your_number" type="text">' %}
                                     <!-- <a href="http://40.117.142.121/"  class="btn btn-primary standard-button">{% trans "Coming soon" %}</a> -->
-                                    <br><br> 
+                                    <button id="url" name='_url' type="submit" class="btn btn-primary standard-button">{% trans "Analyze by url" %}</button>
+
+                                    <br><br>
 
                                     {% csrf_token %}
                                     {% trans "2. If you have your <span class='colored-text'><a data-toggle='modal' href='#modalProject'>project</a></span> downloaded in the computer you can analyze it here:" %}

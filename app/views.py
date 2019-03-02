@@ -240,7 +240,6 @@ def selector(request):
           return d
         filename = request.FILES['zipFile'].name.encode('utf-8')
         dic = {'url': "",'filename':filename}
-        print d
         d.update(dic)
 
     elif '_url' in request.POST:
@@ -305,7 +304,6 @@ def _upload(request):
         filename.save()
 
         dir_zips = os.path.dirname(os.path.dirname(__file__)) + "/uploads/"
-        #fileSaved = dir_zips + str(filename.id) + ".sb2"
         fileSaved = dir_zips + str(filename.id) + ".sb3"
 
         # Version of Scratch 1.4Vs2.0Vs3.0
@@ -428,7 +426,7 @@ def generator_dic(request, idProject):
             else:
                 username = None
             method = "url"
-            (pathProject, file) = send_request_getSb2(idProject,
+            (pathProject, file) = send_request_getSb3(idProject,
                                                       username, 
                                                       method)
         except:
@@ -461,13 +459,13 @@ def generator_dic(request, idProject):
 
 
 
-def new_getSb2(file_name, dir_zips,fileName):
+def new_getSb3(file_name, dir_zips,fileName):
     if zipfile.is_zipfile(file_name):
-        os.rename(dir_zips + "project.json",dir_zips + str(fileName.id) + ".sb2")
+        os.rename(dir_zips + "project.json",dir_zips + str(fileName.id) + ".sb3")
     else:
         current = os.getcwd()
         os.chdir(dir_zips)
-        with ZipFile(str(fileName.id) + ".sb2", 'w') as myzip:
+        with ZipFile(str(fileName.id) + ".sb3", 'w') as myzip:
             myzip.write("project.json")
         os.chdir(current)
         try:
@@ -475,15 +473,15 @@ def new_getSb2(file_name, dir_zips,fileName):
         except:
             print "No existe"
 
-    file_name = dir_zips + str(fileName.id) + ".sb2"
+    file_name = dir_zips + str(fileName.id) + ".sb3"
    
     return file_name
 
 
 
 
-def send_request_getSb2(idProject, username, method):
-    """First request to getSb2"""
+def send_request_getSb3(idProject, username, method):
+    """First request to getSb3"""
 
 
     try:
@@ -491,9 +489,8 @@ def send_request_getSb2(idProject, username, method):
     except:
         print "No existe"
 
-    #getRequestSb2 = "http://drscratch.cloudapp.net:8080/" + idProject
-    getRequestSb2 = "http://projects.scratch.mit.edu/internalapi/project/" + idProject + "/get/"
-    fileURL = idProject + ".sb2"
+    getRequestSb3 = "https://projects.scratch.mit.edu/" + idProject + "/get"
+    fileURL = idProject + ".sb3"
 
     # Create DB of files
     now = datetime.now()
@@ -527,7 +524,6 @@ def send_request_getSb2(idProject, username, method):
     
     fileName.save()
     dir_zips = os.path.dirname(os.path.dirname(__file__)) + "/uploads/"
-    #fileSaved = dir_zips + str(fileName.id) + ".sb2"
     fileSaved = dir_zips + "project.json"
 
     #Write the activity in log
@@ -536,6 +532,7 @@ def send_request_getSb2(idProject, username, method):
     logFile.write("FileName: " + str(fileName.filename) + "\t\t\t" + "ID: " + \
         str(fileName.id) + "\t\t\t" + "Method: " + str(fileName.method) + \
         "\t\t\t" + "Time: " + str(fileName.time) + "\n")
+
     
     # Save file in server
     counter = 0
@@ -543,16 +540,16 @@ def send_request_getSb2(idProject, username, method):
     file_name = handler_upload(fileSaved, counter)
     outputFile = open(file_name, 'wb')
     try:
-        sb2File = urllib2.urlopen(getRequestSb2)
-        outputFile.write(sb2File.read())
+        sb3File = urllib2.urlopen(getRequestSb3)
+        outputFile.write(sb3File.read())
         outputFile.close()
     except:
         outputFile.write("ERROR downloading")
         outputFile.close()
     
 
-    #New getSb2
-    file_name = new_getSb2(file_name, dir_zips,fileName)
+    #New getSb3
+    file_name = new_getSb3(file_name, dir_zips,fileName)
     
 
     return (file_name, fileName)
@@ -633,16 +630,12 @@ def analyze_project(request, file_name, filename):
         #    list_file = file_name.split(')')
         #    file_name = list_file[0] + '\)' + list_file[1]
 
-        
-        print "LLEGA"
+
         resultMastery = analyzer.main(file_name)
         resultSpriteNaming = spriteNaming.main(file_name)
         resultBackdropNaming = backdropNaming.main(file_name)
-        print "PASA 3"
         resultDuplicateScript = duplicateScripts.main(file_name)
-        print "PASA 4"
         resultDeadCode = deadCode.main(file_name)
-        print "PASA 5"
 
              
         #Create a dictionary with necessary information
@@ -677,8 +670,6 @@ def proc_mastery(request,lines, filename):
     lLines = lLines[2].split(':')[1]
     points = int(lLines.split('/')[0])
     maxi = int(lLines.split('/')[1])
-
-    print maxi
 
     #Save in DB
     filename.score = points
@@ -1122,9 +1113,6 @@ def download_certificate(request):
             language = request.LANGUAGE_CODE
         else:
             language = 'en'
-        print filename
-        print level
-        print language
         pyploma.generate(filename,level,language)
         path_to_file = os.path.dirname(os.path.dirname(__file__)) + "/app/certificate/output.pdf"
         pdf_data = open(path_to_file, 'r')
@@ -1645,7 +1633,7 @@ def analyze_CSV(request):
                             idProject = url.split('/')[-2]
                     try:
 
-                        (pathProject, file) = send_request_getSb2(idProject, 
+                        (pathProject, file) = send_request_getSb3(idProject, 
                                                                     username,
                                                                     method)
                         d = analyze_project(request, pathProject, file)
@@ -1673,7 +1661,7 @@ def analyze_CSV(request):
                         elif slashNum == 5:
                             idProject = url.split('/')[-2]
                     try:
-                        (pathProject, file) = send_request_getSb2(idProject, 
+                        (pathProject, file) = send_request_getSb3(idProject, 
                                                                     username,
                                                                      method)
                         d = analyze_project(request, pathProject, file)
