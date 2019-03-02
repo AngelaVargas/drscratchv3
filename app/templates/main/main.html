@@ -221,15 +221,11 @@
 
 
                                     {% csrf_token %}
-
-
                                     {% trans "1. Introduce the <span class='colored-text'><a data-toggle='modal' href='#modalUrl'>url</a></span> of your Scratch project, you don't have to download it:" %}
                                     {% trans '<input name="urlProject" id="cf-name" class="form-control input-box placeholder" placeholder="http:/scratch.mit.edu/projects/your_number" type="text">' %}
-                                    <!-- <a href="http://40.117.142.121/"  class="btn btn-primary standard-button">{% trans "Coming soon" %}</a> -->
                                     <button id="url" name='_url' type="submit" class="btn btn-primary standard-button">{% trans "Analyze by url" %}</button>
-
+                                    {% csrf_token %}
                                     <br><br>
-
                                     {% csrf_token %}
                                     {% trans "2. If you have your <span class='colored-text'><a data-toggle='modal' href='#modalProject'>project</a></span> downloaded in the computer you can analyze it here:" %}
                                     {% trans "<input  name='zipFile' type='file' class='filestyle' data-buttonText='Choose Project'>" %}
