@@ -1,0 +1,16 @@
+version: '2'
+services:
+  db:
+    image: mysql
+    ports:
+      - "3306:3306"
+  web:
+    build: .
+    command: bash -c "python manage.py migrate && python3 manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - .:/var/www
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+
