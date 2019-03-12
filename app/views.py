@@ -391,12 +391,12 @@ def process_string_url(url):
     if auxString == '':
         # we need to get the other argument
         possibleId = url.split("/")[-2]
-        if possibleId == "#editor":
+        if possibleId == "editor":
             idProject = url.split("/")[-3]
         else:
             idProject = possibleId
     else:
-        if auxString == "#editor":
+        if auxString == "editor":
             idProject = url.split("/")[-2]
         else:
             # To get the id project
