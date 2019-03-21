@@ -211,7 +211,7 @@ msgstr "Абстракция"
 #: templates/main/statistics.html:273 templates/organization/base.html:284
 #: templates/organization/base.html:382
 msgid "Synchronization"
-msgstr ""
+msgstr "cинхронизация"
 
 #: templates/coder/base.html:330 templates/main/main_new.html:119
 #: templates/organization/base.html:333
