@@ -637,7 +637,7 @@ def analyze_project(request, file_name, filename):
         resultDuplicateScript = duplicateScripts.main(file_name)
         resultDeadCode = deadCode.main(file_name)
 
-             
+
         #Create a dictionary with necessary information
         dictionary.update(proc_mastery(request,resultMastery, filename))
         dictionary.update(proc_sprite_naming(resultSpriteNaming, filename))
@@ -650,7 +650,6 @@ def analyze_project(request, file_name, filename):
         #code = {'dCode':dead_code_scratch_block(resultDeadCode)}
         #dictionary.update(code)
 
-
         return dictionary
 
     else:
@@ -661,7 +660,6 @@ def analyze_project(request, file_name, filename):
 
 def proc_mastery(request,lines, filename):
     """Returns the information of Mastery"""
-
 
     dic = {}
     lLines = lines.split('\n')
@@ -958,6 +956,20 @@ def translate(request,d, filename):
         filename.language = "it"
         filename.save()
         return d_translate_it
+
+    elif request.LANGUAGE_CODE == "ru":
+        d_translate_ru = {}
+        d_translate_ru['Абстракция'] = d['Abstraction']
+        d_translate_ru['Параллельность действий'] = d['Parallelization']
+        d_translate_ru['Логика'] = d['Logic']
+        d_translate_ru['cинхронизация'] = d['Synchronization']
+        d_translate_ru['Управление потоком'] = d['FlowControl']
+        d_translate_ru['Интерактивность'] = d['UserInteractivity']
+        d_translate_ru['Представление данных'] = d['DataRepresentation']
+        filename.language = "ru"
+        filename.save()
+        return d_translate_ru
+
 
     else:
         d_translate_en = {}
