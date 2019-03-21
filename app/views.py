@@ -1080,6 +1080,15 @@ def learn(request,page):
            u'Controllo':'Flow',
            u'Astrazione':'Abstraction'}
 
+    elif request.LANGUAGE_CODE == "ru":
+        dic = {u'Логика': 'Logic',
+               u'Параллельность': 'Parallelism',
+               u'Представление': 'Data',
+               u'cинхронизация': 'Synchronization',
+               u'Интерактивность': 'User',
+               u'Управление': 'Flow',
+               u'Абстракция': 'Abstraction'}
+
     else:
         dic = {u'Logica':'Logic',
                u'Paralelismo':'Parallelism',
