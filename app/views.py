@@ -122,7 +122,7 @@ def collaborators(request):
 
     #Show collaborators page of Dr. Scratch: www.drscratch.org/collaborators
     #return render_to_response("main/collaborators.html",)
-    return render('main/collaborators.html')
+    return render(request, 'main/collaborators.html')
 
 
 #____________________________ GENERAL STATISTICS _____________________________#
