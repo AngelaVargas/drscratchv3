@@ -1138,7 +1138,11 @@ def download_certificate(request):
         path_to_file = os.path.dirname(os.path.dirname(__file__)) + "/app/certificate/output.pdf"
         pdf_data = open(path_to_file, 'r')
         response = HttpResponse(pdf_data, content_type='application/pdf')
-        response['Content-Disposition'] = 'attachment; filename=%s' % smart_str(filename)
+        try:
+            file_pdf = filename.split("/")[-2] + ".pdf"
+        except:
+            file_pdf = filename.split(".")[0] + ".pdf"
+        response['Content-Disposition'] = 'attachment; filename=%s' % file_pdf
         return response
     else:
         return HttpResponseRedirect('/')
