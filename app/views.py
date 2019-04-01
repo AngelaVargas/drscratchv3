@@ -309,7 +309,7 @@ def _upload(request):
         date = now.strftime("%Y_%m_%d_%H_%M_%S_")
         ms = now.microsecond
 
-        project_name = str(filename.filename).split(".sb3")[0]
+        project_name = str(filename.filename).split(".sb")[0]
         project_name = project_name.replace(" ", "_")
 
         unique_id = project_name + "_" + date + str(ms)
@@ -468,12 +468,23 @@ def generator_dic(request, idProject):
 
 
 def new_getSb3(file_name, dir_zips,fileName):
+
+    #Build the id
+    now = datetime.now()
+    date = now.strftime("%Y_%m_%d_%H_%M_%S_")
+    ms = now.microsecond
+
+    project_name = str(fileName.filename).split(".sb")[0]
+
+    unique_id = project_name + "_" + date + str(ms)
+
+
     if zipfile.is_zipfile(file_name):
-        os.rename(dir_zips + "project.json",dir_zips + str(fileName.id) + ".sb3")
+        os.rename(dir_zips + "project.json",dir_zips + unique_id + ".sb3")
     else:
         current = os.getcwd()
         os.chdir(dir_zips)
-        with ZipFile(str(fileName.id) + ".sb3", 'w') as myzip:
+        with ZipFile(unique_id + ".sb3", 'w') as myzip:
             myzip.write("project.json")
         os.chdir(current)
         try:
@@ -481,7 +492,7 @@ def new_getSb3(file_name, dir_zips,fileName):
         except:
             print "No existe"
 
-    file_name = dir_zips + str(fileName.id) + ".sb3"
+    file_name = dir_zips + unique_id + ".sb3"
    
     return file_name
 
