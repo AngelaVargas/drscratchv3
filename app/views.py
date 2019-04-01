@@ -139,7 +139,7 @@ def statistics(request):
     """Initializing variables"""
 
 
-    start = date(2015,8,1)
+    start = date(2019,1,1)
     end = datetime.today()
     y = end.year
     m = end.month
@@ -151,7 +151,6 @@ def statistics(request):
         mydates.append(n.strftime("%d/%m")) #used for x axis in
 
     #This final section stores all data for the template
-
     obj= Stats.objects.order_by("-id")[0]
     data = {"date":mydates,
              "dailyRate":obj.daily_score,
@@ -304,16 +303,25 @@ def _upload(request):
         filename.save()
 
         dir_zips = os.path.dirname(os.path.dirname(__file__)) + "/uploads/"
-        fileSaved = dir_zips + str(filename.id) + ".sb3"
+
+        #Build the id
+        now = datetime.now()
+        date = now.strftime("%Y_%m_%d_%H_%M_%S_")
+        ms = now.microsecond
+
+        project_name = str(filename.filename).split(".sb3")[0]
+        project_name = project_name.replace(" ", "_")
+
+        unique_id = project_name + "_" + date + str(ms)
 
         # Version of Scratch 1.4Vs2.0Vs3.0
         version = check_version(filename.filename)
         if version == "1.4":
-            fileSaved = dir_zips + str(filename.id) + ".sb"
+            fileSaved = dir_zips + unique_id + ".sb"
         elif version == "2.0":
-            fileSaved = dir_zips + str(filename.id) + ".sb2"
+            fileSaved = dir_zips + unique_id + ".sb2"
         else:
-            fileSaved = dir_zips + str(filename.id) + ".sb3"
+            fileSaved = dir_zips + unique_id + ".sb3"
 
         # Create log
         pathLog = os.path.dirname(os.path.dirname(__file__)) + "/log/"
