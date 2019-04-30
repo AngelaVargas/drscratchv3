@@ -1,0 +1,82 @@
+{% load i18n %}
+{% trans alert %}
+
+<!DOCTYPE html>
+<html class="nivo-lightbox-notouch" lang="en">
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="description" content="Analyze your Scratch projects to assess your Computational Thinking skills">
+    <meta name="keywords" content="Stamp, Startup, Multipurpose, Bootstrap, Landing page, Template, Registration, Landing">
+    <meta name="author" content="Programamos URJC Libresoft FECyT">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- SITE TITLE -->
+    <title>Dr. Scratch</title>
+
+
+    <link rel="stylesheet" href="static/app/content/style.css">
+    <!-- =========================
+     FAV AND TOUCH ICONS AND FONT
+    ============================== -->
+    <link rel="icon" href="static/app/images/favicon.ico">
+    <link rel="stylesheet" href="static/app/icons/icons.css">
+    <link type="text/css" rel="stylesheet" href="static/app/content/css_002.css">
+    <link type="text/css" rel="stylesheet" href="static/app/content/css.css">
+    <!-- =========================
+     STYLESHEETS
+    ============================== -->
+    <!-- BOOTSTRAP AND ANIMATION -->
+    <link rel="stylesheet" href="static/app/content/bootstrap-main.css">
+    <link rel="stylesheet" href="static/app/content/animate.css">
+
+    <!-- CAROUSEL AND LIGHTBOX -->
+    <link rel="stylesheet" href="static/app/content/owl_002.css">
+    <link rel="stylesheet" href="static/app/content/owl.css">
+    <link rel="stylesheet" href="static/app/content/nivo-lightbox.css">
+    <link rel="stylesheet" href="static/app/content/default.css">
+
+    <!-- CUSTOM STYLESHEETS -->
+    <link rel="stylesheet" href="static/app/content/styles.css">
+
+
+    <!-- RESPONSIVE FIXES -->
+    <link rel="stylesheet" href="static/app/content/responsive.css">
+
+    <!-- DEFAULT COLOR/ CURRENTLY USING -->
+    <link rel="stylesheet" href="static/app/content/red.css">
+</head>
+
+<body>
+
+        <!-- =========================
+              LOGO
+    ============================== -->
+
+
+    <div id="pb" class="jumbotron">
+        <div class="container">
+            <img src="../../static/app/images/logo_main.png"/>
+        </div>
+    </div>
+
+    <div id="content">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+     <footer class="footer grey-bg">
+       {% trans "©2019 Dr. Scratch" %}
+
+        <!-- SOCIAL ICONS -->
+        <ul class="social-icons">
+            <li><a href="https:/twitter.com/drscratchtool"><span class="icon-social-twitter transparent-text-dark"></span></a>
+            </li>
+            <li><a href=""><span class="icon-social-github transparent-text-dark"></span></a>
+            </li>
+
+        </ul>
+
+    </footer>
+
+</body></html>
