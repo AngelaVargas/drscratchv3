@@ -34,6 +34,8 @@ urlpatterns = [
     #Dashboards
     url(r'^show_dashboard', app_views.show_dashboard, name='show_dashboard'),
     url(r'^download_certificate', app_views.download_certificate, name='certificate'),
+    url(r'^compare_mode', app_views.compare_mode, name='compare_mode'),
+    url(r'^compare_dashboard', app_views.compare_dashboard, name='compare_dashboard'),
 
     #Translation
     url(r'^i18n/', include('django.conf.urls.i18n'), name="translation"),

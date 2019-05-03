@@ -56,7 +56,11 @@ import spriteNaming
 import backdropNaming
 import duplicateScripts
 import deadCode
+from django.core.mail import send_mail
+import logging
 
+
+logger = logging.getLogger(__name__)
 
 ###############################################################################
 #                             MAIN PAGE                                       #
@@ -632,6 +636,45 @@ def check_version(filename):
     return version
 
 
+#________________________ NEW MODES _________________________________#
+
+
+def compare_mode(request):
+    """Shows the different dashboards"""
+
+    if request.method == 'GET':
+
+      #user = str(segmentation(request))
+      # data = request.GET
+      # dicc = data.get("compare", "0")
+      # d = {}
+      # d['mastery'] = ast.literal_eval(dicc)
+      return render(request, 'main/compare_model.html')
+
+    else:
+      return HttpResponseRedirect('/')
+
+
+def compare_dashboard(request):
+    """Shows the different dashboards"""
+
+    print request.POST
+    if request.method == 'POST':
+
+      d = selector(request)
+      print d
+      #user = str(segmentation(request))
+      # data = request.GET
+      # dicc = data.get("compare", "0")
+      # d = {}
+      # d['mastery'] = ast.literal_eval(dicc)
+      return render(request, 'main/compare_dashboard.html', d)
+
+    else:
+      return HttpResponseRedirect('/')
+
+
+
 
 #________________________ AUTOMATIC ANALYSIS _________________________________#
 
@@ -668,6 +711,22 @@ def analyze_project(request, file_name, filename):
         #dictionary.update(code)
         #code = {'dCode':dead_code_scratch_block(resultDeadCode)}
         #dictionary.update(code)
+
+        # print "ANTES EMAIL"
+        # subject = "Welcome to analysis"
+        # sender = "no-reply@drscratch.org"
+        # to = ['angelavargas.94@hotmail.es']
+        # body = "Hello"
+        # print "COMPLETE FIELDS"
+        # email = send_mail('Subject', 'Hello', ['angelavargas.94@hotmail.es'])
+        # print "Email Message"
+        # # email.attach_file("static/app/images/logo_main.png")
+        # #email.send()
+        # print "SEND EMAIL"
+
+
+        logger.info("PROJECT ANALYZED")
+        logger.error("ERROR ANALYZING")
 
         return dictionary
 
