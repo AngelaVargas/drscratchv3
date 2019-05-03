@@ -49,34 +49,40 @@
 
 <body>
 
-        <!-- =========================
-              LOGO
+      <!-- =========================
+                LOGO
     ============================== -->
-
-
-    <div id="pb" class="jumbotron">
+      <div class="navbar navbar-inverse bs-docs-nav navbar-fixed-top  sticky-navigation" role="navigation">
         <div class="container">
-            <img src="../../static/app/images/logo_main.png"/>
+          <div class="navbar-collapse collapse" id="stamp-navigation">
+            <a class="navbar-brand" href="/">
+              <img src="static/app/images/logo_main.png" alt="">
+            </a>
+          </div>
         </div>
-    </div>
+      </div>
+
+    <!-- =========================
+                CONTENT
+    ============================== -->
 
     <div id="content">
         {% block content %}
         {% endblock %}
     </div>
 
-     <footer class="footer grey-bg">
-       {% trans "©2019 Dr. Scratch" %}
+    <!-- =========================
+                FOOTER
+    ============================== -->
 
-        <!-- SOCIAL ICONS -->
-        <ul class="social-icons">
+    <footer class="footer grey-bg">
+       {% trans "©2019 Dr. Scratch" %}
+       <ul class="social-icons">
             <li><a href="https:/twitter.com/drscratchtool"><span class="icon-social-twitter transparent-text-dark"></span></a>
             </li>
             <li><a href=""><span class="icon-social-github transparent-text-dark"></span></a>
             </li>
-
-        </ul>
-
+       </ul>
     </footer>
 
 </body></html>

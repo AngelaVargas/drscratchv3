@@ -1,29 +1,30 @@
 {% extends "base_generic.html" %}
+{% load i18n %}
+{% trans alert %}
 
 {% block content %}
 
-<div class="container">
-          <section id="blackboard" class="services col-md-5">
-            <div class="devpanel">
-              <div class="vertical-project-form">
-                <form name="form" class="project-form" enctype="multipart/form-data" method="get" action="/show_dashboard">
 
-
-                                    {% csrf_token %}
-                                    '<input name="urlProject" id="cf-name" class="form-control input-box placeholder" placeholder="http:/scratch.mit.edu/projects/your_number" type="text">'
-                                    <button id="url" name='_url' type="submit" class="btn btn-primary standard-button"> "Analyze by url"</button>
-
-                                    <br><br>
-
-                                    {% csrf_token %}
-                                     "<input  name='zipFile' type='file' class='filestyle' data-buttonText='Choose Project'>"
-                                    <button id="upload" name='_upload' type="submit" class="btn btn-primary standard-button">"Analyze my project"</button>
-                                    {% csrf_token %}
-
-                 </form>
-               </div>
-            </div>
-          </section>
-</div>
+    <div class="container">
+      <br></br>
+      <div class="col-md-6 col-md-offset-2">
+        <div class="vertical-project-form">
+          <form name="form" class="project-form" enctype="multipart/form-data" method="post" action="/compare_dashboard">
+            {% csrf_token %}
+            {% trans "1. Introduce the <span class='colored-text'>url</span> of your Scratch project, you don't have to download it:" %}
+            {% trans '<input name="urlProject" id="cf-name" class="form-control input-box placeholder" placeholder="http:/scratch.mit.edu/projects/your_number" type="text">' %}
+            <button id="url" name='_url' type="submit" class="btn btn-primary standard-button">{% trans "Analyze by url" %}</button>
+            {% csrf_token %}
+            <br><br>
+            {% csrf_token %}
+            {% trans "2. If you have your <span class='colored-text'><a data-toggle='modal' href='#modalProject'>project</a></span> downloaded in the computer you can analyze it here:" %}
+            {% trans "<input  name='zipFile' type='file' class='filestyle' data-buttonText='Choose Project'>" %}<br>
+            <button id="upload" name='_upload' type="submit" class="btn btn-primary standard-button">{% trans "Analyze my project" %}</button>
+            {% csrf_token %}
+          </form>
+        </div>
+      </div>
+    </div>
+<br>
 
 {% endblock %}
