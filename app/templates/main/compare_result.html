@@ -4,33 +4,13 @@
 
 {% block content %}
 
-<br><br>
-
+<br><br><br>
 
     <div class="container">
-        <div class="devpanel">
-            <div class="panel panel-success" id="devpanel">
-                <div class="col-md-6">
-                    <div class="vertical-project-form">
-                        <form name="form" class="project-form" enctype="multipart/form-data" method="post" action="/compare_dashboard">
-                            {% csrf_token %}
-                            {% trans "1. Introduce the <span class='colored-text'>url</span> of your Scratch project, you don't have to download it:" %}
-                            {% trans '<input name="urlProject" id="cf-name" class="form-control input-box placeholder" placeholder="http:/scratch.mit.edu/projects/your_number" type="text">' %}
-                            <button id="url" name='_url' value="{{ mastery }}" type="submit" class="btn btn-primary standard-button">{% trans "Analyze by url" %}</button>
-                            {% csrf_token %}
-                            <br><br>
-                            {% csrf_token %}
-                            {% trans "2. If you have your <span class='colored-text'><a data-toggle='modal' href='#modalProject'>project</a></span> downloaded in the computer you can analyze it here:" %}
-                            {% trans "<input  name='zipFile' type='file' class='filestyle' data-buttonText='Choose Project'>" %}<br>
-                            <button id="upload" name='_upload' value="{{ mastery }}" type="submit" class="btn btn-primary standard-button">{% trans "Analyze my project" %}</button>
-                            {% csrf_token %}
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
 
-        <div class="col-md-6">
+        <a href="/compare_model" class="btn btn-primary standard-button">{% trans "Back" %}</a>
+
+        <div class="col-md-6 col-md-offset-3">
             <table class="table tablesorter">
                 <thead>
                     <tr>
@@ -39,7 +19,8 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for key, value in mastery.items %}
+                    {% for key, value in compare.items %}
+
                         {% if forloop.counter0|divisibleby:1 %}
                             <tr>
                         {% endif %}
@@ -47,7 +28,7 @@
                         {% if key != "points" %}
                             {% if key != "maxi" %}
                                 <td>
-                                    {% if value == 3 %}
+                                    {% if value == 100 %}
                                         <span class="glyphicon glyphicon-star" id="star"></span>
                                     {% else %}
                                         <img src="static/app/images/little_bulb.png" alt="">
@@ -57,28 +38,34 @@
                                     {% endblocktrans %}
                                 </td>
                                 <td>
-                                    {% if value == 0 %}
+                                    {% if value == 0.0 %}
                                         <div class="progress">
                                             <div class="progress-bar progress-bar-danger progress-bar-striped" role="progressbar" aria-valuenow="{{ value }}" aria-valuemin="0" aria-valuemax="3" style="width: 0%">
-                                                <span><strong>{{ value }}/3</strong></span>
+                                                <span><strong>{{ value }} %</strong></span>
                                             </div>
                                         </div>
-                                    {% elif value == 1 %}
+                                    {% elif value == 33.33 %}
                                         <div class="progress">
                                             <div class="progress-bar progress-bar-danger progress-bar-striped" role="progressbar" aria-valuenow="{{ value }}" aria-valuemin="0" aria-valuemax="3" style="width: 33%">
-                                                <span><strong>{{ value }}/3</strong></span>
+                                                <span><strong>{{ value }} %</strong></span>
                                             </div>
                                         </div>
-                                    {% elif value == 2 %}
+                                    {% elif value == 50.0 %}
+                                        <div class="progress">
+                                            <div class="progress-bar progress-bar-medium progress-bar-striped" role="progressbar" aria-valuenow="{{ value }}" aria-valuemin="0" aria-valuemax="3" style="width: 50%">
+                                                <span><strong>{{ value }} %</strong></span>
+                                            </div>
+                                        </div>
+                                    {% elif value == 66.67 %}
                                         <div class="progress">
                                             <div class="progress-bar progress-bar-warning progress-bar-striped" role="progressbar" aria-valuenow="{{ value }}" aria-valuemin="0" aria-valuemax="3" style="width: 66%">
-                                                <span><strong>{{ value }}/3</strong></span>
+                                                <span><strong>{{ value }} %</strong></span>
                                             </div>
                                         </div>
-                                    {% elif value == 3 %}
+                                    {% elif value == 100 %}
                                         <div class="progress">
                                             <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="{{ value }}" aria-valuemin="0" aria-valuemax="3" style="width: 100%">
-                                                <span><strong>{{ value }}/3</strong></span>
+                                                <span><strong>{{ value }} %</strong></span>
                                             </div>
                                         </div>
                                     {% endif %}
