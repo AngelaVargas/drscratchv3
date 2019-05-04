@@ -640,35 +640,49 @@ def check_version(filename):
 
 
 def compare_mode(request):
-    """Shows the different dashboards"""
+    """Shows the first dashboard"""
 
-    if request.method == 'GET':
+    if request.method == 'POST':
+      d = selector(request)
+      mastery = d["mastery"]
 
-      #user = str(segmentation(request))
-      # data = request.GET
-      # dicc = data.get("compare", "0")
-      # d = {}
-      # d['mastery'] = ast.literal_eval(dicc)
-      return render(request, 'main/compare_model.html')
+      return render(request, 'main/compare_dashboard.html', d, mastery)
 
     else:
-      return HttpResponseRedirect('/')
+      return render(request, 'main/compare_model.html')
+
 
 
 def compare_dashboard(request):
-    """Shows the different dashboards"""
+    """Shows the compare dashboards"""
 
-    print request.POST
     if request.method == 'POST':
+      d_2 = selector(request)
 
-      d = selector(request)
-      print d
-      #user = str(segmentation(request))
-      # data = request.GET
-      # dicc = data.get("compare", "0")
-      # d = {}
-      # d['mastery'] = ast.literal_eval(dicc)
-      return render(request, 'main/compare_dashboard.html', d)
+      data = request.POST
+      dicc = data.get("_upload", "")
+
+      if dicc == "":
+        dicc = data.get("_url")
+
+      d_1 = {}
+      d_1['mastery_compare'] = ast.literal_eval(dicc)
+
+      d = {}
+      d_compare = {}
+
+      for key, value in d_2['mastery'].items():
+          for key_compare, value_compare in d_1['mastery_compare'].items():
+              if key == key_compare:
+                  if (value == value_compare) | (value > value_compare):
+                      d[key] = 100
+                  else:
+                      d[key] = round((float(value) / float(value_compare))*100,2)
+
+
+      d_compare["compare"] = d
+
+      return render(request, 'main/compare_result.html', d_compare)
 
     else:
       return HttpResponseRedirect('/')
