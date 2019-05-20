@@ -265,33 +265,30 @@ class Mastery:
 
    if self.blocks_dicc['event_whenbroadcastreceived'] > 1:            # 2 Scripts start on the same received message
      if dict_parall['BROADCAST_OPTION']:
-          new_message = dict_parall['BROADCAST_OPTION']
-          if new_message in messages:
-              score = 3
-              self.mastery_dicc['Parallelization'] = score
-              return
-          else:
-              messages.append(new_message)
+        var_list = set(dict_parall['BROADCAST_OPTION'])
+        for var in var_list:
+          if dict_parall['BROADCAST_OPTION'].count(var) > 1:
+            score = 3
+            self.mastery_dicc['Parallelization'] = score
+            return
 
    if self.blocks_dicc['event_whenbackdropswitchesto'] > 1:           # 2 Scripts start on the same backdrop change
       if dict_parall['BACKDROP']:
-          new_backdrop = dict_parall['BACKDROP']
-          if new_backdrop in backdrops:
-              score = 3
-              self.mastery_dicc['Parallelization'] = score
-              return
-          else:
-              backdrops.append(new_backdrop)
+          backdrop_list = set(dict_parall['BACKDROP'])
+          for var in backdrop_list:
+            if dict_parall['BACKDROP'].count(var) > 1:
+                score = 3
+                self.mastery_dicc['Parallelization'] = score
+                return
 
    if self.blocks_dicc['event_whengreaterthan'] > 1:                  # 2 Scripts start on the same multimedia (audio, timer) event
       if dict_parall['WHENGREATERTHANMENU']:
-         new_multi = dict_parall['WHENGREATERTHANMENU']
-         if new_multi in multimedia:
-              score = 3
-              self.mastery_dicc['Parallelization'] = score
-              return
-         else:
-              multimedia.append(new_multi)
+         var_list = set(dict_parall['WHENGREATERTHANMENU'])
+         for var in var_list:
+           if dict_parall['WHENGREATERTHANMENU'].count(var) > 1:
+             score = 3
+             self.mastery_dicc['Parallelization'] = score
+             return
 
    if self.blocks_dicc['videoSensing_whenMotionGreaterThan'] > 1:     # 2 Scripts start on the same multimedia (video) event
         score = 3
@@ -300,11 +297,11 @@ class Mastery:
  
    if self.blocks_dicc['event_whenkeypressed'] > 1:                   # 2 Scripts start on the same key pressed
      if dict_parall['KEY_OPTION']:
-          new_key = dict_parall['KEY_OPTION']
-          if new_key in keys:
-              score = 2
-          else:
-              keys.append(new_key)  
+        var_list = set(dict_parall['KEY_OPTION'])
+        for var in var_list:
+          if dict_parall['KEY_OPTION'].count(var) > 1:
+            score = 2
+
                               
    if self.blocks_dicc['event_whenthisspriteclicked'] > 1:           # Sprite with 2 scripts on clicked
      score = 2
@@ -323,8 +320,11 @@ class Mastery:
    for block in self.total_blocks:
      for key, value in block.iteritems():
          if key == 'fields':
-           for key_pressed, val_pressed in value.iteritems():  
-              dicc[key_pressed] = val_pressed   
+           for key_pressed, val_pressed in value.iteritems():
+              if key_pressed in dicc:
+                dicc[key_pressed].append(val_pressed[0])
+              else:
+                dicc[key_pressed] = val_pressed
 
    return dicc
 
