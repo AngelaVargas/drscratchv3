@@ -110,9 +110,8 @@ def contest(request):
 
 
     #Show pages for contestest of Dr. Scratch: www.drscratch.org/contest
-    #return render_to_response('contest.html',
-    #                               {})
-    return render('contest.html', {})
+
+    return render(request, 'contest.html', {})
 
 #_______________________________ COLLABORATORS _______________________________#
 
