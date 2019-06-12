@@ -11,7 +11,7 @@ def generate(filename,level,language):
 
 
     base_dir = os.getcwd()
-    #os.chdir("/var/www/drScratch/app/certificate")
+    #os.chdir("/var/www/drscratchv3/app/certificate")
     os.chdir(base_dir + "/app/certificate")
     salida = open("output.tex","w") # crea fichero LaTeX para cada persona
     person = [filename,level] # pasar la cadena en lista ["testing.sb2","21"]
