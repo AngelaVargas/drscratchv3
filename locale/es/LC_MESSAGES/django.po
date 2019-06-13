@@ -51,8 +51,8 @@ msgstr ""
 
 #: templates/coder/base.html:74 templates/main/statistics.html:66
 #: templates/organization/base.html:77
-msgid "Scores of 2015"
-msgstr "Puntuación de 2015"
+msgid "Scores of 2019"
+msgstr "Puntuación de 2019"
 
 #: templates/coder/base.html:82 templates/main/statistics.html:74
 #: templates/organization/base.html:85
@@ -66,8 +66,8 @@ msgstr "Puntuación total"
 
 #: templates/coder/base.html:101 templates/main/statistics.html:93
 #: templates/organization/base.html:104
-msgid "Number of projects analyzed in 2015"
-msgstr "Número de proyectos analizados en 2015"
+msgid "Number of projects analyzed in 2019"
+msgstr "Número de proyectos analizados en 2019"
 
 #: templates/coder/base.html:109 templates/main/statistics.html:101
 #: templates/organization/base.html:112

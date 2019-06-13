@@ -48,8 +48,8 @@ msgstr ""
 
 #: templates/coder/base.html:74 templates/main/statistics.html:66
 #: templates/organization/base.html:77
-msgid "Scores of 2015"
-msgstr "2015eko emaitza"
+msgid "Scores of 2019"
+msgstr "2019eko emaitza"
 
 #: templates/coder/base.html:82 templates/main/statistics.html:74
 #: templates/organization/base.html:85
@@ -63,8 +63,8 @@ msgstr "Emaitza guztiak"
 
 #: templates/coder/base.html:101 templates/main/statistics.html:93
 #: templates/organization/base.html:104
-msgid "Number of projects analyzed in 2015"
-msgstr "2015ean aztertutako proiektuak"
+msgid "Number of projects analyzed in 2019"
+msgstr "2019ean aztertutako proiektuak"
 
 #: templates/coder/base.html:109 templates/main/statistics.html:101
 #: templates/organization/base.html:112
