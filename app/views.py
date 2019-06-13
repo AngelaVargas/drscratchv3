@@ -291,14 +291,39 @@ def _upload(request):
         # Create DB of files
         now = datetime.now()
         method = "project"
-        filename = File (filename = file.name.encode('utf-8'),
-                        organization = "",
-                        method = method , time = now,
-                        score = 0, abstraction = 0, parallelization = 0,
-                        logic = 0, synchronization = 0, flowControl = 0,
-                        userInteractivity = 0, dataRepresentation = 0,
-                        spriteNaming = 0 ,initialization = 0,
-                        deadCode = 0, duplicateScript = 0)
+
+        if request.user.is_authenticated():
+            username = request.user.username
+        else:
+            username = None
+
+        if Organization.objects.filter(username=username):
+            filename = File(filename=file.name.encode('utf-8'),
+                            organization=username,
+                            method=method, time=now,
+                            score=0, abstraction=0, parallelization=0,
+                            logic=0, synchronization=0, flowControl=0,
+                            userInteractivity=0, dataRepresentation=0,
+                            spriteNaming=0, initialization=0,
+                            deadCode=0, duplicateScript=0)
+        elif Coder.objects.filter(username=username):
+            filename = File(filename=file.name.encode('utf-8'),
+                            coder=username,
+                            method=method, time=now,
+                            score=0, abstraction=0, parallelization=0,
+                            logic=0, synchronization=0, flowControl=0,
+                            userInteractivity=0, dataRepresentation=0,
+                            spriteNaming=0, initialization=0,
+                            deadCode=0, duplicateScript=0)
+        else:
+            filename = File(filename=file.name.encode('utf-8'),
+                            method=method, time=now,
+                            score=0, abstraction=0, parallelization=0,
+                            logic=0, synchronization=0, flowControl=0,
+                            userInteractivity=0, dataRepresentation=0,
+                            spriteNaming=0, initialization=0,
+                            deadCode=0, duplicateScript=0)
+
         filename.save()
 
         dir_zips = os.path.dirname(os.path.dirname(__file__)) + "/uploads/"
@@ -1459,7 +1484,11 @@ def stats(request,username):
             points = File.objects.filter(organization=username).filter(time=n)
         elif flagCoder:
             points = File.objects.filter(coder=username).filter(time=n)
+            print points
+            print n
+            print username
         points = points.aggregate(Avg("score"))["score__avg"]
+        print points
         daily_score.append(points)
 
     for n in daily_score:
