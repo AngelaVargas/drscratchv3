@@ -763,7 +763,7 @@ def proc_sprite_naming(lines, filename):
     dic['spriteNaming']['sprite'] = lfinal
 
     #Save in DB
-    filename.spriteNaming = str(number)
+    filename.spriteNaming = number
     filename.save()
 
     return dic
@@ -1484,11 +1484,7 @@ def stats(request,username):
             points = File.objects.filter(organization=username).filter(time=n)
         elif flagCoder:
             points = File.objects.filter(coder=username).filter(time=n)
-            print points
-            print n
-            print username
         points = points.aggregate(Avg("score"))["score__avg"]
-        print points
         daily_score.append(points)
 
     for n in daily_score:
