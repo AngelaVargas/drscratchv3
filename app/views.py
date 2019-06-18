@@ -1449,9 +1449,9 @@ def organization(request, name):
 
             else:
                 #logout(request)
-                return render(request, 'sign-password/organization.html')
+                return render(request, 'organization/organization.html')
 
-        return render(request, 'sign-password/organization.html') 
+        return render(request, 'organization/organization.html')
 
     else:
         return HttpResponseRedirect("/")
