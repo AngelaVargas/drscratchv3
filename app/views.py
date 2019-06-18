@@ -138,7 +138,7 @@ def statistics(request):
     """Initializing variables"""
 
 
-    start = date(2019,1,1)
+    start = date(2015,8,1)
     end = datetime.today()
     y = end.year
     m = end.month
