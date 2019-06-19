@@ -34,14 +34,15 @@ class DuplicateScripts():
                    self.blocks_dicc[blocks] = blocks_value
                    self.total_blocks.append(blocks_value)
 
-     
-     for block in self.total_blocks:
+
+     for key_block in self.blocks_dicc:
+       block = self.blocks_dicc[key_block]
 
        if block["topLevel"] == True:
           block_list = []
           block_list.append(block["opcode"])
           next = block["next"]
-          self.search_next(next, block_list)
+          self.search_next(next, block_list, key_block)
 
           blocks_tuple = tuple(block_list)
 
@@ -55,13 +56,24 @@ class DuplicateScripts():
   
 
 
-   def search_next(self, next, block_list):
-      
-      if next != None :
-        block = self.blocks_dicc[next]  
-        block_list.append(block["opcode"])
-        next = block["next"]
-        self.search_next(next, block_list)
+   def search_next(self, next, block_list, key_block):
+
+       if next == None:
+           try:
+              # Maybe is a control_forever block
+              next = self.blocks_dicc[key_block]["inputs"]["SUBSTACK"][1]
+              if next == None:
+                  return
+           except:
+              next = None
+              return
+
+       block = self.blocks_dicc[next]
+       block_list.append(block["opcode"])
+       key_block = next
+       next = block["next"]
+       self.search_next(next, block_list, key_block)
+
 
 
    """Output the duplicate scripts detected."""
@@ -69,10 +81,9 @@ class DuplicateScripts():
    
      result = ""
      result += ("%d duplicate scripts found" % self.total_duplicate)
-       #for duplicate in self.list_duplicate:
-       #   result += duplicate
-       #   result += "\n"
-
+     # for duplicate in self.list_duplicate:
+     #   #   result += duplicate
+     #   #   result += "\n"
      return result
 
 
