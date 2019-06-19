@@ -740,7 +740,7 @@ def proc_duplicate_script(lines, filename):
     number = 0
     lLines = lines.split('\n')
     #if len(lLines) > 2:
-    number = lLines[0][0]
+    number = lLines[0].split(" ")[0]
     dic["duplicateScript"] = dic
     dic["duplicateScript"]["number"] = number
 

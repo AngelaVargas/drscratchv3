@@ -100,22 +100,23 @@
     });
     </script>
     <script>
-        $(document).ready(function () {
-            if("{{ dupCode }}" == ""){
-                $("#dupCode").attr("data-content","You don't have duplicated scripts.");
-            }else{
-                str = "{{ dupCode }}".split(",");
-                for (n in str){
+        <!--$(document).ready(function () {-->
+            <!--console.log({{ dupCode }})-->
+            <!--if("{{ dupCode }}" == ""){-->
+                <!--$("#dupCode").attr("data-content","You don't have duplicated scripts.");-->
+            <!--}else{-->
+                <!--str = "{{ dupCode }}".split(",");-->
+                <!--for (n in str){-->
 
-                    if(n == 0){str[n] = str[n].slice(12,-11)}
-                    else if(n == str.length-1) { str[n] = str[n].slice(13,-12)}
-                    else{
-                    str[n] = str[n].slice(13,-11)};
-                };
-                $("#dupCode").attr("data-content",str.join("\n"));
-            }
+                    <!--if(n == 0){str[n] = str[n].slice(12,-11)}-->
+                    <!--else if(n == str.length-1) { str[n] = str[n].slice(13,-12)}-->
+                    <!--else{-->
+                    <!--str[n] = str[n].slice(13,-11)};-->
+                <!--};-->
+                <!--$("#dupCode").attr("data-content",str.join("\n"));-->
+            <!--}-->
 
-    });
+    <!--});-->
     </script>
     <script>
     $(document).ready(function(){
