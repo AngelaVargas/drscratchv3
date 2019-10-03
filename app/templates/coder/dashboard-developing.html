@@ -7,6 +7,11 @@
     <meta name="author" content="Programamos URJC Libresoft FECyT">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+     <link rel="stylesheet" href="../../static/app/content/scratchblocks2.css">
+    <script src="../../static/app/scripts/bootstrap-modal.js"></script>
+    <script src="../../static/app/scripts/scratchblocks2.js"></script>
+    <script src="../../static/app/scripts/translations.js"></script>
+    <script src="../../static/app/scripts/bootstrap.js"></script>
     <link rel="stylesheet" href="../../static/app/content/bootstrap-tour.css">
     <script src="../../static/app/scripts/bootstrap.min.js"></script>
     <script src="../../static/app/scripts/bootstrap-tour.js"></script>
@@ -85,13 +90,36 @@
         });
 });
     </script>
+
+    <script>
+        window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return;js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);t._e=[];t.ready=function(f){t._e.push(f);};return t;}(document,"script","twitter-wjs"));
+    </script>
     <script>
         $(document).ready(function () {
-            $('.desplegable').popover();
+            $('.dropdown').popover();
     });
     </script>
     <script>
       window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return;js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);t._e=[];t.ready=function(f){t._e.push(f);};return t;}(document,"script","twitter-wjs"));
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            if("{{ dupCode }}" == ""){
+                $("#dupCode").attr("data-content","You don't have duplicated scripts.");
+            }else{
+                str = "{{ dupCode }}".split(",");
+                for (n in str){
+
+                    if(n == 0){str[n] = str[n].slice(12,-11)}
+                    else if(n == str.length-1) { str[n] = str[n].slice(13,-12)}
+                    else{
+                    str[n] = str[n].slice(13,-11)};
+                };
+                $("#dupCode").attr("data-content",str.join("\n"));
+            }
+
+    });
     </script>
     <script>
     $(document).ready(function(){
@@ -160,6 +188,7 @@
                         <h2 id="score" class="panel-title dark-text">{% trans "Best practice"%}</h2>
                     </div>
                     <div class="panel-body text-left typ">
+                       <!--
                          <a class="glyphicon glyphicon-exclamation-sign"/><a class="desplegable" data-toggle="popover" title="{% trans 'Sprites attributes' %}" data-content=" {% for key,value in initialization.items%}
                         {% if value|length > 0 %}
                         {% if key != 'number' %}
@@ -171,11 +200,31 @@
                         {% endif%}
                         {% endif%}
                         {% endfor%}" data-trigger="hover" href="learn/attrInit"> {{ initialization.number }} {% trans " sprite attributes." %}
+                        </a><br>
+                        -->
 
-</a><br>
-                        <a class="glyphicon glyphicon-pencil"/> <a class="desplegable" data-toggle="popover" title="{% trans 'Sprite naming' %}" data-content=" {% for value in spriteNaming.sprite %}
+                        <a class="glyphicon glyphicon-repeat"/><a class="dropdown" id="dupCode" data-toggle="popover" title="{% trans 'Duplicated scripts' %}" data-content="" data-trigger="hover" href="learn/duplicatedScripts"> {{ duplicateScript.number }} {% trans " duplicated scripts." %}
+                        </a><br>
+                        <a class="glyphicon glyphicon-pencil"/> <a class="dropdown" data-toggle="popover" title="{% trans 'Sprite naming' %}" data-content=" {% for value in spriteNaming.sprite %}
                                     {{ value }}.
                                    {% endfor %}" data-trigger="hover" href="learn/spriteNaming"> {{ spriteNaming.number }} {% trans " sprite naming." %}
+                       </a><br>
+                       <a class="glyphicon glyphicon-pencil"/> <a class="dropdown" data-toggle="popover" title="{% trans 'Backdrop naming' %}" data-content=" {% for value in backdropNaming.backdrop %}
+                                   {{ value }}.
+                                  {% endfor %}" data-trigger="hover" href="learn/spriteNaming"> {{ backdropNaming.number }} {% trans " backdrop naming." %}
+                        </a><br>
+                        <a class="glyphicon glyphicon-remove-sign"/><a class="dropdown" data-toggle="popover" title="{% trans 'Dead code' %}" data-content="{% for key,value in deadCode.items%}
+                        {% if key != 'deadCode' %}
+                        {% if key != 'number' %}
+                        {% if deadCode.number == 0 %}
+                        {% trans 'Your project does not have dead code, good job!' %}
+                        {% else %}
+                        {{ value }}:
+                        {% endif %}
+                        {% endif%}
+                        {% endif%}
+                        {% endfor%}
+                        {{ dCode }}" data-trigger="hover" href="learn/deadCode"> {{ deadCode.number }} {% trans " dead code." %}
                        </a><br>
                  </div>
                 </div>
