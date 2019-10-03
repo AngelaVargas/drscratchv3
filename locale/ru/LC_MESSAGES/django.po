@@ -644,7 +644,7 @@ msgstr "Вы мастер!!!"
 #: templates/main/dashboard-master.html:190
 #: templates/organization/dashboard-master.html:197
 msgid " duplicated scripts."
-msgstr " дубликатов спрайтов"
+msgstr " дубликатов спрайтов."
 
 #: templates/coder/dashboard-master.html:202
 #: templates/main/dashboard-master.html:200

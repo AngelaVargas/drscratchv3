@@ -649,7 +649,7 @@ msgstr "Είστε ο άρχοντας του σύμπαντος!"
 #: templates/main/dashboard-master.html:190
 #: templates/organization/dashboard-master.html:197
 msgid " duplicated scripts."
-msgstr " διπλασιασμένα προγράμματα"
+msgstr " διπλασιασμένα προγράμματα."
 
 #: templates/coder/dashboard-master.html:202
 #: templates/main/dashboard-master.html:200
