@@ -687,9 +687,10 @@ def analyze_project(request, file_name, filename):
         dictionary.update(proc_backdrop_naming(resultBackdropNaming, filename))
         dictionary.update(proc_duplicate_script(resultDuplicateScript, filename))
         dictionary.update(proc_dead_code(resultDeadCode, filename))
-        #dictionary.update(proc_initialization(resultInitialization, filename))
-        #code = {'dupCode':duplicate_script_scratch_block(resultDuplicateScript)}
-        #dictionary.update(code)
+        # dictionary.update(proc_initialization(resultInitialization, filename))
+        code = {'dupCode':duplicate_script_scratch_block(resultDuplicateScript)}
+        print code
+        dictionary.update(code)
         #code = {'dCode':dead_code_scratch_block(resultDeadCode)}
         #dictionary.update(code)
 
@@ -739,10 +740,11 @@ def proc_duplicate_script(lines, filename):
     dic = {}
     number = 0
     lLines = lines.split('\n')
-    #if len(lLines) > 2:
     number = lLines[0].split(" ")[0]
     dic["duplicateScript"] = dic
     dic["duplicateScript"]["number"] = number
+    # if number != "0":
+    #     dic["duplicateScript"]["duplicated"] = lLines[1:-1]
 
     #Save in DB
     filename.duplicateScript = number
@@ -802,9 +804,9 @@ def proc_dead_code(lines, filename):
       items = d.items()
 
       for keys, values in items:
-	lcharacter.append(keys)
-	lblocks.append(values) 
-	iterator += 1
+        lcharacter.append(keys)
+        lblocks.append(values)
+        iterator += 1
 
     dic = {}
     dic["deadCode"] = dic
@@ -865,7 +867,7 @@ def proc_initialization(lines, filename):
 
     return dic
 
-
+"""
 
 #____________________  INFORMATION TO SCRATCH BLOCKS  ________________________#
 
@@ -873,12 +875,14 @@ def duplicate_script_scratch_block(code):
 
 
     try:
-        code = code.split("\n")[2:][0]
+        code = code.split("\n")[1:][0]
         code = code[1:-1].split(",")
     except:
         code = ""
 
     return code
+
+""" 
 
 def dead_code_scratch_block(code):
 
@@ -1556,6 +1560,8 @@ def settings(request,username):
 
 
     base_dir = os.getcwd()
+    if base_dir == "/":
+        base_dir = "/var/www/drScratchv3"
     flagOrganization = 0
     flagCoder = 0
     if Organization.objects.filter(username=username):
@@ -1570,7 +1576,7 @@ def settings(request,username):
         #Saving image in DB
         user.img = request.FILES["img"]
         os.chdir(base_dir+"/static/img")
-        user.img.name = str(username)+ "."+ str(request.FILES["img"]).split(".")[1]
+        user.img.name = str(user.img)
 
         if os.path.exists(user.img.name):
             os.remove(user.img.name)
