@@ -1561,7 +1561,7 @@ def settings(request,username):
 
     base_dir = os.getcwd()
     if base_dir == "/":
-        base_dir = "/var/www/drScratchv3"
+        base_dir = "/var/www/drscratchv3"
     flagOrganization = 0
     flagCoder = 0
     if Organization.objects.filter(username=username):
