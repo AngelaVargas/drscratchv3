@@ -155,6 +155,15 @@ msgstr "Atributs no inicialitzats correctament"
 msgid "Sprite naming"
 msgstr "Noms poc encertats"
 
+#: templates/coder/dashboard-developing.html:212
+#: templates/coder/dashboard-master.html:198
+#: templates/main/dashboard-developing.html:205
+#: templates/main/dashboard-master.html:197
+#: templates/organization/dashboard-developing.html:203
+#: templates/organization/dashboard-master.html:203
+msgid "Backdrop naming"
+msgstr "Noms poc encertats"
+
 #: templates/coder/base.html:230 templates/coder/base.html.py:237
 #: templates/main/statistics.html:222 templates/main/statistics.html.py:229
 #: templates/organization/base.html:233 templates/organization/base.html:240
@@ -652,6 +661,15 @@ msgstr " atribuits no inicialitzats correctament."
 #: templates/organization/dashboard-master.html:201
 msgid " sprite naming."
 msgstr " noms inadequats."
+
+#: templates/coder/dashboard-developing.html:214
+#: templates/coder/dashboard-master.html:200
+#: templates/main/dashboard-developing.html:207
+#: templates/main/dashboard-master.html:199
+#: templates/organization/dashboard-developing.html:205
+#: templates/organization/dashboard-master.html:205
+msgid " backdrop naming."
+msgstr " noms d'escenaris inadequats."
 
 #: templates/coder/dashboard-master.html:169
 #: templates/main/dashboard-master.html:167
@@ -2437,20 +2455,21 @@ msgstr ""
 #: templates/learn/spriteNaming.html:12
 msgid ""
 "When you start to programming with Scratch, is very usually to leave the "
-"default name of the new characters(sprite 1, sprite2, ...). When we have few "
-"characters, is very easy to know what character have each name. However, "
-"when the number of characters increases, it's more complicated. So, is a "
-"good practice naming(to recognize easily) each character of our projects, "
-"because our programs can be read more fast. Avoid default names!"
+"default name of the new characters or scenarios(sprite 1, sprite2, backdrop1, "
+"backdrop2 ...). When we have few characters or backdrops, is very easy to "
+"know what character or scenario have each name. However, when the number of "
+"characters or scenarios increases, it's more complicated. So, is a good "
+"practice naming(to recognize easily) each character and scenario of our "
+"projects, because our programs can be read more fast. Avoid default names!"
 msgstr ""
 "Quan comencem a programar amb Scratch és freqüent deixar el nom que Scratch "
-"assigna per defecte als nous personatges (sprite1, sprite2...). Quan tenim "
-"pocs personatges, és prou senzill saber quin nom té assignat cada "
-"personatge; no obstant això, quan el nombre de personatges creix, la cosa es "
-"complica. Per tant, és molt encertat acostumar-se a posar un nom "
-"representatiu (que reconeguem fàcilment) a cada personatge dels nostres "
-"projectes, ja que així els programes es llegiran millor i es programaran més "
-"ràpidament. Fuig dels noms per defecte!"
+"assigna per defecte als nous personatges o scenaris (sprite1, sprite2, fons1, "
+"fons2 ...). Quan tenim pocs personatges o scenaris, és prou senzill saber quin "
+"nom té assignat cada personatge o scenari; no obstant això, quan el nombre de "
+"personatges o scenaris creix, la cosa es complica. Per tant, és molt encertat "
+"acostumar-se a posar un nom representatiu (que reconeguem fàcilment) a cada "
+"personatge i scenari dels nostres projectes, ja que així els programes es "
+"llegiran millor i es programaran més ràpidament. Fuig dels noms per defecte!"
 
 #: templates/main/collaborators.html:75 templates/main/collaborators.html:162
 msgid "Who we are"
