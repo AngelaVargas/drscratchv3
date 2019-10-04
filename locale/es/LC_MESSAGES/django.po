@@ -155,7 +155,16 @@ msgstr "Atributos no inicializados correctamente"
 #: templates/organization/dashboard-developing.html:176
 #: templates/organization/dashboard-master.html:199
 msgid "Sprite naming"
-msgstr "Nombres inadecuados"
+msgstr "Nombres de objetos"
+
+#: templates/coder/dashboard-developing.html:212
+#: templates/coder/dashboard-master.html:198
+#: templates/main/dashboard-developing.html:205
+#: templates/main/dashboard-master.html:197
+#: templates/organization/dashboard-developing.html:203
+#: templates/organization/dashboard-master.html:203
+msgid "Backdrop naming"
+msgstr "Nombres de escenarios"
 
 
 #: templates/coder/base.html:230 templates/coder/base.html.py:237
@@ -631,7 +640,16 @@ msgstr "atributos no inicializados correctamente."
 #: templates/organization/dashboard-developing.html:178
 #: templates/organization/dashboard-master.html:201
 msgid " sprite naming."
-msgstr "nombres inadecuados."
+msgstr "nombres de objetos inadecuados."
+
+#: templates/coder/dashboard-developing.html:214
+#: templates/coder/dashboard-master.html:200
+#: templates/main/dashboard-developing.html:207
+#: templates/main/dashboard-master.html:199
+#: templates/organization/dashboard-developing.html:205
+#: templates/organization/dashboard-master.html:205
+msgid " backdrop naming."
+msgstr " nombres de escenarios inadecuados."
 
 #: templates/coder/dashboard-master.html:169
 #: templates/main/dashboard-master.html:167
@@ -2404,20 +2422,22 @@ msgstr ""
 #: templates/learn/spriteNaming.html:12
 msgid ""
 "When you start to programming with Scratch, is very usually to leave the "
-"default name of the new characters(sprite 1, sprite2, ...). When we have few "
-"characters, is very easy to know what character have each name. However, "
-"when the number of characters increases, it's more complicated. So, is a "
-"good practice naming(to recognize easily) each character of our projects, "
-"because our programs can be read more fast. Avoid default names!"
+"default name of the new characters or scenarios(sprite 1, sprite2, backdrop1, "
+"backdrop2 ...). When we have few characters or backdrops, is very easy to "
+"know what character or scenario have each name. However, when the number of "
+"characters or scenarios increases, it's more complicated. So, is a good "
+"practice naming(to recognize easily) each character and scenario of our "
+"projects, because our programs can be read more fast. Avoid default names!"
 msgstr ""
-" Al comenzar a programar con Scratch es bastante habitual dejar el nombre "
-"que Scratch asigna por defecto a los nuevos personajes (objeto1, "
-"objeto2...). Cuando tenemos pocos personajes, es bastante sencillo saber qué "
-"personaje tiene cada nombre; no obstante, cuando el número de personajes "
-"crece, la cosa se complica. Por tanto, es muy bueno acostumbrarse a poner un "
-"nombre significativo (que reconozcamos fácilmente) a cada objeto de nuestros "
-"proyectos, ya que nuestros programas se leerán mejor y se programarán más "
-"rápidamente. ¡Evita los nombres por defecto!"
+"Al comenzar a programar con Scratch es bastante habitual dejar el nombre "
+"que Scratch asigna por defecto a los nuevos personajes o escenarios(objeto1, "
+"objeto2, fondo1, fondo2...). Cuando tenemos pocos personajes o escenarios, "
+"es bastante sencillo saber qué personaje o escenario tiene cada nombre; no "
+"obstante, cuando el número de personajes o escenarios crece, la cosa se complica. "
+"Por tanto, es muy bueno acostumbrarse a poner un nombre significativo (que "
+"reconozcamos fácilmente) a cada objeto y escenario de nuestros proyectos, ya "
+"que nuestros programas se leerán mejor y se programarán más rápidamente. "
+"¡Evita los nombres por defecto!"
 
 #: templates/main/collaborators.html:75 templates/main/collaborators.html:162
 msgid "Who we are"
