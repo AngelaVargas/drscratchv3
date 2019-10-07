@@ -622,8 +622,8 @@ msgstr "Você está fazendo um ótimo trabalho. Continue assim!!!"
 #: templates/main/dashboard-master.html:187
 #: templates/organization/dashboard-developing.html:160
 #: templates/organization/dashboard-master.html:194
-msgid "Best practice"
-msgstr ""
+msgid "Bad habits"
+msgstr "Maus hábitos"
 
 #: templates/coder/dashboard-developing.html:163
 #: templates/coder/dashboard-master.html:211

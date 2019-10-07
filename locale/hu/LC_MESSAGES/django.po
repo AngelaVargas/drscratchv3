@@ -587,7 +587,7 @@ msgstr ""
 #: templates/main/dashboard-master.html:187
 #: templates/organization/dashboard-developing.html:160
 #: templates/organization/dashboard-master.html:194
-msgid "Best practice"
+msgid "Bad habits"
 msgstr ""
 
 #: templates/coder/dashboard-developing.html:163

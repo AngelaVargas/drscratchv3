@@ -623,8 +623,8 @@ msgstr "Estàs fent un gran treball. Segueix així!!!"
 #: templates/main/dashboard-master.html:187
 #: templates/organization/dashboard-developing.html:160
 #: templates/organization/dashboard-master.html:194
-msgid "Best practice"
-msgstr ""
+msgid "Bad habits"
+msgstr "Mals hàbits"
 
 #: templates/coder/dashboard-developing.html:163
 #: templates/coder/dashboard-master.html:211

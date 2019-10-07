@@ -603,8 +603,8 @@ msgstr "Estás haciendo un gran trabajo. ¡Sigue así!"
 #: templates/main/dashboard-master.html:187
 #: templates/organization/dashboard-developing.html:160
 #: templates/organization/dashboard-master.html:194
-msgid "Best practice"
-msgstr "Mejores prácticas"
+msgid "Bad habits"
+msgstr "Malos hábitos"
 
 #: templates/coder/dashboard-developing.html:163
 #: templates/coder/dashboard-master.html:211
