@@ -155,6 +155,15 @@ msgstr ""
 msgid "Sprite naming"
 msgstr ""
 
+#: templates/coder/dashboard-developing.html:212
+#: templates/coder/dashboard-master.html:198
+#: templates/main/dashboard-developing.html:205
+#: templates/main/dashboard-master.html:197
+#: templates/organization/dashboard-developing.html:203
+#: templates/organization/dashboard-master.html:203
+msgid "Backdrop naming"
+msgstr ""
+
 #: templates/coder/base.html:230 templates/coder/base.html.py:237
 #: templates/main/statistics.html:222 templates/main/statistics.html.py:229
 #: templates/organization/base.html:233 templates/organization/base.html:240
@@ -615,6 +624,15 @@ msgstr ""
 #: templates/organization/dashboard-developing.html:178
 #: templates/organization/dashboard-master.html:201
 msgid " sprite naming."
+msgstr ""
+
+#: templates/coder/dashboard-developing.html:214
+#: templates/coder/dashboard-master.html:200
+#: templates/main/dashboard-developing.html:207
+#: templates/main/dashboard-master.html:199
+#: templates/organization/dashboard-developing.html:205
+#: templates/organization/dashboard-master.html:205
+msgid " backdrop naming."
 msgstr ""
 
 #: templates/coder/dashboard-master.html:169
@@ -2063,11 +2081,12 @@ msgstr ""
 #: templates/learn/spriteNaming.html:12
 msgid ""
 "When you start to programming with Scratch, is very usually to leave the "
-"default name of the new characters(sprite 1, sprite2, ...). When we have few "
-"characters, is very easy to know what character have each name. However, "
-"when the number of characters increases, it's more complicated. So, is a "
-"good practice naming(to recognize easily) each character of our projects, "
-"because our programs can be read more fast. Avoid default names!"
+"default name of the new characters or scenarios(sprite 1, sprite2, backdrop1, "
+"backdrop2 ...). When we have few characters or backdrops, is very easy to "
+"know what character or scenario have each name. However, when the number of "
+"characters or scenarios increases, it's more complicated. So, is a good "
+"practice naming(to recognize easily) each character and scenario of our "
+"projects, because our programs can be read more fast. Avoid default names!"
 msgstr ""
 
 #: templates/main/collaborators.html:75 templates/main/collaborators.html:162
