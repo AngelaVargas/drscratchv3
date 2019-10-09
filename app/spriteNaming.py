@@ -15,7 +15,7 @@ class SpriteNaming():
 
       self.total_default = 0
       self.list_default = []
-      self.default_names = ["Sprite","Objeto"]
+      self.default_names = ["Sprite", "Objeto", "Personatge", "Figura", "o actor", "Personaia"]
 
    
     """Output the default sprite names found in the project."""
@@ -26,7 +26,7 @@ class SpriteNaming():
        for name in self.list_default:
             result += name
             result += "\n"
-       
+
        return result
 
 
