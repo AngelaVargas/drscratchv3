@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# -*- encoding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 import json
 import zipfile
@@ -15,7 +18,7 @@ class BackdropNaming():
 
       self.total_default = 0
       self.list_default = []
-      self.default_names = ["backdrop","fondo"]
+      self.default_names = ["backdrop", "fondo", "fons", "atzeko oihala"]
 
    
     """Output the default backdrop names found in the project."""
@@ -26,7 +29,7 @@ class BackdropNaming():
        for name in self.list_default:
             result += name
             result += "\n"
-       
+
        return result
 
 
@@ -35,18 +38,19 @@ class BackdropNaming():
        
       zip_file = zipfile.ZipFile(filename, "r")
       json_project = json.loads(zip_file.open("project.json").read())
-  
+
       for key, value in json_project.iteritems():
         if key == "targets":
           for dicc in value:
             for dicc_key, dicc_value in dicc.iteritems():
               if dicc_key == "costumes":
-                for name_key, name_value in dicc_value[0].iteritems():
+                for backdrop in dicc_value:
+                  for name_key, name_value in backdrop.iteritems():
                     if name_key == "name":
-                        for default in self.default_names:
-                           if default in name_value:
-                             self.total_default += 1
-                             self.list_default.append(name_value)
+                      for default in self.default_names:
+                        if default in name_value:
+                          self.total_default += 1
+                          self.list_default.append(name_value)
 
 
 
