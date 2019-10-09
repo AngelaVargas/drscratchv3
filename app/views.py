@@ -689,7 +689,6 @@ def analyze_project(request, file_name, filename):
         dictionary.update(proc_dead_code(resultDeadCode, filename))
         # dictionary.update(proc_initialization(resultInitialization, filename))
         code = {'dupCode':duplicate_script_scratch_block(resultDuplicateScript)}
-        print code
         dictionary.update(code)
         #code = {'dCode':dead_code_scratch_block(resultDeadCode)}
         #dictionary.update(code)
@@ -783,7 +782,7 @@ def proc_backdrop_naming(lines, filename):
     dic['backdropNaming']['backdrop'] = lfinal
 
     #Save in DB
-    filename.backdropNaming = str(number)
+    filename.backdropNaming = number
     filename.save()
 
     return dic
