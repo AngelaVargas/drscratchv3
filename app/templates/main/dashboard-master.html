@@ -190,12 +190,12 @@
                     <div class="panel-body text-left typ">
                         <a class="glyphicon glyphicon-repeat"/><a class="dropdown" id="dupCode" data-toggle="popover" title="{% trans 'Duplicated scripts' %}" data-content="" data-trigger="hover" href="learn/duplicatedScripts"> {{ duplicateScript.number }} {% trans " duplicated scripts." %}
 </a><br>
-                        <a class="glyphicon glyphicon-pencil"/> <a class="dropdown" data-toggle="popover" title="{% trans 'Sprite naming' %}" data-content=" {% for value in spriteNaming.sprite %}
-                                    {{ value }}.
+                        <a class="glyphicon glyphicon-pencil"/> <a data-html="true" class="dropdown" data-toggle="popover" title="{% trans 'Sprite naming' %}" data-content=" {% for value in spriteNaming.sprite %}
+                                    {{ value }} <br>
                                    {% endfor %}" data-trigger="hover" href="learn/spriteNaming"> {{ spriteNaming.number }} {% trans " sprite naming." %}
                        </a><br>
-                       <a class="glyphicon glyphicon-pencil"/> <a class="dropdown" data-toggle="popover" title="{% trans 'Backdrop naming' %}" data-content=" {% for value in backdropNaming.backdrop %}
-                                   {{ value }}.
+                       <a class="glyphicon glyphicon-pencil"/> <a data-html="true" class="dropdown" data-toggle="popover" title="{% trans 'Backdrop naming' %}" data-content=" {% for value in backdropNaming.backdrop %}
+                                   {{ value }} <br>
                                   {% endfor %}" data-trigger="hover" href="learn/spriteNaming"> {{ backdropNaming.number }} {% trans " backdrop naming." %}
                        </a><br>
                         <a class="glyphicon glyphicon-remove-sign"/><a class="dropdown" data-toggle="popover" title="{% trans 'Dead code' %}" data-content="{% for key,value in deadCode.items%}
