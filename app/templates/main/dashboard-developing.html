@@ -7,6 +7,11 @@
     <meta name="author" content="Programamos URJC Libresoft FECyT">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+    <link rel="stylesheet" href="../../static/app/content/scratchblocks2.css">
+    <script src="../../static/app/scripts/bootstrap-modal.js"></script>
+    <script src="../../static/app/scripts/scratchblocks2.js"></script>
+    <script src="../../static/app/scripts/translations.js"></script>
+    <script src="../../static/app/scripts/bootstrap.js"></script>
     <link rel="stylesheet" href="../../static/app/content/bootstrap-tour.css">
     <script src="../../static/app/scripts/bootstrap.min.js"></script>
     <script src="../../static/app/scripts/bootstrap-tour.js"></script>
@@ -85,6 +90,10 @@
         });
 });
     </script>
+
+    <script>
+        window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return;js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);t._e=[];t.ready=function(f){t._e.push(f);};return t;}(document,"script","twitter-wjs"));
+    </script>
     <script>
         $(document).ready(function () {
             $('.dropdown').popover();
@@ -99,19 +108,15 @@
                 str = "{{ dupCode }}".split(",");
                 for (n in str){
 
-                    if(n == 0){str[n] = str[n].slice(12,-11)}
-                    else if(n == str.length-1) { str[n] = str[n].slice(13,-12)}
+                    if(n == 0){str[n] = str[n].slice(13,-11)}
+                    else if(n == str.length-1) { str[n] = str[n].slice(14,-12)}
                     else{
-                    str[n] = str[n].slice(13,-11)};
+                    str[n] = str[n].slice(14,-11)};
                 };
                 $("#dupCode").attr("data-content",str.join("\n"));
             }
 
     });
-    </script>
-
-    <script>
-      window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return;js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);t._e=[];t.ready=function(f){t._e.push(f);};return t;}(document,"script","twitter-wjs"));
     </script>
     <script>
     $(document).ready(function(){
@@ -136,7 +141,7 @@
                 </a>
                 <ul class="nav navbar-nav navbar-right main-navigation ">
                         <li class="navbar-brand"><a class="navbar-brand pull-right" href="https://twitter.com/DrScratchTool"><span class="icon-social-twitter colored-text"></span></a></li>
-                        <li class="navbar-brand"><a class="navbar-brand pull-right" href="mailto:team@drscratch.org"><span class="icon-basic-mail colored-text"></span></a></li>
+                        <li class="navbar-brand"><a class="navbar-brand pull-right" href="mailto:kgblll@gsyc.urjc.es"><span class="icon-basic-mail colored-text"></span></a></li>
                         <li class="navbar-brand"><a class="btn btn-default" id="tour">{% trans "HELP" %}</a></li>
                         <li class="navbar-brand"><a class="navbar-brand pull-right">{% trans "Dr. Scratch(Beta Version)" %}</a></li>
                       </ul>
@@ -193,11 +198,8 @@
 			</a><br>
 			-->
 
-                        <a class="glyphicon glyphicon-repeat"/><a class="dropdown" data-toggle="popover" title="{% trans 'Duplicated scripts' %}" data-content=" {% for value in duplicateScript.duplicated %}
-                                    {{ value }}.
-                                  {% endfor %}" data-trigger="hover" href="learn/duplicatedScripts"> {{ duplicateScript.number }} {% trans " duplicated scripts." %}
+                        <a class="glyphicon glyphicon-repeat"/><a class="dropdown" id="dupCode" data-toggle="popover" title="{% trans 'Duplicated scripts' %}" data-content="" data-trigger="hover" href="learn/duplicatedScripts"> {{ duplicateScript.number }} {% trans " duplicated scripts." %}
                         </a><br>
-
                         <a class="glyphicon glyphicon-pencil"/> <a data-html="true" class="dropdown" data-toggle="popover" title="{% trans 'Sprite naming' %}" data-content=" {% for value in spriteNaming.sprite %}
                                     {{ value }} <br>
                                    {% endfor %}" data-trigger="hover" href="learn/spriteNaming"> {{ spriteNaming.number }} {% trans " sprite naming." %}

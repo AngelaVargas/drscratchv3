@@ -78,12 +78,12 @@ class DuplicateScripts():
 
    """Output the duplicate scripts detected."""
    def finalize(self):
-   
-     result = ""
-     result += ("%d duplicate scripts found" % self.total_duplicate)
-     # for duplicate in self.list_duplicate:
-     #   #   result += duplicate
-     #   #   result += "\n"
+
+     result = ("%d duplicate scripts found" % self.total_duplicate)
+     result += "\n"
+     for duplicate in self.list_duplicate:
+       result += str(duplicate)
+       result += "\n"
      return result
 
 

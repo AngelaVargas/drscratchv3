@@ -107,10 +107,10 @@
                 str = "{{ dupCode }}".split(",");
                 for (n in str){
 
-                    if(n == 0){str[n] = str[n].slice(12,-11)}
-                    else if(n == str.length-1) { str[n] = str[n].slice(13,-12)}
+                    if(n == 0){str[n] = str[n].slice(13,-11)}
+                    else if(n == str.length-1) { str[n] = str[n].slice(14,-12)}
                     else{
-                    str[n] = str[n].slice(13,-11)};
+                    str[n] = str[n].slice(14,-11)};
                 };
                 $("#dupCode").attr("data-content",str.join("\n"));
             }
@@ -143,8 +143,8 @@
                </ul>
                 <ul class="nav navbar-nav navbar-right main-navigation ">
                         <li class="navbar-brand"><a class="navbar-brand pull-right" href="https://twitter.com/DrScratchTool"><span class="icon-social-twitter colored-text"></span></a></li>
-                        <li class="navbar-brand"><a class="navbar-brand pull-right" href="mailto:team@drscratch.org"><span class="icon-basic-mail colored-text"></span></a></li>
-<li class="navbar-brand"><a class="btn btn-default" id="tour">{% trans "HELP" %}</a></li>
+                        <li class="navbar-brand"><a class="navbar-brand pull-right" href="mailto:kgblll@gsyc.urjc.es"><span class="icon-basic-mail colored-text"></span></a></li>
+                        <li class="navbar-brand"><a class="btn btn-default" id="tour">{% trans "HELP" %}</a></li>
                         <li class="navbar-brand"><a class="navbar-brand pull-right">{% trans "Dr. Scratch(Beta Version)" %}</a></li>
                 </ul>
             </div>

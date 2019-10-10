@@ -12,7 +12,7 @@
     <script src="../../static/app/scripts/scratchblocks2.js"></script>
     <script src="../../static/app/scripts/translations.js"></script>
     <script src="../../static/app/scripts/bootstrap.js"></script>
-<link rel="stylesheet" href="../../static/app/content/bootstrap-tour.css">
+    <link rel="stylesheet" href="../../static/app/content/bootstrap-tour.css">
     <script src="../../static/app/scripts/bootstrap.min.js"></script>
     <script src="../../static/app/scripts/bootstrap-tour.js"></script>
     <script src="../../static/app/scripts/googleAnalytics.js"></script>
@@ -101,17 +101,16 @@
     </script>
     <script>
         $(document).ready(function () {
-            console.log({{ dupCode }})
             if("{{ dupCode }}" == ""){
                 $("#dupCode").attr("data-content","You don't have duplicated scripts.");
             }else{
                 str = "{{ dupCode }}".split(",");
                 for (n in str){
 
-                    if(n == 0){str[n] = str[n].slice(12,-11)}
-                    else if(n == str.length-1) { str[n] = str[n].slice(13,-12)}
+                    if(n == 0){str[n] = str[n].slice(13,-11)}
+                    else if(n == str.length-1) { str[n] = str[n].slice(14,-12)}
                     else{
-                    str[n] = str[n].slice(13,-11)};
+                    str[n] = str[n].slice(14,-11)};
                 };
                 $("#dupCode").attr("data-content",str.join("\n"));
             }
@@ -139,11 +138,10 @@
                 <a class="navbar-brand" href="/">
                     <img src="static/app/images/logo_main.png" alt="">
                 </a>
-
                 <ul class="nav navbar-nav navbar-right main-navigation ">
                         <li class="navbar-brand"><a class="navbar-brand pull-right" href="https://twitter.com/DrScratchTool"><span class="icon-social-twitter colored-text"></span></a></li>
-                        <li class="navbar-brand"><a class="navbar-brand pull-right" href="mailto:team@drscratch.org"><span class="icon-basic-mail colored-text"></span></a></li>
-<li class="navbar-brand"><a class="btn btn-default" id="tour">{% trans "HELP" %}</a></li>
+                        <li class="navbar-brand"><a class="navbar-brand pull-right" href="mailto:kgblll@gsyc.urjc.es"><span class="icon-basic-mail colored-text"></span></a></li>
+                        <li class="navbar-brand"><a class="btn btn-default" id="tour">{% trans "HELP" %}</a></li>
                         <li class="navbar-brand"><a class="navbar-brand pull-right">{% trans "Dr. Scratch(Beta Version)" %}</a></li>
                 </ul>
             </div>
@@ -189,7 +187,7 @@
                     </div>
                     <div class="panel-body text-left typ">
                         <a class="glyphicon glyphicon-repeat"/><a class="dropdown" id="dupCode" data-toggle="popover" title="{% trans 'Duplicated scripts' %}" data-content="" data-trigger="hover" href="learn/duplicatedScripts"> {{ duplicateScript.number }} {% trans " duplicated scripts." %}
-</a><br>
+                        </a><br>
                         <a class="glyphicon glyphicon-pencil"/> <a data-html="true" class="dropdown" data-toggle="popover" title="{% trans 'Sprite naming' %}" data-content=" {% for value in spriteNaming.sprite %}
                                     {{ value }} <br>
                                    {% endfor %}" data-trigger="hover" href="learn/spriteNaming"> {{ spriteNaming.number }} {% trans " sprite naming." %}
