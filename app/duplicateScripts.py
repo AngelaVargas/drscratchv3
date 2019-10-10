@@ -42,7 +42,8 @@ class DuplicateScripts():
           block_list = []
           block_list.append(block["opcode"])
           next = block["next"]
-          self.search_next(next, block_list, key_block)
+          aux_next = None
+          self.search_next(next, block_list, key_block, aux_next)
 
           blocks_tuple = tuple(block_list)
 
@@ -56,7 +57,7 @@ class DuplicateScripts():
   
 
 
-   def search_next(self, next, block_list, key_block):
+   def search_next(self, next, block_list, key_block, aux_next):
 
        if next == None:
            try:
@@ -65,14 +66,28 @@ class DuplicateScripts():
               if next == None:
                   return
            except:
-              next = None
-              return
+              if aux_next != None:      #Check if there is a aux_next saved
+                next = aux_next
+                aux_next = None
+              else:
+                next = None
+                return
+       else:
+           try:
+               # Maybe is a repeat_until block or similar
+               loop_block = self.blocks_dicc[key_block]["inputs"]["SUBSTACK"][1]
+               aux_next = next          #Save the real next until the end of the loop
+               next = loop_block
+           except:
+               pass
+
+
 
        block = self.blocks_dicc[next]
        block_list.append(block["opcode"])
        key_block = next
        next = block["next"]
-       self.search_next(next, block_list, key_block)
+       self.search_next(next, block_list, key_block, aux_next)
 
 
 
