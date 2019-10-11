@@ -760,7 +760,7 @@ def proc_sprite_naming(lines, filename):
     lObjects = lLines[1:]
     lfinal = lObjects[:-1]
     dic['spriteNaming'] = dic
-    dic['spriteNaming']['number'] = str(number)
+    dic['spriteNaming']['number'] = int(number)
     dic['spriteNaming']['sprite'] = lfinal
 
     #Save in DB
@@ -778,7 +778,7 @@ def proc_backdrop_naming(lines, filename):
     lObjects = lLines[1:]
     lfinal = lObjects[:-1]
     dic['backdropNaming'] = dic
-    dic['backdropNaming']['number'] = str(number)
+    dic['backdropNaming']['number'] = int(number)
     dic['backdropNaming']['backdrop'] = lfinal
 
     #Save in DB
