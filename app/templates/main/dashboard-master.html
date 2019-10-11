@@ -196,17 +196,17 @@
                                    {{ value }} <br>
                                   {% endfor %}" data-trigger="hover" href="learn/spriteNaming"> {{ backdropNaming.number }} {% trans " backdrop naming." %}
                        </a><br>
-                        <a class="glyphicon glyphicon-remove-sign"/><a class="dropdown" data-toggle="popover" title="{% trans 'Dead code' %}" data-content="{% for key,value in deadCode.items%}
+                        <a class="glyphicon glyphicon-remove-sign"/><a data-html="true" class="dropdown" data-toggle="popover" title="{% trans 'Dead code' %}" data-content="{% for key,value in deadCode.items%}
                         {% if key != 'deadCode' %}
                         {% if key != 'number' %}
-                        {% if deadCode.number == 0 %}
-                        {% trans 'Your project does not have dead code, good job!' %}
-                        {% else %}
-                        {{ key }}:({{ value }})
-                        {% endif %}
+                        {{ key }}: <br>
+                        {{ value }} <br><br>
                         {% endif%}
                         {% endif%}
                         {% endfor%}
+                        {% if deadCode.number == 0 %}
+                        {% trans 'Your project does not have dead code, good job!' %}
+                        {% endif %}
                         " data-trigger="hover" href="learn/deadCode"> {{ deadCode.number }} {% trans " dead code." %}
                        </a><br>
 

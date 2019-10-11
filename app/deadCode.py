@@ -31,11 +31,11 @@ class DeadCode():
                  event_variable = any(blocks_dicc["opcode"]==event for event in self.event_variables)
                  if event_variable == False:
                    if blocks_dicc["parent"] == None and blocks_dicc["next"] == None:
-                      blocks_list.append(blocks_dicc["opcode"])
+                      blocks_list.append(str(blocks_dicc["opcode"]))
                 
             
             if blocks_list:
-              sprites[sprite] = [blocks_list]
+              sprites[sprite] = blocks_list
               self.dead_code_instances += 1
             
       return sprites

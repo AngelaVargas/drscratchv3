@@ -690,8 +690,8 @@ def analyze_project(request, file_name, filename):
         # dictionary.update(proc_initialization(resultInitialization, filename))
         code = {'dupCode':duplicate_script_scratch_block(resultDuplicateScript)}
         dictionary.update(code)
-        #code = {'dCode':dead_code_scratch_block(resultDeadCode)}
-        #dictionary.update(code)
+        # code = {'dCode':dead_code_scratch_block(resultDeadCode)}
+        # dictionary.update(code)
 
         return dictionary
 
@@ -805,14 +805,14 @@ def proc_dead_code(lines, filename):
       for keys, values in items:
         lcharacter.append(keys)
         lblocks.append(values)
-        iterator += 1
+        iterator += len(values)
 
     dic = {}
     dic["deadCode"] = dic
     dic["deadCode"]["number"] = iterator
     number = len(lcharacter)
     for i in range(number):
-        dic["deadCode"][str(lcharacter[i])] = str(lblocks[i])
+        dic["deadCode"][str(lcharacter[i])] = str(lblocks[i])[1:-1].replace(",", "").replace("'", "")
 
     #Save in DB
     filename.deadCode = iterator
@@ -875,26 +875,29 @@ def duplicate_script_scratch_block(code):
 
     try:
         code = code.split("\n")[1:][0]
-        code = code[1:-1].split(",")
+        if code == "":  #No duplicated scripts found
+            code = ""
+        else:
+            code = code[1:-1].split(",")
     except:
         code = ""
 
     return code
 
-""" 
 
+"""
 def dead_code_scratch_block(code):
 
-
     try:
-        code = code.split("\n")[2:-1]
+        code = code.split("\n")[1]
         for n in code:
             n = n[15:-2]
     except:
         code = ""
+        
     return code
-
 """
+
 
 # ______________________________ TRANSLATE MASTERY ___________________________#
 
