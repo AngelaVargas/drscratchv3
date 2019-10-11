@@ -207,7 +207,7 @@
                         <a class="glyphicon glyphicon-remove-sign"/><a data-html="true" class="dropdown" data-toggle="popover" title="{% trans 'Dead code' %}" data-content="{% for key,value in deadCode.items%}
                         {% if key != 'deadCode' %}
                         {% if key != 'number' %}
-                        {{ key }}: <br>
+                        <b>{{ key }}: </b><br>
                         {{ value }} <br><br>
                         {% endif %}
                         {% endif%}
