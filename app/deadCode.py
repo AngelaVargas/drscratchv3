@@ -11,7 +11,8 @@ class DeadCode():
 
       self.dead_code_instances = 0
       self.event_variables = ["event_broadcastandwait", "event_whenflagclicked", "event_whengreaterthan","event_whenkeypressed",
-                              "event_whenthisspriteclicked", "event_whenbackdropswitchesto", "procedures_prototype", "procedures_definition"] 
+                              "event_whenthisspriteclicked", "event_whenbackdropswitchesto", "procedures_prototype", "procedures_definition"]
+      self.loop_blocks = ["control_repeat", "control_forever", "control_if", "control_if_else", "control_repeat_until"]
 
 
     """Run and return the results form the DeadCode plugin."""
@@ -28,10 +29,19 @@ class DeadCode():
             blocks_list = []
             for _, blocks_dicc in dicc["blocks"].iteritems():
                if type(blocks_dicc) is dict:   
-                 event_variable = any(blocks_dicc["opcode"]==event for event in self.event_variables)
+                 event_variable = any(blocks_dicc["opcode"]== event for event in self.event_variables)
+                 loop_block = any(blocks_dicc["opcode"] == loop for loop in self.loop_blocks)
                  if event_variable == False:
                    if blocks_dicc["parent"] == None and blocks_dicc["next"] == None:
                       blocks_list.append(str(blocks_dicc["opcode"]))
+                   elif loop_block == True:
+                      try:
+                        blocks_dicc["inputs"]["SUBSTACK"]
+                      except:
+                        #Loop block empty
+                        blocks_list.append(str(blocks_dicc["opcode"]))
+                   else:
+                       pass
                 
             
             if blocks_list:
