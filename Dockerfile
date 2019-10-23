@@ -11,10 +11,16 @@ RUN mkdir /var/www
 WORKDIR /var/www
 ADD . /var/www/
 
-# Install Mysql dependencies
-RUN apt-get update && apt-get install -y libmysqlclient-dev && apt-get clean
+# Install dependencies
+RUN apt-get update && apt-get install -y libmysqlclient-dev
+RUN apt-get install -y texlive-latex-recommended && apt-get clean
 
-RUN pip install --upgrade pip && pip install -r requirements.txt
+RUN pip install --upgrade pip
+RUN pip install --no-cache-dir -r requirements.txt
+
+RUN chmod +x /var/www/app/certificate
+RUN chmod +x /var/www/entrypoint.sh
+
+ENTRYPOINT ["/var/www/entrypoint.sh"]
 
 EXPOSE 8000
-
