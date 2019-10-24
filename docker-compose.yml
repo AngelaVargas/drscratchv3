@@ -1,16 +1,33 @@
-version: '2'
+version: '2.1'
 services:
   db:
-    image: mysql
+    image: mysql:5.7
+    container_name: drscratchv3_database
     ports:
       - "3306:3306"
+    environment:
+      - MYSQL_DATABASE=${DRSCRATCH_DATABASE_NAME}
+      - MYSQL_USER=${DRSCRATCH_DATABASE_USER}
+      - MYSQL_ROOT_PASSWORD=${DRSCRATCH_DATABASE_ROOT_PASSWORD}
+    healthcheck:
+      test: "/etc/init.d/mysql status"
+      timeout: 40s
+      retries: 10
+    volumes:
+      - dbdata:/var/run/mysqld
   web:
     build: .
-    command: bash -c "python manage.py migrate && python3 manage.py runserver 0.0.0.0:8000"
     volumes:
       - .:/var/www
+    container_name: drscratchv3_django
     ports:
       - "8000:8000"
+    env_file:
+      - ./.env
+    stdin_open: true
+    tty: true
     depends_on:
-      - db
-
+      db:
+        condition: service_healthy
+volumes:
+  dbdata:

@@ -14,14 +14,12 @@ __pycache__/
 # Distribution / packaging
 .Python
 .DS_Store
-log/*
 db.sqlite3
 configuration/*
-drScratch/settings.py
 .idea/*
-mydatabase
-uploads/*
-error_analyzing/*
+*.sb3
+logFile.txt
+output.aux
 env/
 build/
 develop-eggs/
@@ -69,8 +67,10 @@ docs/_build/
 target/
 
 # Certificates
-app/certificate/*
+app/certificate/
 
 # Translations
 locale/tr/LC_MESSAGES/django.po
 static/img/
+
+.env_prod

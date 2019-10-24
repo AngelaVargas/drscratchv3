@@ -9,11 +9,10 @@ import os
 def generate(filename,level,language):
     """Generator of certificates"""
 
-
-    base_dir = os.getcwd()
-    #os.chdir("/var/www/drscratchv3/app/certificate")
+    base_dir = os.path.dirname(os.path.dirname(__file__))
     os.chdir(base_dir + "/app/certificate")
-    salida = open("output.tex","w") # crea fichero LaTeX para cada persona
+
+    salida = open("output.tex", "w") # crea fichero LaTeX para cada persona
     person = [filename,level] # pasar la cadena en lista ["testing.sb2","21"]
     text = open("certi-" + language + ".tex") # abrir documento LaTeX
     text = text.read() # leer documento LaTeX

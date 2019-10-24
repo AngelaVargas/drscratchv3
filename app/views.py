@@ -68,7 +68,6 @@ import deadCode
 def main(request):
     """Main page"""
 
-    
     # The first time one user enters
     # Create the dashboards associated to users
     flagUser = 0
@@ -81,15 +80,13 @@ def main(request):
         elif page == 'organization':
             user = Organization.objects.get(username=username)
         img = user.img
-        dic={'username':username,
-        "img":str(img)}
+        dic = {'username': username,
+               "img": str(img)}
         return render(request, page + '/main.html', dic)
 
     else:
         username = None
-        #Show main page of Dr. Scratch: www.drscratch.org/
         return render(request, 'main/main.html', {'username': username})
-
 
 
 #______________________________ REDIRECT _____________________________________#
@@ -97,19 +94,12 @@ def main(request):
 def redirect_main(request):
     """Page not found: redirect to main"""
 
-
-    #Show main page of Dr. Scratch: www.drscratch.org/
     return HttpResponseRedirect('/')
-
-
 
 #_______________________________ CONTEST _____________________________________#
 
 def contest(request):
     """Shows pages for contests"""
-
-
-    #Show pages for contestest of Dr. Scratch: www.drscratch.org/contest
 
     return render(request, 'contest.html', {})
 
@@ -117,7 +107,6 @@ def contest(request):
 
 def collaborators(request):
     """Shows collaborators page"""
-
 
     #Show collaborators page of Dr. Scratch: www.drscratch.org/collaborators
     #return render_to_response("main/collaborators.html",)
@@ -129,14 +118,13 @@ def collaborators(request):
 def date_range(start, end):
     """Initialization of ranges"""
 
-
     r = (end+timedelta(days=1)-start).days
 
     return [start+timedelta(days=i) for i in range(r)]
 
+
 def statistics(request):
     """Initializing variables"""
-
 
     start = date(2015,8,1)
     end = datetime.today()
@@ -174,13 +162,10 @@ def statistics(request):
     #                                data, context_instance=RC(request))
     return render(request, 'main/statistics.html', data)
 
-
-
 #_____________________________ SHOWS DASHBOARDS ______________________________#
 
 def show_dashboard(request):
     """Shows the different dashboards"""
-
 
     if request.method == 'POST':
         error = False
@@ -229,7 +214,6 @@ def show_dashboard(request):
 def selector(request):
     """Choose between analysis by URL or project"""
 
-
     if "_upload" in request.POST:
         #Project uploaded from computer
         #Analyze by "upload" method
@@ -276,7 +260,6 @@ def segmentation(request):
 
 def _upload(request):
     """Upload file from form POST for unregistered users"""
-
 
     if request.method == 'POST':
         #Revise the form in main
@@ -396,19 +379,17 @@ def _upload(request):
 def _url(request):
     """Process Request of form URL"""
 
-
     if request.method == "POST":
         form = UrlForm(request.POST)
         if form.is_valid():
             d = {}
             url = form.cleaned_data['urlProject']
-            idProject = process_string_url(url)
-            d = generator_dic(request,idProject)
+            id_project = process_string_url(url)
+            d = generator_dic(request, id_project)
             return d
         else:
             d = {'Error': 'MultiValueDict'}
-
-            return  d
+            return d
     else:
 
         return HttpResponseRedirect('/')
@@ -441,16 +422,12 @@ def process_string_url(url):
     return idProject
 
 
-
 def generator_dic(request, idProject):
     """Returns dictionary with analyzes and errors"""
 
-
     if idProject == "error":
         d = {'Error': 'id_error'}
-
         return d
-
     else:
         try:
             if request.user.is_authenticated():
@@ -521,16 +498,16 @@ def new_getSb3(file_name, dir_zips,fileName):
     return file_name
 
 
-
-
 def send_request_getSb3(idProject, username, method):
     """First request to getSb3"""
-
 
     try:
         os.remove(dir_zips + "project.json")
     except:
         print "No existe"
+
+    id_studio = ""
+    api_get_projects_by_studio = "https://api.scratch.mit.edu/studios/" + id_studio + "/projects"
 
     getRequestSb3 = "https://projects.scratch.mit.edu/" + idProject + "/get"
     fileURL = idProject + ".sb3"
@@ -571,7 +548,7 @@ def send_request_getSb3(idProject, username, method):
 
     #Write the activity in log
     pathLog = os.path.dirname(os.path.dirname(__file__)) + "/log/"
-    logFile = open (pathLog + "logFile.txt", "a")
+    logFile = open(pathLog + "logFile.txt", "a")
     logFile.write("FileName: " + str(fileName.filename) + "\t\t\t" + "ID: " + \
         str(fileName.id) + "\t\t\t" + "Method: " + str(fileName.method) + \
         "\t\t\t" + "Time: " + str(fileName.time) + "\n")
@@ -589,22 +566,19 @@ def send_request_getSb3(idProject, username, method):
     except:
         outputFile.write("ERROR downloading")
         outputFile.close()
+        print('SOY UN ERROR!!!!')
     
 
     #New getSb3
-    file_name = new_getSb3(file_name, dir_zips,fileName)
-    
+    file_name = new_getSb3(file_name, dir_zips, fileName)
 
     return (file_name, fileName)
 
 
-
 #____________________________HANDLER UPLOAD FILE______________________________#
-
 
 def handler_upload(fileSaved, counter):
     """ Necessary to uploadUnregistered: rename projects"""
-
 
     # If file exists,it will save it with new name: name(x)
     if os.path.exists(fileSaved):
@@ -1168,29 +1142,31 @@ def learn(request,page):
         return render(request, page)
 
 
-
-#_________________________DOWNLOAD CERTIFICATE________________________________#
 def download_certificate(request):
     """Function to download your project's certificate"""
 
-
     if request.method == "POST":
         data = request.POST["certificate"]
-        data = unicodedata.normalize('NFKD',data).encode('ascii','ignore')
+        data = unicodedata.normalize('NFKD', data).encode('ascii', 'ignore')
         filename = data.split(",")[0]
         level = data.split(",")[1]
-        if (request.LANGUAGE_CODE == 'es' or request.LANGUAGE_CODE == 'ca' or request.LANGUAGE_CODE == 'gl' or request.LANGUAGE_CODE == 'pt'):
+
+        if request.LANGUAGE_CODE == 'es' or request.LANGUAGE_CODE == 'ca' or request.LANGUAGE_CODE == 'gl' or request.LANGUAGE_CODE == 'pt':
             language = request.LANGUAGE_CODE
         else:
             language = 'en'
-        pyploma.generate(filename,level,language)
+
+        pyploma.generate(filename, level, language)
         path_to_file = os.path.dirname(os.path.dirname(__file__)) + "/app/certificate/output.pdf"
+
         pdf_data = open(path_to_file, 'r')
         response = HttpResponse(pdf_data, content_type='application/pdf')
+
         try:
             file_pdf = filename.split("/")[-2] + ".pdf"
         except:
             file_pdf = filename.split(".")[0] + ".pdf"
+
         response['Content-Disposition'] = 'attachment; filename=%s' % file_pdf
         return response
     else:
@@ -1319,7 +1295,7 @@ def sign_up_organization(request):
             password = form.cleaned_data['password']
             hashkey = form.cleaned_data['hashkey']
 
-            #Checking the validity into the database contents.
+            #Checking the validity into the dbdata contents.
             #They will be refused if they already exist.
             #If they exist an error message will be shown.
             if User.objects.filter(username = username):
@@ -1926,7 +1902,7 @@ def sign_up_coder(request):
             #gender_other = form.cleaned_data['gender_other']
             country = form.cleaned_data['country']
             
-            #Checking the validity into the database contents.
+            #Checking the validity into the dbdata contents.
             #They will be refused if they already exist.
             #If they exist an error message will be shown.
             if User.objects.filter(username = username):
