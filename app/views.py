@@ -31,8 +31,8 @@ import shutil
 import unicodedata
 import csv
 import zipfile
-from zipfile import ZipFile
 from datetime import datetime, timedelta, date
+import traceback
 
 from app import pyploma
 from app import org
@@ -42,6 +42,10 @@ import spriteNaming
 import backdropNaming
 import duplicateScripts
 import deadCode
+
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 ###############################################################################
@@ -75,27 +79,13 @@ def main(request):
         return render(request, 'main/main.html', {'username': username})
 
 
-#______________________________ REDIRECT _____________________________________#
-
-def redirect_main(request):
-    """Page not found: redirect to main"""
-
-    return HttpResponseRedirect('/')
-
-#_______________________________ CONTEST _____________________________________#
-
 def contest(request):
     """Shows pages for contests"""
-
     return render(request, 'contest.html', {})
 
-#_______________________________ COLLABORATORS _______________________________#
 
 def collaborators(request):
     """Shows collaborators page"""
-
-    #Show collaborators page of Dr. Scratch: www.drscratch.org/collaborators
-    #return render_to_response("main/collaborators.html",)
     return render(request, 'main/collaborators.html')
 
 
@@ -148,50 +138,36 @@ def statistics(request):
     #                                data, context_instance=RC(request))
     return render(request, 'main/statistics.html', data)
 
-#_____________________________ SHOWS DASHBOARDS ______________________________#
 
 def show_dashboard(request):
     """Shows the different dashboards"""
 
     if request.method == 'POST':
-        error = False
-        id_error = False
-        no_exists = False
 
-        #Analyze the project and looking for errors
         d = selector(request)
-        #Find which is authenticated (organization or coder or none)
+
         user = str(segmentation(request))
 
-        #Find if any error has occurred
         if d['Error'] == 'analyzing':
             return render(request, 'error/analyzing.html')
 
         elif d['Error'] == 'MultiValueDict':
-            error = True
-            return render(request, user + '/main.html', {'error':error})
+            return render(request, user + '/main.html', {'error': True})
 
         elif d['Error'] == 'id_error':
-            id_error = True
-            return render(request, user + '/main.html', {'id_error':id_error})
+            return render(request, user + '/main.html', {'id_error': True})
 
         elif d['Error'] == 'no_exists':
-            no_exists = True
-            return render(request, user + '/main.html', {'no_exists':no_exists})
-
-        #Show the dashboard according the CT level
+            return render(request, user + '/main.html', {'no_exists': True})
         else:
             if d["mastery"]["points"] >= 15:
-                #Show master dashboard: www.drscratch.org/show_dashboard
                 return render(request, user + '/dashboard-master.html', d)
 
             elif d["mastery"]["points"] > 7:
-                #Show developing dashboard: www.drscratch.org/show_dashboard
                 return render(request, user + '/dashboard-developing.html', d)
 
             else:
-                #Show basic dashboard: www.drscratch.org/show_dashboard
-                return render(request, user + '/dashboard-basic.html', d) 
+                return render(request, user + '/dashboard-basic.html', d)
 
     else:
         return HttpResponseRedirect('/')
@@ -201,8 +177,6 @@ def selector(request):
     """Choose between analysis by URL or project"""
 
     if "_upload" in request.POST:
-        #Project uploaded from computer
-        #Analyze by "upload" method
         d = _upload(request)
         if d['Error'] != 'None':
           return d
@@ -211,51 +185,43 @@ def selector(request):
         d.update(dic)
 
     elif '_url' in request.POST:
-        #Project uploaded from Scratch's server
-        #Analyze by "url" method
         d = _url(request)
         form = UrlForm(request.POST)
         url = request.POST['urlProject']
         filename = url
-        dic = {'url': url, 'filename':filename}
+        dic = {'url': url, 'filename': filename}
         d.update(dic)
 
     return d
 
+
 def segmentation(request):
     """Find which is authenticated (organization or coder or none)"""
 
-
     if request.user.is_authenticated():
         username = request.user.username
-        if Organization.objects.filter(username = username.encode('utf-8')):
+        if Organization.objects.filter(username=username.encode('utf-8')):
             user = 'organization'
-        elif Coder.objects.filter(username = username.encode('utf-8')):
+        elif Coder.objects.filter(username=username.encode('utf-8')):
             user = 'coder'
     else:
         user = 'main'
     return user
 
 
-
 ###############################################################################
 #                         PROJECT ANALYSIS                                    #
 ###############################################################################
-
-#________________________________UPLOADED FILE________________________________#
 
 def _upload(request):
     """Upload file from form POST for unregistered users"""
 
     if request.method == 'POST':
-        #Revise the form in main
-        #If user doesn't complete all the fields,it'll show a warning
         try:
             file = request.FILES['zipFile']
         except:
             d = {'Error': 'MultiValueDict'}
-            return  d
-
+            return d
         
         # Create DB of files
         now = datetime.now()
@@ -307,8 +273,8 @@ def _upload(request):
 
         unique_id = project_name + "_" + date + str(ms)
 
-        # Version of Scratch 1.4Vs2.0Vs3.0
         version = check_version(filename.filename)
+
         if version == "1.4":
             fileSaved = dir_zips + unique_id + ".sb"
         elif version == "2.0":
@@ -324,8 +290,6 @@ def _upload(request):
             "Method: " + str(filename.method) + \
             "\t\t\tTime: " + str(filename.time) + "\n")
 
-
-       
         # Save file in server
         counter = 0
         file_name = handler_upload(fileSaved, counter)
@@ -334,13 +298,10 @@ def _upload(request):
             for chunk in file.chunks():
                 destination.write(chunk)
 
-
-        # Analyze the scratch project
         try:
             d = analyze_project(request, file_name, filename)
-        except:
-            #There ir an error with kutz or hairball
-            #We save the project in folder called error_analyzing
+        except Exception:
+            traceback.print_exc()
             filename.method = 'project/error'
             filename.save()
             oldPathProject = fileSaved
@@ -350,7 +311,7 @@ def _upload(request):
             shutil.copy(oldPathProject, newPathProject)
             d = {'Error': 'analyzing'}
             return d
-        # Show the dashboard
+
         # Redirect to dashboard for unregistered user
         d['Error'] = 'None'
 
@@ -358,8 +319,6 @@ def _upload(request):
     
     else:
         return HttpResponseRedirect('/')
-
-#_______________________ANALYSIS BY PROJECT'S URL_____________________________#
 
 
 def _url(request):
@@ -371,7 +330,12 @@ def _url(request):
             d = {}
             url = form.cleaned_data['urlProject']
             id_project = process_string_url(url)
-            d = generator_dic(request, id_project)
+
+            if id_project == "error":
+                d = {'Error': 'id_error'}
+            else:
+                d = generator_dic(request, id_project)
+
             return d
         else:
             d = {'Error': 'MultiValueDict'}
@@ -384,142 +348,146 @@ def _url(request):
 def process_string_url(url):
     """Process String of URL from Form"""
 
-
-    idProject = ''
+    id_project = ''
     auxString = url.split("/")[-1]
     if auxString == '':
-        # we need to get the other argument
-        possibleId = url.split("/")[-2]
-        if possibleId == "editor":
-            idProject = url.split("/")[-3]
+        possible_id = url.split("/")[-2]
+        if possible_id == "editor":
+            id_project = url.split("/")[-3]
         else:
-            idProject = possibleId
+            id_project = possible_id
     else:
         if auxString == "editor":
-            idProject = url.split("/")[-2]
+            id_project = url.split("/")[-2]
         else:
             # To get the id project
-            idProject = auxString
+            id_project = auxString
+
     try:
-        checkInt = int(idProject)
+        check_int = int(id_project)
     except ValueError:
-        idProject = "error"
+        logger.error('Project id is not an integer')
+        id_project = "error"
 
-    return idProject
+    return id_project
 
 
-def generator_dic(request, idProject):
+def generator_dic(request, id_project):
     """Returns dictionary with analyzes and errors"""
 
-    if idProject == "error":
-        d = {'Error': 'id_error'}
+    try:
+        if request.user.is_authenticated():
+            username = request.user.username
+        else:
+            username = None
+
+        path_project, file = send_request_getsb3(id_project, username, method="url")
+    except Exception:
+        logger.error('File not found into Scratch server')
+        traceback.print_exc()
+        d = {'Error': 'no_exists'}
         return d
-    else:
-        try:
-            if request.user.is_authenticated():
-                username = request.user.username
-            else:
-                username = None
-            method = "url"
-            (pathProject, file) = send_request_getSb3(idProject,
-                                                      username, 
-                                                      method)
-        except:
-            #When your project doesn't exist
-            d = {'Error': 'no_exists'}
 
-            return d
+    try:
+        d = analyze_project(request, path_project, file)
+    except Exception:
+        logger.error('Impossible analyze project')
+        traceback.print_exc()
 
-
-        try:
-            d = analyze_project(request, pathProject, file)
-        except:
-            #There is an error with kutz or hairball
-            #We save the project in folder called error_analyzing
-            file.method = 'url/error'
-            file.save()
-            oldPathProject = pathProject
-            newPathProject = pathProject.split("/uploads/")[0] + \
-                             "/error_analyzing/" + \
-                             pathProject.split("/uploads/")[1]
-            shutil.copy(oldPathProject, newPathProject)
-            d = {'Error': 'analyzing'}
-
-            return d
-
-        # Redirect to dashboard for unregistered user
-        d['Error'] = 'None'
+        file.method = 'url/error'
+        file.save()
+        oldPathProject = path_project
+        newPathProject = path_project.split("/uploads/")[0] + \
+                         "/error_analyzing/" + \
+                         path_project.split("/uploads/")[1]
+        shutil.copy(oldPathProject, newPathProject)
+        d = {'Error': 'analyzing'}
 
         return d
 
+    # Redirect to dashboard for unregistered user
+    d['Error'] = 'None'
 
-def new_getSb3(file_name, dir_zips,fileName):
+    return d
 
-    #Build the id
+
+def new_getSb3(file_name, dir_zips, fileName):
+
     now = datetime.now()
     date = now.strftime("%Y_%m_%d_%H_%M_%S_")
     ms = now.microsecond
 
-    project_name = str(fileName.filename).split(".sb")[0]
+    scratch_project_name = str(fileName.filename).split(".sb")[0]
 
-    unique_id = project_name + "_" + date + str(ms)
-
+    unique_id = scratch_project_name + "_" + date + str(ms)
 
     if zipfile.is_zipfile(file_name):
-        os.rename(dir_zips + "project.json",dir_zips + unique_id + ".sb3")
+        os.rename(dir_zips + "project.json", dir_zips + unique_id + ".sb3")
     else:
         current = os.getcwd()
         os.chdir(dir_zips)
-        with ZipFile(unique_id + ".sb3", 'w') as myzip:
+        with zipfile.ZipFile(unique_id + ".sb3", 'w') as myzip:
             myzip.write("project.json")
         os.chdir(current)
+
         try:
             os.remove(dir_zips + "project.json")
         except:
             print "No existe"
 
-    file_name = dir_zips + unique_id + ".sb3"
+    unique_file_name_for_saving = dir_zips + unique_id + ".sb3"
    
-    return file_name
+    return unique_file_name_for_saving
 
 
-def send_request_getSb3(idProject, username, method):
-    """First request to getSb3"""
-
-    try:
-        os.remove(dir_zips + "project.json")
-    except:
-        print "No existe"
-
-    id_studio = ""
+def send_request_getstudio(id_studio):
     api_get_projects_by_studio = "https://api.scratch.mit.edu/studios/" + id_studio + "/projects"
 
-    getRequestSb3 = "https://projects.scratch.mit.edu/" + idProject + "/get"
-    fileURL = idProject + ".sb3"
 
-    # Create DB of files
+def write_activity_in_logfile(file_name):
+
+    path_log = os.path.dirname(os.path.dirname(__file__)) + "/log/"
+
+    try:
+        log_file = open(path_log + "logFile.txt", "a")
+        log_file.write("FileName: " + str(file_name.filename) + "\t\t\t" + "ID: " + str(file_name.id) + "\t\t\t" +
+                       "Method: " + str(file_name.method) + "\t\t\t" + "Time: " + str(file_name.time) + "\n")
+    except OSError:
+        logger.error('FileNotFoundError')
+    except Exception:
+        traceback.print_exc()
+    finally:
+        log_file.close()
+
+
+def send_request_getsb3(id_project, username, method):
+    """First request to getSb3"""
+
+    url_request_getsb3 = "https://projects.scratch.mit.edu/" + id_project + "/get"
+    file_url = id_project + ".sb3"
+
     now = datetime.now()
 
     if Organization.objects.filter(username=username):
-        fileName = File (filename = fileURL,
-                         organization = username,
-                         method = method , time = now,
-                         score = 0, abstraction = 0, parallelization = 0,
-                         logic = 0, synchronization = 0, flowControl = 0,
-                         userInteractivity = 0, dataRepresentation = 0,
-                         spriteNaming = 0 ,initialization = 0,
-                         deadCode = 0, duplicateScript = 0)
-    elif Coder.objects.filter(username = username):
-        fileName = File (filename = fileURL,
-                         coder = username,
-                         method = method , time = now,
-                         score = 0, abstraction = 0, parallelization = 0,
-                         logic = 0, synchronization = 0, flowControl = 0,
-                         userInteractivity = 0, dataRepresentation = 0,
-                         spriteNaming = 0 ,initialization = 0,
-                         deadCode = 0, duplicateScript = 0)
+        fileName = File(filename=file_url,
+                         organization=username,
+                         method=method, time=now,
+                         score=0, abstraction=0, parallelization=0,
+                         logic=0, synchronization=0, flowControl=0,
+                         userInteractivity=0, dataRepresentation=0,
+                         spriteNaming=0, initialization=0,
+                         deadCode=0, duplicateScript=0)
+    elif Coder.objects.filter(username=username):
+        fileName = File (filename=file_url,
+                         coder=username,
+                         method=method, time=now,
+                         score=0, abstraction=0, parallelization=0,
+                         logic=0, synchronization=0, flowControl=0,
+                         userInteractivity=0, dataRepresentation=0,
+                         spriteNaming=0, initialization=0,
+                         deadCode=0, duplicateScript=0)
     else:
-        fileName = File (filename = fileURL,
+        fileName = File (filename = file_url,
                          method = method , time = now,
                          score = 0, abstraction = 0, parallelization = 0,
                          logic = 0, synchronization = 0, flowControl = 0,
@@ -528,48 +496,44 @@ def send_request_getSb3(idProject, username, method):
                          deadCode = 0, duplicateScript = 0)
     
     fileName.save()
+
     dir_zips = os.path.dirname(os.path.dirname(__file__)) + "/uploads/"
-    fileSaved = dir_zips + "project.json"
+    path_file_saved = dir_zips + "project.json"
 
-    #Write the activity in log
-    pathLog = os.path.dirname(os.path.dirname(__file__)) + "/log/"
-    logFile = open(pathLog + "logFile.txt", "a")
-    logFile.write("FileName: " + str(fileName.filename) + "\t\t\t" + "ID: " + \
-        str(fileName.id) + "\t\t\t" + "Method: " + str(fileName.method) + \
-        "\t\t\t" + "Time: " + str(fileName.time) + "\n")
-
+    write_activity_in_logfile(fileName)
     
     # Save file in server
     counter = 0
 
-    file_name = handler_upload(fileSaved, counter)
+    file_name = handler_upload(path_file_saved, counter)
     outputFile = open(file_name, 'wb')
+
     try:
-        sb3File = urllib2.urlopen(getRequestSb3)
-        outputFile.write(sb3File.read())
+        sb3_file = urllib2.urlopen(url_request_getsb3)
+        outputFile.write(sb3_file.read())
         outputFile.close()
+    except urllib2.URLError, e:
+        logger.error('URLError', e.args)
+    except urllib2.HTTPError, e:
+        logger.error('HTTPError ' + e.code)
     except:
         outputFile.write("ERROR downloading")
         outputFile.close()
-        print('SOY UN ERROR!!!!')
-    
 
-    #New getSb3
-    file_name = new_getSb3(file_name, dir_zips, fileName)
+    unique_file_name_sb3 = new_getSb3(file_name, dir_zips, fileName)
 
-    return (file_name, fileName)
+    return unique_file_name_sb3, fileName
 
-
-#____________________________HANDLER UPLOAD FILE______________________________#
 
 def handler_upload(fileSaved, counter):
     """ Necessary to uploadUnregistered: rename projects"""
 
-    # If file exists,it will save it with new name: name(x)
     if os.path.exists(fileSaved):
+
         counter = counter + 1
-        #Check the version of Scratch 1.4Vs2.0Vs3.0
+
         version = check_version(fileSaved)
+
         if version == "3.0":
             if counter == 1:
                 fileSaved = fileSaved.split(".")[0] + "(1).sb3"
@@ -596,9 +560,7 @@ def handler_upload(fileSaved, counter):
     else:
         file_name = fileSaved
 
-
         return file_name
-
 
 
 def check_version(filename):
@@ -615,39 +577,27 @@ def check_version(filename):
     return version
 
 
-
-#________________________ AUTOMATIC ANALYSIS _________________________________#
-
-def analyze_project(request, file_name, filename):
-
+def analyze_project(request, path_projectsb3, filename):
 
     dictionary = {}
-    
-    if os.path.exists(file_name):
+
+    if os.path.exists(path_projectsb3):
         
-        list_file = file_name.split('(')
-       
-        #if len(list_file) > 1:
-        #    file_name = list_file[0] + '\(' + list_file[1]
-        #    list_file = file_name.split(')')
-        #    file_name = list_file[0] + '\)' + list_file[1]
+        list_file = path_projectsb3.split('(')
 
+        result_mastery = analyzer.main(path_projectsb3)
+        result_sprite_naming = spriteNaming.main(path_projectsb3)
+        result_backdrop_naming = backdropNaming.main(path_projectsb3)
+        result_duplicate_script = duplicateScripts.main(path_projectsb3)
+        resultDeadCode = deadCode.main(path_projectsb3)
 
-        resultMastery = analyzer.main(file_name)
-        resultSpriteNaming = spriteNaming.main(file_name)
-        resultBackdropNaming = backdropNaming.main(file_name)
-        resultDuplicateScript = duplicateScripts.main(file_name)
-        resultDeadCode = deadCode.main(file_name)
-
-
-        #Create a dictionary with necessary information
-        dictionary.update(proc_mastery(request,resultMastery, filename))
-        dictionary.update(proc_sprite_naming(resultSpriteNaming, filename))
-        dictionary.update(proc_backdrop_naming(resultBackdropNaming, filename))
-        dictionary.update(proc_duplicate_script(resultDuplicateScript, filename))
+        dictionary.update(proc_mastery(request, result_mastery, filename))
+        dictionary.update(proc_sprite_naming(result_sprite_naming, filename))
+        dictionary.update(proc_backdrop_naming(result_backdrop_naming, filename))
+        dictionary.update(proc_duplicate_script(result_duplicate_script, filename))
         dictionary.update(proc_dead_code(resultDeadCode, filename))
         # dictionary.update(proc_initialization(resultInitialization, filename))
-        code = {'dupCode':duplicate_script_scratch_block(resultDuplicateScript)}
+        code = {'dupCode': duplicate_script_scratch_block(result_duplicate_script)}
         dictionary.update(code)
         # code = {'dCode':dead_code_scratch_block(resultDeadCode)}
         # dictionary.update(code)
@@ -660,7 +610,7 @@ def analyze_project(request, file_name, filename):
 
 # _______________________________ PROCESSORS _________________________________#
 
-def proc_mastery(request,lines, filename):
+def proc_mastery(request, lines, filename):
     """Returns the information of Mastery"""
 
     dic = {}
@@ -683,7 +633,7 @@ def proc_mastery(request,lines, filename):
     filename.save()
 
     #Translation
-    d_translated = translate(request,d, filename)
+    d_translated = translate(request, d, filename)
 
     dic["mastery"] = d_translated
     dic["mastery"]["points"] = points
@@ -693,7 +643,6 @@ def proc_mastery(request,lines, filename):
 
 
 def proc_duplicate_script(lines, filename):
-
 
     dic = {}
     number = 0
@@ -747,33 +696,29 @@ def proc_backdrop_naming(lines, filename):
     return dic
 
 
-
 def proc_dead_code(lines, filename):
-    
-    dic = {}
+
     dead_code = lines.split("\n")[1:]
     iterator = 0
     lcharacter = []
     lblocks = []
-    if dead_code:
-      d = ast.literal_eval(dead_code[0])
-      keys = d.keys()
-      values = d.values()
-      items = d.items()
 
-      for keys, values in items:
-        lcharacter.append(keys)
-        lblocks.append(values)
-        iterator += len(values)
+    if dead_code:
+        d = ast.literal_eval(dead_code[0])
+        for keys, values in d.items():
+            lcharacter.append(keys)
+            lblocks.append(values)
+            iterator += len(values)
 
     dic = {}
     dic["deadCode"] = dic
     dic["deadCode"]["number"] = iterator
-    number = len(lcharacter)
-    for i in range(number):
-        dic["deadCode"][str(lcharacter[i])] = lblocks[i]
 
-    #Save in DB
+    number = len(lcharacter)
+
+    for i in range(number):
+        dic["deadCode"][lcharacter[i].encode('utf-8')] = lblocks[i]
+
     filename.deadCode = iterator
     filename.save()
 
@@ -831,7 +776,6 @@ def proc_initialization(lines, filename):
 
 def duplicate_script_scratch_block(code):
 
-
     try:
         code = code.split("\n")[1:][0]
         if code == "":  #No duplicated scripts found
@@ -860,9 +804,8 @@ def dead_code_scratch_block(code):
 
 # ______________________________ TRANSLATE MASTERY ___________________________#
 
-def translate(request,d, filename):
+def translate(request, d, filename):
     """Translate the output of Hairball"""
-
 
     if request.LANGUAGE_CODE == "es":
         d_translate_es = {}
@@ -1192,12 +1135,12 @@ def search_hashkey(request):
 
 #____________________________ PLUG-INS _______________________________________#
 
-def plugin(request,urlProject):
+def plugin(request, urlProject):
     """Analysis by plugin"""
 
-
+    user = None
     idProject = process_string_url(urlProject)
-    d = generator_dic(request,idProject)
+    d = generator_dic(request, idProject)
     #Find if any error has occurred
     if d['Error'] == 'analyzing':
         return render(request, user + '/error_analyzing.html')
@@ -1627,7 +1570,6 @@ def downloads(request,username, filename=""):
 def analyze_CSV(request):
     """Analyze files.CSV with a list of projects to analyze them at a time"""
 
-
     if request.method =='POST':
         if "_upload" in request.POST:
             #Analize CSV file
@@ -1669,10 +1611,7 @@ def analyze_CSV(request):
                         elif slashNum == 5:
                             idProject = url.split('/')[-2]
                     try:
-
-                        (pathProject, file) = send_request_getSb3(idProject, 
-                                                                    username,
-                                                                    method)
+                        pathProject, file = send_request_getsb3(idProject, username, method)
                         d = analyze_project(request, pathProject, file)
                     except:
                         d = ["Error analyzing project", url]
@@ -1698,9 +1637,7 @@ def analyze_CSV(request):
                         elif slashNum == 5:
                             idProject = url.split('/')[-2]
                     try:
-                        (pathProject, file) = send_request_getSb3(idProject, 
-                                                                    username,
-                                                                     method)
+                        pathProject, file = send_request_getsb3(idProject, username, method)
                         d = analyze_project(request, pathProject, file)
                     except:
                         d = ["Error analyzing project", url]
@@ -1755,7 +1692,6 @@ def analyze_CSV(request):
 
 def generator_CSV(request, dictionary, filename, type_csv):
     """Generator of a csv file"""
-
 
     csv_directory = os.path.dirname(os.path.dirname(__file__)) + \
                                         "/csvs/Dr.Scratch/"
