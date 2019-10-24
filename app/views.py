@@ -2,17 +2,9 @@
 # -*- encoding: utf-8 -*-
 # -*- coding: utf-8 -*-
 
-from django.http import HttpResponseRedirect, HttpResponseNotFound
-from django.http import HttpResponse, HttpResponseServerError
-from django.views.decorators import csrf
-from django.views.decorators.csrf import csrf_protect
-from django.core.cache import cache
+from django.http import HttpResponseRedirect, HttpResponse
 from django.core.mail import EmailMessage
-from django.shortcuts import render
-from django.template import RequestContext as RC
-from django.template import Context, loader
 from django.template.loader import render_to_string
-from django.contrib import messages
 from django.contrib.auth import logout, login, authenticate,get_user_model
 from django.contrib.auth.tokens import default_token_generator
 from django.utils.encoding import force_bytes
@@ -27,30 +19,24 @@ from app.forms import OrganizationForm, OrganizationHashForm
 from app.forms import TeacherForm, LoginOrganizationForm
 from app.forms import CoderForm, LoginCoderForm
 from app.forms import DiscussForm
-from app import org
-from app import translation
-from app import trans
-from app import pyploma
 from django.contrib.auth.models import User
-from datetime import datetime,timedelta,date
-from django.contrib.auth.decorators import login_required
-from email.MIMEText import MIMEText
 from django.utils.encoding import smart_str
-from django.utils.translation import activate
-from zipfile import ZipFile
-import smtplib
-import email.utils
+from django.shortcuts import render
+
 import os
 import ast
 import json
-import sys
 import urllib2
 import shutil
 import unicodedata
 import csv
 import zipfile
 from zipfile import ZipFile
-from django.shortcuts import render
+from datetime import datetime, timedelta, date
+
+from app import pyploma
+from app import org
+
 import analyzer
 import spriteNaming
 import backdropNaming
@@ -465,7 +451,6 @@ def generator_dic(request, idProject):
         d['Error'] = 'None'
 
         return d
-
 
 
 def new_getSb3(file_name, dir_zips,fileName):
