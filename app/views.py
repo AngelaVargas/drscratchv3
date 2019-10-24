@@ -786,7 +786,7 @@ def proc_dead_code(lines, filename):
     dic["deadCode"]["number"] = iterator
     number = len(lcharacter)
     for i in range(number):
-        dic["deadCode"][str(lcharacter[i])] = str(lblocks[i])[1:-1].replace(",", "").replace("'", "")
+        dic["deadCode"][str(lcharacter[i])] = lblocks[i]
 
     #Save in DB
     filename.deadCode = iterator

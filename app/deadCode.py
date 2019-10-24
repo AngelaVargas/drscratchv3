@@ -31,17 +31,23 @@ class DeadCode():
                if type(blocks_dicc) is dict:   
                  event_variable = any(blocks_dicc["opcode"]== event for event in self.event_variables)
                  loop_block = any(blocks_dicc["opcode"] == loop for loop in self.loop_blocks)
+
                  if event_variable == False:
                    if blocks_dicc["parent"] == None and blocks_dicc["next"] == None:
                       blocks_list.append(str(blocks_dicc["opcode"]))
-                   elif loop_block == True:
-                      try:
-                        blocks_dicc["inputs"]["SUBSTACK"]
-                      except:
-                        #Loop block empty
-                        blocks_list.append(str(blocks_dicc["opcode"]))
-                   else:
-                       pass
+
+                   #Check dead loop blocks
+                   if loop_block == True and blocks_dicc["opcode"] not in blocks_list:
+                      if not blocks_dicc["inputs"]:
+                         #Empty loop block, but inside of a block structure
+                         blocks_list.append(str(blocks_dicc["opcode"]))
+                      elif "SUBSTACK" not in blocks_dicc["inputs"]:
+                         blocks_list.append(str(blocks_dicc["opcode"]))
+                      else:
+                         #Could be normal loop block
+                         if blocks_dicc["inputs"]["SUBSTACK"][1] == None:
+                            blocks_list.append(str(blocks_dicc["opcode"]))
+
                 
             
             if blocks_list:
