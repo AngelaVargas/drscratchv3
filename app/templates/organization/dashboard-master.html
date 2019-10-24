@@ -216,7 +216,10 @@
                         {% if key != 'deadCode' %}
                         {% if key != 'number' %}
                         <b>{{ key }}: </b><br>
-                        {{ value }} <br><br>
+                        {% for dead_block in value %}
+                            {{ dead_block }} <br>
+                        {% endfor %}
+                        <br>
                         {% endif %}
                         {% endif%}
                         {% endfor%}
