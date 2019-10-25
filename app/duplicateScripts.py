@@ -58,7 +58,6 @@ class DuplicateScripts():
 
 
    def search_next(self, next, block_list, key_block, aux_next):
-
        if next == None:
            try:
               # Maybe is a control_forever block
@@ -73,14 +72,13 @@ class DuplicateScripts():
                 next = None
                 return
        else:
-           try:
-               # Maybe is a repeat_until block or similar
-               loop_block = self.blocks_dicc[key_block]["inputs"]["SUBSTACK"][1]
-               aux_next = next          #Save the real next until the end of the loop
-               next = loop_block
-           except:
-               pass
-
+            # Maybe is a loop block
+            if "SUBSTACK" in self.blocks_dicc[key_block]["inputs"]:
+                loop_block = self.blocks_dicc[key_block]["inputs"]["SUBSTACK"][1]
+                #Check if is a loop block but EMPTY
+                if loop_block != None:
+                    aux_next = next          #Save the real next until the end of the loop
+                    next = loop_block
 
 
        block = self.blocks_dicc[next]
