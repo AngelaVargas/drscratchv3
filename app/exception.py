@@ -1,0 +1,3 @@
+
+class DrScratchException(Exception):
+    pass
