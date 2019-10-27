@@ -43,6 +43,9 @@ import backdropNaming
 import duplicateScripts
 import deadCode
 
+from exception import DrScratchException
+
+import errno
 import logging
 
 logger = logging.getLogger(__name__)
@@ -70,8 +73,7 @@ def main(request):
         elif page == 'organization':
             user = Organization.objects.get(username=username)
         img = user.img
-        dic = {'username': username,
-               "img": str(img)}
+        dic = {'username': username, "img": str(img)}
         return render(request, page + '/main.html', dic)
 
     else:
@@ -144,7 +146,7 @@ def show_dashboard(request):
 
     if request.method == 'POST':
 
-        d = selector(request)
+        d = build_dictionary_with_automatic_analysis(request)
 
         user = str(segmentation(request))
 
@@ -173,26 +175,26 @@ def show_dashboard(request):
         return HttpResponseRedirect('/')
 
 
-def selector(request):
+def build_dictionary_with_automatic_analysis(request):
     """Choose between analysis by URL or project"""
 
-    if "_upload" in request.POST:
-        d = _upload(request)
-        if d['Error'] != 'None':
-          return d
-        filename = request.FILES['zipFile'].name.encode('utf-8')
-        dic = {'url': "",'filename':filename}
-        d.update(dic)
+    dict_metrics = {}
+    url = ""
 
+    if "_upload" in request.POST:
+        dict_metrics = _make_analysis_by_upload(request)
+        if dict_metrics['Error'] != 'None':
+            return dict_metrics
+        filename = request.FILES['zipFile'].name.encode('utf-8')
     elif '_url' in request.POST:
-        d = _url(request)
-        form = UrlForm(request.POST)
+        dict_metrics = _make_analysis_by_url(request)
         url = request.POST['urlProject']
         filename = url
-        dic = {'url': url, 'filename': filename}
-        d.update(dic)
 
-    return d
+    dict_aux = {'url': url, 'filename': filename}
+    dict_metrics.update(dict_aux)
+
+    return dict_metrics
 
 
 def segmentation(request):
@@ -213,7 +215,7 @@ def segmentation(request):
 #                         PROJECT ANALYSIS                                    #
 ###############################################################################
 
-def _upload(request):
+def _make_analysis_by_upload(request):
     """Upload file from form POST for unregistered users"""
 
     if request.method == 'POST':
@@ -299,7 +301,7 @@ def _upload(request):
                 destination.write(chunk)
 
         try:
-            d = analyze_project(request, file_name, filename)
+            d = analyze_project(request, file_name, filename, ext_type_project=None)
         except Exception:
             traceback.print_exc()
             filename.method = 'project/error'
@@ -321,7 +323,7 @@ def _upload(request):
         return HttpResponseRedirect('/')
 
 
-def _url(request):
+def _make_analysis_by_url(request):
     """Process Request of form URL"""
 
     if request.method == "POST":
@@ -346,7 +348,7 @@ def _url(request):
 
 
 def process_string_url(url):
-    """Process String of URL from Form"""
+    """Process String from URL Form"""
 
     id_project = ''
     auxString = url.split("/")[-1]
@@ -360,7 +362,6 @@ def process_string_url(url):
         if auxString == "editor":
             id_project = url.split("/")[-2]
         else:
-            # To get the id project
             id_project = auxString
 
     try:
@@ -381,7 +382,11 @@ def generator_dic(request, id_project):
         else:
             username = None
 
-        path_project, file = send_request_getsb3(id_project, username, method="url")
+        path_project, file, ext_type_project = send_request_getsb3(id_project, username, method="url")
+    except DrScratchException:
+        logger.error('DrScratchException')
+        d = {'Error': 'no_exists'}
+        return d
     except Exception:
         logger.error('File not found into Scratch server')
         traceback.print_exc()
@@ -389,7 +394,7 @@ def generator_dic(request, id_project):
         return d
 
     try:
-        d = analyze_project(request, path_project, file)
+        d = analyze_project(request, path_project, file, ext_type_project)
     except Exception:
         logger.error('Impossible analyze project')
         traceback.print_exc()
@@ -411,33 +416,42 @@ def generator_dic(request, id_project):
     return d
 
 
-def new_getSb3(file_name, dir_zips, fileName):
+def generate_uniqueid_for_saving(id_project):
+    date_now = datetime.now()
+    date_now_string = date_now.strftime("%Y_%m_%d_%H_%M_%S_%f")
+    return id_project + "_" + date_now_string
 
-    now = datetime.now()
-    date = now.strftime("%Y_%m_%d_%H_%M_%S_")
-    ms = now.microsecond
 
-    scratch_project_name = str(fileName.filename).split(".sb")[0]
+def save_projectsb3(path_file_temporary, id_project):
 
-    unique_id = scratch_project_name + "_" + date + str(ms)
+    dir_zips = os.path.dirname(os.path.dirname(__file__)) + "/uploads/"
 
-    if zipfile.is_zipfile(file_name):
-        os.rename(dir_zips + "project.json", dir_zips + unique_id + ".sb3")
-    else:
-        current = os.getcwd()
-        os.chdir(dir_zips)
-        with zipfile.ZipFile(unique_id + ".sb3", 'w') as myzip:
-            myzip.write("project.json")
-        os.chdir(current)
-
-        try:
-            os.remove(dir_zips + "project.json")
-        except:
-            print "No existe"
-
+    unique_id = generate_uniqueid_for_saving(id_project)
     unique_file_name_for_saving = dir_zips + unique_id + ".sb3"
-   
-    return unique_file_name_for_saving
+
+    dir_utemp = path_file_temporary.split(id_project)[0].encode('utf-8')
+    path_project = os.path.dirname(os.path.dirname(__file__))
+
+    if '_new_project.json' in path_file_temporary:
+        ext_project = '_new_project.json'
+    else:
+        ext_project = '_old_project.json'
+
+    temporary_file_name = id_project + ext_project
+
+    os.chdir(dir_utemp)
+
+    with zipfile.ZipFile(unique_file_name_for_saving, 'w') as myzip:
+        os.rename(temporary_file_name, 'project.json')
+        myzip.write('project.json')
+
+    try:
+        os.remove('project.json')
+        os.chdir(path_project)
+    except:
+        logger.error('Error removing temporary project.json')
+
+    return unique_file_name_for_saving, ext_project
 
 
 def send_request_getstudio(id_studio):
@@ -460,23 +474,74 @@ def write_activity_in_logfile(file_name):
         log_file.close()
 
 
+def download_scratch_project_from_servers(id_project):
+
+    url_getsb3_new_project = "https://projects.scratch.mit.edu/" + id_project + "/get"
+    url_getsb3_old_project = "https://projects.scratch.mit.edu/" + id_project
+
+    path_utemp = os.path.dirname(os.path.dirname(__file__)) + '/utemp/' + str(id_project)
+    path_file_utemp = path_utemp + '_new_project.json'
+
+    try:
+        sb3_file = urllib2.urlopen(url_getsb3_new_project)
+    except urllib2.HTTPError as e:
+        logger.error('HTTPError %s', e.message)
+        path_file_utemp = path_utemp + '_old_project.json'
+        sb3_file = urllib2.urlopen(url_getsb3_old_project)
+    except urllib2.URLError as e:
+        logger.error('URLError: %s' % e.message)
+        traceback.print_exc()
+    except:
+        logger.error('Unhandled Error')
+        traceback.print_exc()
+
+    json_data = None
+
+    try:
+        resulting_file = open(path_file_utemp, 'wb')
+        resulting_file.write(sb3_file.read())
+        resulting_file.close()
+        with open(path_file_utemp) as json_file:
+            json_data = json.load(json_file)
+
+        # is_project_in_servers = json_data['code']
+
+    except IOError as e:
+        logger.error('FileNotFoundError %s', e.message)
+    except KeyError as e:
+        os.remove(path_file_utemp)
+        logger.error('File not found in Scratch servers')
+        json_data = None
+        traceback.print_exc()
+    except ValueError as e:
+        os.remove(path_file_utemp)
+        logger.error('ValueError: %s', e.message)
+    except:
+        traceback.print_exc()
+
+    return json_data, path_file_utemp
+
+
 def send_request_getsb3(id_project, username, method):
     """First request to getSb3"""
 
-    url_request_getsb3 = "https://projects.scratch.mit.edu/" + id_project + "/get"
     file_url = id_project + ".sb3"
+    json_data, path_file_temporary = download_scratch_project_from_servers(id_project)
+
+    if json_data is None:
+        raise DrScratchException
 
     now = datetime.now()
 
     if Organization.objects.filter(username=username):
         fileName = File(filename=file_url,
-                         organization=username,
-                         method=method, time=now,
-                         score=0, abstraction=0, parallelization=0,
-                         logic=0, synchronization=0, flowControl=0,
-                         userInteractivity=0, dataRepresentation=0,
-                         spriteNaming=0, initialization=0,
-                         deadCode=0, duplicateScript=0)
+                        organization=username,
+                        method=method, time=now,
+                        score=0, abstraction=0, parallelization=0,
+                        logic=0, synchronization=0, flowControl=0,
+                        userInteractivity=0, dataRepresentation=0,
+                        spriteNaming=0, initialization=0,
+                        deadCode=0, duplicateScript=0)
     elif Coder.objects.filter(username=username):
         fileName = File (filename=file_url,
                          coder=username,
@@ -497,68 +562,47 @@ def send_request_getsb3(id_project, username, method):
     
     fileName.save()
 
-    dir_zips = os.path.dirname(os.path.dirname(__file__)) + "/uploads/"
-    path_file_saved = dir_zips + "project.json"
-
     write_activity_in_logfile(fileName)
-    
-    # Save file in server
-    counter = 0
 
-    file_name = handler_upload(path_file_saved, counter)
-    outputFile = open(file_name, 'wb')
+    path_scratch_project_sb3, ext_type_project = save_projectsb3(path_file_temporary, id_project)
 
-    try:
-        sb3_file = urllib2.urlopen(url_request_getsb3)
-        outputFile.write(sb3_file.read())
-        outputFile.close()
-    except urllib2.URLError, e:
-        logger.error('URLError', e.args)
-    except urllib2.HTTPError, e:
-        logger.error('HTTPError ' + e.code)
-    except:
-        outputFile.write("ERROR downloading")
-        outputFile.close()
-
-    unique_file_name_sb3 = new_getSb3(file_name, dir_zips, fileName)
-
-    return unique_file_name_sb3, fileName
+    return path_scratch_project_sb3, fileName, ext_type_project
 
 
-def handler_upload(fileSaved, counter):
+def handler_upload(file_saved, counter):
     """ Necessary to uploadUnregistered: rename projects"""
 
-    if os.path.exists(fileSaved):
+    if os.path.exists(file_saved):
 
         counter = counter + 1
 
-        version = check_version(fileSaved)
+        version = check_version(file_saved)
 
         if version == "3.0":
             if counter == 1:
-                fileSaved = fileSaved.split(".")[0] + "(1).sb3"
+                file_saved = file_saved.split(".")[0] + "(1).sb3"
             else:
-                fileSaved = fileSaved.split('(')[0] + \
+                file_saved = file_saved.split('(')[0] + \
                     "(" + str(counter) + ").sb3"
         elif version == "2.0":
             if counter == 1:
-                fileSaved = fileSaved.split(".")[0] + "(1).sb2"
+                file_saved = file_saved.split(".")[0] + "(1).sb2"
             else:
-                fileSaved = fileSaved.split('(')[0] + \
+                file_saved = file_saved.split('(')[0] + \
                     "(" + str(counter) + ").sb2"
         else:
             if counter == 1:
-                fileSaved = fileSaved.split(".")[0] + "(1).sb"
+                file_saved = file_saved.split(".")[0] + "(1).sb"
             else:
-                fileSaved = fileSaved.split('(')[0] + \
+                file_saved = file_saved.split('(')[0] + \
                     "(" + str(counter) + ").sb"
 
-        file_name = handler_upload(fileSaved, counter)
+        file_name = handler_upload(file_saved, counter)
 
         return file_name
 
     else:
-        file_name = fileSaved
+        file_name = file_saved
 
         return file_name
 
@@ -577,13 +621,11 @@ def check_version(filename):
     return version
 
 
-def analyze_project(request, path_projectsb3, filename):
+def analyze_project(request, path_projectsb3, filename, ext_type_project):
 
     dictionary = {}
 
     if os.path.exists(path_projectsb3):
-        
-        list_file = path_projectsb3.split('(')
 
         result_mastery = analyzer.main(path_projectsb3)
         result_sprite_naming = spriteNaming.main(path_projectsb3)
@@ -601,11 +643,9 @@ def analyze_project(request, path_projectsb3, filename):
         dictionary.update(code)
         # code = {'dCode':dead_code_scratch_block(resultDeadCode)}
         # dictionary.update(code)
-
         return dictionary
-
     else:
-        return HttpResponseRedirect('/')
+        raise Exception
 
 
 # _______________________________ PROCESSORS _________________________________#

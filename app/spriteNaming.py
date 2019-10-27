@@ -1,9 +1,8 @@
-
 import json
 import zipfile
 
 
-class SpriteNaming():
+class SpriteNaming:
 
     """Module that keeps track of how often sprites default 
        

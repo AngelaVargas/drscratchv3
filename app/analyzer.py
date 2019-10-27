@@ -2,7 +2,6 @@
 
 import json
 from collections import Counter
-import sys
 import zipfile
 
 
@@ -20,7 +19,7 @@ class Mastery:
 
 
   """Start the analysis."""
-  def process(self,filename):
+  def process(self, filename):
         
 
    zip_file = zipfile.ZipFile(filename, "r")
