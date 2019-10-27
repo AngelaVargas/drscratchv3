@@ -243,11 +243,10 @@
             <div class="improve" >
                 <div class="panel panel-success" id="improve">
                     <div id="stepthree">
-
                         <div class="panel-heading" >
                             <h2 id="score" class="panel-title dark-text">{% trans "Project certificate"%}</h2>
                         </div>
-                        <div class="panel-success" >
+                        <div class="panel-success" style="word-break: break-word;" >
                             <h5>{{ filename }} <form name="form" class="project-form" enctype="multipart/form-data" method="post" action="/download_certificate">
                             {% csrf_token %}
                             <button value="{{ filename }}" name="certificate" type="submit" id ="certificate">{% trans "Download" %}</button>
@@ -337,15 +336,11 @@
 
     <footer class="footer grey-bg">
         <div class="container">
-           {% trans "©2019 Dr. Scratch" %}
-
-            <!-- SOCIAL ICONS -->
+            <p><small>{% trans "© 2019 Dr. Scratch." %} Made with <span style="color: #e25555;">&#9829;</span> by <a href="/collaborators">Dr. Scratch Team</a></small></p>
             <ul class="social-icons">
-                <li><a href="https:/twitter.com/drscratchtool"><span class="icon-social-twitter transparent-text-dark"></span></a>
-                </li>
-                <li><a href=""><span class="icon-social-github transparent-text-dark"></span></a>
-                </li>
-
+                <li><a href="https:/twitter.com/drscratchtool"><span class="icon-font-social-twitter transparent-text-dark"></span></a></li>
+                <li><a href="https://github.com/AngelaVargas/drscratchv3"><span class="icon-font-social-github transparent-text-dark"></span></a></li>
+                <!--<li><a href="mailto:drscratch@gsyc.urjc.es"><span class="icon-font-social-mail transparent-text-dark"></span></a></li>-->
             </ul>
         </div>
     </footer>

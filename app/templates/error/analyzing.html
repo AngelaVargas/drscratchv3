@@ -31,6 +31,11 @@
 <body id="learn">
 <!-- Header -->
 <div class="jumbotron">
+
+    <div class="container">
+        <img src="../../static/app/images/logo_main.png"/>
+    </div>
+
     <div class="container">
             <p>
                 <h1 class= text-center>
@@ -41,10 +46,6 @@
                 </h2>
             </p>
     </div>
-    <div class="container">
-        <img src="../../static/app/images/logo_main.png"/>
-    </div>
-
 </div>
 <!-- End Header -->
 
@@ -53,10 +54,9 @@
         <h4>
             
                {% trans "Sometimes we have got problems analyzing some projects. We're working on this." %}
-            
-             
+
               <a href="https://twitter.com/DrScratchTool"><span class="icon-social-twitter colored-text"></span></a>
-              <a href="mailto:drscratch@programamos.es"><span class="icon-basic-mail colored-text"></span></a>
+              <a href="mailto:drscratch@gsyc.urjc.es"><span class="icon-basic-mail colored-text"></span></a>
         </h4>
 </div>
 <div class="pager">
@@ -67,13 +67,11 @@
 
 <!-- Footer -->
 <div id="footer" class="container">
-    <footer class="footer grey-bg">
-       {% trans "©2019 Dr. Scratch" %}
+    <footer class="footer grey-bg text-center">
+        <p><small>{% trans "© 2019 Dr. Scratch." %} Made with <span style="color: #e25555;">&#9829;</span> by <a href="/collaborators">Dr. Scratch Team</a></small></p>
     </footer>
 </div>
 <!-- End Footer -->
-
-
 
 </body>
 </html>

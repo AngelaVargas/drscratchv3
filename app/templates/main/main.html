@@ -241,18 +241,22 @@
                                 <!-- FORM SUBMIT SUCCESS / ERROR MESSAGES -->
                                 <p class="file-error dark-text small-text">
                                 {% trans "Error! Please choose a .sb or .sb2 file or input an url" %}</p>
+
                                 {% if error %}
-                                <br></br>
-                                <p><span class="icon icon-close-alt2"></span> {% trans "Error! Please choose a .sb or .sb2 file or input an url" %}</p>
+                                    <br></br>
+                                    <p><span class="icon icon-close-alt2"></span> {% trans "Error! Please choose a .sb or .sb2 file or input an url" %}</p>
                                 {% endif %}
+
                                 {% if id_error %}
-                                <br></br>
-                                <p><span class="icon icon-close-alt2"></span> {% trans "Error! Your project id is wrong" %}</p>
+                                    <br></br>
+                                    <p><span class="icon icon-close-alt2"></span> {% trans "Error! Your project id is wrong" %}</p>
                                 {% endif %}
+
                                 {% if no_exists %}
-                                <br></br>
-                                <p><span class="icon icon-close-alt2"></span> {% trans "Error! Your project doesn't exist in Scratch's servers" %}</p>
+                                    <br></br>
+                                    <p><span class="icon icon-close-alt2"></span> {% trans "Error! Your project doesn't exist in Scratch's servers" %}</p>
                                 {% endif %}
+
                             </div>
                         </div>
                     </div>
