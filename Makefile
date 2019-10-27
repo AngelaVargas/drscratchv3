@@ -2,7 +2,8 @@ requirements:
 	pip install -r requirements.txt
 
 translate:
-	django-admin.py makemessages
+	sudo docker exec -it drscratchv3_django python manage.py makemessages -l tr
+	sudo docker exec -it drscratchv3_django python manage.py compilemessages
 
 coverage:
 	coverage run --source='.' manage.py test app
@@ -15,5 +16,8 @@ build:
 
 start:
 	sudo docker-compose up
+
+stop:
+	sudo docker-compose down
 
 
