@@ -3,10 +3,17 @@
 @font-face {
   font-family: "stamp-icons";
   src: url("fonts/stamp-icons.woff") format("woff"),
-    url("fonts/stamp-icons.ttf") format("truetype");
+       url("fonts/stamp-icons.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
+}
 
+@font-face {
+  font-family: "font-icons";
+  src: url("fonts/fontawesome-webfont.woff") format("woff"),
+       url("fonts/fontawesome-webfont.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
 }
 
 [data-icon]:before {
@@ -25,6 +32,19 @@
 [class^="icon-"]:before,
 [class*=" icon-"]:before {
   font-family: "stamp-icons" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+[class^="icon-font-"]:before,
+[class*=" icon-font-"]:before {
+  font-family: "font-icons" !important;
   font-style: normal !important;
   font-weight: normal !important;
   font-variant: normal !important;
@@ -1141,6 +1161,15 @@
 }
 .icon-social-twitter-square:before {
   content: "\e170";
+}
+.icon-font-social-twitter:before {
+  content: "\f099";
+}
+.icon-font-social-github:before {
+  content: "\f09b";
+}
+.icon-font-social-mail:before {
+  content: "\f0e0";
 }
 .icon-social-vimeo:before {
   content: "\e171";
