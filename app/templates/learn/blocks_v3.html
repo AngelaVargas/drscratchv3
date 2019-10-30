@@ -1,0 +1,97 @@
+{% load i18n %}
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="description" content="Analyze your Scratch projects to assess your Computational Thinking skills">
+    <meta name="keywords" content="Stamp, Startup, Multipurpose, Bootstrap, Landing page, Template, Registration, Landing">
+    <meta name="author" content="Programamos URJC Libresoft FECyT">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js"></script>
+    <!--<link rel="stylesheet" href="../../static/app/content/scratchblocks2.css">-->
+    <!--<script src="../../static/app/scripts/scratchblocks2.js"></script>-->
+    <script src="../../static/app/scripts/scratchblocks-v3.4-min.js"></script>
+    <script src="../../static/app/scripts/translations.js"></script>
+
+    <!-- SITE TITLE -->
+    <title>Dr. Scratch</title>
+
+
+    <link rel="stylesheet" href="../../static/app/content/style.css">
+    <!-- =========================
+     FAV AND TOUCH ICONS AND FONT
+    ============================== -->
+    <link rel="icon" href="../../static/app/images/favicon.ico">
+    <link rel="stylesheet" href="../../static/app/icons/icons.css">
+    <link type="text/css" rel="stylesheet" href="../../static/app/content/css_002.css">
+    <link type="text/css" rel="stylesheet" href="../../static/app/content/css.css">
+    <!-- =========================
+     STYLESHEETS
+    ============================== -->
+    <!-- BOOTSTRAP AND ANIMATION -->
+    <link rel="stylesheet" href="../../static/app/content/bootstrap.min.css">
+    <link rel="stylesheet" href="../../static/app/content/animate.css">
+
+    <!-- CAROUSEL AND LIGHTBOX -->
+    <link rel="stylesheet" href="../../static/app/content/owl_002.css">
+    <link rel="stylesheet" href="../../static/app/content/owl.css">
+    <link rel="stylesheet" href="../../static/app/content/nivo-lightbox.css">
+    <link rel="stylesheet" href="../../static/app/content/default.css">
+
+    <!-- CUSTOM STYLESHEETS -->
+    <link rel="stylesheet" href="../../static/app/content/styles.css">
+    <link rel="stylesheet" href="../../static/app/content/cloud.css">
+
+
+    <!-- RESPONSIVE FIXES -->
+    <link rel="stylesheet" href="../../static/app/content/responsive.css">
+
+    <!-- DEFAULT COLOR/ CURRENTLY USING -->
+    <link rel="stylesheet" href="../../static/app/content/red.css">
+    <script src="../../static/app/scripts/googleAnalytics.js"></script>
+
+    <script type="text/javascript">
+
+    <!--$.ajax({-->
+            <!--url: "http://www.drscratch.org/blocks",-->
+            <!--dataType: 'jsonp',-->
+            <!--success: function(headers) {-->
+                <!--language = headers['Accept-Language'];-->
+                <!--language = language.split(",")[0];-->
+                <!--scratchblocks2.reset_languages();-->
+                <!--if (language) var lang_dict = scratchblocks2._translations[language];-->
+                <!--if (lang_dict) scratchblocks2.load_language(lang_dict);-->
+        <!--$(document).ready(function () {-->
+            <!--scratchblocks2.parse();-->
+        <!--});-->
+            <!--}-->
+        <!--});-->
+
+    scratchblocks.renderMatching("pre.blocks");
+
+    </script>
+</head>
+<body>
+
+   <!-- LOGO -->
+   <div class="navbar navbar-inverse bs-docs-nav navbar-fixed-top  sticky-navigation" role="navigation">
+        <div class="container">
+            <div class="navbar-collapse collapse" id="stamp-navigation">
+                <a class="navbar-brand" href="/">
+                    <img src="../../static/app/images/logo_main.png" alt="">
+                </a>
+            </div>
+        </div>
+    </div>
+
+   <div class="panel-body">
+       <div id ="cloud"><h3>Blocks Scratch 3.0</h3></div>
+   </div>
+
+   <div class="container">
+      <pre class="blocks"> when flag clicked </pre>
+       <scratchblocks> when flag clicked </scratchblocks>
+   </div>
+
+
+</body>
+</html>

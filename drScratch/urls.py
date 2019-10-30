@@ -86,5 +86,6 @@ urlpatterns = [
     url(r'^learn/(\w+)', app_views.learn, name='learn'),
     url(r'^$', app_views.main, name='main'),
     #url(r'^.*', app_views.redirect_main, name='redirect_main'),
+    # url(r'^blocks_v3/$', app_views.blocks_v3, name='blocks_v3')
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
