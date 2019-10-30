@@ -1227,6 +1227,10 @@ def blocks(request):
         return HttpResponse(headers, content_type="application/json")
 
 
+def blocks_v3(request):
+
+    return render (request, 'learn/blocks_v3.html')
+
 
 #_____________________________ TO REGISTER ORGANIZATION ______________________#
 

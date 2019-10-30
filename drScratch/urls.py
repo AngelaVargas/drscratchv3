@@ -38,6 +38,7 @@ urlpatterns = [
     #Translation
     url(r'^i18n/', include('django.conf.urls.i18n'), name="translation"),
     url(r'^blocks$', app_views.blocks, name='blocks'),
+    url(r'^blocks_v3/$', app_views.blocks_v3, name='blocks_v3'),
 
     #Organizations
     url(r'^reset_password_confirm/(?P<uidb64>[0-9A-Za-z]+)-(?P<token>.+)/$', 
@@ -86,6 +87,5 @@ urlpatterns = [
     url(r'^learn/(\w+)', app_views.learn, name='learn'),
     url(r'^$', app_views.main, name='main'),
     #url(r'^.*', app_views.redirect_main, name='redirect_main'),
-    # url(r'^blocks_v3/$', app_views.blocks_v3, name='blocks_v3')
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
