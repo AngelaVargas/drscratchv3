@@ -10,7 +10,6 @@
     <!--<link rel="stylesheet" href="../../static/app/content/scratchblocks2.css">-->
     <!--<script src="../../static/app/scripts/scratchblocks2.js"></script>-->
     <script src="../../static/app/scripts/scratchblocks-v3.4-min.js"></script>
-    <script src="../../static/app/scripts/translations.js"></script>
 
     <!-- SITE TITLE -->
     <title>Dr. Scratch</title>
@@ -51,22 +50,11 @@
 
     <script type="text/javascript">
 
-    <!--$.ajax({-->
-            <!--url: "http://www.drscratch.org/blocks",-->
-            <!--dataType: 'jsonp',-->
-            <!--success: function(headers) {-->
-                <!--language = headers['Accept-Language'];-->
-                <!--language = language.split(",")[0];-->
-                <!--scratchblocks2.reset_languages();-->
-                <!--if (language) var lang_dict = scratchblocks2._translations[language];-->
-                <!--if (lang_dict) scratchblocks2.load_language(lang_dict);-->
-        <!--$(document).ready(function () {-->
-            <!--scratchblocks2.parse();-->
-        <!--});-->
-            <!--}-->
-        <!--});-->
+        $(document).ready(function() {
+            scratchblocks.renderMatching('pre.blocks');
+        });
 
-    scratchblocks.renderMatching("pre.blocks");
+
 
     </script>
 </head>
@@ -87,11 +75,15 @@
        <div id ="cloud"><h3>Blocks Scratch 3.0</h3></div>
    </div>
 
-   <div class="container">
-      <pre class="blocks"> when flag clicked </pre>
-       <scratchblocks> when flag clicked </scratchblocks>
-   </div>
-
+   <pre class="blocks">
+       repeat (10)
+            move (5) steps
+            stamp
+        end
+        repeat (10)
+            move (10) steps
+            stamp
+   </pre>
 
 </body>
 </html>
