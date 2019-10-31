@@ -10,6 +10,7 @@
     <!--<link rel="stylesheet" href="../../static/app/content/scratchblocks2.css">-->
     <!--<script src="../../static/app/scripts/scratchblocks2.js"></script>-->
     <script src="../../static/app/scripts/scratchblocks-v3.4-min.js"></script>
+    <script src="../../static/app/scripts/translations-all-v3.4.js" charset="utf8"></script>
 
     <!-- SITE TITLE -->
     <title>Dr. Scratch</title>
@@ -51,11 +52,9 @@
     <script type="text/javascript">
 
         $(document).ready(function() {
-            scratchblocks.renderMatching('pre.blocks');
+            scratchblocks.renderMatching('pre.blocks', {style: "scratch3"});
         });
-
-
-
+        
     </script>
 </head>
 <body>
