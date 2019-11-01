@@ -672,17 +672,28 @@ msgstr "¡¡¡Eres el master del universo!!!"
 msgid " duplicated scripts."
 msgstr "programas duplicados."
 
-#: templates/coder/dashboard-master.html:202
-#: templates/main/dashboard-master.html:200
-#: templates/organization/dashboard-master.html:207
-msgid "Your project does not have dead code, good job!"
-msgstr "Tu proyecto no tiene código muerto, ¡Buen trabajo!"
+#: templates/main/dashboard-developing.html:106
+#: templates/main/dashboard-master.html:105
+#: templates/coder/dashboard-developing.html:105
+#: templates/coder/dashboard-master.html:105
+#: templates/organization/dashboard-developing.html:105
+#: templates/organization/dashboard-master.html:105
+msgid "Your project does not have duplicated scripts, good job!"
+msgstr "Tu proyecto no tiene código duplicado, ¡Buen trabajo!"
 
 #: templates/coder/dashboard-master.html:209
 #: templates/main/dashboard-master.html:207
 #: templates/organization/dashboard-master.html:214
 msgid " dead code."
 msgstr " código muerto."
+
+
+#: templates/coder/dashboard-master.html:202
+#: templates/main/dashboard-master.html:200
+#: templates/organization/dashboard-master.html:207
+msgid "Your project does not have dead code, good job!"
+msgstr "Tu proyecto no tiene código muerto, ¡Buen trabajo!"
+
 
 #: templates/coder/downloads.html:7 templates/organization/downloads.html:7
 msgid "Download my CSV files."
