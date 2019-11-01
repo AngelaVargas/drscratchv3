@@ -615,15 +615,6 @@ msgstr "Malos hábitos"
 msgid "Sprites attributes"
 msgstr "Atributos no inicializados correctamente"
 
-#: templates/coder/dashboard-developing.html:167
-#: templates/coder/dashboard-master.html:215
-#: templates/main/dashboard-developing.html:164
-#: templates/main/dashboard-master.html:213
-#: templates/organization/dashboard-developing.html:167
-#: templates/organization/dashboard-master.html:220
-msgid "Your project does not have uninitialized attributes, good job!"
-msgstr "Tu proyecto no tiene atributos sin inicializar,¡Buen trabajo!"
-
 #: templates/coder/dashboard-developing.html:173
 #: templates/coder/dashboard-master.html:221
 #: templates/main/dashboard-developing.html:170
@@ -633,6 +624,17 @@ msgstr "Tu proyecto no tiene atributos sin inicializar,¡Buen trabajo!"
 msgid " sprite attributes."
 msgstr "atributos no inicializados correctamente."
 
+
+#: templates/coder/dashboard-developing.html:167
+#: templates/coder/dashboard-master.html:215
+#: templates/main/dashboard-developing.html:164
+#: templates/main/dashboard-master.html:213
+#: templates/organization/dashboard-developing.html:167
+#: templates/organization/dashboard-master.html:220
+msgid "Your project does not have uninitialized attributes, good job!"
+msgstr "Tu proyecto no tiene atributos sin inicializar. ¡Buen trabajo!"
+
+
 #: templates/coder/dashboard-developing.html:178
 #: templates/coder/dashboard-master.html:196
 #: templates/main/dashboard-developing.html:175
@@ -641,6 +643,15 @@ msgstr "atributos no inicializados correctamente."
 #: templates/organization/dashboard-master.html:201
 msgid " sprite naming."
 msgstr "nombres de objetos inadecuados."
+
+#: templates/coder/dashboard-developing.html:198
+#: templates/coder/dashboard-master.html:208
+#: templates/main/dashboard-developing.html:207
+#: templates/main/dashboard-master.html:195
+#: templates/organization/dashboard-developing.html:203
+#: templates/organization/dashboard-master.html:203
+msgid "Your project does not have default sprite naming, good job!"
+msgstr "Tu proyecto no tiene nombres de objectos inadecuados.¡Buen trabajo!"
 
 #: templates/coder/dashboard-developing.html:214
 #: templates/coder/dashboard-master.html:200
@@ -679,7 +690,7 @@ msgstr "programas duplicados."
 #: templates/organization/dashboard-developing.html:105
 #: templates/organization/dashboard-master.html:105
 msgid "Your project does not have duplicated scripts, good job!"
-msgstr "Tu proyecto no tiene código duplicado, ¡Buen trabajo!"
+msgstr "Tu proyecto no tiene código duplicado. ¡Buen trabajo!"
 
 #: templates/coder/dashboard-master.html:209
 #: templates/main/dashboard-master.html:207
@@ -692,7 +703,7 @@ msgstr " código muerto."
 #: templates/main/dashboard-master.html:200
 #: templates/organization/dashboard-master.html:207
 msgid "Your project does not have dead code, good job!"
-msgstr "Tu proyecto no tiene código muerto, ¡Buen trabajo!"
+msgstr "Tu proyecto no tiene código muerto. ¡Buen trabajo!"
 
 
 #: templates/coder/downloads.html:7 templates/organization/downloads.html:7
