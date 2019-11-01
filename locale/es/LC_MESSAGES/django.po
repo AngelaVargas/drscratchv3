@@ -662,6 +662,15 @@ msgstr "Tu proyecto no tiene nombres de objectos inadecuados.¡Buen trabajo!"
 msgid " backdrop naming."
 msgstr " nombres de escenarios inadecuados."
 
+#: templates/coder/dashboard-developing.html:216
+#: templates/coder/dashboard-master.html:206
+#: templates/main/dashboard-developing.html:215
+#: templates/main/dashboard-master.html:203
+#: templates/organization/dashboard-developing.html:211
+#: templates/organization/dashboard-master.html:211
+msgid "Your project does not have default backdrop naming, good job!"
+msgstr "Tu proyecto no tiene nombres de escenarios inadecuados.¡Buen trabajo!"
+
 #: templates/coder/dashboard-master.html:169
 #: templates/main/dashboard-master.html:167
 msgid ""
