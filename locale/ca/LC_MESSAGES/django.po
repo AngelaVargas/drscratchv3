@@ -711,8 +711,11 @@ msgid "You're the master of the universe!!! "
 msgstr "Ets el màster de l'univers!!!"
 
 #: templates/coder/dashboard-master.html:192
+#: templates/coder/dashboard-developing.html:202
 #: templates/main/dashboard-master.html:190
+#: templates/main/dashboard-developing.html:201
 #: templates/organization/dashboard-master.html:197
+#: templates/organization/dashboard-developing.html:197
 msgid " duplicated scripts."
 msgstr " programes duplicats."
 
@@ -727,14 +730,20 @@ msgstr "El teu projecte no té programes duplicats, bon treball!"
 
 
 #: templates/coder/dashboard-master.html:209
+#: templates/coder/dashboard-developing.html:233
 #: templates/main/dashboard-master.html:207
+#: templates/main/dashboard-developing.html:233
 #: templates/organization/dashboard-master.html:214
+#: templates/organization/dashboard-developing.html:228
 msgid " dead code."
 msgstr " codi mort."
 
 #: templates/coder/dashboard-master.html:202
+#: templates/coder/dashboard-developing.html:232
 #: templates/main/dashboard-master.html:200
+#: templates/main/dashboard-developing.html:231
 #: templates/organization/dashboard-master.html:207
+#: templates/organization/dashboard-developing.html:227
 msgid "Your project does not have dead code, good job!"
 msgstr "El teu projecte no té codi mort, bon treball!"
 

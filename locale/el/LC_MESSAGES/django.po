@@ -683,8 +683,11 @@ msgid "You're the master of the universe!!! "
 msgstr "Είστε ο άρχοντας του σύμπαντος!"
 
 #: templates/coder/dashboard-master.html:192
+#: templates/coder/dashboard-developing.html:202
 #: templates/main/dashboard-master.html:190
+#: templates/main/dashboard-developing.html:201
 #: templates/organization/dashboard-master.html:197
+#: templates/organization/dashboard-developing.html:197
 msgid " duplicated scripts."
 msgstr " διπλασιασμένα προγράμματα."
 
@@ -698,14 +701,20 @@ msgid "Your project does not have duplicated scripts, good job!"
 msgstr "Το έργο σας δεν έχει διπλασιασμένα προγράμματα. Μπράβο!"
 
 #: templates/coder/dashboard-master.html:209
+#: templates/coder/dashboard-developing.html:233
 #: templates/main/dashboard-master.html:207
+#: templates/main/dashboard-developing.html:233
 #: templates/organization/dashboard-master.html:214
+#: templates/organization/dashboard-developing.html:228
 msgid " dead code."
 msgstr " κώδικας που δεν εκτελείται."
 
 #: templates/coder/dashboard-master.html:202
+#: templates/coder/dashboard-developing.html:232
 #: templates/main/dashboard-master.html:200
+#: templates/main/dashboard-developing.html:231
 #: templates/organization/dashboard-master.html:207
+#: templates/organization/dashboard-developing.html:227
 msgid "Your project does not have dead code, good job!"
 msgstr "Το έργο σας δεν έχει κώδικα που δεν εκτελείτε. Μπράβο!"
 
