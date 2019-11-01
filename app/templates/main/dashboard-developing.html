@@ -103,7 +103,7 @@
      <script>
         $(document).ready(function () {
             if("{{ dupCode }}" == ""){
-                $("#dupCode").attr("data-content","Your project does not have duplicated scripts, good job!");
+                $("#dupCode").attr("data-content","{% trans 'Your project does not have duplicated scripts, good job!' %}");
             }else{
                 str = "{{ dupCode }}".split(",");
                 for (n in str){
