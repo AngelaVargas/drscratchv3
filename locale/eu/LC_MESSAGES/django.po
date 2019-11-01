@@ -614,15 +614,6 @@ msgstr "Ohitura txarrak"
 msgid "Sprites attributes"
 msgstr "Ongi hasieratzen ez diren atributuak"
 
-#: templates/coder/dashboard-developing.html:167
-#: templates/coder/dashboard-master.html:215
-#: templates/main/dashboard-developing.html:164
-#: templates/main/dashboard-master.html:213
-#: templates/organization/dashboard-developing.html:167
-#: templates/organization/dashboard-master.html:220
-msgid "Your project does not have uninitialized attributes, good job!"
-msgstr "Zure proiektuak hasieratzen ez diren atributurik ez du, lan bikaina!"
-
 #: templates/coder/dashboard-developing.html:173
 #: templates/coder/dashboard-master.html:221
 #: templates/main/dashboard-developing.html:170
@@ -631,6 +622,15 @@ msgstr "Zure proiektuak hasieratzen ez diren atributurik ez du, lan bikaina!"
 #: templates/organization/dashboard-master.html:226
 msgid " sprite attributes."
 msgstr "Ongi hasieratzen ez diren atributuak"
+
+#: templates/coder/dashboard-developing.html:167
+#: templates/coder/dashboard-master.html:215
+#: templates/main/dashboard-developing.html:164
+#: templates/main/dashboard-master.html:213
+#: templates/organization/dashboard-developing.html:167
+#: templates/organization/dashboard-master.html:220
+msgid "Your project does not have uninitialized attributes, good job!"
+msgstr "Zure proiektuak hasieratzen ez diren atributurik ez du, lan bikaina!"
 
 #: templates/coder/dashboard-developing.html:178
 #: templates/coder/dashboard-master.html:196
@@ -641,6 +641,16 @@ msgstr "Ongi hasieratzen ez diren atributuak"
 msgid " sprite naming."
 msgstr " sprite-a izendatzen."
 
+#: templates/coder/dashboard-developing.html:198
+#: templates/coder/dashboard-master.html:208
+#: templates/main/dashboard-developing.html:207
+#: templates/main/dashboard-master.html:195
+#: templates/organization/dashboard-developing.html:203
+#: templates/organization/dashboard-master.html:203
+msgid "Your project does not have default sprite naming, good job!"
+msgstr "Zure proiektuak ez du sprite izendapen lehenetsirik, lan bikaina!"
+
+
 #: templates/coder/dashboard-developing.html:214
 #: templates/coder/dashboard-master.html:200
 #: templates/main/dashboard-developing.html:207
@@ -649,6 +659,15 @@ msgstr " sprite-a izendatzen."
 #: templates/organization/dashboard-master.html:205
 msgid " backdrop naming."
 msgstr " atzeko oihala izendatzea."
+
+#: templates/coder/dashboard-developing.html:216
+#: templates/coder/dashboard-master.html:206
+#: templates/main/dashboard-developing.html:215
+#: templates/main/dashboard-master.html:203
+#: templates/organization/dashboard-developing.html:211
+#: templates/organization/dashboard-master.html:211
+msgid "Your project does not have default backdrop naming, good job!"
+msgstr "Zure proiektuak ez du atzeko oihala izendatzea lehenetsirik, lan bikaina!"
 
 #: templates/coder/dashboard-master.html:169
 #: templates/main/dashboard-master.html:167
@@ -671,17 +690,28 @@ msgstr "Unibertso osoko maisua zara!!"
 msgid " duplicated scripts."
 msgstr " bikoiztutako scriptak."
 
-#: templates/coder/dashboard-master.html:202
-#: templates/main/dashboard-master.html:200
-#: templates/organization/dashboard-master.html:207
-msgid "Your project does not have dead code, good job!"
-msgstr "Zure proiektuak ez du baliogabeko koderik!"
+#: templates/main/dashboard-developing.html:106
+#: templates/main/dashboard-master.html:105
+#: templates/coder/dashboard-developing.html:105
+#: templates/coder/dashboard-master.html:105
+#: templates/organization/dashboard-developing.html:105
+#: templates/organization/dashboard-master.html:105
+msgid "Your project does not have duplicated scripts, good job!"
+msgstr "Zure proiektuak ez ditu gidoi bikoiztuak, lan bikaina!"
 
 #: templates/coder/dashboard-master.html:209
 #: templates/main/dashboard-master.html:207
 #: templates/organization/dashboard-master.html:214
 msgid " dead code."
 msgstr " kode baliogabea."
+
+#: templates/coder/dashboard-master.html:202
+#: templates/main/dashboard-master.html:200
+#: templates/organization/dashboard-master.html:207
+msgid "Your project does not have dead code, good job!"
+msgstr "Zure proiektuak ez du baliogabeko koderik, lan bikaina!"
+
+
 
 #: templates/coder/downloads.html:7 templates/organization/downloads.html:7
 msgid "Download my CSV files."
