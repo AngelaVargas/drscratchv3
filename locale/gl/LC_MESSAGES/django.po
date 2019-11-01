@@ -620,15 +620,6 @@ msgstr "Malos hábitos"
 msgid "Sprites attributes"
 msgstr "Atributos non inicializados correctamente"
 
-#: templates/coder/dashboard-developing.html:167
-#: templates/coder/dashboard-master.html:215
-#: templates/main/dashboard-developing.html:164
-#: templates/main/dashboard-master.html:213
-#: templates/organization/dashboard-developing.html:167
-#: templates/organization/dashboard-master.html:220
-msgid "Your project does not have uninitialized attributes, good job!"
-msgstr ""
-
 #: templates/coder/dashboard-developing.html:173
 #: templates/coder/dashboard-master.html:221
 #: templates/main/dashboard-developing.html:170
@@ -637,6 +628,16 @@ msgstr ""
 #: templates/organization/dashboard-master.html:226
 msgid " sprite attributes."
 msgstr " atributos non inicializados correctamente."
+
+#: templates/coder/dashboard-developing.html:167
+#: templates/coder/dashboard-master.html:215
+#: templates/main/dashboard-developing.html:164
+#: templates/main/dashboard-master.html:213
+#: templates/organization/dashboard-developing.html:167
+#: templates/organization/dashboard-master.html:220
+msgid "Your project does not have uninitialized attributes, good job!"
+msgstr "O teu proxecto non ten atributos non inicializados correctamente, bo traballo!"
+
 
 #: templates/coder/dashboard-developing.html:178
 #: templates/coder/dashboard-master.html:196
@@ -647,6 +648,15 @@ msgstr " atributos non inicializados correctamente."
 msgid " sprite naming."
 msgstr " nomes de obxectos non axeitados."
 
+#: templates/coder/dashboard-developing.html:198
+#: templates/coder/dashboard-master.html:208
+#: templates/main/dashboard-developing.html:207
+#: templates/main/dashboard-master.html:195
+#: templates/organization/dashboard-developing.html:203
+#: templates/organization/dashboard-master.html:203
+msgid "Your project does not have default sprite naming, good job!"
+msgstr "O teu proxecto non ten nomes de obxectos non axeitados, bo traballo!"
+
 #: templates/coder/dashboard-developing.html:214
 #: templates/coder/dashboard-master.html:200
 #: templates/main/dashboard-developing.html:207
@@ -655,6 +665,15 @@ msgstr " nomes de obxectos non axeitados."
 #: templates/organization/dashboard-master.html:205
 msgid " backdrop naming."
 msgstr " nomes dos escenarios non axeitados."
+
+#: templates/coder/dashboard-developing.html:216
+#: templates/coder/dashboard-master.html:206
+#: templates/main/dashboard-developing.html:215
+#: templates/main/dashboard-master.html:203
+#: templates/organization/dashboard-developing.html:211
+#: templates/organization/dashboard-master.html:211
+msgid "Your project does not have default backdrop naming, good job!"
+msgstr "O teu proxecto non ten nomes dos escenarios non axeitados, bo traballo!"
 
 #: templates/coder/dashboard-master.html:169
 #: templates/main/dashboard-master.html:167
@@ -681,17 +700,27 @@ msgstr "Es o amo do universo!!!"
 msgid " duplicated scripts."
 msgstr " programas duplicados."
 
-#: templates/coder/dashboard-master.html:202
-#: templates/main/dashboard-master.html:200
-#: templates/organization/dashboard-master.html:207
-msgid "Your project does not have dead code, good job!"
-msgstr ""
+#: templates/main/dashboard-developing.html:106
+#: templates/main/dashboard-master.html:105
+#: templates/coder/dashboard-developing.html:105
+#: templates/coder/dashboard-master.html:105
+#: templates/organization/dashboard-developing.html:105
+#: templates/organization/dashboard-master.html:105
+msgid "Your project does not have duplicated scripts, good job!"
+msgstr "O teu proxecto non ten programas duplicados, bo traballo!"
 
 #: templates/coder/dashboard-master.html:209
 #: templates/main/dashboard-master.html:207
 #: templates/organization/dashboard-master.html:214
 msgid " dead code."
 msgstr " código morto."
+
+#: templates/coder/dashboard-master.html:202
+#: templates/main/dashboard-master.html:200
+#: templates/organization/dashboard-master.html:207
+msgid "Your project does not have dead code, good job!"
+msgstr "O teu proxecto non ten código morto, bo traballo!"
+
 
 #: templates/coder/downloads.html:7 templates/organization/downloads.html:7
 msgid "Download my CSV files."
