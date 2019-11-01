@@ -645,13 +645,13 @@ msgstr ""
 msgid " backdrop naming."
 msgstr ""
 
-#: templates/coder/dashboard-developing.html:214
-#: templates/coder/dashboard-master.html:200
-#: templates/main/dashboard-developing.html:207
-#: templates/main/dashboard-master.html:199
-#: templates/organization/dashboard-developing.html:205
-#: templates/organization/dashboard-master.html:205
-msgid " backdrop naming."
+#: templates/coder/dashboard-developing.html:216
+#: templates/coder/dashboard-master.html:206
+#: templates/main/dashboard-developing.html:215
+#: templates/main/dashboard-master.html:203
+#: templates/organization/dashboard-developing.html:211
+#: templates/organization/dashboard-master.html:211
+msgid "Your project does not have default backdrop naming, good job!"
 msgstr ""
 
 #: templates/coder/dashboard-master.html:169
