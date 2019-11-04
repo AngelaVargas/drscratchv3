@@ -2393,16 +2393,16 @@ msgstr ""
 "arribi un missatge que ningú envia."
 
 #: templates/learn/deadCode.html:14
-msgid "forever //Blocks that dont's start with a hat block."
-msgstr "per sempre //Blocs que no comencen amb un bloc d'inici."
+msgid "//Blocks that do not start with a hat block."
+msgstr "//Blocs que no comencen amb un bloc d'inici."
 
 #: templates/learn/deadCode.html:15
 msgid "if &lt; key [left arrow v] pressed ? &gt; then"
 msgstr "si &lt; tecla [fletxa esquerra v] premuda?&gt; llavors"
 
 #: templates/learn/deadCode.html:18
-msgid "when I receive [startcc v] //Blocks that start with a hat block."
-msgstr "quan rebi [startcc v] // Blocs que comencen amb un bloc d'inici."
+msgid "//Blocks that start with a hat block."
+msgstr "//Blocs que comencen amb un bloc d'inici."
 
 #: templates/learn/deadCode.html:19
 msgid "switch costume to [costume2 v]"

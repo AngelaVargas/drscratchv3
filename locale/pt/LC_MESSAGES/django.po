@@ -2370,8 +2370,8 @@ msgstr ""
 "início, ou quando ele está esperando por uma mensagem que nunca é enviada."
 
 #: templates/learn/deadCode.html:14
-msgid "forever //Blocks that dont's start with a hat block."
-msgstr "repete para sempre // Blocos que não iniciam com um bloco de eventos."
+msgid "//Blocks that do not start with a hat block."
+msgstr " Blocos que não iniciam com um bloco de eventos."
 
 #: templates/learn/deadCode.html:15
 msgid "if &lt; key [left arrow v] pressed ? &gt; then"
@@ -2379,10 +2379,8 @@ msgstr ""
 "se &lt; a tecla [seta para a esquerda v] está a ser pressionada &gt; ,então"
 
 #: templates/learn/deadCode.html:18
-msgid "when I receive [startcc v] //Blocks that start with a hat block."
-msgstr ""
-"Quando receberes a mensagem [startcc v]// Blocos que iniciam com um bloco de "
-"eventos."
+msgid "//Blocks that start with a hat block."
+msgstr "//Blocos que iniciam com um bloco de eventos."
 
 #: templates/learn/deadCode.html:19
 msgid "switch costume to [costume2 v]"

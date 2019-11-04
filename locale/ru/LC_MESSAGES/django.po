@@ -2315,16 +2315,16 @@ msgstr ""
 "когда есть программа, которая ждет сообщения, которое никогда не будет послано."
 
 #: templates/learn/deadCode.html:14
-msgid "forever //Blocks that dont's start with a hat block."
-msgstr ""
+msgid "//Blocks that do not start with a hat block."
+msgstr "//Блоки, которые не начинаются с блока шляпы."
 
 #: templates/learn/deadCode.html:15
 msgid "if &lt; key [left arrow v] pressed ? &gt; then"
 msgstr ""
 
 #: templates/learn/deadCode.html:18
-msgid "when I receive [startcc v] //Blocks that start with a hat block."
-msgstr ""
+msgid "//Blocks that start with a hat block."
+msgstr "//Блоки, которые начинаются с блока шляпы."
 
 #: templates/learn/deadCode.html:19
 msgid "switch costume to [costume2 v]"

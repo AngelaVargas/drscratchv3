@@ -7,9 +7,11 @@
     <meta name="author" content="Programamos URJC Libresoft FECyT">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js"></script>
-    <link rel="stylesheet" href="../../static/app/content/scratchblocks2.css">
-    <script src="../../static/app/scripts/scratchblocks2.js"></script>
-    <script src="../../static/app/scripts/translations.js"></script>
+    <!--<link rel="stylesheet" href="../../static/app/content/scratchblocks2.css">-->
+    <!--<script src="../../static/app/scripts/scratchblocks2.js"></script>-->
+    <!--<script src="../../static/app/scripts/translations.js"></script>-->
+    <script src="../../static/app/scripts/scratchblocks-v3.4-min.js"></script>
+    <script src="../../static/app/scripts/translations-all-v3.4.js" charset="utf8"></script>
 
     <!-- SITE TITLE -->
     <title>Dr. Scratch</title>
@@ -50,19 +52,23 @@
 
     <script type="text/javascript">
 
-    $.ajax({
-            url: "http://www.drscratch.org/blocks",
-            dataType: 'jsonp',
-            success: function(headers) {
-                language = headers['Accept-Language'];
-                language = language.split(",")[0];
-                scratchblocks2.reset_languages();
-                if (language) var lang_dict = scratchblocks2._translations[language];
-                if (lang_dict) scratchblocks2.load_language(lang_dict);
-        $(document).ready(function () {
-            scratchblocks2.parse();
-        });
-            }
+    <!--$.ajax({-->
+            <!--url: "http://www.drscratch.org/blocks",-->
+            <!--dataType: 'jsonp',-->
+            <!--success: function(headers) {-->
+                <!--language = headers['Accept-Language'];-->
+                <!--language = language.split(",")[0];-->
+                <!--scratchblocks2.reset_languages();-->
+                <!--if (language) var lang_dict = scratchblocks2._translations[language];-->
+                <!--if (lang_dict) scratchblocks2.load_language(lang_dict);-->
+        <!--$(document).ready(function () {-->
+            <!--scratchblocks2.parse();-->
+        <!--});-->
+            <!--}-->
+        <!--});-->
+
+        $(document).ready(function() {
+            scratchblocks.renderMatching('pre.blocks', {style: "scratch3"});
         });
 
     </script>

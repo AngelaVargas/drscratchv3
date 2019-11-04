@@ -2331,16 +2331,16 @@ msgid ""
 msgstr ""
 
 #: templates/learn/deadCode.html:14
-msgid "forever //Blocks that dont's start with a hat block."
-msgstr "para sempre // Bloques que non comenzan cun bloque sombreiro"
+msgid "//Blocks that do not start with a hat block."
+msgstr "//Bloques que non comenzan cun bloque sombreiro"
 
 #: templates/learn/deadCode.html:15
 msgid "if &lt; key [left arrow v] pressed ? &gt; then"
 msgstr "si &lt; tecla [frecha esquerda v] premida ? &gt; entón"
 
 #: templates/learn/deadCode.html:18
-msgid "when I receive [startcc v] //Blocks that start with a hat block."
-msgstr "ao recibir [startcc v] // Bloques que comenzan cun bloque sombreiro"
+msgid "//Blocks that start with a hat block."
+msgstr "//Bloques que comenzan cun bloque sombreiro"
 
 #: templates/learn/deadCode.html:19
 msgid "switch costume to [costume2 v]"

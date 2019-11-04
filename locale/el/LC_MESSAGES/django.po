@@ -2361,16 +2361,16 @@ msgstr ""
 "μεταδίδει."
 
 #: templates/learn/deadCode.html:14
-msgid "forever //Blocks that dont's start with a hat block."
-msgstr "για πάντα //Εντολές που δεν ξεκινούν με συμβάν (εντολή καπέλο)"
+msgid "//Blocks that do not start with a hat block."
+msgstr "//Εντολές που δεν ξεκινούν με συμβάν (εντολή καπέλο)"
 
 #: templates/learn/deadCode.html:15
 msgid "if &lt; key [left arrow v] pressed ? &gt; then"
 msgstr "εάν &lt; πατήθηκε το πλήκτρο [αριστερό βέλος v] &gt; τότε"
 
 #: templates/learn/deadCode.html:18
-msgid "when I receive [startcc v] //Blocks that start with a hat block."
-msgstr "Όταν λάβω το [εκκίνηση v]//Εντολές που ξεκινάν με συμβάν"
+msgid "//Blocks that start with a hat block."
+msgstr "//Εντολές που ξεκινάν με συμβάν"
 
 #: templates/learn/deadCode.html:19
 msgid "switch costume to [costume2 v]"

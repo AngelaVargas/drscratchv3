@@ -2360,16 +2360,16 @@ msgstr ""
 "programa que está esperando a que le llegue un mensaje que nadie envía."
 
 #: templates/learn/deadCode.html:14
-msgid "forever //Blocks that dont's start with a hat block."
-msgstr "por siempre //Bloques que no empiezan con un bloque sombrero."
+msgid "//Blocks that do not start with a hat block."
+msgstr "//Bloques que no empiezan con un bloque sombrero."
 
 #: templates/learn/deadCode.html:15
 msgid "if &lt; key [left arrow v] pressed ? &gt; then"
 msgstr "si &lt; ¿tecla [flecha izquierda v] presionada?&gt; entonces"
 
 #: templates/learn/deadCode.html:18
-msgid "when I receive [startcc v] //Blocks that start with a hat block."
-msgstr "al recibir [startcc v] // Bloques que empiezan con un bloque sombrero."
+msgid "//Blocks that start with a hat block."
+msgstr "//Bloques que empiezan con un bloque sombrero."
 
 #: templates/learn/deadCode.html:19
 msgid "switch costume to [costume2 v]"

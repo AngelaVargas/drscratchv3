@@ -2364,17 +2364,16 @@ msgstr ""
 "messaggio che non viene mai inviato."
 
 #: templates/learn/deadCode.html:14
-msgid "forever //Blocks that dont's start with a hat block."
-msgstr "per sempre //Blocchi che non iniziano con un blocco cappello."
+msgid "//Blocks that do not start with a hat block."
+msgstr "//Blocchi che non iniziano con un blocco cappello."
 
 #: templates/learn/deadCode.html:15
 msgid "if &lt; key [left arrow v] pressed ? &gt; then"
 msgstr "se &lt; tasto [freccia sinistra v] premuto &gt; allora"
 
 #: templates/learn/deadCode.html:18
-msgid "when I receive [startcc v] //Blocks that start with a hat block."
-msgstr ""
-"quando ricevo [startcc v] //Blocchi che iniziano con un blocco cappello."
+msgid "//Blocks that start with a hat block."
+msgstr "//Blocchi che iniziano con un blocco cappello."
 
 #: templates/learn/deadCode.html:19
 msgid "switch costume to [costume2 v]"
