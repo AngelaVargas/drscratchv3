@@ -1070,13 +1070,13 @@ msgstr ""
 #: templates/learn/Synchronization.html:27
 #: templates/learn/Synchronization.html:45 templates/learn/User.html:23
 #: templates/learn/attrInit.html:25
-msgid "when gf clicked"
-msgstr "quan la @ es premi"
+msgid "when green flag clicked"
+msgstr "quan la bandera verda es premi"
 
 #: templates/learn/Abstraction.html:21 templates/learn/Abstraction.html:36
 #: templates/learn/Abstraction.html:62 templates/learn/Abstraction.html:93
 msgid "clear"
-msgstr "neteja"
+msgstr "esborra-ho tot"
 
 #: templates/learn/Abstraction.html:22 templates/learn/Abstraction.html:37
 msgid "go to x:(-100) y:(30)"
@@ -1530,7 +1530,7 @@ msgstr "esborra l'element (tots v) de [Estudiants v]"
 #: templates/learn/Data.html:106 templates/learn/Data.html.py:119
 #: templates/learn/Flow.html:59
 msgid "repeat (3)"
-msgstr "repeteix (3) vegades"
+msgstr "repeteix (3)"
 
 #: templates/learn/Data.html:107 templates/learn/Data.html.py:120
 msgid "ask [Introduce a student name] and wait"
@@ -2252,8 +2252,8 @@ msgid "ask [What's your name?] and wait"
 msgstr "pregunta [Com et dius?] i espera"
 
 #: templates/learn/User.html:46
-msgid "say &lt;join [Hello,]&lt;answer"
-msgstr "digues &lt; uneix [Hola,] i &lt;resposta"
+msgid "say (join [Hello] [answer])"
+msgstr "digues (uneix [Hola] i [resposta])"
 
 #: templates/learn/User.html:48
 msgid "if &lt;touching [mouse-pointer v] &gt; then"
@@ -2305,12 +2305,12 @@ msgid "say [There is much noise...]"
 msgstr "digues [Hi ha molt soroll ...]"
 
 #: templates/learn/User.html:73
-msgid "video [motion v] on [this sprite v]"
-msgstr "[moviment v] de vídeo a [aquest personatge v]"
+msgid "video [motion v] on [sprite v]"
+msgstr "vídeo [motion v] a [sprite v]"
 
 #: templates/learn/User.html:75
 msgid "video [direction v] on [this sprite v]"
-msgstr "[direcció v] de vídeo a [aquest personatge v]"
+msgstr "vídeo [direction v] a [sprite v]"
 
 #: templates/learn/User.html:78
 msgid ""
@@ -2393,16 +2393,16 @@ msgstr ""
 "arribi un missatge que ningú envia."
 
 #: templates/learn/deadCode.html:14
-msgid "//Blocks that do not start with a hat block."
-msgstr "//Blocs que no comencen amb un bloc d'inici."
+msgid "forever //Blocks that do not start with a hat block."
+msgstr "per sempre //Blocs que no comencen amb un bloc d'inici."
 
 #: templates/learn/deadCode.html:15
 msgid "if &lt; key [left arrow v] pressed ? &gt; then"
 msgstr "si &lt; tecla [fletxa esquerra v] premuda?&gt; llavors"
 
 #: templates/learn/deadCode.html:18
-msgid "//Blocks that start with a hat block."
-msgstr "//Blocs que comencen amb un bloc d'inici."
+msgid "when I receive [startcc v] //Blocks that start with a hat block."
+msgstr "quan rebi [startcc v] //Blocs que comencen amb un bloc d'inici."
 
 #: templates/learn/deadCode.html:19
 msgid "switch costume to [costume2 v]"
@@ -2432,11 +2432,11 @@ msgstr ""
 #: templates/learn/duplicatedScripts.html:23
 #: templates/learn/duplicatedScripts.html:37
 msgid "set rotation style [left-rigt v]"
-msgstr "fixa la rotació a [esquerra-dreta v]"
+msgstr "fixa el tipus de rotació [esquerra-dreta v]"
 
 #: templates/learn/duplicatedScripts.html:16
 msgid "repeat (10)"
-msgstr "repeteix (10) vegades"
+msgstr "repeteix (10)"
 
 #: templates/learn/duplicatedScripts.html:17
 msgid "move (2) steps"
@@ -2448,7 +2448,7 @@ msgstr "quan rebi [missatge2 v]"
 
 #: templates/learn/duplicatedScripts.html:24
 msgid "repeat (5)"
-msgstr "repeteix (5) vegades"
+msgstr "repeteix (5)"
 
 #: templates/learn/duplicatedScripts.html:25
 msgid "move (4) steps"
@@ -2473,7 +2473,7 @@ msgstr "defineix camina (cops)(pas)(pausa)"
 
 #: templates/learn/duplicatedScripts.html:38
 msgid "repeat (repetitions)"
-msgstr "repeteix (cops) vegades"
+msgstr "repeteix (cops)"
 
 #: templates/learn/duplicatedScripts.html:39
 msgid "move (step) steps"
