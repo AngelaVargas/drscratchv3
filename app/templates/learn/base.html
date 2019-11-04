@@ -67,8 +67,9 @@
             <!--}-->
         <!--});-->
 
+
         $(document).ready(function() {
-            scratchblocks.renderMatching('pre.blocks', {style: "scratch3"});
+            scratchblocks.renderMatching('pre.blocks', {style: "scratch3", languages: ['ca','es', 'en', 'it','ru',]});
         });
 
     </script>
@@ -102,7 +103,7 @@
             <!-- /END STICKY NAVIGATION -->
     <!-- JUMBOTRON -->
 
-    <div id ="cloud"><h2>{% block title %}{% endblock %}</h2><span class='shadow'></span></div>
+    <div id ="cloud"><h3>{% block title %}{% endblock %}</h3><span class='shadow'></span></div>
     <div class="container col-md-10 col-md-offset-1">
     <ul class="nav nav-tabs nav-justified">
       <li role="presentation"><a href="/learn/Logic/">{% trans "Logic" %}</a></li>

@@ -11,14 +11,14 @@
             {% trans "Dead code are parts of programs that never are executed. How can it form? For example, when you have a program that isn't start with a hat block, or when there is a program that is waiting for a message that never is sent." %}
         <br><br>
             <pre class="blocks col-lg-6">
-                forever {% trans "//Blocks that do not start with a hat block." %}
-                if &lt; key [left arrow v] pressed ? &gt; then
-                change x by (10)
+                {% trans "forever //Blocks that do not start with a hat block." %}
+                {% trans "if &lt; key [left arrow v] pressed ? &gt; then" %}
+                {% trans "change x by (10)" %}
             </pre>
             <pre class="blocks col-lg-6">
-                when I receive [startcc v] {% trans "//Blocks that start with a hat block." %}
-                switch costume to [costume2 v]
-                say [Let's start] for (2) secs
+                {% trans "when I receive [startcc v] //Blocks that start with a hat block." %}
+                {% trans "switch costume to [costume2 v]" %}
+                {% trans "say [Let's start] for (2) secs" %}
             </pre>
         <br>
         </div>
