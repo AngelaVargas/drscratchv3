@@ -1030,23 +1030,23 @@ msgstr ""
 #: templates/learn/Synchronization.html:27
 #: templates/learn/Synchronization.html:45 templates/learn/User.html:23
 #: templates/learn/attrInit.html:25
-msgid "when gf clicked"
+msgid "when green flag clicked"
 msgstr "Όταν στην πράσινη σημαία γίνει κλικ"
 
 #: templates/learn/Abstraction.html:21 templates/learn/Abstraction.html:36
 #: templates/learn/Abstraction.html:62 templates/learn/Abstraction.html:93
 msgid "clear"
-msgstr "καθάρισε"
+msgstr "καθάρισε όλα"
 
 #: templates/learn/Abstraction.html:22 templates/learn/Abstraction.html:37
 msgid "go to x:(-100) y:(30)"
-msgstr "πήγαινε στη θέση x:(-100) και y:(30)"
+msgstr "πήγαινε σε θέση x: (-100) y: (30)"
 
 #: templates/learn/Abstraction.html:23 templates/learn/Abstraction.html:38
 #: templates/learn/Abstraction.html:65 templates/learn/Abstraction.html:71
 #: templates/learn/Abstraction.html:81
 msgid "pen down"
-msgstr "κατέβασε την πένα"
+msgstr "κατέβασε πένα"
 
 #: templates/learn/Abstraction.html:24 templates/learn/Abstraction.html:39
 #: templates/learn/Abstraction.html:72
@@ -1058,7 +1058,7 @@ msgstr "κινήσου (200)  βήματα"
 #: templates/learn/Abstraction.html:67 templates/learn/Abstraction.html:73
 #: templates/learn/Abstraction.html:83
 msgid "pen up"
-msgstr "σήκωσε την πένα"
+msgstr "σήκωσε πένα"
 
 #: templates/learn/Abstraction.html:26 templates/learn/Abstraction.html:42
 #: templates/learn/Abstraction.html:68 templates/learn/Abstraction.html:96
@@ -1069,13 +1069,13 @@ msgstr "περίμενε (1) δευτερόλεπτα"
 
 #: templates/learn/Abstraction.html:27 templates/learn/Abstraction.html:43
 msgid "go to x:(-44) y:(-24)"
-msgstr "πήγαινε στη θέση x:(-44) και y:(-24)"
+msgstr "πήγαινε σε θέση x: (-44) y: (-24)"
 
 #: templates/learn/Abstraction.html:28 templates/learn/Abstraction.html:44
 #: templates/learn/Abstraction.html:64 templates/learn/Abstraction.html:70
 #: templates/learn/Abstraction.html:80
 msgid "set pen color to [#FFA500]"
-msgstr "όρισε το χρώμα πένας σε [#FFA500]"
+msgstr "όρισε χρώμα πένας σε [#FFA500]"
 
 #: templates/learn/Abstraction.html:29 templates/learn/Abstraction.html:45
 #: templates/learn/Abstraction.html:66
@@ -1126,11 +1126,11 @@ msgstr ""
 
 #: templates/learn/Abstraction.html:63 templates/learn/Abstraction.html:94
 msgid "go to x:(-200) y:(40)"
-msgstr "πήγαινε στη θέση x:(-200) και y:(40)"
+msgstr "πήγαινε σε θέση x: (-200) y: (40)"
 
 #: templates/learn/Abstraction.html:69 templates/learn/Abstraction.html:97
 msgid "go to x:(-200) y:(0)"
-msgstr "πήγαινε στη θέση x:(-200) και y:(0)"
+msgstr "πήγαινε σε θέση x: (-200) y: (0)"
 
 #: templates/learn/Abstraction.html:76
 msgid ""
@@ -1240,7 +1240,7 @@ msgstr "για πάντα"
 
 #: templates/learn/Abstraction.html:120
 msgid "create clone of [myself v]"
-msgstr "δημιούργησε κλώνο [του εαυτού μου v]"
+msgstr "δημιούργησε κλώνο του [εαυτού μου v]"
 
 #: templates/learn/Abstraction.html:121
 msgid "wait (0.2) secs"
@@ -1248,13 +1248,11 @@ msgstr "περίμενε (0.2) δευτερόλεπτα"
 
 #: templates/learn/Abstraction.html:122
 msgid "go to x:(pick random(-200) to (200)) y:(200)"
-msgstr ""
-"πήγαινε στη θέση x:(επίλεξε έναν τυχαίο αριθμό από το (-200) μέχρι το (200)) "
-"και y:(200)"
+msgstr "πήγαινε σε θέση x: (επίλεξε τυχαίο (-200) εώς (200)) y:(200)"
 
 #: templates/learn/Abstraction.html:123
 msgid "glide (3) secs to x:(x position) y:(-180)"
-msgstr "πήγαινε αργά για (3) δευτ. στη θέση x: (θέση του x) και y: (-180)"
+msgstr "ολίσθησε για (3) δευτ. στη θέση x: (θέση x) y: (-180)"
 
 #: templates/learn/Abstraction.html:124
 msgid "delete this clone"
@@ -1319,23 +1317,27 @@ msgstr "κινήσου (10) βήματα"
 
 #: templates/learn/Data.html:30 templates/learn/attrInit.html:26
 msgid "go to x:(0) y:(0)"
-msgstr "πήγαινε στη θέση x:(0) και y:(0)"
+msgstr "πήγαινε σε θέση x:(0) y:(0)"
 
 #: templates/learn/Data.html:31
 msgid "glide (1) secs to x:(0) y:(0)"
-msgstr "πήγαινε αργά για (1) δευτ. στη θέση x:(0) και y:(0)"
+msgstr "ολίσθησε για (1) δευτ. στη θέση x: (0) y: (0)"
 
 #: templates/learn/Data.html:32
 msgid "set x to (0)"
-msgstr "όρισε το x ίσο με (0)"
+msgstr "όρισε x σε (0)"
 
 #: templates/learn/Data.html:33
 msgid "set y to (0)"
-msgstr "όρισε το y ίσο με (0)"
+msgstr "όρισε y σε (0)"
 
-#: templates/learn/Data.html:34 templates/learn/Data.html.py:35
+#: templates/learn/Data.html:33
 msgid "change x by (0)"
-msgstr "άλλαξε το x κατά (0)"
+msgstr "άλλαξε x κατά (0)"
+
+#: templates/learn/Data.html:34
+msgid "change y by (0)"
+msgstr "άλλαξε y κατά (0)"
 
 #: templates/learn/Data.html:38
 msgid "Size:"
@@ -1343,11 +1345,11 @@ msgstr "Μέγεθος:"
 
 #: templates/learn/Data.html:42
 msgid "change size by (10)"
-msgstr "άλλαξε το μέγεθος του αντικειμένου κατά (10)"
+msgstr "άλλαξε μέγεθος κατά (10)"
 
 #: templates/learn/Data.html:43
-msgid "set size to (120) &percnt;"
-msgstr "όρισε το μέγεθος του αντικειμένου σε (120)%%"
+msgid "set size to (120)"
+msgstr "όρισε μέγεθος σε (120) "
 
 #: templates/learn/Data.html:47
 msgid "Orientation:"
@@ -1355,11 +1357,11 @@ msgstr "Κατεύθυνση:"
 
 #: templates/learn/Data.html:51
 msgid "point in direction (90 v)"
-msgstr "στρίψε προς την κατεύθυνση των (90 v) μοιρών"
+msgstr "δείξε προς κατεύθυνση (90 v)"
 
 #: templates/learn/Data.html:52
 msgid "point towards [v]"
-msgstr "στρίψε προς το [v]"
+msgstr "δείξε προς [v]"
 
 #: templates/learn/Data.html:53 templates/learn/Flow.html:42
 #: templates/learn/Flow.html.py:61
@@ -1377,21 +1379,21 @@ msgstr "Ενδυμασία:"
 
 #: templates/learn/Data.html:61
 msgid "switch costume to [butterfly v]"
-msgstr "άλλαξε την ενδυμασία σε [πεταλούδα v]"
+msgstr "άλλαξε ενδυμασία σε [πεταλούδα v]"
 
 #: templates/learn/Data.html:62 templates/learn/duplicatedScripts.html:18
 #: templates/learn/duplicatedScripts.html:26
 #: templates/learn/duplicatedScripts.html:40
 msgid "next costume"
-msgstr "άλλαξε στην επόμενη ενδυμασία"
+msgstr "επόμενη ενδυμασία"
 
 #: templates/learn/Data.html:63
 msgid "change [color v] effect by (25)"
-msgstr "άλλαξε το εφέ [χρώματος v] κατά (25)"
+msgstr "άλλαξε εφέ [χρώματος v] κατά (25)"
 
 #: templates/learn/Data.html:64
 msgid "set [color v] effect to (0)"
-msgstr "όρισε το εφέ [χρώματος v] σε (0)"
+msgstr "όρισε εφέ [χρώματος v] σε (0)"
 
 #: templates/learn/Data.html:67
 msgid "Visibility:"
@@ -1435,15 +1437,15 @@ msgstr ""
 
 #: templates/learn/Data.html:86
 msgid "set [Points v] to [0]"
-msgstr "όρισε το [Πόντοι v] σε [0]"
+msgstr "όρισε [Πόντοι v] σε [0]"
 
 #: templates/learn/Data.html:87
 msgid "if &lt;touching color [#0000FF]&gt; then"
-msgstr "εάν &lt; αγγίζει το χρώμα[#00000FF]?&gt; τότε"
+msgstr "εάν &lt; αγγίζει χρώμα [#0000FF]; &gt;τότε"
 
 #: templates/learn/Data.html:88
 msgid "change [Points v] by (1)"
-msgstr "άλλαξε το [Πόντοι v] κατά (1)"
+msgstr "άλλαξε [Πόντοι v] κατά (1)"
 
 #: templates/learn/Data.html:92
 msgid ""
@@ -1490,7 +1492,7 @@ msgstr ""
 
 #: templates/learn/Data.html:105 templates/learn/Data.html.py:118
 msgid "delete (all v) of [Students v]"
-msgstr "διάγραψε το (όλα v) από το [Μαθητές v]"
+msgstr "διάγραψε (όλα v) από λίστα [Μαθητές v]"
 
 #: templates/learn/Data.html:106 templates/learn/Data.html.py:119
 #: templates/learn/Flow.html:59
@@ -1503,7 +1505,7 @@ msgstr "ρώτησε [Βάλε ένα όνομα μαθητή] και περίμ
 
 #: templates/learn/Data.html:108 templates/learn/Data.html.py:121
 msgid "insert (answer) at (last v) of [Students v]"
-msgstr "βάλε το (απάντηση) στη θέση [τελευταίο v] της λίστας [Μαθητές v]"
+msgstr "βάλε (απάντηση) στη θέση [τελευταίο v] λίστας [Μαθητές v]"
 
 #: templates/learn/Data.html:112
 msgid ""
@@ -1544,9 +1546,7 @@ msgstr "πες [Ο σημερινός εθελοντής θα είναι...] γ�
 
 #: templates/learn/Data.html:124
 msgid "say (item(pick random (1) to (3)) of [Students v]) for (2) secs"
-msgstr ""
-"πες (το στοιχείο (επίλεξε έναν τυχαίο αριθμό από το (1) μέχρι το (3)) της "
-"λίστας [Μαθητές v]) για (2) δευτερόλεπτα"
+msgstr "πες (στοιχείο (επίλεξε τυχαίο (1) εώς (3)) λίστας [Μαθητές v]) για (2) δευτερόλεπτα"
 
 #: templates/learn/Data.html:128
 msgid ""
@@ -1635,7 +1635,7 @@ msgstr ""
 #: templates/learn/duplicatedScripts.html:27
 #: templates/learn/duplicatedScripts.html:41
 msgid "if on edge, bounce"
-msgstr "εάν βρίσκεσαι στα όρια, αναπήδησε"
+msgstr "εάν σε όριο, αναπήδησε"
 
 #: templates/learn/Flow.html:72
 msgid "How these control blocks works?"
@@ -1676,7 +1676,7 @@ msgstr ""
 
 #: templates/learn/Flow.html:86
 msgid "repeat until &lt; touching [Enemy v] ?&gt;"
-msgstr "επανάλαβε ώσπου &lt;αγγίζει το [Αντίπαλο v]?&gt;"
+msgstr "επανάλαβε ώσπου &lt;αγγίζει [Αντίπαλο v] ;&gt;"
 
 #: templates/learn/Flow.html:87
 msgid "say [You don't catch me]"
@@ -1725,7 +1725,8 @@ msgstr ""
 
 #: templates/learn/Logic.html:21
 msgid "if &lt; touching color [#0000FF]?  &gt;then"
-msgstr "εάν &lt; άγγιζει χρώμα [#0000FF]?&gt; τότε"
+msgstr "εάν &lt; αγγίζει χρώμα [#0000FF]; &gt;τότε"
+
 
 #: templates/learn/Logic.html:22 templates/learn/Logic.html.py:35
 #: templates/learn/Logic.html:37
@@ -1764,7 +1765,7 @@ msgstr ""
 
 #: templates/learn/Logic.html:34
 msgid "if &lt; touching color [#0000FF]? &gt;then"
-msgstr "εάν &lt; άγγιζει χρώμα [#0000FF]?&gt; τότε"
+msgstr "εάν &lt; αγγίζει χρώμα [#0000FF]; &gt;τότε"
 
 #: templates/learn/Logic.html:36
 msgid "else"
@@ -1807,8 +1808,7 @@ msgstr ""
 
 #: templates/learn/Logic.html:49
 msgid "if &lt;&lt; touching [Enemy v]? &gt; and &lt;(lives) = [0]&gt;&gt; then"
-msgstr ""
-"εάν &lt;&lt; αγγίζει το [Αντίπαλος v]? &gt; και &lt;(ζωές) = [0]&gt;?gt;τότε"
+msgstr "εάν <<αγγίζει [Αντίπαλος v] ;> και <(ζωές) = [0]>> τότε"
 
 #: templates/learn/Logic.html:50
 msgid "say [Game over]"
@@ -1819,15 +1819,12 @@ msgid "stop [all v]"
 msgstr "σταμάτησε [όλα v]"
 
 #: templates/learn/Logic.html:53
-msgid ""
-"if &lt;&lt; touching [edge v]? &gt; or &lt; touching [Enemy v]? &gt;&gt;then"
-msgstr ""
-"εάν &lt;&lt; αγγίζει το [όρια v]? &gt; ή &lt; αγγίζει το [Αντίπαλος v]? &gt;"
-"&gt; τότετότε"
+msgid "if &lt;&lt; touching [edge v]? &gt; or &lt; touching [Enemy v]? &gt;&gt;then"
+msgstr "εάν &lt;&lt;αγγίζει [όρια v] ;&gt; ή &lt;αγγίζει [Αντίπαλος v] ;&gt;&gt; τότε"
 
 #: templates/learn/Logic.html:54
 msgid "change [lives v] by (-1)"
-msgstr "άλλαξε το [lives v] κατά (-1)"
+msgstr "άλλαξε [ζωές v] κατά (-1)"
 
 #: templates/learn/Logic.html:56
 msgid "if &lt;not&lt; (level) = (5)&gt;&gt;then"
@@ -1899,7 +1896,7 @@ msgstr ""
 
 #: templates/learn/Parallelism.html:35 templates/learn/Parallelism.html:37
 msgid "when [a v] key pressed"
-msgstr "Όταν το πλήκτρο [a v] πατηθεί"
+msgstr "όταν πατηθεί πλήκτρο [a v]"
 
 #: templates/learn/Parallelism.html:36 templates/learn/Parallelism.html:38
 msgid "say [A] for (2) secs"
@@ -1908,11 +1905,11 @@ msgstr "πες [A] για (2) δευτερόλεπτα"
 #: templates/learn/Parallelism.html:40 templates/learn/Parallelism.html:45
 #: templates/learn/User.html:42
 msgid "when this sprite clicked"
-msgstr "Όταν σε αυτό το αντικείμενο γίνει κλικ"
+msgstr "όταν γίνει κλικ σε αυτό το αντικείμενο"
 
 #: templates/learn/Parallelism.html:47
-msgid "if &lt;touching [the mouse pointer v]? &gt;"
-msgstr "εάν &lt;αγγίζει το [δείκτη του ποντικού v]? &gt; τότε"
+msgid "if &lt;touching [the mouse pointer v]? &gt; then"
+msgstr "εάν &lt;αγγίζει [δείκτη του ποντικού v]; &gt; τότε"
 
 #: templates/learn/Parallelism.html:48
 msgid "turn cw (30) degrees"
@@ -1958,11 +1955,11 @@ msgstr "Όταν το υπόβαθρο αλλάξει σε [backdrop1 v]"
 #: templates/learn/Parallelism.html:68
 #: templates/learn/duplicatedScripts.html:14
 msgid "when I receive [message1 v]"
-msgstr "Όταν λάβω το [message1 v]"
+msgstr "Όταν λάβω [message1 v]"
 
 #: templates/learn/Parallelism.html:69
 msgid "when [loudness v] &gt; (10)"
-msgstr "Όταν [ένταση v] &gt; 10"
+msgstr "Όταν [ένταση v] &gt; (10)"
 
 #: templates/learn/Parallelism.html:70
 msgid "when [video motion v] &gt; (2)"
@@ -2073,7 +2070,7 @@ msgstr ""
 
 #: templates/learn/Synchronization.html:48
 msgid "if &lt; touching [mouse pointer v]?&gt;then"
-msgstr "εάν &lt;αγγίζει [δείκτη του ποντικού v]? &gt; τότε"
+msgstr "εάν &lt;αγγίζει [δείκτη του ποντικού v]; &gt; τότε"
 
 #: templates/learn/Synchronization.html:49
 msgid "broadcast [catched! v]"
@@ -2081,7 +2078,7 @@ msgstr "μετάδωσε [πιάστηκε! v]"
 
 #: templates/learn/Synchronization.html:53
 msgid "when I receive [catched! v]"
-msgstr "Όταν λάβω το [πιάστηκε! v]"
+msgstr "Όταν λάβω [πιάστηκε! v]"
 
 #: templates/learn/Synchronization.html:54
 msgid "say [You have catched my friend] for (2) secs"
@@ -2210,23 +2207,24 @@ msgstr ""
 
 #: templates/learn/User.html:39
 msgid " when [right arrow v] key pressed"
-msgstr "Όταν το πλήκτρο [αριστερό βέλος v] πατηθεί"
+msgstr "όταν πατηθεί πλήκτρο [αριστερό βέλος v]"
+
 
 #: templates/learn/User.html:43
 msgid "say [Hello] for (2) secs"
-msgstr "πες [Hello] για (2) δευτερόλεπτα"
+msgstr "πες [Γεια σου] για (2) δευτερόλεπτα"
 
 #: templates/learn/User.html:45
 msgid "ask [What's your name?] and wait"
 msgstr "ρώτησε [Βάλε ένα όνομα μαθητή] και περίμενε"
 
 #: templates/learn/User.html:46
-msgid "say &lt;join [Hello,]&lt;answer"
-msgstr ""
+msgid "say (join [Hello] [answer])"
+msgstr "πες (ένωσε [Γεια σου] [απάντηση])"
 
 #: templates/learn/User.html:48
 msgid "if &lt;touching [mouse-pointer v] &gt; then"
-msgstr "εάν &lt;αγγίζει [δείκτη του ποντικού v]? &gt; τότε"
+msgstr "εάν &lt;αγγίζει [δείκτη του ποντικού v]; &gt; τότε"
 
 #: templates/learn/User.html:49
 msgid "say [You caught me!]"
@@ -2234,11 +2232,12 @@ msgstr "πες [Με έπιασες]"
 
 #: templates/learn/User.html:52
 msgid "mouse down?"
-msgstr "κατέβασε την πένα"
+msgstr "&lt;πατήθηκε πλήκτρο ποντικιού;&gt;"
 
 #: templates/learn/User.html:54
 msgid "go to [mouse-pointer v]"
-msgstr "εάν &lt;αγγίζει [δείκτη του ποντικού v]? &gt; τότε"
+msgstr "πήγαινε σε [δείκτη του ποντικού v]"
+
 
 #: templates/learn/User.html:58
 msgid ""
@@ -2266,19 +2265,19 @@ msgstr ""
 
 #: templates/learn/User.html:69
 msgid "if &lt;(loudness) >[30]&gt; then"
-msgstr "εάν &lt; αγγίζει το χρώμα[#00000FF]?&gt; τότε"
+msgstr "εάν &lt; (ένταση) &gt;[30]&gt;τότε"
 
 #: templates/learn/User.html:70
 msgid "say [There is much noise...]"
-msgstr ""
+msgstr "πες [Υπάρχει πολύ θόρυβος...]"
 
 #: templates/learn/User.html:73
-msgid "video [motion v] on [this sprite v]"
-msgstr ""
+msgid "video [motion v] on [sprite v]"
+msgstr "βίντεο [κίνηση v] για [αντικείμενο v]"
 
 #: templates/learn/User.html:75
-msgid "video [direction v] on [this sprite v]"
-msgstr ""
+msgid "video [direction v] on [sprite v]"
+msgstr "βίντεο [κατεύθυνση v] για [αντικείμενο v]"
 
 #: templates/learn/User.html:78
 msgid ""
@@ -2329,25 +2328,24 @@ msgstr ""
 
 #: templates/learn/attrInit.html:15
 msgid "when [right arrow v] key pressed //Not initialized correctly."
-msgstr ""
-"Όταν το πλήκτρο [δεξί βέλος v] πατηθεί //Δεν υπάρχει σωστή αρχικοποίηση"
+msgstr "όταν πατηθεί πλήκτρο [δεξί βέλος v] //Δεν υπάρχει σωστή αρχικοποίηση"
 
 #: templates/learn/attrInit.html:16 templates/learn/attrInit.html.py:22
 #: templates/learn/deadCode.html:16
 msgid "change x by (10)"
-msgstr "άλλαξε το x κατά (10)"
+msgstr "άλλαξε x κατά (10)"
 
 #: templates/learn/attrInit.html:17 templates/learn/attrInit.html.py:23
 msgid "when [left arrow v] key pressed"
-msgstr "Όταν το πλήκτρο [αριστερό βέλος v] πατηθεί"
+msgstr "όταν πατηθεί πλήκτρο [αριστερό βέλος v]"
 
 #: templates/learn/attrInit.html:18 templates/learn/attrInit.html.py:24
 msgid "change x by (-10)"
-msgstr "άλλαξε το x κατά (-10)"
+msgstr "άλλαξε x κατά (-10)"
 
 #: templates/learn/attrInit.html:21
 msgid "when [right arrow v] key pressed  //Initialized correctly."
-msgstr "Όταν το πλήκτρο [δεξί βέλος v] πατηθεί //Σωστή αρχικοποίηση"
+msgstr "όταν πατηθεί πλήκτρο [δεξί βέλος v] //Σωστή αρχικοποίηση"
 
 #: templates/learn/deadCode.html:11
 msgid ""
@@ -2361,20 +2359,20 @@ msgstr ""
 "μεταδίδει."
 
 #: templates/learn/deadCode.html:14
-msgid "//Blocks that do not start with a hat block."
-msgstr "//Εντολές που δεν ξεκινούν με συμβάν (εντολή καπέλο)"
+msgid "forever //Blocks that do not start with a hat block."
+msgstr "για πάντα //Εντολές που δεν ξεκινούν με συμβάν (εντολή καπέλο)"
 
 #: templates/learn/deadCode.html:15
 msgid "if &lt; key [left arrow v] pressed ? &gt; then"
-msgstr "εάν &lt; πατήθηκε το πλήκτρο [αριστερό βέλος v] &gt; τότε"
+msgstr "εάν &lt; πατήθηκε πλήκτρο [αριστερό βέλος v] ;&gt; τότε"
 
 #: templates/learn/deadCode.html:18
-msgid "//Blocks that start with a hat block."
-msgstr "//Εντολές που ξεκινάν με συμβάν"
+msgid "when I receive [startcc v] //Blocks that start with a hat block."
+msgstr "όταν λάβω [startcc v] //Εντολές που ξεκινάν με συμβάν"
 
 #: templates/learn/deadCode.html:19
 msgid "switch costume to [costume2 v]"
-msgstr "άλλαξε την ενδυμασία σε [costume2 v]"
+msgstr "άλλαξε ενδυμασία σε [ενδυμασία2 v]"
 
 #: templates/learn/deadCode.html:20
 msgid "say [Let's start] for (2) secs"
@@ -2400,7 +2398,7 @@ msgstr ""
 #: templates/learn/duplicatedScripts.html:23
 #: templates/learn/duplicatedScripts.html:37
 msgid "set rotation style [left-rigt v]"
-msgstr "όρισε τον άξονα περιστροφής σε [οριζόντιο v]"
+msgstr "όρισε τρόπο περιστροφής [οριζόντιο v]"
 
 #: templates/learn/duplicatedScripts.html:16
 msgid "repeat (10)"
@@ -2412,7 +2410,8 @@ msgstr "κινήσου (2) βήματα"
 
 #: templates/learn/duplicatedScripts.html:22
 msgid "when I receive [message2 v]"
-msgstr "Όταν λάβω το [message2 v]"
+msgstr "Όταν λάβω [message2 v]"
+
 
 #: templates/learn/duplicatedScripts.html:24
 msgid "repeat (5)"
@@ -2437,7 +2436,7 @@ msgstr ""
 
 #: templates/learn/duplicatedScripts.html:36
 msgid "define walk (repetitions)(step)(pause)"
-msgstr "όρισε περπάτα(επαναλήψεις)(βήματα)(παύση)"
+msgstr "ορισμός περπάτα(επαναλήψεις)(βήματα)(παύση)"
 
 #: templates/learn/duplicatedScripts.html:38
 msgid "repeat (repetitions)"
