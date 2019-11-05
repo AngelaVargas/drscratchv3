@@ -1036,7 +1036,7 @@ msgstr ""
 #: templates/learn/Synchronization.html:27
 #: templates/learn/Synchronization.html:45 templates/learn/User.html:23
 #: templates/learn/attrInit.html:25
-msgid "when gf clicked"
+msgid "when green flag clicked"
 msgstr "quando si clicca sulla bandiera verde"
 
 #: templates/learn/Abstraction.html:21 templates/learn/Abstraction.html:36
@@ -1071,7 +1071,7 @@ msgstr "penna su"
 #: templates/learn/Synchronization.html:25
 #: templates/learn/duplicatedScripts.html:20
 msgid "wait (1) secs"
-msgstr "attendi (1) secondo"
+msgstr "attendi (1) secondi"
 
 #: templates/learn/Abstraction.html:27 templates/learn/Abstraction.html:43
 msgid "go to x:(-44) y:(-24)"
@@ -1081,7 +1081,7 @@ msgstr "vai a x:(-44) y:(-24)"
 #: templates/learn/Abstraction.html:64 templates/learn/Abstraction.html:70
 #: templates/learn/Abstraction.html:80
 msgid "set pen color to [#FFA500]"
-msgstr "usa penna di colore [#FFA500]"
+msgstr "porta colore penna a [#FFA500]"
 
 #: templates/learn/Abstraction.html:29 templates/learn/Abstraction.html:45
 #: templates/learn/Abstraction.html:66
@@ -1171,11 +1171,11 @@ msgstr ""
 
 #: templates/learn/Abstraction.html:95
 msgid "PaintedOrange(100):: looks stack"
-msgstr "PaintedOrange (100) :: guarda lo stack"
+msgstr "PaintedOrange (100) :: looks stack"
 
 #: templates/learn/Abstraction.html:98
 msgid "PaintedOrange(200):: looks stack"
-msgstr "PaintedOrange (200) :: guarda lo stack"
+msgstr "PaintedOrange (200) :: looks stack"
 
 #: templates/learn/Abstraction.html:102
 msgid ""
@@ -1336,9 +1336,13 @@ msgstr "vai dove x è (0)"
 msgid "set y to (0)"
 msgstr "vai dove y è (0)"
 
-#: templates/learn/Data.html:34 templates/learn/Data.html.py:35
+#: templates/learn/Data.html:33
 msgid "change x by (0)"
 msgstr "cambia x di (0)"
+
+#: templates/learn/Data.html:34
+msgid "change y by (0)"
+msgstr "cambia y di (0)"
 
 #: templates/learn/Data.html:38
 msgid "Size:"
@@ -1349,8 +1353,8 @@ msgid "change size by (10)"
 msgstr "cambia dimensione di (10)"
 
 #: templates/learn/Data.html:43
-msgid "set size to (120) &percnt;"
-msgstr "porta dimensione al (120) &percnt;"
+msgid "set size to (120)"
+msgstr "porta dimensione a (120) &percnt;"
 
 #: templates/learn/Data.html:47
 msgid "Orientation:"
@@ -1505,7 +1509,7 @@ msgstr "chiedi [Scrivere un nome di studente] e attendi"
 
 #: templates/learn/Data.html:108 templates/learn/Data.html.py:121
 msgid "insert (answer) at (last v) of [Students v]"
-msgstr "inserisci (risposta) alla posizione di (ultimo v) di [Studenti v]"
+msgstr "inserisci (risposta) alla posizione (ultimo v) di [Studenti v]"
 
 #: templates/learn/Data.html:112
 msgid ""
@@ -1548,7 +1552,7 @@ msgstr "dire [Il volontario di oggi sarà...] per (2) secondi"
 #: templates/learn/Data.html:124
 msgid "say (item(pick random (1) to (3)) of [Students v]) for (2) secs"
 msgstr ""
-"dire (elemento(numero a caso da (1) a (3)) di [Studenti v]) per (2) secondi"
+"dire (elemento(numero a caso tra (1) e (3)) di [Studenti v]) per (2) secondi"
 
 #: templates/learn/Data.html:128
 msgid ""
@@ -1833,7 +1837,7 @@ msgid "change [lives v] by (-1)"
 msgstr "cambia [vite v] di (-1)"
 
 #: templates/learn/Logic.html:56
-msgid "if &lt;not&lt; (level) = (5)&gt;&gt;then"
+msgid "if &lt; not &lt;(level)=(5)&gt;&gt;then"
 msgstr "se &lt;non&lt; (livello) = (5)&gt;&gt;allora"
 
 #: templates/learn/Logic.html:57
@@ -1914,12 +1918,12 @@ msgid "when this sprite clicked"
 msgstr "quando si clicca questo sprite"
 
 #: templates/learn/Parallelism.html:47
-msgid "if &lt;touching [the mouse pointer v]? &gt;"
-msgstr "se &lt;sta toccando [puntatore del mouse v]? &gt;"
+msgid "if &lt;touching [the mouse pointer v]? &gt; then"
+msgstr "se &lt;sta toccando [puntatore del mouse v] &gt; allora"
 
 #: templates/learn/Parallelism.html:48
 msgid "turn cw (30) degrees"
-msgstr "ruota di senso orario (30) gradi"
+msgstr "ruota in senso orario di (30) gradi"
 
 #: templates/learn/Parallelism.html:53
 msgid "How these blocks works?"
@@ -2214,15 +2218,15 @@ msgstr " quando si preme il tasto [freccia destra v]"
 
 #: templates/learn/User.html:43
 msgid "say [Hello] for (2) secs"
-msgstr "dire [Hello] per (2) secondi"
+msgstr "dire [Ciao] per (2) secondi"
 
 #: templates/learn/User.html:45
 msgid "ask [What's your name?] and wait"
-msgstr "chiedi [What's your name?] e attendi"
+msgstr "chiedi [Come ti chiami?] e attendi"
 
 #: templates/learn/User.html:46
-msgid "say &lt;join [Hello,]&lt;answer"
-msgstr "dire &lt;unione di [Hello,]&lt; e risposta"
+msgid "say (join [Hello] [answer])"
+msgstr "dire (unione di [Ciao] e [risposta])"
 
 #: templates/learn/User.html:48
 msgid "if &lt;touching [mouse-pointer v] &gt; then"
@@ -2274,12 +2278,12 @@ msgid "say [There is much noise...]"
 msgstr "dire [C'è molto rumore ...]"
 
 #: templates/learn/User.html:73
-msgid "video [motion v] on [this sprite v]"
-msgstr "[movimento v] del video della webcam rispetto a [questo sprite v]"
+msgid "video [motion v] on [sprite v]"
+msgstr "[movimento v] del video su [sprite v]"
 
 #: templates/learn/User.html:75
-msgid "video [direction v] on [this sprite v]"
-msgstr "[direzione v] del video della webcam rispetto a [questo sprite v]"
+msgid "video [direction v] on [sprite v]"
+msgstr "[direzione v] del video su [sprite v]"
 
 #: templates/learn/User.html:78
 msgid ""
@@ -2332,7 +2336,7 @@ msgstr ""
 #: templates/learn/attrInit.html:15
 msgid "when [right arrow v] key pressed //Not initialized correctly."
 msgstr ""
-"quando tasto premuto [freccia destra v] //Inizializzazione non corretta."
+"quando si preme il tasto [freccia destra v] //Inizializzazione non corretta."
 
 #: templates/learn/attrInit.html:16 templates/learn/attrInit.html.py:22
 #: templates/learn/deadCode.html:16
@@ -2364,16 +2368,16 @@ msgstr ""
 "messaggio che non viene mai inviato."
 
 #: templates/learn/deadCode.html:14
-msgid "//Blocks that do not start with a hat block."
-msgstr "//Blocchi che non iniziano con un blocco cappello."
+msgid "forever //Blocks that do not start with a hat block."
+msgstr "per sempre //Blocchi che non iniziano con un blocco cappello."
 
 #: templates/learn/deadCode.html:15
 msgid "if &lt; key [left arrow v] pressed ? &gt; then"
 msgstr "se &lt; tasto [freccia sinistra v] premuto &gt; allora"
 
 #: templates/learn/deadCode.html:18
-msgid "//Blocks that start with a hat block."
-msgstr "//Blocchi che iniziano con un blocco cappello."
+msgid "when I receive [startcc v] //Blocks that start with a hat block."
+msgstr "quando ricevo [startcc v] //Blocchi che iniziano con un blocco cappello."
 
 #: templates/learn/deadCode.html:19
 msgid "switch costume to [costume2 v]"
@@ -2403,7 +2407,7 @@ msgstr ""
 #: templates/learn/duplicatedScripts.html:23
 #: templates/learn/duplicatedScripts.html:37
 msgid "set rotation style [left-rigt v]"
-msgstr "porta stile rotazione a [sinistra-destra v]"
+msgstr "usa stile rotazione [sinistra-destra v]"
 
 #: templates/learn/duplicatedScripts.html:16
 msgid "repeat (10)"
