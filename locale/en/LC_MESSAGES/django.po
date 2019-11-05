@@ -1618,7 +1618,7 @@ msgid "change [lives v] by (-1)"
 msgstr ""
 
 #: templates/learn/Logic.html:56
-msgid "if &lt;not&lt; (level) = (5)&gt;&gt;then"
+msgid "if &lt; not &lt;(level)=(5)&gt;&gt;then"
 msgstr ""
 
 #: templates/learn/Logic.html:57

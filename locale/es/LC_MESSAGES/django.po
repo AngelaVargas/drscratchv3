@@ -1837,7 +1837,7 @@ msgid "change [lives v] by (-1)"
 msgstr "sumar a [vidas v] (-1)"
 
 #: templates/learn/Logic.html:56
-msgid "if &lt;not&lt; (level) = (5)&gt;&gt;then"
+msgid "if &lt; not &lt;(level)=(5)&gt;&gt;then"
 msgstr "si &lt;no&lt; (nivel) = (5)&gt;&gt;entonces"
 
 #: templates/learn/Logic.html:57
