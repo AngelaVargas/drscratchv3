@@ -1066,8 +1066,8 @@ msgstr ""
 #: templates/learn/Synchronization.html:27
 #: templates/learn/Synchronization.html:45 templates/learn/User.html:23
 #: templates/learn/attrInit.html:25
-msgid "when gf clicked"
-msgstr "Quando alguém clicar em @"
+msgid "when green flag clicked"
+msgstr "Quando alguém clicar na bandeira verde"
 
 #: templates/learn/Abstraction.html:21 templates/learn/Abstraction.html:36
 #: templates/learn/Abstraction.html:62 templates/learn/Abstraction.html:93
@@ -1076,7 +1076,7 @@ msgstr "apaga tudo do palco"
 
 #: templates/learn/Abstraction.html:22 templates/learn/Abstraction.html:37
 msgid "go to x:(-100) y:(30)"
-msgstr "vai para as coordenadas x:(-100), y:(30)"
+msgstr "vai para a posição x:(-100) y:(30)"
 
 #: templates/learn/Abstraction.html:23 templates/learn/Abstraction.html:38
 #: templates/learn/Abstraction.html:65 templates/learn/Abstraction.html:71
@@ -1105,7 +1105,7 @@ msgstr "espera (1) s"
 
 #: templates/learn/Abstraction.html:27 templates/learn/Abstraction.html:43
 msgid "go to x:(-44) y:(-24)"
-msgstr "vai para as coordenadas x:(-44), y:(-24)"
+msgstr "vai para a posição x:(-44) y:(-24)"
 
 #: templates/learn/Abstraction.html:28 templates/learn/Abstraction.html:44
 #: templates/learn/Abstraction.html:64 templates/learn/Abstraction.html:70
@@ -1160,11 +1160,11 @@ msgstr ""
 
 #: templates/learn/Abstraction.html:63 templates/learn/Abstraction.html:94
 msgid "go to x:(-200) y:(40)"
-msgstr "vai para as coordenadas x:(-200), y:(40)"
+msgstr "vai para a posição x:(-200) y:(40)"
 
 #: templates/learn/Abstraction.html:69 templates/learn/Abstraction.html:97
 msgid "go to x:(-200) y:(0)"
-msgstr "vai para as coordenadas x:(-200), y:(0)"
+msgstr "vai para a posição x:(-200) y:(0)"
 
 #: templates/learn/Abstraction.html:76
 msgid ""
@@ -1280,12 +1280,12 @@ msgstr "espera (0.2) s"
 #: templates/learn/Abstraction.html:122
 msgid "go to x:(pick random(-200) to (200)) y:(200)"
 msgstr ""
-"vai para as coordenadas x:(um valor ao acaso entre (-200) e (200)), y:(200)"
+"vai para a posição x:(um valor ao acaso entre (-200) e (200)) y:(200)"
 
 #: templates/learn/Abstraction.html:123
 msgid "glide (3) secs to x:(x position) y:(-180)"
 msgstr ""
-"desliza em (3)s para as coordenadas x:(a coordenada x da posição), y:(-180)"
+"desliza em (3)s para a posição x:(a coordenada x da posição) y:(-180)"
 
 #: templates/learn/Abstraction.html:124
 msgid "delete this clone"
@@ -1349,23 +1349,27 @@ msgstr "anda (10) passos"
 
 #: templates/learn/Data.html:30 templates/learn/attrInit.html:26
 msgid "go to x:(0) y:(0)"
-msgstr "vai para as coordenadas x:(0), y:(0)"
+msgstr "vai para a posição x:(0) y:(0)"
 
 #: templates/learn/Data.html:31
 msgid "glide (1) secs to x:(0) y:(0)"
-msgstr "desliza em (1) s para as coordenadas x:(0), y:(0)"
+msgstr "desliza em (1) s para a posição x:(0) y:(0)"
 
 #: templates/learn/Data.html:32
 msgid "set x to (0)"
-msgstr "altera a tua coordenada x para (0)"
+msgstr "altera o teu x para (0)"
 
 #: templates/learn/Data.html:33
 msgid "set y to (0)"
-msgstr "altera a tua coordenada y para (0)"
+msgstr "altera o teu y para (0)"
 
-#: templates/learn/Data.html:34 templates/learn/Data.html.py:35
+#: templates/learn/Data.html:33
 msgid "change x by (0)"
-msgstr "adiciona (0) à tua coordenada x"
+msgstr "adiciona (0) ao teu x"
+
+#: templates/learn/Data.html:34
+msgid "change y by (0)"
+msgstr "adiciona (0) ao teu y"
 
 #: templates/learn/Data.html:38
 msgid "Size:"
@@ -1373,11 +1377,11 @@ msgstr "Tamanho:"
 
 #: templates/learn/Data.html:42
 msgid "change size by (10)"
-msgstr "adiciona (10) % ao teu tamanho"
+msgstr "adiciona (10) ao teu tamanho"
 
 #: templates/learn/Data.html:43
-msgid "set size to (120) &percnt;"
-msgstr "altera o teu tamanho para (120) %"
+msgid "set size to (120)"
+msgstr "altera o teu tamanho para (120) &percnt;"
 
 #: templates/learn/Data.html:47
 msgid "Orientation:"
@@ -1385,11 +1389,11 @@ msgstr "Orientação:"
 
 #: templates/learn/Data.html:51
 msgid "point in direction (90 v)"
-msgstr "altera a tua direcção para (90) °"
+msgstr "altera a tua direcção para (90 v) °"
 
 #: templates/learn/Data.html:52
 msgid "point towards [v]"
-msgstr "aponta em direcção a [ v]"
+msgstr "aponta em direcção a [v]"
 
 #: templates/learn/Data.html:53 templates/learn/Flow.html:42
 #: templates/learn/Flow.html.py:61
@@ -1464,15 +1468,15 @@ msgstr ""
 
 #: templates/learn/Data.html:86
 msgid "set [Points v] to [0]"
-msgstr "altera [Points v] para [0]"
+msgstr "altera [Pontos v] para [0]"
 
 #: templates/learn/Data.html:87
 msgid "if &lt;touching color [#0000FF]&gt; then"
-msgstr "se &lt; estás a tocar  na cor [#0000FF]&gt; ,então"
+msgstr "se &lt; estás a tocar na cor [#0000FF]&gt; , então"
 
 #: templates/learn/Data.html:88
 msgid "change [Points v] by (1)"
-msgstr "adiciona a [Points v] o valor (1)"
+msgstr "adiciona a [Pontos v] o valor (1)"
 
 #: templates/learn/Data.html:92
 msgid ""
@@ -1516,7 +1520,7 @@ msgstr ""
 
 #: templates/learn/Data.html:105 templates/learn/Data.html.py:118
 msgid "delete (all v) of [Students v]"
-msgstr "remove (tudo v) de [Students v]"
+msgstr "remove (tudo v) de [Alunos v]"
 
 #: templates/learn/Data.html:106 templates/learn/Data.html.py:119
 #: templates/learn/Flow.html:59
@@ -1525,11 +1529,11 @@ msgstr "repete (3) vezes"
 
 #: templates/learn/Data.html:107 templates/learn/Data.html.py:120
 msgid "ask [Introduce a student name] and wait"
-msgstr "pergunta [Introduce a student name] e espera pela resposta"
+msgstr "pergunta [Introduzir o nome do aluno] e espera pela resposta"
 
 #: templates/learn/Data.html:108 templates/learn/Data.html.py:121
 msgid "insert (answer) at (last v) of [Students v]"
-msgstr "insere (a resposta) como (o último item v) de [Students v]"
+msgstr "insere (a resposta) como (o último item v) de [Alunos v]"
 
 #: templates/learn/Data.html:112
 msgid ""
@@ -1566,12 +1570,12 @@ msgstr "fim"
 
 #: templates/learn/Data.html:123
 msgid "say [Today's volunteer will be...] for (2) secs"
-msgstr "diz [Today's volunteer will be...] durante (2) s"
+msgstr "diz [O voluntário de hoje será ...] durante (2) s"
 
 #: templates/learn/Data.html:124
 msgid "say (item(pick random (1) to (3)) of [Students v]) for (2) secs"
 msgstr ""
-"diz ((um valor ao acaso entre (1) e (3)) de [Students v]) durante (2) s"
+"diz ((um valor ao acaso entre (1) e (3)) de [Alunos v]) durante (2) s"
 
 #: templates/learn/Data.html:128
 msgid ""
@@ -1615,7 +1619,7 @@ msgstr ""
 
 #: templates/learn/Flow.html:40 templates/learn/Flow.html.py:58
 msgid "say [I'm a dancer cat] for (2) secs"
-msgstr "diz [I'm a dancer cat] durante (2) s"
+msgstr "diz [Eu sou um gato dançarino] durante (2) s"
 
 #: templates/learn/Flow.html:43 templates/learn/Flow.html.py:62
 #: templates/learn/Flow.html:65 templates/learn/duplicatedScripts.html:28
@@ -1697,15 +1701,15 @@ msgstr ""
 
 #: templates/learn/Flow.html:86
 msgid "repeat until &lt; touching [Enemy v] ?&gt;"
-msgstr "até que &lt; estás a tocar em [Enemy v] ?&gt; , repete"
+msgstr "até que &lt; estás a tocar em [Inimigo v] ?&gt; , repete"
 
 #: templates/learn/Flow.html:87
 msgid "say [You don't catch me]"
-msgstr "diz [You don't catch me]"
+msgstr "diz [Você não me pega]"
 
 #: templates/learn/Flow.html:89
 msgid "say [You catch me]"
-msgstr "diz [You catch me]"
+msgstr "diz [Você me pegou]"
 
 #: templates/learn/Flow.html:92
 msgid ""
@@ -1746,12 +1750,12 @@ msgstr ""
 
 #: templates/learn/Logic.html:21
 msgid "if &lt; touching color [#0000FF]?  &gt;then"
-msgstr "se &lt; estás a tocar na cor [#0000FF] ?&gt; ,então"
+msgstr "se &lt; estás a tocar na cor [#0000FF] &gt; , então"
 
 #: templates/learn/Logic.html:22 templates/learn/Logic.html.py:35
 #: templates/learn/Logic.html:37
 msgid "say [I have reached the goal!] for (2) secs"
-msgstr "diz [I have reached the goal!] durante (2) s"
+msgstr "diz [Eu alcancei a meta!] durante (2) s"
 
 #: templates/learn/Logic.html:23
 msgid ""
@@ -1785,7 +1789,7 @@ msgstr ""
 
 #: templates/learn/Logic.html:34
 msgid "if &lt; touching color [#0000FF]? &gt;then"
-msgstr "se &lt; estás a tocar na cor [#0000FF]? &gt; ,então"
+msgstr "se &lt; estás a tocar na cor [#0000FF] &gt; , então"
 
 #: templates/learn/Logic.html:36
 msgid "else"
@@ -1829,12 +1833,11 @@ msgstr ""
 #: templates/learn/Logic.html:49
 msgid "if &lt;&lt; touching [Enemy v]? &gt; and &lt;(lives) = [0]&gt;&gt; then"
 msgstr ""
-"se &lt;&lt; estás a tocar em [Enemy v]? &gt; e &lt;(lives) = [0]&gt;&gt; ,"
-"então"
+"se &lt;&lt; estás a tocar em [Enemy v]? &gt; e &lt;(lives) = [0]&gt;&gt; , então"
 
 #: templates/learn/Logic.html:50
 msgid "say [Game over]"
-msgstr "diz [Game over]"
+msgstr "diz [Fim de jogo]"
 
 #: templates/learn/Logic.html:51 templates/learn/Synchronization.html:71
 msgid "stop [all v]"
@@ -1845,19 +1848,19 @@ msgid ""
 "if &lt;&lt; touching [edge v]? &gt; or &lt; touching [Enemy v]? &gt;&gt;then"
 msgstr ""
 "se &lt;&lt; estás a tocar em [a borda v]? &gt; ou &lt; estás a tocar em "
-"[Enemy v]? &gt; &gt; ,então"
+"[Enemy v]? &gt; &gt; , então"
 
 #: templates/learn/Logic.html:54
 msgid "change [lives v] by (-1)"
-msgstr "adiciona a [lives v] o valor (-1)"
+msgstr "adiciona a [vidas v] o valor (-1)"
 
 #: templates/learn/Logic.html:56
-msgid "if &lt;not&lt; (level) = (5)&gt;&gt;then"
-msgstr "se &lt; é falso que &lt; (level) = (5)&gt;&gt; ,então"
+msgid "if &lt; not &lt;(level)=(5)&gt;&gt;then"
+msgstr "se &lt; é falso que &lt; (nível) = (5)&gt;&gt; , então"
 
 #: templates/learn/Logic.html:57
 msgid "say [You still have undiscovered levels] for (2) secs"
-msgstr "diz [You still have undiscovered levels] durante (2) s"
+msgstr "diz [Você ainda tem níveis não descobertos] durante (2) s"
 
 #: templates/learn/Logic.html:60
 msgid ""
@@ -1931,8 +1934,8 @@ msgid "when this sprite clicked"
 msgstr "Quando alguém clicar em ti"
 
 #: templates/learn/Parallelism.html:47
-msgid "if &lt;touching [the mouse pointer v]? &gt;"
-msgstr "se &lt; estás a tocar em [o ponteiro do rato v]? &gt; ,então"
+msgid "if &lt;touching [the mouse pointer v]? &gt; then"
+msgstr "se &lt; estás a tocar em [o ponteiro do rato v] &gt; , então"
 
 #: templates/learn/Parallelism.html:48
 msgid "turn cw (30) degrees"
@@ -1975,7 +1978,7 @@ msgstr "Quando o cenário mudar para [backdrop1 v]"
 #: templates/learn/Parallelism.html:68
 #: templates/learn/duplicatedScripts.html:14
 msgid "when I receive [message1 v]"
-msgstr "Quando receberes a mensagem [message1 v]"
+msgstr "Quando receberes a mensagem [mensagem1 v]"
 
 #: templates/learn/Parallelism.html:69
 msgid "when [loudness v] &gt; (10)"
@@ -2030,7 +2033,7 @@ msgstr ""
 #: templates/learn/Synchronization.html:22
 #: templates/learn/Synchronization.html:46
 msgid "say [Hello, how are you?] for (2) secs"
-msgstr "diz [Hello, how are you?] durante (2) s"
+msgstr "diz [Olá, como vai você?] durante (2) s"
 
 #: templates/learn/Synchronization.html:23
 #: templates/learn/Synchronization.html:28
@@ -2039,15 +2042,15 @@ msgstr "espera (2) s"
 
 #: templates/learn/Synchronization.html:24
 msgid "say [Well, do you want to play hide-and seek?] for (3) secs"
-msgstr "diz [Well, do you want to play hide-and seek?] durante (3) s"
+msgstr "diz [Bem, você quer brincar de esconde-esconde?] durante (3) s"
 
 #: templates/learn/Synchronization.html:26
 msgid "say [Let's go] for (2) secs"
-msgstr "diz [Let's go] durante (2) s"
+msgstr "diz [Vamos] durante (2) s"
 
 #: templates/learn/Synchronization.html:29
 msgid "say [I'm fine, thanks!] for (2) secs"
-msgstr "diz [I'm fine, thanks!] durante (2) s"
+msgstr "diz [Eu estou bem, obrigado!] durante (2) s"
 
 #: templates/learn/Synchronization.html:30
 msgid "wait (3) secs"
@@ -2055,7 +2058,7 @@ msgstr "espera (3) s"
 
 #: templates/learn/Synchronization.html:31
 msgid "say [Yes] for (1) secs"
-msgstr "diz [Yes] durante (1) s"
+msgstr "diz [Sim] durante (1) s"
 
 #: templates/learn/Synchronization.html:34
 msgid ""
@@ -2087,23 +2090,23 @@ msgstr ""
 
 #: templates/learn/Synchronization.html:48
 msgid "if &lt; touching [mouse pointer v]?&gt;then"
-msgstr "se &lt; estás a tocar em [o pointero do rato v]?&gt; ,então"
+msgstr "se &lt; estás a tocar em [o pointero do rato v]&gt; , então"
 
 #: templates/learn/Synchronization.html:49
 msgid "broadcast [catched! v]"
-msgstr "difunde a mensagem [catched! v]"
+msgstr "difunde a mensagem [apanhado! v]"
 
 #: templates/learn/Synchronization.html:53
 msgid "when I receive [catched! v]"
-msgstr "Quando receberes a mensagem [catched! v]"
+msgstr "Quando receberes a mensagem [apanhado! v]"
 
 #: templates/learn/Synchronization.html:54
 msgid "say [You have catched my friend] for (2) secs"
-msgstr "diz [You have catched my friend] durante (2) s"
+msgstr "diz [Você pegou meu amigo] durante (2) s"
 
 #: templates/learn/Synchronization.html:55
 msgid "say [Now, you have to catch me!] for (2) secs"
-msgstr "diz [Now, you have to catch me!] durante (2) s"
+msgstr "diz [Agora, você tem que me pegar!] durante (2) s"
 
 #: templates/learn/Synchronization.html:58
 msgid ""
@@ -2136,19 +2139,19 @@ msgstr ""
 
 #: templates/learn/Synchronization.html:69
 msgid "wait until &lt;(lives) =[0]&gt;"
-msgstr "espera até que &lt;(lives) =[0]&gt;"
+msgstr "espera até que &lt;(vidas) =[0]&gt;"
 
 #: templates/learn/Synchronization.html:70
 msgid "say [Game over] for (2) secs"
-msgstr "diz [Game over] durante (2) s"
+msgstr "diz [Fim de jogo] durante (2) s"
 
 #: templates/learn/Synchronization.html:73
 msgid "when backdrop switches to [Spring v]"
-msgstr "Quando o cenário mudar para [Spring v]"
+msgstr "Quando o cenário mudar para [Primavera v]"
 
 #: templates/learn/Synchronization.html:75
 msgid "say [Spring has come!] for (2) secs"
-msgstr "diz [Spring has come!] durante (2) s"
+msgstr "diz [A primavera chegou!] durante (2) s"
 
 #: templates/learn/Synchronization.html:78
 msgid ""
@@ -2231,16 +2234,16 @@ msgid "ask [What's your name?] and wait"
 msgstr "pergunta [Qual o seu nome?] e espera pela resposta"
 
 #: templates/learn/User.html:46
-msgid "say &lt;join [Hello,]&lt;answer"
-msgstr "diz &lt;a junção de [Olá,] com &lt;a resposta"
+msgid "say (join [Hello] [answer])"
+msgstr "diz (a junção de [Olá] com [resposta])"
 
 #: templates/learn/User.html:48
 msgid "if &lt;touching [mouse-pointer v] &gt; then"
-msgstr "se &lt; estás a tocar em [o ponteiro do rato v]? &gt; ,então"
+msgstr "se &lt; estás a tocar em [o ponteiro do rato v] &gt; , então"
 
 #: templates/learn/User.html:49
 msgid "say [You caught me!]"
-msgstr "diz [You catch me]"
+msgstr "diz [Você me pegou!]"
 
 #: templates/learn/User.html:52
 msgid "mouse down?"
@@ -2248,7 +2251,7 @@ msgstr "o botão do rato está pressionado"
 
 #: templates/learn/User.html:54
 msgid "go to [mouse-pointer v]"
-msgstr "vai para a posição de [o ponteiro do rato v]"
+msgstr "vai para [o ponteiro do rato v]"
 
 #: templates/learn/User.html:58
 msgid ""
@@ -2279,15 +2282,15 @@ msgstr "se &lt;(o volume) >[30]&gt; , então"
 
 #: templates/learn/User.html:70
 msgid "say [There is much noise...]"
-msgstr ""
+msgstr "diz [Há muito barulho...]"
 
 #: templates/learn/User.html:73
-msgid "video [motion v] on [this sprite v]"
-msgstr ""
+msgid "video [motion v] on [sprite v]"
+msgstr "([o movimento v] do vídeo em [ti mesmo v])"
 
 #: templates/learn/User.html:75
-msgid "video [direction v] on [this sprite v]"
-msgstr ""
+msgid "video [direction v] on [sprite v]"
+msgstr "([a direção v] do vídeo em [ti mesmo v])"
 
 #: templates/learn/User.html:78
 msgid ""
@@ -2337,13 +2340,13 @@ msgstr ""
 #: templates/learn/attrInit.html:15
 msgid "when [right arrow v] key pressed //Not initialized correctly."
 msgstr ""
-"Quando alguém pressionar a tecla [seta para a direita] // Inicializada "
+"Quando alguém pressionar a tecla [seta para a direita v] // Inicializada "
 "incorretamente."
 
 #: templates/learn/attrInit.html:16 templates/learn/attrInit.html.py:22
 #: templates/learn/deadCode.html:16
 msgid "change x by (10)"
-msgstr "adiciona (10) à tua coordenada x"
+msgstr "adiciona (10) ao teu x"
 
 #: templates/learn/attrInit.html:17 templates/learn/attrInit.html.py:23
 msgid "when [left arrow v] key pressed"
@@ -2351,7 +2354,7 @@ msgstr "Quando alguém pressionar a tecla [seta para a esquerda v]"
 
 #: templates/learn/attrInit.html:18 templates/learn/attrInit.html.py:24
 msgid "change x by (-10)"
-msgstr "adiciona (-10) à tua coordenada x"
+msgstr "adiciona (-10) ao teu x"
 
 #: templates/learn/attrInit.html:21
 msgid "when [right arrow v] key pressed  //Initialized correctly."
@@ -2370,25 +2373,25 @@ msgstr ""
 "início, ou quando ele está esperando por uma mensagem que nunca é enviada."
 
 #: templates/learn/deadCode.html:14
-msgid "//Blocks that do not start with a hat block."
-msgstr " Blocos que não iniciam com um bloco de eventos."
+msgid "forever //Blocks that do not start with a hat block."
+msgstr "repete para sempre //Blocos que não iniciam com um bloco de eventos."
 
 #: templates/learn/deadCode.html:15
 msgid "if &lt; key [left arrow v] pressed ? &gt; then"
 msgstr ""
-"se &lt; a tecla [seta para a esquerda v] está a ser pressionada &gt; ,então"
+"se &lt; a tecla [seta para a esquerda v] está a ser pressionada &gt; , então"
 
 #: templates/learn/deadCode.html:18
-msgid "//Blocks that start with a hat block."
-msgstr "//Blocos que iniciam com um bloco de eventos."
+msgid "when I receive [startcc v] //Blocks that start with a hat block."
+msgstr "Quando receberes a mensagem [startcc v] //Blocos que iniciam com um bloco de eventos."
 
 #: templates/learn/deadCode.html:19
 msgid "switch costume to [costume2 v]"
-msgstr "muda o teu traje para [costume2 v]"
+msgstr "muda o teu traje para [traje2 v]"
 
 #: templates/learn/deadCode.html:20
 msgid "say [Let's start] for (2) secs"
-msgstr "diz [Let's start] durante (2) s"
+msgstr "diz [Vamos começar] durante (2) s"
 
 #: templates/learn/deadCode.html:24
 msgid ""
@@ -2424,7 +2427,7 @@ msgstr "anda (2) passos"
 
 #: templates/learn/duplicatedScripts.html:22
 msgid "when I receive [message2 v]"
-msgstr "Quando receberes a mensagem [message2 v]"
+msgstr "Quando receberes a mensagem [mensagem2 v]"
 
 #: templates/learn/duplicatedScripts.html:24
 msgid "repeat (5)"
@@ -2449,19 +2452,19 @@ msgstr ""
 
 #: templates/learn/duplicatedScripts.html:36
 msgid "define walk (repetitions)(step)(pause)"
-msgstr "define anda (repetitions)(passos)(pause)"
+msgstr "define anda (repetições)(passos)(pausa)"
 
 #: templates/learn/duplicatedScripts.html:38
 msgid "repeat (repetitions)"
-msgstr "repete (repetitions) vezes"
+msgstr "repete (repetições) vezes"
 
 #: templates/learn/duplicatedScripts.html:39
 msgid "move (step) steps"
-msgstr "anda (step) passos"
+msgstr "anda (passos) passos"
 
 #: templates/learn/duplicatedScripts.html:42
 msgid "wait (pause) secs"
-msgstr "espera (pause) s"
+msgstr "espera (pausa) s"
 
 #: templates/learn/duplicatedScripts.html:47
 msgid ""
