@@ -1029,13 +1029,13 @@ msgstr ""
 #: templates/learn/Synchronization.html:27
 #: templates/learn/Synchronization.html:45 templates/learn/User.html:23
 #: templates/learn/attrInit.html:25
-msgid "when gf clicked"
-msgstr "когда нажмут зеленый флаг"
+msgid "when green flag clicked"
+msgstr "когда щёлкнут по зелёному флагу"
 
 #: templates/learn/Abstraction.html:21 templates/learn/Abstraction.html:36
 #: templates/learn/Abstraction.html:62 templates/learn/Abstraction.html:93
 msgid "clear"
-msgstr "очистить"
+msgstr "стереть всё"
 
 #: templates/learn/Abstraction.html:22 templates/learn/Abstraction.html:37
 msgid "go to x:(-100) y:(30)"
@@ -1068,7 +1068,7 @@ msgstr "ждать (1) секунд"
 
 #: templates/learn/Abstraction.html:27 templates/learn/Abstraction.html:43
 msgid "go to x:(-44) y:(-24)"
-msgstr "идти в x:(-44) y:(-24)"
+msgstr "перейти в x:(-44) y:(-24)"
 
 #: templates/learn/Abstraction.html:28 templates/learn/Abstraction.html:44
 #: templates/learn/Abstraction.html:64 templates/learn/Abstraction.html:70
@@ -1122,11 +1122,11 @@ msgstr ""
 
 #: templates/learn/Abstraction.html:63 templates/learn/Abstraction.html:94
 msgid "go to x:(-200) y:(40)"
-msgstr "идти в x:(-200) y:(40)"
+msgstr "перейти в x:(-200) y:(40)"
 
 #: templates/learn/Abstraction.html:69 templates/learn/Abstraction.html:97
 msgid "go to x:(-200) y:(0)"
-msgstr "идти в x:(-200) y:(0)"
+msgstr "перейти в x:(-200) y:(0)"
 
 #: templates/learn/Abstraction.html:76
 msgid ""
@@ -1145,11 +1145,11 @@ msgstr ""
 
 #: templates/learn/Abstraction.html:79
 msgid "define PaintedOrange(length)"
-msgstr "определить"
+msgstr "определить Окрашенныйворанжевыйцвет(длина)"
 
 #: templates/learn/Abstraction.html:82
 msgid "move (length) steps"
-msgstr "идти (length) шагов"
+msgstr "идти (длина) шагов"
 
 #: templates/learn/Abstraction.html:89
 msgid ""
@@ -1162,11 +1162,11 @@ msgstr ""
 
 #: templates/learn/Abstraction.html:95
 msgid "PaintedOrange(100):: looks stack"
-msgstr ""
+msgstr "Окрашенныйворанжевыйцвет(100):: looks stack"
 
 #: templates/learn/Abstraction.html:98
 msgid "PaintedOrange(200):: looks stack"
-msgstr ""
+msgstr "Окрашенныйворанжевыйцвет(200):: looks stack"
 
 #: templates/learn/Abstraction.html:102
 msgid ""
@@ -1229,34 +1229,38 @@ msgstr ""
 #: templates/learn/Parallelism.html:41 templates/learn/Parallelism.html:46
 #: templates/learn/Synchronization.html:47
 msgid "forever"
-msgstr ""
+msgstr "повторять всегда"
 
 #: templates/learn/Abstraction.html:120
 msgid "create clone of [myself v]"
-msgstr ""
+msgstr "создать клон [себя v]"
 
 #: templates/learn/Abstraction.html:121
 msgid "wait (0.2) secs"
-msgstr ""
+msgstr "ждать (0.2) секунд"
 
 #: templates/learn/Abstraction.html:122
 msgid "go to x:(pick random(-200) to (200)) y:(200)"
-msgstr ""
+msgstr "перейти в x: (выдать случайное от (-200) до (200)) y: (200)"
 
 #: templates/learn/Abstraction.html:123
 msgid "glide (3) secs to x:(x position) y:(-180)"
-msgstr ""
+msgstr "плыть (3) секунд в точку x: (положение x) y: (-180)"
 
 #: templates/learn/Abstraction.html:124
 msgid "delete this clone"
-msgstr ""
+msgstr "удалить клон"
 
 #: templates/learn/Abstraction.html:127
 msgid ""
+"Thus, just by programming a character, we can have infinite clones  which "
+"are created at a particular time of project implementation and are deleted "
+"when they are no longer needed."
+msgstr ""
 "Так, программируя только один персонаж, мы можем создать клоны "
 "которые создаются в проекте в нужное время и удаляются, "
 "когда они больше не нужны."
-msgstr ""
+
 
 #: templates/learn/Data.html:5
 msgid "Data Representation"
@@ -1306,91 +1310,95 @@ msgstr "идти (10) шагов"
 
 #: templates/learn/Data.html:30 templates/learn/attrInit.html:26
 msgid "go to x:(0) y:(0)"
-msgstr "идти в x:(0) y:(0)"
+msgstr "перейти в x:(0) y:(0)"
 
 #: templates/learn/Data.html:31
 msgid "glide (1) secs to x:(0) y:(0)"
-msgstr "плыть (1) секунд в x:(0) y:(0)"
+msgstr "плыть (1) секунд в точку x:(0) y:(0)"
 
 #: templates/learn/Data.html:32
 msgid "set x to (0)"
-msgstr ""
+msgstr "установить x в (0)"
 
 #: templates/learn/Data.html:33
 msgid "set y to (0)"
-msgstr ""
+msgstr "установить y в (0)"
 
-#: templates/learn/Data.html:34 templates/learn/Data.html.py:35
+#: templates/learn/Data.html:33
 msgid "change x by (0)"
-msgstr ""
+msgstr "изменить x на (0)"
+
+#: templates/learn/Data.html:34
+msgid "change y by (0)"
+msgstr "изменить y на (0)"
 
 #: templates/learn/Data.html:38
 msgid "Size:"
-msgstr ""
+msgstr "Размер:"
 
 #: templates/learn/Data.html:42
 msgid "change size by (10)"
-msgstr ""
+msgstr "изменить размер на (10) &percnt;"
 
 #: templates/learn/Data.html:43
-msgid "set size to (120) &percnt;"
-msgstr ""
+msgid "set size to (120)"
+msgstr "установить размер (120) &percnt;"
 
 #: templates/learn/Data.html:47
 msgid "Orientation:"
-msgstr ""
+msgstr "ориентация:"
 
 #: templates/learn/Data.html:51
 msgid "point in direction (90 v)"
-msgstr ""
+msgstr "повернуться в направлении (90 v)"
 
 #: templates/learn/Data.html:52
 msgid "point towards [v]"
-msgstr ""
+msgstr "повернуться к [v]"
 
 #: templates/learn/Data.html:53 templates/learn/Flow.html:42
 #: templates/learn/Flow.html.py:61
 msgid "turn cw (15) degrees"
-msgstr ""
+msgstr "повернуть вправо на (15) градусов"
 
 #: templates/learn/Data.html:54 templates/learn/Flow.html:44
 #: templates/learn/Flow.html.py:63
 msgid "turn ccw (15) degrees"
-msgstr ""
+msgstr "повернуть влево на (15) градусов"
 
 #: templates/learn/Data.html:58
 msgid "Costume:"
-msgstr ""
+msgstr "Костюм:"
 
 #: templates/learn/Data.html:61
 msgid "switch costume to [butterfly v]"
-msgstr ""
+msgstr "изменить костюм на [бабочка v]"
 
 #: templates/learn/Data.html:62 templates/learn/duplicatedScripts.html:18
 #: templates/learn/duplicatedScripts.html:26
 #: templates/learn/duplicatedScripts.html:40
 msgid "next costume"
-msgstr ""
+msgstr "следующий костюм"
 
 #: templates/learn/Data.html:63
 msgid "change [color v] effect by (25)"
-msgstr ""
+msgstr "изменить [цвет v] эффект на (25)"
 
 #: templates/learn/Data.html:64
 msgid "set [color v] effect to (0)"
-msgstr ""
+msgstr "установить эффект [цвет v] в (0)"
 
 #: templates/learn/Data.html:67
 msgid "Visibility:"
-msgstr ""
+msgstr "видимость:"
 
 #: templates/learn/Data.html:70 templates/learn/Synchronization.html:74
 msgid "show"
-msgstr ""
+msgstr "показаться"
 
 #: templates/learn/Data.html:71
 msgid "hide"
-msgstr ""
+msgstr "спрятаться"
 
 #: templates/learn/Data.html:81
 msgid ""
@@ -1420,15 +1428,15 @@ msgstr ""
 
 #: templates/learn/Data.html:86
 msgid "set [Points v] to [0]"
-msgstr ""
+msgstr "задать [Точки v] значение [0]"
 
 #: templates/learn/Data.html:87
 msgid "if &lt;touching color [#0000FF]&gt; then"
-msgstr ""
+msgstr "если &lt;касается цвета [#0000FF] ?&gt; , то"
 
 #: templates/learn/Data.html:88
 msgid "change [Points v] by (1)"
-msgstr ""
+msgstr "изменить [Точки v] на (1)"
 
 #: templates/learn/Data.html:92
 msgid ""
@@ -1472,20 +1480,20 @@ msgstr ""
 
 #: templates/learn/Data.html:105 templates/learn/Data.html.py:118
 msgid "delete (all v) of [Students v]"
-msgstr ""
+msgstr "удалить (все v) из [Ученики v]"
 
 #: templates/learn/Data.html:106 templates/learn/Data.html.py:119
 #: templates/learn/Flow.html:59
 msgid "repeat (3)"
-msgstr ""
+msgstr "повторить (3) раз"
 
 #: templates/learn/Data.html:107 templates/learn/Data.html.py:120
 msgid "ask [Introduce a student name] and wait"
-msgstr ""
+msgstr "спросить [Введите имя студента] и ждать"
 
 #: templates/learn/Data.html:108 templates/learn/Data.html.py:121
 msgid "insert (answer) at (last v) of [Students v]"
-msgstr ""
+msgstr "вставить (ответ) в [Ученики v] из (прошлой v)"
 
 #: templates/learn/Data.html:112
 msgid ""
@@ -1518,15 +1526,15 @@ msgstr ""
 #: templates/learn/Synchronization.html:50 templates/learn/User.html:50
 #: templates/learn/User.html.py:71
 msgid "end"
-msgstr ""
+msgstr "end"
 
 #: templates/learn/Data.html:123
 msgid "say [Today's volunteer will be...] for (2) secs"
-msgstr ""
+msgstr "говорить [Сегодняшний волонтер будет...] (2) секунд"
 
 #: templates/learn/Data.html:124
 msgid "say (item(pick random (1) to (3)) of [Students v]) for (2) secs"
-msgstr ""
+msgstr "говорить (элемент (выдать случайное от (1) до (3)) в [Ученики v]) (2) секунд"
 
 #: templates/learn/Data.html:128
 msgid ""
@@ -1570,16 +1578,16 @@ msgstr ""
 
 #: templates/learn/Flow.html:40 templates/learn/Flow.html.py:58
 msgid "say [I'm a dancer cat] for (2) secs"
-msgstr ""
+msgstr "говорить [Я танцующая кошка] (2) секунд"
 
 #: templates/learn/Flow.html:43 templates/learn/Flow.html.py:62
 #: templates/learn/Flow.html:65 templates/learn/duplicatedScripts.html:28
 msgid "wait (0.5) secs"
-msgstr ""
+msgstr "ждать (0.5) секунд"
 
 #: templates/learn/Flow.html:45 templates/learn/Flow.html.py:64
 msgid "move (-10) steps"
-msgstr ""
+msgstr "идти (-10) шагов"
 
 #: templates/learn/Flow.html:47
 msgid ""
@@ -1612,7 +1620,7 @@ msgstr ""
 #: templates/learn/duplicatedScripts.html:27
 #: templates/learn/duplicatedScripts.html:41
 msgid "if on edge, bounce"
-msgstr ""
+msgstr "если касается края, оттолкнуться"
 
 #: templates/learn/Flow.html:72
 msgid "How these control blocks works?"
@@ -1651,7 +1659,7 @@ msgstr ""
 
 #: templates/learn/Flow.html:86
 msgid "repeat until &lt; touching [Enemy v] ?&gt;"
-msgstr ""
+msgstr "повторять пока не &lt;касается [враг v] ?&gt;"
 
 #: templates/learn/Flow.html:87
 msgid "say [You don't catch me]"
@@ -1695,12 +1703,12 @@ msgstr "Самый основной блок, с которого вы може�
 
 #: templates/learn/Logic.html:21
 msgid "if &lt; touching color [#0000FF]?  &gt;then"
-msgstr ""
+msgstr "если &lt;касается цвета [#0000FF]? &gt; , то"
 
 #: templates/learn/Logic.html:22 templates/learn/Logic.html.py:35
 #: templates/learn/Logic.html:37
 msgid "say [I have reached the goal!] for (2) secs"
-msgstr ""
+msgstr "говорить [Я достиг цели!] (2) секунд"
 
 #: templates/learn/Logic.html:23
 msgid ""
@@ -1735,11 +1743,11 @@ msgstr ""
 
 #: templates/learn/Logic.html:34
 msgid "if &lt; touching color [#0000FF]? &gt;then"
-msgstr ""
+msgstr "если &lt;касается цвета [#0000FF]? &gt; , то"
 
 #: templates/learn/Logic.html:36
 msgid "else"
-msgstr ""
+msgstr "иначе"
 
 #: templates/learn/Logic.html:38
 msgid ""
@@ -1779,32 +1787,32 @@ msgstr ""
 
 #: templates/learn/Logic.html:49
 msgid "if &lt;&lt; touching [Enemy v]? &gt; and &lt;(lives) = [0]&gt;&gt; then"
-msgstr ""
+msgstr "если &lt;&lt;касается [враг v] ?&gt; и &lt;(жизни) = [0]&gt;&gt; , то"
 
 #: templates/learn/Logic.html:50
 msgid "say [Game over]"
-msgstr ""
+msgstr "сказать [Игра закончена]"
 
 #: templates/learn/Logic.html:51 templates/learn/Synchronization.html:71
 msgid "stop [all v]"
-msgstr ""
+msgstr "стоп [все v]"
 
 #: templates/learn/Logic.html:53
 msgid ""
 "if &lt;&lt; touching [edge v]? &gt; or &lt; touching [Enemy v]? &gt;&gt;then"
-msgstr ""
+msgstr "если &lt;&lt;касается [край v] ?&gt; или &lt;касается [враг v] ?&gt;&gt; , то"
 
 #: templates/learn/Logic.html:54
 msgid "change [lives v] by (-1)"
-msgstr ""
+msgstr "изменить [жизни v] на (-1)"
 
 #: templates/learn/Logic.html:56
-msgid "if &lt;not&lt; (level) = (5)&gt;&gt;then"
-msgstr ""
+msgid "if &lt; not &lt;(level)=(5)&gt;&gt;then"
+msgstr "если &lt;не &lt;(уровень) = (5)&gt;&gt; , то"
 
 #: templates/learn/Logic.html:57
 msgid "say [You still have undiscovered levels] for (2) secs"
-msgstr ""
+msgstr "говорить [У вас все еще есть неоткрытые уровни] (2) секунд"
 
 #: templates/learn/Logic.html:60
 msgid ""
@@ -1865,28 +1873,28 @@ msgstr ""
 
 #: templates/learn/Parallelism.html:35 templates/learn/Parallelism.html:37
 msgid "when [a v] key pressed"
-msgstr ""
+msgstr "когда клавиша [A v] нажата"
 
 #: templates/learn/Parallelism.html:36 templates/learn/Parallelism.html:38
 msgid "say [A] for (2) secs"
-msgstr ""
+msgstr "говорить [A] (2) секунд"
 
 #: templates/learn/Parallelism.html:40 templates/learn/Parallelism.html:45
 #: templates/learn/User.html:42
 msgid "when this sprite clicked"
-msgstr ""
+msgstr "когда спрайт нажат"
 
 #: templates/learn/Parallelism.html:47
-msgid "if &lt;touching [the mouse pointer v]? &gt;"
-msgstr ""
+msgid "if &lt;touching [the mouse pointer v]? &gt; then"
+msgstr "если &lt;касается [указатель мыши v] ?&gt; , то"
 
 #: templates/learn/Parallelism.html:48
 msgid "turn cw (30) degrees"
-msgstr ""
+msgstr "повернуть вправо на (30) градусов"
 
 #: templates/learn/Parallelism.html:53
-msgid "Как работают эти блоки?"
-msgstr ""
+msgid "How these blocks works?"
+msgstr "Как работают эти блоки?"
 
 #: templates/learn/Parallelism.html:55
 msgid ""
@@ -1916,24 +1924,24 @@ msgstr "Есть еще несколько событий, которые мог
 
 #: templates/learn/Parallelism.html:67
 msgid "when backdrop switches to [backdrop1 v]"
-msgstr ""
+msgstr "когда фон сменился на [фон1 v]"
 
 #: templates/learn/Parallelism.html:68
 #: templates/learn/duplicatedScripts.html:14
 msgid "when I receive [message1 v]"
-msgstr ""
+msgstr "когда я получу [сообщение1 v]"
 
 #: templates/learn/Parallelism.html:69
 msgid "when [loudness v] &gt; (10)"
-msgstr ""
+msgstr "когда [громкость v] > (10)"
 
 #: templates/learn/Parallelism.html:70
 msgid "when [video motion v] &gt; (2)"
-msgstr ""
+msgstr "когда [видео движение v] > (2)"
 
 #: templates/learn/Parallelism.html:71
 msgid "when [timer v] &gt; (45)"
-msgstr ""
+msgstr "когда [таймер v] > (45)"
 
 #: templates/learn/Parallelism.html:73
 msgid ""
@@ -1976,32 +1984,32 @@ msgstr ""
 #: templates/learn/Synchronization.html:22
 #: templates/learn/Synchronization.html:46
 msgid "say [Hello, how are you?] for (2) secs"
-msgstr ""
+msgstr "говорить [Привет как дела?] (2) секунд"
 
 #: templates/learn/Synchronization.html:23
 #: templates/learn/Synchronization.html:28
 msgid "wait (2) secs"
-msgstr ""
+msgstr "ждать (2) секунд"
 
 #: templates/learn/Synchronization.html:24
 msgid "say [Well, do you want to play hide-and seek?] for (3) secs"
-msgstr ""
+msgstr "говорить [Ну, ты хочешь играть в прятки?] (3) секунд"
 
 #: templates/learn/Synchronization.html:26
 msgid "say [Let's go] for (2) secs"
-msgstr ""
+msgstr "говорить [Пошли] (2) секунд"
 
 #: templates/learn/Synchronization.html:29
 msgid "say [I'm fine, thanks!] for (2) secs"
-msgstr ""
+msgstr "говорить [Я хорошо, спасибо!] (2) секунд"
 
 #: templates/learn/Synchronization.html:30
 msgid "wait (3) secs"
-msgstr ""
+msgstr "ждать (3) секунд"
 
 #: templates/learn/Synchronization.html:31
 msgid "say [Yes] for (1) secs"
-msgstr ""
+msgstr "говорить [да] (1) секунд"
 
 #: templates/learn/Synchronization.html:34
 msgid ""
@@ -2033,23 +2041,23 @@ msgstr ""
 
 #: templates/learn/Synchronization.html:48
 msgid "if &lt; touching [mouse pointer v]?&gt;then"
-msgstr ""
+msgstr "если &lt;касается [указатель мыши v] ?&gt; , то"
 
 #: templates/learn/Synchronization.html:49
 msgid "broadcast [catched! v]"
-msgstr ""
+msgstr "передать [поймала! v]"
 
 #: templates/learn/Synchronization.html:53
 msgid "when I receive [catched! v]"
-msgstr ""
+msgstr "когда я получу [поймала! v]"
 
 #: templates/learn/Synchronization.html:54
 msgid "say [You have catched my friend] for (2) secs"
-msgstr ""
+msgstr "говорить [Вы поймали моего друга] (2) секунд"
 
 #: templates/learn/Synchronization.html:55
 msgid "say [Now, you have to catch me!] for (2) secs"
-msgstr ""
+msgstr "говорить [Теперь вы должны поймать меня!] (2) секунд"
 
 #: templates/learn/Synchronization.html:58
 msgid ""
@@ -2083,19 +2091,19 @@ msgstr ""
 
 #: templates/learn/Synchronization.html:69
 msgid "wait until &lt;(lives) =[0]&gt;"
-msgstr ""
+msgstr "ждать до <(жизни) = [0]>"
 
 #: templates/learn/Synchronization.html:70
 msgid "say [Game over] for (2) secs"
-msgstr ""
+msgstr "говорить [Игра закончена] (2) секунд"
 
 #: templates/learn/Synchronization.html:73
 msgid "when backdrop switches to [Spring v]"
-msgstr ""
+msgstr "когда фон сменился на [весна v]"
 
 #: templates/learn/Synchronization.html:75
 msgid "say [Spring has come!] for (2) secs"
-msgstr ""
+msgstr "говорить [Наступила весна!] (2) секунд"
 
 #: templates/learn/Synchronization.html:78
 msgid ""
@@ -2167,35 +2175,35 @@ msgstr ""
 
 #: templates/learn/User.html:39
 msgid " when [right arrow v] key pressed"
-msgstr ""
+msgstr "когда клавиша [правая стрелка v] нажата"
 
 #: templates/learn/User.html:43
 msgid "say [Hello] for (2) secs"
-msgstr ""
+msgstr "говорить [Привет] (2) секунд"
 
 #: templates/learn/User.html:45
 msgid "ask [What's your name?] and wait"
-msgstr ""
+msgstr "спросить [Как вас зовут?] и ждать"
 
 #: templates/learn/User.html:46
-msgid "say &lt;join [Hello,]&lt;answer"
-msgstr ""
+msgid "say (join [Hello] [answer])"
+msgstr "сказать (объединить [Привет] [ответ])"
 
 #: templates/learn/User.html:48
 msgid "if &lt;touching [mouse-pointer v] &gt; then"
-msgstr ""
+msgstr "если &lt;касается [указатель мыши v] ?&gt; , то"
 
 #: templates/learn/User.html:49
 msgid "say [You caught me!]"
-msgstr ""
+msgstr "сказать [Ты поймал меня!]"
 
 #: templates/learn/User.html:52
 msgid "mouse down?"
-msgstr ""
+msgstr "мышь нажата?"
 
 #: templates/learn/User.html:54
 msgid "go to [mouse-pointer v]"
-msgstr ""
+msgstr "перейти на [указатель мыши v]"
 
 #: templates/learn/User.html:58
 msgid ""
@@ -2223,19 +2231,19 @@ msgstr ""
 
 #: templates/learn/User.html:69
 msgid "if &lt;(loudness) >[30]&gt; then"
-msgstr ""
+msgstr "если &lt;(громкость) > [30]&gt; , то"
 
 #: templates/learn/User.html:70
 msgid "say [There is much noise...]"
-msgstr ""
+msgstr "сказать [Там много шума ...] "
 
 #: templates/learn/User.html:73
-msgid "video [motion v] on [this sprite v]"
-msgstr ""
+msgid "video [motion v] on [sprite v]"
+msgstr "видео [движение v] на [cпрайт v]"
 
 #: templates/learn/User.html:75
-msgid "video [direction v] on [this sprite v]"
-msgstr ""
+msgid "video [direction v] on [sprite v]"
+msgstr "видео [направление v] на [cпрайт v]"
 
 #: templates/learn/User.html:78
 msgid ""
@@ -2285,24 +2293,24 @@ msgstr ""
 
 #: templates/learn/attrInit.html:15
 msgid "when [right arrow v] key pressed //Not initialized correctly."
-msgstr ""
+msgstr "когда клавиша [правая стрелка v] нажата //Не правильно инициализирован."
 
 #: templates/learn/attrInit.html:16 templates/learn/attrInit.html.py:22
 #: templates/learn/deadCode.html:16
 msgid "change x by (10)"
-msgstr ""
+msgstr "изменить x на (10)"
 
 #: templates/learn/attrInit.html:17 templates/learn/attrInit.html.py:23
 msgid "when [left arrow v] key pressed"
-msgstr ""
+msgstr "когда клавиша [стрелка влево v] нажата"
 
 #: templates/learn/attrInit.html:18 templates/learn/attrInit.html.py:24
 msgid "change x by (-10)"
-msgstr ""
+msgstr "изменить x на (-10)"
 
 #: templates/learn/attrInit.html:21
 msgid "when [right arrow v] key pressed  //Initialized correctly."
-msgstr ""
+msgstr "когда клавиша [правая стрелка v] нажата //Инициализирован правильно."
 
 #: templates/learn/deadCode.html:11
 msgid ""
@@ -2315,24 +2323,24 @@ msgstr ""
 "когда есть программа, которая ждет сообщения, которое никогда не будет послано."
 
 #: templates/learn/deadCode.html:14
-msgid "//Blocks that do not start with a hat block."
-msgstr "//Блоки, которые не начинаются с блока шляпы."
+msgid "forever //Blocks that do not start with a hat block."
+msgstr "повторять всегда //Блоки, которые не начинаются с блока шляпы."
 
 #: templates/learn/deadCode.html:15
 msgid "if &lt; key [left arrow v] pressed ? &gt; then"
-msgstr ""
+msgstr "если &lt;клавиша [стрелка влево v] нажата?&gt; , то"
 
 #: templates/learn/deadCode.html:18
-msgid "//Blocks that start with a hat block."
-msgstr "//Блоки, которые начинаются с блока шляпы."
+msgid "when I receive [startcc v] //Blocks that start with a hat block."
+msgstr "когда я получу [startcc v] //Блоки, которые начинаются с блока шляпы."
 
 #: templates/learn/deadCode.html:19
 msgid "switch costume to [costume2 v]"
-msgstr ""
+msgstr "изменить костюм на [костюм2 v]"
 
 #: templates/learn/deadCode.html:20
 msgid "say [Let's start] for (2) secs"
-msgstr ""
+msgstr "говорить [Давайте начнем] (2) секунд"
 
 #: templates/learn/deadCode.html:24
 msgid ""
@@ -2350,27 +2358,27 @@ msgstr ""
 #: templates/learn/duplicatedScripts.html:23
 #: templates/learn/duplicatedScripts.html:37
 msgid "set rotation style [left-rigt v]"
-msgstr ""
+msgstr "установить способ вращения [оставил-правильно v]"
 
 #: templates/learn/duplicatedScripts.html:16
 msgid "repeat (10)"
-msgstr ""
+msgstr "повторить (10) раз"
 
 #: templates/learn/duplicatedScripts.html:17
 msgid "move (2) steps"
-msgstr ""
+msgstr "идти (2) шагов"
 
 #: templates/learn/duplicatedScripts.html:22
 msgid "when I receive [message2 v]"
-msgstr ""
+msgstr "когда я получу [сообщение2 v]"
 
 #: templates/learn/duplicatedScripts.html:24
 msgid "repeat (5)"
-msgstr ""
+msgstr "повторить (5) раз"
 
 #: templates/learn/duplicatedScripts.html:25
 msgid "move (4) steps"
-msgstr ""
+msgstr "идти (4) шагов"
 
 #: templates/learn/duplicatedScripts.html:33
 msgid ""
@@ -2385,19 +2393,19 @@ msgstr ""
 "поведение и использовал бы этот блок внутри нужных программ."
 #: templates/learn/duplicatedScripts.html:36
 msgid "define walk (repetitions)(step)(pause)"
-msgstr ""
+msgstr "определить ходить (повторы) (шаг) (Пауза)"
 
 #: templates/learn/duplicatedScripts.html:38
 msgid "repeat (repetitions)"
-msgstr ""
+msgstr "повторить (повторы) раз"
 
 #: templates/learn/duplicatedScripts.html:39
 msgid "move (step) steps"
-msgstr ""
+msgstr "идти (шаг) шагов"
 
 #: templates/learn/duplicatedScripts.html:42
 msgid "wait (pause) secs"
-msgstr ""
+msgstr "ждать (Пауза) секунд"
 
 #: templates/learn/duplicatedScripts.html:47
 msgid ""

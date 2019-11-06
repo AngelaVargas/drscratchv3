@@ -1370,9 +1370,13 @@ msgstr "assigna el valor (0) a x"
 msgid "set y to (0)"
 msgstr "assigna el valor (0) a y"
 
-#: templates/learn/Data.html:34 templates/learn/Data.html.py:35
+#: templates/learn/Data.html:33
 msgid "change x by (0)"
 msgstr "suma (0) a x"
+
+#: templates/learn/Data.html:34
+msgid "change y by (0)"
+msgstr "suma (0) a y"
 
 #: templates/learn/Data.html:38
 msgid "Size:"
@@ -1865,7 +1869,7 @@ msgid "change [lives v] by (-1)"
 msgstr "augmenta [vides v] en (-1)"
 
 #: templates/learn/Logic.html:56
-msgid "if &lt;not&lt; (level) = (5)&gt;&gt;then"
+msgid "if &lt; not &lt;(level)=(5)&gt;&gt;then"
 msgstr "si &lt;no&lt; (nivell) = (5)&gt;&gt;llavors"
 
 #: templates/learn/Logic.html:57
@@ -1946,7 +1950,7 @@ msgid "when this sprite clicked"
 msgstr "quan es cliqui aquest personatge"
 
 #: templates/learn/Parallelism.html:47
-msgid "if &lt;touching [the mouse pointer v]? &gt;"
+msgid "if &lt;touching [the mouse pointer v]? &gt; then"
 msgstr "si  &lt; tocant [punter del ratolí v]? &gt; llavors"
 
 #: templates/learn/Parallelism.html:48
