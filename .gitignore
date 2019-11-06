@@ -18,8 +18,9 @@ db.sqlite3
 configuration/*
 .idea/*
 *.sb3
+*.json
 mydatabase
-logFile.txt
+#logFile.txt
 output.aux
 env/
 build/
