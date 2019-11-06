@@ -12,16 +12,16 @@ WORKDIR /var/www
 ADD . /var/www/
 
 # Install dependencies
-RUN apt-get update && apt-get install -y libmysqlclient-dev
-RUN apt-get install -y texlive-latex-recommended && apt-get install -y gettext && apt-get clean
+RUN apt-get update && apt-get upgrade -y && apt-get autoclean
+
+RUN apt-get install -y \
+    libmysqlclient-dev \
+    texlive-latex-recommended \
+    gettext
 
 RUN pip install --upgrade pip
 RUN pip install --no-cache-dir -r requirements.txt
 
 RUN chmod +x /var/www/app/certificate
-RUN chmod +x /var/www/docker-entrypoint.sh
-
-CMD ["/var/www/docker-entrypoint.sh"]
 
 EXPOSE 8000
-
