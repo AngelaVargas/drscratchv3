@@ -31,6 +31,7 @@ import shutil
 import unicodedata
 import csv
 import zipfile
+import uuid
 from datetime import datetime, timedelta, date
 import traceback
 
@@ -474,62 +475,54 @@ def write_activity_in_logfile(file_name):
         log_file.close()
 
 
-def download_scratch_project_from_servers(id_project):
+def download_scratch_project_from_servers(path_project, id_project):
 
-    url_getsb3_new_project = "https://projects.scratch.mit.edu/" + id_project + "/get"
-    url_getsb3_old_project = "https://projects.scratch.mit.edu/" + id_project
+    random_string = uuid.uuid4().hex
+    url_json_scratch = "https://projects.scratch.mit.edu/{}/get?foo={}".format(id_project, random_string)
 
-    path_utemp = os.path.dirname(os.path.dirname(__file__)) + '/utemp/' + str(id_project)
-    path_file_utemp = path_utemp + '_new_project.json'
+    path_utemp = path_project + '/utemp/' + str(id_project)
+    path_json_file = path_utemp + '_new_project.json'
 
     try:
-        sb3_file = urllib2.urlopen(url_getsb3_new_project)
+        response_from_scratch = urllib2.urlopen(url_json_scratch)
     except urllib2.HTTPError as e:
+        # Two ways, id does not exist in servers or id is in other server
         logger.error('HTTPError %s', e.message)
-        path_file_utemp = path_utemp + '_old_project.json'
-        sb3_file = urllib2.urlopen(url_getsb3_old_project)
+        url_json_scratch = "https://projects.scratch.mit.edu/{}".format(id_project)
+        response_from_scratch = urllib2.urlopen(url_json_scratch)
+        path_json_file = path_utemp + '_old_project.json'
     except urllib2.URLError as e:
-        logger.error('URLError: %s' % e.message)
+        logger.error('URLError: %s', e.message)
         traceback.print_exc()
     except:
-        logger.error('Unhandled Error')
         traceback.print_exc()
-
-    json_data = None
 
     try:
-        resulting_file = open(path_file_utemp, 'wb')
-        resulting_file.write(sb3_file.read())
+
+        json_string_format = response_from_scratch.read()
+        json_data = json.loads(json_string_format)
+
+        resulting_file = open(path_json_file, 'wb')
+        resulting_file.write(json_string_format)
         resulting_file.close()
-        with open(path_file_utemp) as json_file:
-            json_data = json.load(json_file)
 
-        # is_project_in_servers = json_data['code']
-
-    except IOError as e:
-        logger.error('FileNotFoundError %s', e.message)
-    except KeyError as e:
-        os.remove(path_file_utemp)
-        logger.error('File not found in Scratch servers')
-        json_data = None
-        traceback.print_exc()
     except ValueError as e:
-        os.remove(path_file_utemp)
         logger.error('ValueError: %s', e.message)
-    except:
-        traceback.print_exc()
+        raise DrScratchException
+    except IOError as e:
+        logger.error('IOError %s' % e.message)
+        raise IOError
 
-    return json_data, path_file_utemp
+    return path_json_file
 
 
 def send_request_getsb3(id_project, username, method):
     """First request to getSb3"""
 
     file_url = id_project + ".sb3"
-    json_data, path_file_temporary = download_scratch_project_from_servers(id_project)
 
-    if json_data is None:
-        raise DrScratchException
+    path_project = os.path.dirname(os.path.dirname(__file__))
+    path_json_file_temporary = download_scratch_project_from_servers(path_project, id_project)
 
     now = datetime.now()
 
@@ -543,28 +536,28 @@ def send_request_getsb3(id_project, username, method):
                         spriteNaming=0, initialization=0,
                         deadCode=0, duplicateScript=0)
     elif Coder.objects.filter(username=username):
-        fileName = File (filename=file_url,
-                         coder=username,
-                         method=method, time=now,
-                         score=0, abstraction=0, parallelization=0,
-                         logic=0, synchronization=0, flowControl=0,
-                         userInteractivity=0, dataRepresentation=0,
-                         spriteNaming=0, initialization=0,
-                         deadCode=0, duplicateScript=0)
+        fileName = File(filename=file_url,
+                        coder=username,
+                        method=method, time=now,
+                        score=0, abstraction=0, parallelization=0,
+                        logic=0, synchronization=0, flowControl=0,
+                        userInteractivity=0, dataRepresentation=0,
+                        spriteNaming=0, initialization=0,
+                        deadCode=0, duplicateScript=0)
     else:
-        fileName = File (filename = file_url,
-                         method = method , time = now,
-                         score = 0, abstraction = 0, parallelization = 0,
-                         logic = 0, synchronization = 0, flowControl = 0,
-                         userInteractivity = 0, dataRepresentation = 0,
-                         spriteNaming = 0 ,initialization = 0,
-                         deadCode = 0, duplicateScript = 0)
+        fileName = File(filename=file_url,
+                        method=method, time=now,
+                        score=0, abstraction=0, parallelization=0,
+                        logic=0, synchronization=0, flowControl=0,
+                        userInteractivity=0, dataRepresentation=0,
+                        spriteNaming=0, initialization=0,
+                        deadCode=0, duplicateScript=0)
     
     fileName.save()
 
     write_activity_in_logfile(fileName)
 
-    path_scratch_project_sb3, ext_type_project = save_projectsb3(path_file_temporary, id_project)
+    path_scratch_project_sb3, ext_type_project = save_projectsb3(path_json_file_temporary, id_project)
 
     return path_scratch_project_sb3, fileName, ext_type_project
 
