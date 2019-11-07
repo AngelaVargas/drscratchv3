@@ -18,6 +18,8 @@ db.sqlite3
 configuration/*
 .idea/*
 *.sb3
+*.sb2
+*.sb
 *.json
 mydatabase
 logFile.txt
