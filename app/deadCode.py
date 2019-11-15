@@ -14,9 +14,9 @@ class DeadCode():
 
       self.dead_code_instances = 0
       self.opcode_argument_reporter = "argument_reporter"
-      # self.event_variables = ["event_broadcastandwait", "event_whenflagclicked",
-      #                         "event_whengreaterthan", "event_whenkeypressed",
-      #                         "event_whenthisspriteclicked", "event_whenbackdropswitchesto"]
+      self.event_variables = ["event_whenbroadcastreceived", "event_whenflagclicked", "event_whengreaterthan", "event_whenkeypressed",
+                              "event_whenthisspriteclicked", "event_whenbackdropswitchesto",
+                              "control_start_as_clone"]
 
       #I have to do different
       self.procedures = "procedures_prototype"
@@ -47,7 +47,7 @@ class DeadCode():
 
             for key_block in self.blocks_dicc:
                 block = self.blocks_dicc[key_block]
-                # event_variable = any(block["opcode"] == event for event in self.event_variables)
+                event_variable = any(block["opcode"] == event for event in self.event_variables)
                 loop_block = any(block["opcode"] == loop for loop in self.loop_blocks)
 
                 # if not self.opcode_argument_reporter in block["opcode"]:
@@ -59,20 +59,22 @@ class DeadCode():
                                 next = block["inputs"]["SUBSTACK"][1]
                                 list = []
                                 list = self.search_next(next, block, list)
+                                list.append("finish_end")
                                 blocks_list.append(list)
                             except:
                                 blocks_list.append([block["opcode"], "finish_end"])
                         else:
                              blocks_list.append([block["opcode"]])
-                    elif block["parent"] == None and block["next"] != None:
-                        # I have to do that
-                        print "BLOCKS WITHOUTH HAT"
+                    elif block["topLevel"] == True and block["next"] != None and not event_variable:
+                        next = block["next"]
+                        list = []
+                        list = self.search_next(next, block, list)
+                        blocks_list.append(list)
                     elif loop_block:
-                        #Check dead loop blocks
+                        #Check dead loop blocks inside a structure
                         parent = block["parent"]
                         parent_block = self.blocks_dicc[parent]
                         if not block["inputs"]:
-                            #Empty loop block, but inside of a block structure
                             blocks_list.append([parent_block["opcode"], block["opcode"], "finish_end"])
                         elif "SUBSTACK" not in block["inputs"]:
                             blocks_list.append([parent_block["opcode"], block["opcode"], "finish_end"])
@@ -81,8 +83,8 @@ class DeadCode():
                             if block["inputs"]["SUBSTACK"][1] == None:
                                 blocks_list.append([parent_block["opcode"], block["opcode"], "finish_end"])
                     else:
-                        #I have to do that
-                        print "Check if has hat block"
+                        #Normal block
+                        pass
 
             if blocks_list:
               sprites[sprite] = blocks_list
@@ -93,7 +95,6 @@ class DeadCode():
     def search_next(self, next, block, list):
         if next == None:
             list.append(block["opcode"])
-            list.append("finish_end")
         else:
             list.append(block['opcode'])
             #Update
