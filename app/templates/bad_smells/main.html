@@ -192,8 +192,7 @@
                                     <div class="dead">{{ key }}:</div>
                                     <pre class="blocks">
                                     {% for dead_list in value %}
-                                        {% for dead_block in dead_list %}
-                                            {{ dead_block }}
+                                        {% for dead_block in dead_list %} {{ dead_block }}
                                         {% endfor %}
                                     {% endfor %}
                                     </pre>
