@@ -183,6 +183,16 @@
 
                     <div class="panel-heading" >
                         <h2 id="score" class="panel-title dark-text">{% trans "Bad habits"%}</h2>
+                        <form name="form" method="post" action="/bad_smells">
+                            {% csrf_token %}
+                            <button id="bad_smells" name='bad_smells' type="submit" class="btn btn-primary standard-button">{% trans "Bad Smells Mode" %}</button>
+                            <input type="hidden" name="duplicated" value="{{ duplicateScript }}" />
+                            <input type="hidden" name="dupcode" value="{{ dupCode }}" />
+                            <input type="hidden" name="backdrop" value="{{ backdropNaming }}" />
+                            <input type="hidden" name="sprite" value="{{ spriteNaming }}" />
+                            <input type="hidden" name="dead" value="{{ deadCode }}" />
+                            {% csrf_token %}
+                        </form>
                     </div>
                     <div class="panel-body text-left typ">
                         <a class="glyphicon glyphicon-repeat"/><a class="dropdown" id="dupCode" data-toggle="popover" title="{% trans 'Duplicated scripts' %}" data-content="" data-trigger="hover" href="learn/duplicatedScripts"> {{ duplicateScript.number }} {% trans " duplicated scripts." %}

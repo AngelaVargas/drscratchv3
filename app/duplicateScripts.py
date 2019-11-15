@@ -42,13 +42,13 @@ class DuplicateScripts():
           block_list = []
           block_list.append(block["opcode"])
           next = block["next"]
-          aux_next = None
+          aux_next = []
           self.search_next(next, block_list, key_block, aux_next)
 
           blocks_tuple = tuple(block_list)
 
           if blocks_tuple in scripts_set:
-             if len(block_list) > 5:
+             if len(block_list) >= 5:
                 if not block_list in self.list_duplicate:
                    self.total_duplicate += 1
                    self.list_duplicate.append(block_list)
@@ -60,14 +60,15 @@ class DuplicateScripts():
    def search_next(self, next, block_list, key_block, aux_next):
        if next == None:
            try:
-              # Maybe is a control_forever block
+              # Maybe is a loop block
               next = self.blocks_dicc[key_block]["inputs"]["SUBSTACK"][1]
               if next == None:
                   return
            except:
-              if aux_next != None:      #Check if there is a aux_next saved
-                next = aux_next
-                aux_next = None
+              if aux_next:      #Check if there is an aux_next saved
+                next = aux_next[-1]
+                aux_next.pop(-1)
+                block_list.append("finish_end")
               else:
                 next = None
                 return
@@ -77,9 +78,8 @@ class DuplicateScripts():
                 loop_block = self.blocks_dicc[key_block]["inputs"]["SUBSTACK"][1]
                 #Check if is a loop block but EMPTY
                 if loop_block != None:
-                    aux_next = next          #Save the real next until the end of the loop
+                    aux_next.append(next)          #Add the real next until the end of the loop
                     next = loop_block
-
 
        block = self.blocks_dicc[next]
        block_list.append(block["opcode"])
@@ -97,6 +97,7 @@ class DuplicateScripts():
      for duplicate in self.list_duplicate:
        result += str(duplicate)
        result += "\n"
+
      return result
 
 

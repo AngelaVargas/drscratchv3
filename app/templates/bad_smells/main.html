@@ -1,0 +1,247 @@
+{% load i18n %}
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="description" content="Analyze your Scratch projects to assess your Computational Thinking skills">
+    <meta name="keywords" content="Stamp, Startup, Multipurpose, Bootstrap, Landing page, Template, Registration, Landing">
+    <meta name="author" content="Programamos URJC Libresoft FECyT">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+    <script src="../../static/app/scripts/bootstrap-modal.js"></script>
+    <script src="../../static/app/scripts/bootstrap.js"></script>
+    <link rel="stylesheet" href="../../static/app/content/bootstrap-tour.css">
+    <script src="../../static/app/scripts/bootstrap.min.js"></script>
+    <script src="../../static/app/scripts/bootstrap-tour.js"></script>
+    <script src="../../static/app/scripts/googleAnalytics.js"></script>
+    <script src="../../static/app/scripts/scratchblocks-v3.4-min.js"></script>
+    <script src="../../static/app/scripts/translations-all-v3.4.js" charset="utf8"></script>
+
+    <!-- SITE TITLE -->
+    <title>Dr. Scratch</title>
+
+
+    <link rel="stylesheet" href="../../static/app/content/style.css">
+    <!-- =========================
+     FAV AND TOUCH ICONS AND FONT
+    ============================== -->
+    <link rel="icon" href="../../static/app/images/favicon.ico">
+    <link rel="stylesheet" href="static/app/icons/icons.css">
+    <link type="text/css" rel="stylesheet" href="../../static/app/content/css_002.css">
+    <link type="text/css" rel="stylesheet" href="../../static/app/content/css.css">
+
+    <!-- =========================
+     STYLESHEETS
+    ============================== -->
+    <!-- BOOTSTRAP AND ANIMATION -->
+    <link rel="stylesheet" href="../../static/app/content/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/app/content/animate.css">
+
+    <!-- CAROUSEL AND LIGHTBOX -->
+    <link rel="stylesheet" href="../../static/app/content/owl_002.css">
+    <link rel="stylesheet" href="../../static/app/content/owl.css">
+    <link rel="stylesheet" href="../../static/app/content/nivo-lightbox.css">
+    <link rel="stylesheet" href="../../static/app/content/default.css">
+
+    <!-- CUSTOM STYLESHEETS -->
+    <link rel="stylesheet" href="../../static/app/content/styles.css">
+    <link rel="stylesheet" href="../../static/app/content/developing.css">
+    <!-- RESPONSIVE FIXES -->
+    <link rel="stylesheet" href="../../static/app/content/responsive.css">
+
+    <!-- DEFAULT COLOR/ CURRENTLY USING -->
+    <link rel="stylesheet" href="../../static/app/content/red.css">
+
+
+
+    <script>
+        $(document).ready(function () {
+            $('.dropdown').popover();
+        });
+
+        $(document).ready(function() {
+            scratchblocks.renderMatching('pre.blocks', {style: "scratch3", languages: ['ca','es', 'en', 'it','ru', 'el', 'eu', 'gl', 'pt']});
+        });
+
+        $(document).ready(function () {
+            if("{{ dupCode }}" == ""){
+                $("#dupCode").attr("data-content","{% trans 'Your project does not have duplicated scripts, good job!' %}");
+            }else{
+                str = "{{ dupCode }}".split(",");
+                for (n in str){
+
+                    if(n == 0){str[n] = str[n].slice(13,-11)}
+                    else if(n == str.length-1) { str[n] = str[n].slice(14,-12)}
+                    else{
+                    str[n] = str[n].slice(14,-11)};
+                };
+                $("#dupCode").attr("data-content",str.join("\n"));
+            }
+        });
+
+    </script>
+
+    <style>
+        thead {
+          border-bottom: 1px solid #8E8E8E;
+          text-align: center;
+        }
+
+        .dead {
+            text-align: left;
+            color: #547ABC;
+            font-size: 18px;
+        }
+
+        .naming {
+            color: #547ABC;
+            font-size: 15px;
+        }
+    </style>
+
+
+</head>
+<body>
+    <div id="wrap">
+    <div class="navbar navbar-inverse bs-docs-nav navbar-fixed-top  sticky-navigation" role="navigation">
+        <div class="container">
+                    <!-- TOP BAR -->
+            <div class="navbar-collapse collapse" id="stamp-navigation">
+                    <!-- NAVIGATION LINK -->
+                <a class="navbar-brand" href="/">
+                    <img src="static/app/images/logo_main.png" alt="">
+                </a>
+                <ul class="nav navbar-nav navbar-right main-navigation ">
+                        <li class="navbar-brand"><a class="navbar-brand pull-right" href="https://twitter.com/DrScratchTool"><span class="icon-social-twitter colored-text"></span></a></li>
+                        <li class="navbar-brand"><a class="navbar-brand pull-right" href="mailto:kgblll@gsyc.urjc.es"><span class="icon-basic-mail colored-text"></span></a></li>
+                        <li class="navbar-brand"><a class="btn btn-default" id="tour">{% trans "HELP" %}</a></li>
+                        <li class="navbar-brand"><a class="navbar-brand pull-right">{% trans "Dr. Scratch(Beta Version)" %}</a></li>
+                      </ul>
+            </div>
+                    <!-- /END TOP BAR -->
+        </div>
+                <!-- /END CONTAINER -->
+    </div>
+
+    <div class="container">
+
+        <div class="col-md-12">
+            <section id="dashboard">
+                <h3>Bad Smells Mode</h3>
+            </section>
+        </div>
+
+        <div class="col-md-6">
+            <section id="dashboard">
+                <div class="container-fluid">
+                    <div class="row marketing">
+                        <div class="jumbotron">
+                            <h3 id="score">{% trans "Backdrop naming" %}</h3>
+                            <br>
+                            {% for value in backdropNaming.backdrop %}
+                                <div class="naming"> {{ value }}</div>
+                            {% endfor %}
+                            {% if backdropNaming.number == 0 %}
+                                <div class="naming">{% trans 'Your project does not have default backdrop naming, good job!' %}</div>
+                            {% endif %}
+                            <br>
+                            <a href="learn/spriteNaming">{{ backdropNaming.number }} {% trans " backdrop naming." %}</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="col-md-6">
+            <section id="dashboard">
+                <div class="container-fluid">
+                    <div class="row marketing">
+                        <div class="jumbotron">
+                            <h3 id="score">{% trans "Sprite naming" %}</h3>
+                            <br>
+                            {% for value in spriteNaming.sprite %}
+                            <div class="naming">{{ value }}</div>
+                            {% endfor %}
+                            {% if spriteNaming.number == 0 %}
+                                <div class="naming">{% trans 'Your project does not have default sprite naming, good job!' %}</div>
+                            {% endif %}
+                            <br>
+                            <a href="learn/spriteNaming">{{ spriteNaming.number }} {% trans " sprite naming." %}</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="col-md-6">
+            <section id="dashboard">
+                <div class="container-fluid">
+                    <div class="row marketing">
+                        <div class="jumbotron">
+                            <h3 id="score">{% trans "Dead code" %}</h3>
+                            <br>
+                            {% for key,value in deadCode.items %}
+                                {% if key != 'number' %}
+                                    <div class="dead">{{ key }}:</div>
+                                    <pre class="blocks">
+                                    {% for dead_list in value %}
+                                        {% for dead_block in dead_list %}
+                                            {{ dead_block }}
+                                        {% endfor %}
+                                    {% endfor %}
+                                    </pre>
+                                    <br>
+                                {% endif%}
+                            {% endfor%}
+                            {% if deadCode.number == 0 %}
+                                <div class="naming">{% trans 'Your project does not have dead code, good job!' %}</div>
+                            {% endif %}
+                            <br>
+                            <a href="learn/deadCode">{{ deadCode.number }} {% trans " dead code." %}</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="col-md-6">
+            <section id="dashboard">
+                <div class="container-fluid">
+                    <div class="row marketing">
+                        <div class="jumbotron">
+                           <h3 id="score">{% trans "Duplicated scripts" %}</h3>
+                           <br>
+                           {% for script in duplicateScript.duplicated %}
+                                    <pre class="blocks">
+                                    {% for dup in script %}
+                                        {{ dup }}
+                                    {% endfor %}
+                                    </pre>
+                                {% endfor %}
+                           {% if duplicateScript.number == 0 %}
+                                <div class="naming">{% trans 'Your project does not have duplicated scripts, good job!' %}</div>
+                           {% endif %}
+                           <br>
+                           <a href="learn/deadCode">{{ duplicateScript.number }} {% trans " duplicated scripts." %}</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <footer class="footer grey-bg">
+        <div class="container">
+            {% trans "©2019 Dr. Scratch" %}
+            <!-- SOCIAL ICONS -->
+            <ul class="social-icons">
+                <li><a href="https:/twitter.com/drscratchtool"><span class="icon-social-twitter transparent-text-dark"></span></a>
+                </li>
+                <li><a href=""><span class="icon-social-github transparent-text-dark"></span></a>
+                </li>
+            </ul>
+        </div>
+    </footer>
+
+</body>
+
+</html>

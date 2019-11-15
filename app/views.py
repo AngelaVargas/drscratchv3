@@ -43,6 +43,7 @@ import spriteNaming
 import backdropNaming
 import duplicateScripts
 import deadCode
+import sb3_blocks_mapper
 
 from exception import DrScratchException
 
@@ -681,10 +682,9 @@ def proc_duplicate_script(lines, filename):
     number = 0
     lLines = lines.split('\n')
     number = lLines[0].split(" ")[0]
-    dic["duplicateScript"] = dic
-    dic["duplicateScript"]["number"] = number
-    # if number != "0":
-    #     dic["duplicateScript"]["duplicated"] = lLines[1:-1]
+    dic["duplicateScript"] = {'number': int(number)}
+    # dic["duplicateScript"]["number"] = number
+    dic["duplicateScript"]["duplicated"] = lLines[1:-1]
 
     #Save in DB
     filename.duplicateScript = number
@@ -700,9 +700,9 @@ def proc_sprite_naming(lines, filename):
     number = lLines[0].split(' ')[0]
     lObjects = lLines[1:]
     lfinal = lObjects[:-1]
-    dic['spriteNaming'] = dic
-    dic['spriteNaming']['number'] = int(number)
-    dic['spriteNaming']['sprite'] = lfinal
+    dic['spriteNaming'] = {'number': int(number), 'sprite': lfinal}
+    # dic['spriteNaming']['number'] = int(number)
+    # dic['spriteNaming']['sprite'] = lfinal
 
     #Save in DB
     filename.spriteNaming = number
@@ -718,9 +718,9 @@ def proc_backdrop_naming(lines, filename):
     number = lLines[0].split(' ')[0]
     lObjects = lLines[1:]
     lfinal = lObjects[:-1]
-    dic['backdropNaming'] = dic
-    dic['backdropNaming']['number'] = int(number)
-    dic['backdropNaming']['backdrop'] = lfinal
+    dic['backdropNaming'] = {'number': int(number), 'backdrop': lfinal}
+    # dic['backdropNaming']['number'] = int(number)
+    # dic['backdropNaming']['backdrop'] = lfinal
 
     #Save in DB
     filename.backdropNaming = number
@@ -744,8 +744,8 @@ def proc_dead_code(lines, filename):
             iterator += len(values)
 
     dic = {}
-    dic["deadCode"] = dic
-    dic["deadCode"]["number"] = iterator
+    dic["deadCode"] = {'number': iterator}
+    # dic["deadCode"]["number"] = iterator
 
     number = len(lcharacter)
 
@@ -1220,9 +1220,46 @@ def blocks(request):
         return HttpResponse(headers, content_type="application/json")
 
 
-def blocks_v3(request):
+def bad_smells(request):
 
-    return render (request, 'learn/blocks_v3.html')
+    data = request.POST
+
+    dicc = {}
+    dicc['backdropNaming'] = ast.literal_eval(data['backdrop'])
+    dicc['spriteNaming'] = ast.literal_eval(data['sprite'])
+    dicc['deadCode'] = ast.literal_eval(data['dead'])
+    dicc['duplicateScript'] = ast.literal_eval(data['duplicated'])
+
+    #Mapping for dead code blocks
+    for sprite, dead_list in dicc['deadCode'].iteritems():
+        if sprite != 'number':
+            mapped_list = []
+            for block in dead_list:
+                if type(block) == list:
+                    sub_mapped_list = []
+                    for sub_block in block:
+                        sub_mapped_block = sb3_blocks_mapper.main(sub_block)
+                        sub_mapped_list.append(sub_mapped_block)
+                    mapped_list.append(sub_mapped_list)
+                else:
+                    mapped_block = sb3_blocks_mapper.main(block)
+                    mapped_list.append(mapped_block)
+            dicc['deadCode'][sprite] = mapped_list
+
+
+    #Mapping for duplicated blocks
+    lList = 0
+    for dup_list in dicc['duplicateScript']['duplicated']:
+        dup_list = dup_list[1:-1].split(",")
+        mapped_list = []
+        for block in dup_list:
+            block = block.split("'")[1]
+            mapped_block = sb3_blocks_mapper.main(block)
+            mapped_list.append(mapped_block)
+        dicc['duplicateScript']['duplicated'][lList] = mapped_list
+        lList += 1
+
+    return render (request, 'bad_smells/main.html', dicc)
 
 
 #_____________________________ TO REGISTER ORGANIZATION ______________________#
