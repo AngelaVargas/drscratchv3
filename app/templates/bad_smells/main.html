@@ -60,6 +60,14 @@
 
         $(document).ready(function() {
             scratchblocks.renderMatching('pre.blocks', {style: "scratch3", languages: ['ca','es', 'en', 'it','ru', 'el', 'eu', 'gl', 'pt']});
+            let items = document.querySelectorAll('.blocks .scratchblocks svg, [class^=blocks-3] .scratchblocks svg');
+            let item;
+            for (let i = items.length; i--;) {
+                item = items[i];
+                item.setAttribute('viewBox', '0 0 ' + item.width.baseVal.value + ' ' + item.children[1].getBoundingClientRect().height);
+                item.width.baseVal.value *= 0.75;
+                item.height.baseVal.value = item.viewBox.baseVal.height * 0.75;
+	        }
         });
 
         $(document).ready(function () {
