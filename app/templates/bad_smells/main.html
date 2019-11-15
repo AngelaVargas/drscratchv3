@@ -212,9 +212,8 @@
                            <br>
                            {% for script in duplicateScript.duplicated %}
                                     <pre class="blocks">
-                                    {% for dup in script %}
-                                        {{ dup }}
-                                    {% endfor %}
+                                        {% for dup in script %} {{ dup }}
+                                        {% endfor %}
                                     </pre>
                                 {% endfor %}
                            {% if duplicateScript.number == 0 %}
