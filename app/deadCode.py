@@ -15,7 +15,7 @@ class DeadCode():
       self.dead_code_instances = 0
       self.opcode_argument_reporter = "argument_reporter"
       self.event_variables = ["event_whenbroadcastreceived", "event_whenflagclicked", "event_whengreaterthan", "event_whenkeypressed",
-                              "event_whenthisspriteclicked", "event_whenbackdropswitchesto",
+                              "event_whenthisspriteclicked", "event_whenbackdropswitchesto", "event_whenstageclicked",
                               "control_start_as_clone"]
 
       #I have to do different
@@ -81,7 +81,11 @@ class DeadCode():
                         else:
                             #Could be normal loop block
                             if block["inputs"]["SUBSTACK"][1] == None:
-                                blocks_list.append([parent_block["opcode"], block["opcode"], "finish_end"])
+                                if "control" in parent_block["opcode"]:
+                                    #The parent it's also a control block
+                                    blocks_list.append([parent_block["opcode"], block["opcode"], "finish_end", "finish_end"])
+                                else:
+                                    blocks_list.append([parent_block["opcode"], block["opcode"], "finish_end"])
                     else:
                         #Normal block
                         pass
