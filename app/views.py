@@ -684,7 +684,7 @@ def proc_duplicate_script(lines, filename):
     number = lLines[0].split(" ")[0]
     dic["duplicateScript"] = {'number': int(number)}
     # dic["duplicateScript"]["number"] = number
-    dic["duplicateScript"]["duplicated"] = lLines[1:-1]
+    dic["duplicateScript"]["duplicated"] = lLines[1]
 
     #Save in DB
     filename.duplicateScript = number
@@ -1248,16 +1248,14 @@ def bad_smells(request):
 
 
     #Mapping for duplicated blocks
-    lList = 0
-    for dup_list in dicc['duplicateScript']['duplicated']:
-        dup_list = dup_list[1:-1].split(",")
+    dicc['duplicateScript']['duplicated'] = ast.literal_eval(dicc['duplicateScript']['duplicated'])
+    for dup_sprite, dup_list in dicc['duplicateScript']['duplicated'].iteritems():
         mapped_list = []
         for block in dup_list:
-            block = block.split("'")[1]
             mapped_block = sb3_blocks_mapper.main(block)
             mapped_list.append(mapped_block)
-        dicc['duplicateScript']['duplicated'][lList] = mapped_list
-        lList += 1
+
+        dicc['duplicateScript']['duplicated'][dup_sprite] = mapped_list
 
     return render (request, 'bad_smells/main.html', dicc)
 

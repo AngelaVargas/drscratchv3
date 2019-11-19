@@ -76,7 +76,7 @@
           text-align: center;
         }
 
-        .dead {
+        .sprites {
             text-align: left;
             color: #547ABC;
             font-size: 18px;
@@ -171,7 +171,7 @@
                             <br>
                             {% for key,value in deadCode.items %}
                                 {% if key != 'number' %}
-                                    <div class="dead">{{ key }}:</div>
+                                    <div class="sprites">{{ key }}:</div>
                                     <pre class="blocks">
                                     {% for dead_list in value %}
                                         {% for dead_block in dead_list %} {{ dead_block }}
@@ -199,9 +199,10 @@
                         <div class="jumbotron">
                            <h3 id="score">{% trans "Duplicated scripts" %}</h3>
                            <br>
-                           {% for script in duplicateScript.duplicated %}
+                           {% for key, value in duplicateScript.duplicated.items %}
+                                <div class="sprites">{{ key }}:</div>
                                     <pre class="blocks">
-                                        {% for dup in script %} {{ dup }}
+                                        {% for dup in value %} {{ dup }}
                                         {% endfor %}
                                     </pre>
                                 {% endfor %}
