@@ -54,9 +54,6 @@
 
 
     <script>
-        $(document).ready(function () {
-            $('.dropdown').popover();
-        });
 
         $(document).ready(function() {
             scratchblocks.renderMatching('pre.blocks', {style: "scratch3", languages: ['ca','es', 'en', 'it','ru', 'el', 'eu', 'gl', 'pt']});
@@ -70,21 +67,6 @@
 	        }
         });
 
-        $(document).ready(function () {
-            if("{{ dupCode }}" == ""){
-                $("#dupCode").attr("data-content","{% trans 'Your project does not have duplicated scripts, good job!' %}");
-            }else{
-                str = "{{ dupCode }}".split(",");
-                for (n in str){
-
-                    if(n == 0){str[n] = str[n].slice(13,-11)}
-                    else if(n == str.length-1) { str[n] = str[n].slice(14,-12)}
-                    else{
-                    str[n] = str[n].slice(14,-11)};
-                };
-                $("#dupCode").attr("data-content",str.join("\n"));
-            }
-        });
 
     </script>
 
