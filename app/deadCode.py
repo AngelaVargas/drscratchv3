@@ -13,16 +13,12 @@ class DeadCode():
     def __init__(self):
 
       self.dead_code_instances = 0
-      self.opcode_argument_reporter = "argument_reporter"
       self.event_variables = ["event_whenbroadcastreceived", "event_whenflagclicked", "event_whengreaterthan", "event_whenkeypressed",
                               "event_whenthisspriteclicked", "event_whenbackdropswitchesto", "event_whenstageclicked",
-                              "control_start_as_clone"]
-
-      #I have to do different
-      self.procedures = "procedures_prototype"
-
+                              "control_start_as_clone", "procedures_definition"]
       self.loop_blocks = ["control_repeat", "control_forever", "control_if", "control_if_else", "control_repeat_until"]
       self.blocks_dicc = {}
+
 
 
     """Run and return the results form the DeadCode plugin."""
@@ -49,46 +45,37 @@ class DeadCode():
                 block = self.blocks_dicc[key_block]
                 event_variable = any(block["opcode"] == event for event in self.event_variables)
                 loop_block = any(block["opcode"] == loop for loop in self.loop_blocks)
+                list = []
 
-                # if not self.opcode_argument_reporter in block["opcode"]:
-                if block["opcode"] != "procedures_prototype":
-                    if block["parent"] == None and block["next"] == None:
+                if block["parent"] == None and block["next"] == None:
                     #Check if it's a loop_block without parent and next, but with blocks inside
-                        if loop_block:
-                            try:
-                                next = block["inputs"]["SUBSTACK"][1]
-                                list = []
-                                list = self.search_next(next, block, list)
-                                list.append("finish_end")
-                                blocks_list.append(list)
-                            except:
-                                blocks_list.append([block["opcode"], "finish_end"])
-                        else:
-                             blocks_list.append([block["opcode"]])
-                    elif block["topLevel"] == True and block["next"] != None and not event_variable:
+                    list, normal_loop = self.check_loop_block(block, list)
+                    blocks_list.append(list)
+
+                elif block["topLevel"] == True and block["next"] != None and not event_variable:
+                    next = block["next"]
+                    list, normal_loop = self.check_loop_block(block,list)
+                    if list:
+                        block = self.blocks_dicc[next]
                         next = block["next"]
-                        list = []
-                        list = self.search_next(next, block, list)
-                        blocks_list.append(list)
-                    elif loop_block:
-                        #Check dead loop blocks inside a structure
+                    list = self.search_next(next, block, list)
+                    blocks_list.append(list)
+
+                elif block["parent"] != None and loop_block:
+                    #Check dead loop blocks inside a structure
+                    list, normal_loop = self.check_loop_block(block, list)
+                    if list and not normal_loop:
+                        #Add the parent
                         parent = block["parent"]
                         parent_block = self.blocks_dicc[parent]
-                        if not block["inputs"]:
-                            blocks_list.append([parent_block["opcode"], block["opcode"], "finish_end"])
-                        elif "SUBSTACK" not in block["inputs"]:
-                            blocks_list.append([parent_block["opcode"], block["opcode"], "finish_end"])
-                        else:
-                            #Could be normal loop block
-                            if block["inputs"]["SUBSTACK"][1] == None:
-                                if "control" in parent_block["opcode"]:
-                                    #The parent it's also a control block
-                                    blocks_list.append([parent_block["opcode"], block["opcode"], "finish_end", "finish_end"])
-                                else:
-                                    blocks_list.append([parent_block["opcode"], block["opcode"], "finish_end"])
-                    else:
-                        #Normal block
-                        pass
+                        list.insert(0, parent_block["opcode"])
+                        if "control" in parent_block["opcode"]:
+                            #The parent it's also a control block
+                            list.append("finish_end")
+                        blocks_list.append(list)
+                else:
+                    #Normal block
+                    pass
 
             if blocks_list:
               sprites[sprite] = blocks_list
@@ -96,17 +83,59 @@ class DeadCode():
 
       return sprites
 
-    def search_next(self, next, block, list):
-        if next == None:
+
+
+    def check_loop_block(self, block, list):
+        loop_block = any(block["opcode"] == loop for loop in self.loop_blocks)
+        normal_loop = True
+
+        if loop_block:
+            try:
+                next_in_loop = block["inputs"]["SUBSTACK"][1]
+                if next_in_loop:
+                    self.search_next(next_in_loop, block, list)
+                else:
+                    normal_loop = False
+            except:
+                normal_loop = False
+
             list.append(block["opcode"])
+            self.check_if_else(block,list)
+            list.append("finish_end")
+
         else:
-            list.append(block['opcode'])
+            list.append(block["opcode"])
+
+        return list, normal_loop
+
+
+
+    def search_next(self, next, block, list):
+
+        list.append(block["opcode"])
+        if next:
             #Update
             next_block = self.blocks_dicc[next]
             next = next_block['next']
             self.search_next(next, next_block, list)
 
         return list
+
+
+
+    def check_if_else(self, block, list):
+        if block["opcode"] == "control_if_else":
+            list.append("control_else")
+            try:
+                else_block = block["input"]["SUBSTACK2"][1]
+                next = else_block
+                next_block = self.blocks_dicc[next]
+                self.search_next(next, next_block, list)
+            except:
+                return
+        else:
+            return
+
 
 
 
