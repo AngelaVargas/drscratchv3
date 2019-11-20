@@ -46,20 +46,20 @@ class DuplicateScripts():
                   block_list.append(str(block["opcode"]))
                   next = block["next"]
                   aux_next = []
-                  self.search_next(next, block_list, key_block, aux_next)
-                  print block_list
+                  else_block = None
+                  self.search_next(next, block_list, key_block, aux_next, else_block)
 
                   blocks_tuple = tuple(block_list)
-                  #Only scripts with more than 5 blocks
-                  if len(block_list) >= 5:
-                    scripts_set[sprite].append(blocks_tuple)
 
                   for sprite_key, sprite_value in scripts_set.iteritems():
-                     if sprite_key != sprite:
-                         if blocks_tuple in sprite_value:
-                            if block_list not in self.list_duplicate:
-                                self.list_duplicate.append(block_list)
-                                self.total_duplicate += 1
+                    if blocks_tuple in sprite_value:
+                        if block_list not in self.list_duplicate:
+                            self.list_duplicate.append(block_list)
+                            self.total_duplicate += 1
+
+                  # Only save the scripts with more than 5 blocks
+                  if len(block_list) >= 5:
+                    scripts_set[sprite].append(blocks_tuple)
 
 
      #Find the number of duplicates
@@ -71,11 +71,21 @@ class DuplicateScripts():
                sprites_dup.append(str(key))
 
         sprites_dup = ", ".join(sprites_dup)
-        self.blocks_dup[sprites_dup] = repeat_block
+        if sprites_dup not in self.blocks_dup:
+            self.blocks_dup[sprites_dup] = []
+
+        self.blocks_dup[sprites_dup].append(repeat_block)
 
 
 
-   def search_next(self, next, block_list, key_block, aux_next):
+   def search_next(self, next, block_list, key_block, aux_next, else_block):
+
+       try:
+           # Check if it's if_else block
+           else_block = self.blocks_dicc[key_block]["inputs"]["SUBSTACK2"][1]
+       except:
+           pass
+
        if next == None:
            try:
               # Maybe is a loop block
@@ -83,34 +93,35 @@ class DuplicateScripts():
               if next == None:
                   block_list.append("finish_end")
                   return
-              # try:
-              #     else_block = self.blocks_dicc[key_block]["inputs"]["SUBSTACK2"][1]
-              # except:
-              #     else_block = None
            except:
-              if aux_next:      #Check if there is an aux_next saved
-                next = aux_next[-1]
-                aux_next.pop(-1)
-                block_list.append("finish_end")
+              if else_block:
+                  next = else_block
+                  else_block = None
+                  block_list.append("control_else")
               else:
-                next = None
-                return
+                if aux_next:      #Check if there is an aux_next saved
+                    next = aux_next[-1]
+                    aux_next.pop(-1)
+                    block_list.append("finish_end")
+                else:
+                    next = None
+                    return
        else:
             # Maybe is a loop block
             if "SUBSTACK" in self.blocks_dicc[key_block]["inputs"]:
                 loop_block = self.blocks_dicc[key_block]["inputs"]["SUBSTACK"][1]
+
                 #Check if is a loop block but EMPTY
                 if loop_block != None:
                     aux_next.append(next)          #Add the real next until the end of the loop
                     next = loop_block
 
 
-
        block = self.blocks_dicc[next]
        block_list.append(str(block["opcode"]))
        key_block = next
        next = block["next"]
-       self.search_next(next, block_list, key_block, aux_next)
+       self.search_next(next, block_list, key_block, aux_next, else_block)
 
 
 
