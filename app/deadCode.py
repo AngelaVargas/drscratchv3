@@ -57,32 +57,6 @@ class DeadCode():
                 elif block["topLevel"] == True and block["next"] != None and not event_variable:
                     # DEAD STRUCTURE: NO HAT BLOCKS
                     list, is_loop = self.check_loop_block(block,list)
-                    # if is_loop:
-                        # next = block["next"]
-                        # block = self.blocks_dicc[next]
-                        # try:
-                        #     l_block = block["inputs"]["SUBSTACK"][1]
-                        #     list, _ = self.check_loop_block(self.blocks_dicc[l_block], list)
-                        # except:
-                        #     pass
-
-                        # Check if it's an if_else block
-                        # try:
-                        #     l2_block = block["inputs"]["SUBSTACK2"][1]
-                        #     list.append("control_else")
-                        #     list, _ = self.check_loop_block(self.blocks_dicc[l2_block], list)
-                        #     list.append("finish_end")
-                        # except:
-                        #     pass
-
-                        # list.append("finish_end")
-
-                        # try:
-                        #     next = self.blocks_dicc[block]["next"]
-                        #     list = self.search_next(next, list)
-                        # except:
-                        #     pass
-
                     blocks_list.append(list)
 
                 elif block["parent"] != None and loop_block:
@@ -131,8 +105,7 @@ class DeadCode():
             list.append("finish_end")
             if normal_loop:
                 if block["next"] != None:
-                    list,_ = self.check_loop_block(self.blocks_dicc[block["next"]], list)
-                    list = self.search_next(self.blocks_dicc[block["next"]]["next"], list)
+                    list, loop = self.check_loop_block(self.blocks_dicc[block["next"]], list)
 
         else:
             list.append(block["opcode"])
