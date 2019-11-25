@@ -17,8 +17,9 @@ class DeadCode():
                               "event_whenthisspriteclicked", "event_whenbackdropswitchesto", "event_whenstageclicked",
                               "control_start_as_clone", "procedures_definition"]
       self.loop_blocks = ["control_repeat", "control_forever", "control_if", "control_if_else", "control_repeat_until"]
+      self.control_blocks = ["control_wait", "control_repeat", "control_if", "control_if_else", "control_wait_until",
+                             "control_repeat_until"]
       self.blocks_dicc = {}
-      self.recurs_blocks = []
 
 
 
@@ -47,16 +48,25 @@ class DeadCode():
                 block = self.blocks_dicc[key_block]
                 event_variable = any(block["opcode"] == event for event in self.event_variables)
                 loop_block = any(block["opcode"] == loop for loop in self.loop_blocks)
+                control_block = any(block["opcode"] == control for control in self.control_blocks)
                 list = []
 
-                if block["parent"] == None and block["next"] == None:
+                if control_block:
+                    # LOOP BLOCKS WITH NO CONDITIONS
+                    list = self.check_empty_conditions(block)
+                    self.dead_code_instances += 1
+                    blocks_list.append(list)
+
+                elif block["parent"] == None and block["next"] == None:
                     # DEAD BLOCK: NO PARENTS AND CHILDREN
                     list, _ = self.check_loop_block(block, list)
+                    self.dead_code_instances += 1
                     blocks_list.append(list)
 
                 elif block["topLevel"] == True and block["next"] != None and not event_variable:
                     # DEAD STRUCTURE: NO HAT BLOCKS
                     list, is_loop = self.check_loop_block(block,list)
+                    self.dead_code_instances += 1
                     blocks_list.append(list)
 
                 elif block["parent"] != None and loop_block:
@@ -70,14 +80,16 @@ class DeadCode():
                         if any(parent_block["opcode"] == loop for loop in self.loop_blocks):
                             #The parent it's also a control block
                             list.append("finish_end")
+                        self.dead_code_instances += 1
                         blocks_list.append(list)
+
                 else:
                     #Normal block
                     pass
 
             if blocks_list:
               sprites[sprite] = blocks_list
-              self.dead_code_instances += 1
+              # self.dead_code_instances += 1
 
       return sprites
 
@@ -142,6 +154,31 @@ class DeadCode():
                 return
         else:
             return
+
+
+    def check_empty_conditions(self, block):
+        empty_list = []
+
+        if block["opcode"] == "control_wait":
+            condition = block["inputs"]["DURATION"][1][1]
+            if not condition:
+                empty_list.append(block["opcode"])
+        elif block["opcode"] == "control_repeat":
+            condition = block["inputs"]["TIMES"][1][1]
+            if not condition:
+                empty_list, _ = self.check_loop_block(block, empty_list)
+        elif block["opcode"] == "control_wait_until":
+            if not block["inputs"]:
+                empty_list.append(block["opcode"])
+        else:
+            try:
+                condition = block["inputs"]["CONDITION"][1]
+                if condition == None:
+                    empty_list, _ = self.check_loop_block(block, empty_list)
+            except:
+                empty_list, _ = self.check_loop_block(block, empty_list)
+
+        return empty_list
 
 
 
