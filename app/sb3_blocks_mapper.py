@@ -1,5 +1,4 @@
 
-import json
 
 
 class BlocksMapper():
@@ -7,7 +6,8 @@ class BlocksMapper():
     def __init__(self):
 
         self.categories = ["motion", "looks", "sound", "data", "event", "control", "operator", "sensing", "procedures",
-                           "videoSensing", "pen", "music", "text2speech", "translate", "makeymakey"]
+                           "videoSensing", "pen", "music", "text2speech", "translate", "makeymakey", "microbit", "ev3",
+                           "boost", "wedo2", "gdxfor"]
 
     def analyze(self, block):
         category = block.split("_")[0]
@@ -36,6 +36,26 @@ class BlocksMapper():
            result = self.procedures_mapper(block_name)
         elif category == "music":
            result = self.music_mapper(block_name)
+        elif category == "pen":
+           result = self.pen_mapper(block_name)
+        elif category == "videoSensing":
+           result = self.video_mapper(block_name)
+        elif category == "text2speech":
+           result = self.text2speech_mapper(block_name)
+        elif category == "translate":
+           result = self.translate_mapper(block_name)
+        elif category == "makeymakey":
+           result = self.makey_mapper(block_name)
+        elif category == "microbit":
+           result = self.microbit_mapper(block_name)
+        elif category == "ev3":
+           result = self.ev3_mapper(block_name)
+        elif category == "boost":
+           result = self.boost_mapper(block_name)
+        elif category == "wedo2":
+           result = self.wedo_mapper(block_name)
+        elif category == "gdxfor":
+           result = self.gdxfor_mapper(block_name)
         else:
            result = block_name
 
@@ -168,8 +188,12 @@ class BlocksMapper():
             block_name = "when backdrop switches to [ v]"
         elif block_name == "whengreaterthan":
             block_name = "when [ v] > ()"
-        elif block_name == "whenbroadcastreceived":
-            block_name = "when I receive [ v]"
+        elif "whenbroadcastreceived" in block_name:
+            try:
+                message = block_name.split("_")[1]
+            except:
+                message = ""
+            block_name = "when I receive [ " + message + " v]"
         elif block_name == "broadcast":
             block_name = "broadcast ( v)"
         elif block_name == "broadcastandwait":
@@ -373,9 +397,236 @@ class BlocksMapper():
         return block_name
 
 
+    # ____PEN CATEGORY___#
+    def pen_mapper(self, block_name):
+        if block_name == "clear":
+            block_name = "erase all"
+        elif block_name == "penDown":
+            block_name = "pen down"
+        elif block_name == "penUp":
+            block_name = "pen up"
+        elif block_name == "setPenColorToColor":
+            block_name = "set pen color to (#F3A533)"
+        elif block_name == "changePenColorParamBy":
+            block_name = "change pen ( v) by ()"
+        elif block_name == "setPenColorParamTo":
+            block_name = "set pen ( v) to ()"
+        elif block_name == "changePenSizeBy":
+            block_name = "change pen size by ()"
+        elif block_name == "setPenSizeTo":
+            block_name = "set pen size to ()"
+        else:
+            pass
+
+        return block_name
+
+
+    #____VIDEO CATEGORY___#
+    def video_mapper(self, block_name):
+        if block_name == "whenMotionGreaterThan":
+            block_name = "when video motion > ()"
+        elif block_name == "videoToggle":
+            block_name = "video ( v) on ( v)"
+        elif block_name == "videoOn":
+            block_name = "turn video ( v)"
+        elif block_name == "setVideoTransparency":
+            block_name = "set video transparency to ()"
+        else:
+            pass
+
+        return block_name
+
+
+    #____TEXT2SPEECH CATEGORY____ #
+    def text2speech_mapper(self, block_name):
+        if block_name == "speakAndWait":
+            block_name = "speak [] :: extension"
+        elif block_name == "setVoice":
+            block_name = "set voice to [ v] :: extension"
+        elif block_name == "setLanguage":
+            block_name = "set language to [ v] :: extension"
+        else:
+            pass
+
+        return block_name
+
+
+
+    # ____TRANSLATE CATEGORY____ #
+    def translate_mapper(self, block_name):
+        if block_name == "getTranslate":
+            block_name = "translate () to ( v) :: translate "
+        elif block_name == "getViewerLanguage":
+            block_name = "language :: translate"
+        else:
+            pass
+
+        return block_name
+
+
+    # ____MAKEYMAKEY CATEGORY____ #
+    def makey_mapper(self, block_name):
+        if block_name == "whenMakeyKeyPressed":
+            block_name = "when ( v) key pressed :: makeymakey"
+        elif block_name == "whenCodePressed":
+            block_name = "when ( v) pressed in order :: makeymakey"
+        else:
+            pass
+
+        return block_name
+
+
+    # ____MICROBIT CATEGORY____ #
+    def microbit_mapper(self, block_name):
+        if block_name == "whenButtonPressed":
+            block_name = "when ( v) button pressed :: microbit hat"
+        elif block_name == "isButtonPressed":
+            block_name = "<( v) button pressed ? :: microbit>"
+        elif block_name == "whenGesture":
+            block_name = "when ( v) :: microbit hat"
+        elif block_name == "displaySymbol":
+            block_name = "display ( v) :: microbit"
+        elif block_name == "displayText":
+            block_name = "display text () :: microbit"
+        elif block_name == "displayClear":
+            block_name = "clear display :: microbit"
+        elif block_name == "whenTilted":
+            block_name = "when tilted ( v) :: microbit hat"
+        elif block_name == "isTilted":
+            block_name = "<tilted ( v) ? :: microbit>"
+        elif block_name == "getTiltAngle":
+            block_name = "tilt angle ( v) :: microbit"
+        elif block_name == "whenPinConnected":
+            block_name = "when pin ( v) connected :: microbit hat"
+        else:
+            pass
+
+        return block_name
+
+
+
+    # ____LEGO EV3 CATEGORY____ #
+    def ev3_mapper(self, block_name):
+        if block_name == "motorTurnClockwise":
+            block_name = "motor ( v) turn this way for () seconds :: ev3"
+        elif block_name == "motorTurnCounterClockwise":
+            block_name = "motor ( v) turn that way for () seconds :: ev3"
+        elif block_name == "motorSetPower":
+            block_name = "motor ( v) set power () % :: ev3"
+        elif block_name == "getMotorPosition":
+            block_name = "(motor ( v) position :: ev3)"
+        elif block_name == "whenButtonPressed":
+            block_name = "when button ( v) pressed :: ev3 hat"
+        elif block_name == "whenDistanceLessThan":
+            block_name = "when distance > () :: ev3 hat"
+        elif block_name == "whenBrightnessLessThan":
+            block_name = "when brightness > () :: ev3 hat"
+        elif block_name == "buttonPressed":
+            block_name = "<button ( v) pressed? :: ev3>"
+        elif block_name == "getDistance":
+            block_name = "distance :: ev3"
+        elif block_name == "getBrightness":
+            block_name = "(brightness :: ev3)"
+        elif block_name == "beep":
+            block_name = "beep note () for () secs :: ev3"
+        else:
+            pass
+
+        return block_name
+
+    # ____LEGO BOOST CATEGORY____ #
+    def boost_mapper(self, block_name):
+        if block_name == "motorOnFor":
+            block_name = "turn motor ( v) for () seconds :: extension"
+        elif block_name == "motorOnForRotation":
+            block_name = "turn motor ( v) for () rotations :: extension"
+        elif block_name == "motorOn":
+            block_name = "turn motor ( v) on :: extension"
+        elif block_name == "motorOff":
+            block_name = "turn motor ( v) off :: extension"
+        elif block_name == "setMotorPower":
+            block_name = "set motor ( v) speed to () % :: extension"
+        elif block_name == "setMotorDirection":
+            block_name = "set motor ( v) direction ( v) :: extension"
+        elif block_name == "getMotorPosition":
+            block_name = "(motor ( v) position :: extension)"
+        elif block_name == "whenColor":
+            block_name = "when ( v) brick seen :: extension hat"
+        elif block_name == "seeingColor":
+            block_name = "<seeing ( v) brick ? :: extension>"
+        elif block_name == "whenTilted":
+            block_name = "when tilted ( v) :: extension hat"
+        elif block_name == "getTiltAngle":
+            block_name = "(tilt angle ( v) :: extension)"
+        elif block_name == "setLightHue":
+            block_name = "set light color to () :: extension"
+        else:
+            pass
+
+        return block_name
+
+
+
+    # ____LEGO WeDo 2.0 CATEGORY____ #
+    def wedo_mapper(self, block_name):
+        if block_name == "motorOnFor":
+            block_name = "turn ( v) on for () seconds :: wedo"
+        elif block_name == "motorOn":
+            block_name = "turn ( v) on :: wedo"
+        elif block_name == "motorOff":
+            block_name = "turn ( v) off :: wedo"
+        elif block_name == "startMotorPower":
+            block_name = "set ( v) power to () :: wedo"
+        elif block_name == "setMotorDirection":
+            block_name = "set ( v) direction to ( v) :: wedo"
+        elif block_name == "setLightHue":
+            block_name = "set light color to () :: wedo"
+        elif block_name == "whenDistance":
+            block_name = "when distance ( v) () :: wedo hat"
+        elif block_name == "whenTilted":
+            block_name = "when tilted ( v) :: wedo hat"
+        elif block_name == "getDistance":
+            block_name = "(distance :: wedo)"
+        elif block_name == "isTilted":
+            block_name = "<tilted ( v) ? :: wedo>"
+        elif block_name == "getTiltAngle":
+            block_name = "(tilt angle ( v) :: wedo)"
+        else:
+            pass
+
+        return block_name
+
+
+
+    # ____Force and Acceleration CATEGORY____ #
+    def gdxfor_mapper(self, block_name):
+        if block_name == "whenGesture":
+            block_name = "when ( v) :: extension hat"
+        elif block_name == "whenForcePushedOrPulled":
+            block_name = "when force sensor ( v) :: extension hat"
+        elif block_name == "getForce":
+            block_name = "(force :: extension)"
+        elif block_name == "whenTilted":
+            block_name = "when tilted ( v) :: extension hat"
+        elif block_name == "isTilted":
+            block_name = "<tilted ( v) ? :: extension>"
+        elif block_name == "getTilt":
+            block_name = "(tilt angle ( v) :: extension)"
+        elif block_name == "isFreeFalling":
+            block_name = "<falling? :: extension>"
+        elif block_name == "getSpinSpeed":
+            block_name = "(spin speed ( v) :: extension)"
+        elif block_name == "getAcceleration":
+            block_name = "(acceleration ( v):: extension)"
+        else:
+            pass
+
+        return block_name
+
+
+
 def main(block):
     """The entrypoint for the scratchblocks_v3 mapper"""
 
     mapper = BlocksMapper()
     return mapper.analyze(block)
-    # return mapper.finalize()
