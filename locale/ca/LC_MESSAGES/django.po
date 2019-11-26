@@ -747,6 +747,11 @@ msgstr " codi mort."
 msgid "Your project does not have dead code, good job!"
 msgstr "El teu projecte no té codi mort, bon treball!"
 
+
+#: templates/bad_smells/main.html:124
+msgid "<img src='static/app/images/badsmells_en.png'>"
+msgstr "<img src='static/app/images/badsmells_ca.png'>"
+
 #: templates/coder/downloads.html:7 templates/organization/downloads.html:7
 msgid "Download my CSV files."
 msgstr "Descarregar el fitxer .csv"

@@ -93,7 +93,7 @@ msgstr ""
 #: templates/organization/dashboard-developing.html:219
 #: templates/organization/dashboard-master.html:266
 msgid "Level"
-msgstr ""
+msgstr "Nivel"
 
 #: templates/coder/base.html:154 templates/main/statistics.html:146
 #: templates/organization/base.html:157
@@ -471,15 +471,11 @@ msgstr ""
 #: templates/coder/dashboard-basic.html:137
 #: templates/main/dashboard-basic.html:134
 #: templates/organization/dashboard-basic.html:137
-#, fuzzy
-#| msgid ""
-#| "<h3 class='text-left dark-text'>Your level is... <strong>BASIC! </"
-#| "strong></h3>"
 msgid ""
 "<h3 class='text-left dark-text'>The level of your project is... "
 "<strong>BASIC! </strong></h3>"
 msgstr ""
-"<h3 class='text-left dark-text'>O teu nivel é... <strong>BÁSICO! </strong></"
+"<h3 class='text-left dark-text'>O nivel do teu proxecto é... <strong>BÁSICO! </strong></"
 "h3>"
 
 #: templates/coder/dashboard-basic.html:138
@@ -510,7 +506,7 @@ msgstr "Voltar para o seu proxecto Scratch."
 #: templates/organization/dashboard-developing.html:191
 #: templates/organization/dashboard-master.html:238
 msgid "Project certificate"
-msgstr ""
+msgstr "Certificado do proxecto"
 
 #: templates/coder/dashboard-basic.html:157
 #: templates/coder/dashboard-developing.html:196
@@ -536,7 +532,7 @@ msgstr ""
 #: templates/organization/dashboard-developing.html:218
 #: templates/organization/dashboard-master.html:265
 msgid "Level up"
-msgstr ""
+msgstr "Mellora o teu nivel"
 
 #: templates/coder/dashboard-basic.html:196
 #: templates/coder/dashboard-developing.html:234
@@ -569,7 +565,7 @@ msgstr ""
 #: templates/organization/dashboard-developing.html:64
 #: templates/organization/dashboard-master.html:70
 msgid "Bad habits in programming"
-msgstr ""
+msgstr "Malos hábitos na programación"
 
 #: templates/coder/dashboard-developing.html:65
 #: templates/coder/dashboard-master.html:71
@@ -585,15 +581,11 @@ msgstr ""
 #: templates/coder/dashboard-developing.html:144
 #: templates/main/dashboard-developing.html:141
 #: templates/organization/dashboard-developing.html:144
-#, fuzzy
-#| msgid ""
-#| "<h3 class='text-left dark-text'>Your level is... <strong>DEVELOPING! </"
-#| "strong></h3>"
 msgid ""
 "<h3 class='text-left dark-text'>The level of your project is... "
 "<strong>DEVELOPING! </strong></h3>"
 msgstr ""
-"<h3 class='text-left dark-text'>O teu nivel é... <strong>MEDIO! </strong></"
+"<h3 class='text-left dark-text'>O nivel do teu proxecto é... <strong>MEDIO! </strong></"
 "h3>"
 
 #: templates/coder/dashboard-developing.html:145
@@ -677,15 +669,11 @@ msgstr "O teu proxecto non ten nomes dos escenarios non axeitados, bo traballo!"
 
 #: templates/coder/dashboard-master.html:169
 #: templates/main/dashboard-master.html:167
-#, fuzzy
-#| msgid ""
-#| "<h3 class='text-left dark-text'>Your level is...  <strong> MASTER! </"
-#| "strong></h3>"
 msgid ""
 "<h3 class='text-left dark-text'>The level of your project is... <strong> "
 "MASTER! </strong></h3>"
 msgstr ""
-"<h3 class='text-left dark-text'><small>O teu nivel é... <strong>ALTO!</"
+"<h3 class='text-left dark-text'>O nivel do teu proxecto é... <strong>ALTO!</"
 "strong></h3>"
 
 #: templates/coder/dashboard-master.html:170
@@ -729,6 +717,11 @@ msgstr " código morto."
 #: templates/organization/dashboard-developing.html:227207
 msgid "Your project does not have dead code, good job!"
 msgstr "O teu proxecto non ten código morto, bo traballo!"
+
+
+#: templates/bad_smells/main.html:124
+msgid "<img src='static/app/images/badsmells_en.png'>"
+msgstr "<img src='static/app/images/badsmells_ga.png'>"
 
 
 #: templates/coder/downloads.html:7 templates/organization/downloads.html:7
@@ -3060,18 +3053,6 @@ msgstr ""
 #: templates/main/statistics.html:311
 msgid "These statistics are update every night at 00.00h CEST."
 msgstr ""
-
-#: templates/organization/dashboard-master.html:174
-#, fuzzy
-#| msgid ""
-#| "<h3 class='text-left dark-text'>Your level is...  <strong> MASTER! </"
-#| "strong></h3>"
-msgid ""
-"<h3 class='text-left dark-text'>The level of your project is...  <strong> "
-"MASTER! </strong></h3>"
-msgstr ""
-"<h3 class='text-left dark-text'><small>O teu nivel é... <strong>ALTO!</"
-"strong></h3>"
 
 #: templates/organization/email-sign-up.html:5
 msgid "New organization in Dr. Scratch!"

@@ -717,6 +717,10 @@ msgstr " мертвый код."
 msgid "Your project does not have dead code, good job!"
 msgstr "В вашем проекте нет мертвого кода, хорошая работа!"
 
+#: templates/bad_smells/main.html:124
+msgid "<img src='static/app/images/badsmells_en.png'>"
+msgstr "<img src='static/app/images/badsmells_ru.png'>"
+
 
 #: templates/coder/downloads.html:7 templates/organization/downloads.html:7
 msgid "Download my CSV files."

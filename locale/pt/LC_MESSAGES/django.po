@@ -137,7 +137,7 @@ msgstr "Código morto"
 #: templates/organization/base.html:212 templates/organization/base.html:387
 #: templates/organization/dashboard-master.html:197
 msgid "Duplicated scripts"
-msgstr "Scripts duplicados"
+msgstr "Programas duplicados"
 
 #: templates/coder/base.html:212 templates/coder/base.html.py:387
 #: templates/learn/base.html:114 templates/organization/base.html:215
@@ -481,15 +481,11 @@ msgstr ""
 #: templates/coder/dashboard-basic.html:137
 #: templates/main/dashboard-basic.html:134
 #: templates/organization/dashboard-basic.html:137
-#, fuzzy
-#| msgid ""
-#| "<h3 class='text-left dark-text'>Your level is... <strong>BASIC! </"
-#| "strong></h3>"
 msgid ""
 "<h3 class='text-left dark-text'>The level of your project is... "
 "<strong>BASIC! </strong></h3>"
 msgstr ""
-"<h3 class='text-left dark-text'>Seu nível é... <strong>BÁSICO! </strong></"
+"<h3 class='text-left dark-text'>O nível do seu projeto é ... <strong>BÁSICO! </strong></"
 "h3></img>"
 
 #: templates/coder/dashboard-basic.html:138
@@ -520,7 +516,7 @@ msgstr "Volte para o seu projecto Scratch."
 #: templates/organization/dashboard-developing.html:191
 #: templates/organization/dashboard-master.html:238
 msgid "Project certificate"
-msgstr ""
+msgstr "Certificado de projeto"
 
 #: templates/coder/dashboard-basic.html:157
 #: templates/coder/dashboard-developing.html:196
@@ -545,10 +541,8 @@ msgstr "Download"
 #: templates/organization/dashboard-basic.html:180
 #: templates/organization/dashboard-developing.html:218
 #: templates/organization/dashboard-master.html:265
-#, fuzzy
-#| msgid "Level"
 msgid "Level up"
-msgstr "Nível"
+msgstr "Melhore o seu nível"
 
 #: templates/coder/dashboard-basic.html:196
 #: templates/coder/dashboard-developing.html:234
@@ -599,15 +593,11 @@ msgstr ""
 #: templates/coder/dashboard-developing.html:144
 #: templates/main/dashboard-developing.html:141
 #: templates/organization/dashboard-developing.html:144
-#, fuzzy
-#| msgid ""
-#| "<h3 class='text-left dark-text'>Your level is... <strong>DEVELOPING! </"
-#| "strong></h3>"
 msgid ""
 "<h3 class='text-left dark-text'>The level of your project is... "
 "<strong>DEVELOPING! </strong></h3>"
 msgstr ""
-"<h3 class='text-left dark-text'>Seu nível é... <strong>DESENVOLVENDO! </"
+"<h3 class='text-left dark-text'>O nível do seu projeto é... <strong>DESENVOLVENDO! </"
 "strong></h3></img>"
 
 #: templates/coder/dashboard-developing.html:145
@@ -691,15 +681,11 @@ msgstr "Seu projeto não possui nomes de cenário padrão, bom trabalho!"
 
 #: templates/coder/dashboard-master.html:169
 #: templates/main/dashboard-master.html:167
-#, fuzzy
-#| msgid ""
-#| "<h3 class='text-left dark-text'>Your level is...  <strong> MASTER! </"
-#| "strong></h3>"
 msgid ""
 "<h3 class='text-left dark-text'>The level of your project is... <strong> "
 "MASTER! </strong></h3>"
 msgstr ""
-"<h3 class='text-left dark-text'>Seu nível é... <strong>MESTRE </strong></"
+"<h3 class='text-left dark-text'>O nível do seu projeto é... <strong>MESTRE </strong></"
 "h3></img>"
 
 #: templates/coder/dashboard-master.html:170
@@ -744,6 +730,10 @@ msgstr "código morto."
 #: templates/organization/dashboard-developing.html:227
 msgid "Your project does not have dead code, good job!"
 msgstr "Seu projeto não tem código morte, bom trabalho!"
+
+#: templates/bad_smells/main.html:124
+msgid "<img src='static/app/images/badsmells_en.png'>"
+msgstr "<img src='static/app/images/badsmells_pt.png'>"
 
 #: templates/coder/downloads.html:7 templates/organization/downloads.html:7
 msgid "Download my CSV files."
@@ -3169,17 +3159,6 @@ msgstr "<img class='framed' src='static/app/images/url-pt.png' />"
 msgid "These statistics are update every night at 00.00h CEST."
 msgstr ""
 
-#: templates/organization/dashboard-master.html:174
-#, fuzzy
-#| msgid ""
-#| "<h3 class='text-left dark-text'>Your level is...  <strong> MASTER! </"
-#| "strong></h3>"
-msgid ""
-"<h3 class='text-left dark-text'>The level of your project is...  <strong> "
-"MASTER! </strong></h3>"
-msgstr ""
-"<h3 class='text-left dark-text'>Seu nível é... <strong>MESTRE </strong></"
-"h3></img>"
 
 #: templates/organization/email-sign-up.html:5
 msgid "New organization in Dr. Scratch!"

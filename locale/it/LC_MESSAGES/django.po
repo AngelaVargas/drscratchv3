@@ -729,6 +729,10 @@ msgstr " dead code (codice inutilizzato)."
 msgid "Your project does not have dead code, good job!"
 msgstr "Il tuo progetto non ha dead code (codice inutilizzato), ottimo lavoro!"
 
+#: templates/bad_smells/main.html:124
+msgid "<img src='static/app/images/badsmells_en.png'>"
+msgstr "<img src='static/app/images/badsmells_it.png'>"
+
 #: templates/coder/downloads.html:7 templates/organization/downloads.html:7
 msgid "Download my CSV files."
 msgstr "Scarica i miei file CSV."
