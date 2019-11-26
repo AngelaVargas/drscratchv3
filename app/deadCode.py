@@ -105,10 +105,13 @@ class DeadCode():
     #___ SAVE ALL THE BLOCKS TOGETHER___#
     def save_blocks(self, file):
 
-        for blocks_dicc in file["targets"]:
-            for key, value in blocks_dicc["blocks"].iteritems():
-                if type(value) is dict:
-                   self.total_blocks[key] = value
+        try:
+            for blocks_dicc in file["targets"]:
+                for key, value in blocks_dicc["blocks"].iteritems():
+                    if type(value) is dict:
+                        self.total_blocks[key] = value
+        except:
+            self.total_blocks = {}
 
 
     def check_loop_block(self, block, list):
