@@ -20,6 +20,7 @@ class DeadCode():
       self.control_blocks = ["control_wait", "control_repeat", "control_if", "control_if_else", "control_wait_until",
                              "control_repeat_until"]
       self.blocks_dicc = {}
+      self.total_blocks = {}
 
 
 
@@ -28,6 +29,8 @@ class DeadCode():
 
       zip_file = zipfile.ZipFile(filename, "r")
       json_project = json.loads(zip_file.open("project.json").read())
+
+      self.save_blocks(json_project)
 
       sprites = {}
       for key, value in json_project.iteritems():
@@ -51,37 +54,42 @@ class DeadCode():
                 control_block = any(block["opcode"] == control for control in self.control_blocks)
                 list = []
 
-                if control_block:
-                    # LOOP BLOCKS WITH NO CONDITIONS
-                    list = self.check_empty_conditions(block)
-                    self.dead_code_instances += 1
-                    blocks_list.append(list)
-
-                elif block["parent"] == None and block["next"] == None:
+                if block["parent"] == None and block["next"] == None:
                     # DEAD BLOCK: NO PARENTS AND CHILDREN
                     list, _ = self.check_loop_block(block, list)
-                    self.dead_code_instances += 1
                     blocks_list.append(list)
 
                 elif block["topLevel"] == True and block["next"] != None and not event_variable:
                     # DEAD STRUCTURE: NO HAT BLOCKS
                     list, is_loop = self.check_loop_block(block,list)
-                    self.dead_code_instances += 1
                     blocks_list.append(list)
 
-                elif block["parent"] != None and loop_block:
+                elif block["parent"] != None and control_block:
                     # DEAD BLOCKS INSIDE AN STRUCTURE: EMPTY BLOCKS
-                    list, is_loop = self.check_loop_block(block, list)
-                    if list and not is_loop:
-                        #Add the parent
-                        parent = block["parent"]
-                        parent_block = self.blocks_dicc[parent]
-                        list.insert(0, parent_block["opcode"])
-                        if any(parent_block["opcode"] == loop for loop in self.loop_blocks):
-                            #The parent it's also a control block
-                            list.append("finish_end")
-                        self.dead_code_instances += 1
-                        blocks_list.append(list)
+
+                    # 1. WITH NO CONDITIONS
+                    empty_list = self.check_empty_conditions(block)
+                    if empty_list:
+                        blocks_list.append(empty_list)
+
+                    # 2. WITH NO BLOCKS INSIDE
+                    if loop_block and not empty_list:
+                        list, is_loop = self.check_loop_block(block, list)
+                        if list and not is_loop:
+                            #Add the parent
+                            parent = block["parent"]
+                            parent_block = self.blocks_dicc[parent]
+                            list.insert(0, parent_block["opcode"])
+                            if any(parent_block["opcode"] == loop for loop in self.loop_blocks):
+                                #The parent it's also a control block
+                                list.append("finish_end")
+                            blocks_list.append(list)
+
+                elif block["opcode"] == "event_whenbroadcastreceived":
+                    # BLOCKS WAITING FOR A MESSAGE THAT IS NOT SENT
+                    broadcast_list = self.check_message(block)
+                    if broadcast_list:
+                        blocks_list.append(broadcast_list)
 
                 else:
                     #Normal block
@@ -89,10 +97,18 @@ class DeadCode():
 
             if blocks_list:
               sprites[sprite] = blocks_list
-              # self.dead_code_instances += 1
+              self.dead_code_instances += 1
 
       return sprites
 
+
+    #___ SAVE ALL THE BLOCKS TOGETHER___#
+    def save_blocks(self, file):
+
+        for blocks_dicc in file["targets"]:
+            for key, value in blocks_dicc["blocks"].iteritems():
+                if type(value) is dict:
+                   self.total_blocks[key] = value
 
 
     def check_loop_block(self, block, list):
@@ -180,6 +196,27 @@ class DeadCode():
 
         return empty_list
 
+
+
+
+    def check_message(self, block):
+
+        find_message = False
+        broadcast_list = []
+        message = block["fields"]["BROADCAST_OPTION"][0]
+        broadcast_id = block["fields"]["BROADCAST_OPTION"][1]
+
+        for broad_key in self.total_blocks:
+            broad_block = self.total_blocks[broad_key]
+            if broad_block["opcode"] == "event_broadcastandwait" or broad_block["opcode"] == "event_broadcast":
+                if broad_block["inputs"]["BROADCAST_INPUT"][1][2] == broadcast_id:
+                    find_message = True
+
+        if not find_message:
+            name_block = block["opcode"] + "_" + message
+            broadcast_list.append(name_block)
+
+        return broadcast_list
 
 
 
