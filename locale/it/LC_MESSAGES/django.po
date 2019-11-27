@@ -733,6 +733,22 @@ msgstr "Il tuo progetto non ha dead code (codice inutilizzato), ottimo lavoro!"
 msgid "<img src='static/app/images/badsmells_en.png'>"
 msgstr "<img src='static/app/images/badsmells_it.png'>"
 
+
+#: templates/main/dashboard-developing.html:185
+#: templates/main/dashboard-master.html:164
+#: templates/coder/dashboard-developing.html:164
+#: templates/coder/dashboard-master.html:164
+msgid "<input type='image' src='static/app/images/badsmells_en.png' />"
+msgstr "<input type='image' src='static/app/images/badsmells_it.png' />"
+
+
+#: templates/main/dashboard-developing.html:192
+#: templates/main/dashboard-master.html:171
+#: templates/coder/dashboard-developing.html:171
+#: templates/coder/dashboard-master.html:171
+msgid "Check the errors that your project has. Bad practices in programming are very important."
+msgstr "Controlla gli errori del tuo progetto. Le cattive pratiche di programmazione sono molto importanti."
+
 #: templates/coder/downloads.html:7 templates/organization/downloads.html:7
 msgid "Download my CSV files."
 msgstr "Scarica i miei file CSV."

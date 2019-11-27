@@ -508,7 +508,7 @@ msgstr "Ελάτε να δούμε το έργο σας."
 #: templates/organization/dashboard-developing.html:191
 #: templates/organization/dashboard-master.html:238
 msgid "Project certificate"
-msgstr ""
+msgstr "Πιστοποιητικό Έργου"
 
 #: templates/coder/dashboard-basic.html:157
 #: templates/coder/dashboard-developing.html:196
@@ -534,7 +534,7 @@ msgstr "Κατεβάστε"
 #: templates/organization/dashboard-developing.html:218
 #: templates/organization/dashboard-master.html:265
 msgid "Level up"
-msgstr ""
+msgstr "Περνάω στο επόμενο επίπεδο"
 
 #: templates/coder/dashboard-basic.html:196
 #: templates/coder/dashboard-developing.html:234
@@ -586,7 +586,7 @@ msgid ""
 "<strong>DEVELOPING! </strong></h3>"
 msgstr ""
 "<h3 class='text-left dark-text'>Το επίπεδό σας είναι... <br></br> "
-"<strong>DEVELOPING! </strong></h3>"
+"<strong>Μεσαίο! </strong></h3>"
 
 #: templates/coder/dashboard-developing.html:145
 #: templates/main/dashboard-developing.html:142
@@ -721,6 +721,22 @@ msgstr "Το έργο σας δεν έχει κώδικα που δεν εκτε
 #: templates/bad_smells/main.html:124
 msgid "<img src='static/app/images/badsmells_en.png'>"
 msgstr "<img src='static/app/images/badsmells_gr.png'>"
+
+
+#: templates/main/dashboard-developing.html:185
+#: templates/main/dashboard-master.html:164
+#: templates/coder/dashboard-developing.html:164
+#: templates/coder/dashboard-master.html:164
+msgid "<input type='image' src='static/app/images/badsmells_en.png' />"
+msgstr "<input type='image' src='static/app/images/badsmells_gr.png' />"
+
+
+#: templates/main/dashboard-developing.html:192
+#: templates/main/dashboard-master.html:171
+#: templates/coder/dashboard-developing.html:171
+#: templates/coder/dashboard-master.html:171
+msgid "Check the errors that your project has. Bad practices in programming are very important."
+msgstr "Ελέγξτε τα λάθη που έχει το έργο σας. Οι κακές πρακτικές προγραμματισμού είναι πολύ σημαντικές."
 
 
 #: templates/coder/downloads.html:7 templates/organization/downloads.html:7

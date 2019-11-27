@@ -530,7 +530,7 @@ msgstr "Certificado de projeto"
 #: templates/organization/downloads.html:28
 #: templates/organization/downloads.html:61
 msgid "Download"
-msgstr "Download"
+msgstr "Baixar"
 
 #: templates/coder/dashboard-basic.html:180
 #: templates/coder/dashboard-developing.html:218
@@ -734,6 +734,22 @@ msgstr "Seu projeto não tem código morte, bom trabalho!"
 #: templates/bad_smells/main.html:124
 msgid "<img src='static/app/images/badsmells_en.png'>"
 msgstr "<img src='static/app/images/badsmells_pt.png'>"
+
+
+#: templates/main/dashboard-developing.html:185
+#: templates/main/dashboard-master.html:164
+#: templates/coder/dashboard-developing.html:164
+#: templates/coder/dashboard-master.html:164
+msgid "<input type='image' src='static/app/images/badsmells_en.png' />"
+msgstr "<input type='image' src='static/app/images/badsmells_pt.png' />"
+
+
+#: templates/main/dashboard-developing.html:192
+#: templates/main/dashboard-master.html:171
+#: templates/coder/dashboard-developing.html:171
+#: templates/coder/dashboard-master.html:171
+msgid "Check the errors that your project has. Bad practices in programming are very important."
+msgstr "Verifique os erros do seu projeto. Más práticas de programação são muito importantes."
 
 #: templates/coder/downloads.html:7 templates/organization/downloads.html:7
 msgid "Download my CSV files."

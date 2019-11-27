@@ -521,7 +521,7 @@ msgstr "Torna al teu projecte Scratch."
 #: templates/organization/dashboard-developing.html:191
 #: templates/organization/dashboard-master.html:238
 msgid "Project certificate"
-msgstr ""
+msgstr "Certificat del projecte"
 
 #: templates/coder/dashboard-basic.html:157
 #: templates/coder/dashboard-developing.html:196
@@ -546,10 +546,8 @@ msgstr "Descarregar"
 #: templates/organization/dashboard-basic.html:180
 #: templates/organization/dashboard-developing.html:218
 #: templates/organization/dashboard-master.html:265
-#, fuzzy
-#| msgid "Level"
 msgid "Level up"
-msgstr "Nivell"
+msgstr "Millora el teu nivell"
 
 #: templates/coder/dashboard-basic.html:196
 #: templates/coder/dashboard-developing.html:234
@@ -600,10 +598,6 @@ msgstr ""
 #: templates/coder/dashboard-developing.html:144
 #: templates/main/dashboard-developing.html:141
 #: templates/organization/dashboard-developing.html:144
-#, fuzzy
-#| msgid ""
-#| "<h3 class='text-left dark-text'>Your level is... <strong>DEVELOPING! </"
-#| "strong></h3>"
 msgid ""
 "<h3 class='text-left dark-text'>The level of your project is... "
 "<strong>DEVELOPING! </strong></h3>"
@@ -693,10 +687,6 @@ msgstr "El teu projecte no té noms d'escenaris inadequats, bon treball!"
 
 #: templates/coder/dashboard-master.html:169
 #: templates/main/dashboard-master.html:167
-#, fuzzy
-#| msgid ""
-#| "<h3 class='text-left dark-text'>Your level is...  <strong> MASTER! </"
-#| "strong></h3>"
 msgid ""
 "<h3 class='text-left dark-text'>The level of your project is... <strong> "
 "MASTER! </strong></h3>"
@@ -751,6 +741,22 @@ msgstr "El teu projecte no té codi mort, bon treball!"
 #: templates/bad_smells/main.html:124
 msgid "<img src='static/app/images/badsmells_en.png'>"
 msgstr "<img src='static/app/images/badsmells_ca.png'>"
+
+
+#: templates/main/dashboard-developing.html:185
+#: templates/main/dashboard-master.html:164
+#: templates/coder/dashboard-developing.html:164
+#: templates/coder/dashboard-master.html:164
+msgid "<input type='image' src='static/app/images/badsmells_en.png' />"
+msgstr "<input type='image' src='static/app/images/badsmells_ca.png' />"
+
+
+#: templates/main/dashboard-developing.html:192
+#: templates/main/dashboard-master.html:171
+#: templates/coder/dashboard-developing.html:171
+#: templates/coder/dashboard-master.html:171
+msgid "Check the errors that your project has. Bad practices in programming are very important."
+msgstr "Comprova els errors que té el teu projecte. Les males pràctiques en programació són molt importants."
 
 #: templates/coder/downloads.html:7 templates/organization/downloads.html:7
 msgid "Download my CSV files."
