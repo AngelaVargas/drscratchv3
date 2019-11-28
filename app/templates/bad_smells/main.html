@@ -203,11 +203,14 @@
                            <br>
                            {% for key, value in duplicateScript.duplicated.items %}
                                 <div class="sprites">{{ key }}:</div>
-                                    <pre class="blocks">
-                                        {% for dup in value %} {{ dup }}
+                                <pre class="blocks">
+                                    {% for dup_list in value %}
+                                        {% for dup_block in dup_list %} {{ dup_block }}
                                         {% endfor %}
-                                    </pre>
-                                {% endfor %}
+                                    {% endfor %}
+                                </pre>
+                                <br>
+                           {% endfor %}
                            {% if duplicateScript.number == 0 %}
                                 <div class="naming">{% trans 'Your project does not have duplicated scripts, good job!' %}</div>
                            {% endif %}

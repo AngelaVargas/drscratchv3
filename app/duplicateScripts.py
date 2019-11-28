@@ -14,6 +14,7 @@ class DuplicateScripts():
      self.total_blocks = []
      self.list_duplicate = []
      self.blocks_dup = {}
+     self.loop_blocks = ["control_repeat", "control_forever", "control_if", "control_if_else", "control_repeat_until"]
      #self.list_duplicate_string = []
 
 
@@ -43,7 +44,6 @@ class DuplicateScripts():
 
                if block["topLevel"] == True:
                   block_list = []
-                  block_list.append(str(block["opcode"]))
                   next = block["next"]
                   aux_next = []
                   else_block = None
@@ -80,10 +80,14 @@ class DuplicateScripts():
 
    def search_next(self, next, block_list, key_block, aux_next, else_block):
 
+       block = self.blocks_dicc[key_block]
+       block_list.append(block["opcode"])
+
+       # Check if it's if_else block
        try:
-           # Check if it's if_else block
-           else_block = self.blocks_dicc[key_block]["inputs"]["SUBSTACK2"][1]
+           is_else = block["inputs"]["SUBSTACK2"][1]
        except:
+           is_else = None
            pass
 
        if next == None:
@@ -93,35 +97,54 @@ class DuplicateScripts():
               if next == None:
                   block_list.append("finish_end")
                   return
+
+              block = self.blocks_dicc[next]
+              key_block = next
+              next = block["next"]
+
+              self.search_next(next, block_list, key_block, aux_next, is_else)
+              block_list.append("finish_end")
            except:
-              if else_block:
-                  next = else_block
-                  else_block = None
-                  block_list.append("control_else")
-              else:
-                if aux_next:      #Check if there is an aux_next saved
-                    next = aux_next[-1]
-                    aux_next.pop(-1)
-                    block_list.append("finish_end")
-                else:
-                    next = None
-                    return
+              pass
+
+           if else_block:
+                next = else_block
+                else_block = None
+                block_list.append("control_else")
+           else:
+                return
        else:
             # Maybe is a loop block
-            if "SUBSTACK" in self.blocks_dicc[key_block]["inputs"]:
-                loop_block = self.blocks_dicc[key_block]["inputs"]["SUBSTACK"][1]
-
-                #Check if is a loop block but EMPTY
-                if loop_block != None:
+            is_loop = any(self.blocks_dicc[key_block]["opcode"] == loop for loop in self.loop_blocks)
+            if is_loop:
+                try:
+                    loop_block = self.blocks_dicc[key_block]["inputs"]["SUBSTACK"][1]
                     aux_next.append(next)          #Add the real next until the end of the loop
                     next = loop_block
 
+                    block = self.blocks_dicc[next]
+                    key_block = next
+                    next = block["next"]
+                    self.search_next(next, block_list, key_block, aux_next, is_else)
 
-       block = self.blocks_dicc[next]
-       block_list.append(str(block["opcode"]))
-       key_block = next
-       next = block["next"]
-       self.search_next(next, block_list, key_block, aux_next, else_block)
+                    block_list.append("finish_end")
+                    if aux_next:      #Check if there is an aux_next saved
+                          next = aux_next[-1]
+                          aux_next.pop(-1)
+                    else:
+                          return
+                except:
+                    pass
+
+
+       if next:
+           block = self.blocks_dicc[next]
+           key_block = next
+           next = block["next"]
+
+           self.search_next(next, block_list, key_block, aux_next, else_block)
+
+       return
 
 
 

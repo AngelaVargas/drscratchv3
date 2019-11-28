@@ -1252,9 +1252,11 @@ def bad_smells(request):
     for dup_sprite, dup_list in dicc['duplicateScript']['duplicated'].iteritems():
         mapped_list = []
         for block_list in dup_list:
+            sub_mapped_list = []
             for block in block_list:
-                mapped_block = sb3_blocks_mapper.main(block)
-                mapped_list.append(mapped_block)
+                sub_mapped_block = sb3_blocks_mapper.main(block)
+                sub_mapped_list.append(sub_mapped_block)
+            mapped_list.append(sub_mapped_list)
 
         dicc['duplicateScript']['duplicated'][dup_sprite] = mapped_list
 
