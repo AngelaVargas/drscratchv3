@@ -12,7 +12,7 @@
                     <h4>  {% trans "Do you want to analyze one project?" %}</h4>
 
                       <h5 class="dark-text form-heading"><strong>{% trans "There are two options to analyze your Scratch project now!" %}</strong></h5>
-                      <form name="form" class="project-form" enctype="multipart/form-data" method="post" action="/show_dashboard">
+                      <form name="form" class="project-form" enctype="multipart/form-data" method="post" action="/bad_smells">
                       {% csrf_token %}
 
                           {% trans "1. Introduce the <span class='colored-text'><a data-toggle='modal' href='#modalUrl'>url</a></span> of your Scratch project, you don't have to download it:" %}

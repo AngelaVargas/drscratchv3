@@ -149,12 +149,12 @@
                                 <h2 id="score" class="panel-title dark-text">{% trans "Project certificate"%}</h2>
                             </div>
                             <div class="panel-success">
-
-                                <h5>{{ filename }}</h5>
-                                <form name="form" class="project-form" enctype="multipart/form-data" method="post" action="/download_certificate">
+                                <br>
+                                <p>{{ filename }} <form name="form" class="project-form" enctype="multipart/form-data" method="post" action="/download_certificate">
                                 {% csrf_token %}
+                                <br>
                                 <button value="{{ filename }}" name="certificate" type="submit" id ="certificate">{% trans "Download" %}</button>
-                              </form>
+                                </form></p>
                             </div>
 
                         </div>

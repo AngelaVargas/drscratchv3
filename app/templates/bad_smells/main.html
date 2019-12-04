@@ -117,10 +117,23 @@
 
         <div class="col-md-12">
             <section id="dashboard">
-                <br>
-                {% trans "<img src='static/app/images/badsmells_en.png'>" %}
+            <br>
+            <form name="form" method="post" action="/show_dashboard">
+            {% csrf_token %}
+                <button type="submit" id ="showdashboard" class="btn btn-secundary standard-button" >{% trans "¿Quieres saber más sobre tu nivel de programación?" %}</button>
+                <input type="hidden" name="mastery" value="{{ mastery }}" />
+                <input type="hidden" name="user" value="{{ user }}" />
+                <input type="hidden" name="filename" value="{{ filename }}" />
+                <input type="hidden" name="url" value="{{ url }}" />
+            {% csrf_token %}
+            </form>
             </section>
         </div>
+
+        <div class="col-md-12">
+            <br>
+            {% trans "<img src='static/app/images/badsmells_en.png'>" %}
+        </br>
 
         <div class="col-md-6">
             <section id="dashboard">

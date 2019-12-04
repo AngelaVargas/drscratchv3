@@ -143,14 +143,16 @@ def statistics(request):
     return render(request, 'main/statistics.html', data)
 
 
-def show_dashboard(request):
-    """Shows the different dashboards"""
+
+def bad_smells(request):
+    """Analysis of Bad Smells for a project"""
 
     if request.method == 'POST':
 
         d = build_dictionary_with_automatic_analysis(request)
 
         user = str(segmentation(request))
+        d["user"] = user
 
         if d['Error'] == 'analyzing':
             return render(request, 'error/analyzing.html')
@@ -164,14 +166,77 @@ def show_dashboard(request):
         elif d['Error'] == 'no_exists':
             return render(request, user + '/main.html', {'no_exists': True})
         else:
-            if d["mastery"]["points"] >= 15:
-                return render(request, user + '/dashboard-master.html', d)
-
-            elif d["mastery"]["points"] > 7:
-                return render(request, user + '/dashboard-developing.html', d)
-
-            else:
+            if d["mastery"]["points"] <= 7:
                 return render(request, user + '/dashboard-basic.html', d)
+            else:
+                d = mapping_deadCode(d)
+                d = mapping_dupCode(d)
+
+                return render(request, 'bad_smells/main.html', d)
+
+    else:
+        return HttpResponseRedirect('/')
+
+
+
+def mapping_deadCode (dic):
+    """Mapping for dead code blocks"""
+
+    for sprite, dead_list in dic['deadCode'].iteritems():
+        if sprite != 'number':
+            mapped_list = []
+            for block in dead_list:
+                if type(block) == list:
+                    sub_mapped_list = []
+                    for sub_block in block:
+                        sub_mapped_block = sb3_blocks_mapper.main(sub_block)
+                        sub_mapped_list.append(sub_mapped_block)
+                    mapped_list.append(sub_mapped_list)
+                else:
+                    mapped_block = sb3_blocks_mapper.main(block)
+                    mapped_list.append(mapped_block)
+            dic['deadCode'][sprite] = mapped_list
+
+    return dic
+
+
+def mapping_dupCode (dic):
+    """Mapping for duplicated code blocks"""
+
+    dic['duplicateScript']['duplicated'] = ast.literal_eval(dic['duplicateScript']['duplicated'])
+    for dup_sprite, dup_list in dic['duplicateScript']['duplicated'].iteritems():
+        mapped_list = []
+        for block_list in dup_list:
+            sub_mapped_list = []
+            for block in block_list:
+                sub_mapped_block = sb3_blocks_mapper.main(block)
+                sub_mapped_list.append(sub_mapped_block)
+            mapped_list.append(sub_mapped_list)
+
+        dic['duplicateScript']['duplicated'][dup_sprite] = mapped_list
+
+    return dic
+
+
+
+def show_dashboard(request):
+    """Shows the different dashboards"""
+
+    if request.method == 'POST':
+
+        data = request.POST
+        d = {}
+
+        categories = ast.literal_eval(data['mastery'])
+        user = data['user']
+        d["mastery"] = categories
+        d["filename"] = data['filename']
+        d["url"] = data['url']
+
+        if d["mastery"]["points"] >= 15:
+            return render(request, user + '/dashboard-master.html', d)
+        else:
+            return render(request, user + '/dashboard-developing.html', d)
 
     else:
         return HttpResponseRedirect('/')
@@ -1220,47 +1285,6 @@ def blocks(request):
         return HttpResponse(headers, content_type="application/json")
 
 
-def bad_smells(request):
-
-    data = request.POST
-
-    dicc = {}
-    dicc['backdropNaming'] = ast.literal_eval(data['backdrop'])
-    dicc['spriteNaming'] = ast.literal_eval(data['sprite'])
-    dicc['deadCode'] = ast.literal_eval(data['dead'])
-    dicc['duplicateScript'] = ast.literal_eval(data['duplicated'])
-
-    #Mapping for dead code blocks
-    for sprite, dead_list in dicc['deadCode'].iteritems():
-        if sprite != 'number':
-            mapped_list = []
-            for block in dead_list:
-                if type(block) == list:
-                    sub_mapped_list = []
-                    for sub_block in block:
-                        sub_mapped_block = sb3_blocks_mapper.main(sub_block)
-                        sub_mapped_list.append(sub_mapped_block)
-                    mapped_list.append(sub_mapped_list)
-                else:
-                    mapped_block = sb3_blocks_mapper.main(block)
-                    mapped_list.append(mapped_block)
-            dicc['deadCode'][sprite] = mapped_list
-
-
-    #Mapping for duplicated blocks
-    dicc['duplicateScript']['duplicated'] = ast.literal_eval(dicc['duplicateScript']['duplicated'])
-    for dup_sprite, dup_list in dicc['duplicateScript']['duplicated'].iteritems():
-        mapped_list = []
-        for block_list in dup_list:
-            sub_mapped_list = []
-            for block in block_list:
-                sub_mapped_block = sb3_blocks_mapper.main(block)
-                sub_mapped_list.append(sub_mapped_block)
-            mapped_list.append(sub_mapped_list)
-
-        dicc['duplicateScript']['duplicated'][dup_sprite] = mapped_list
-
-    return render (request, 'bad_smells/main.html', dicc)
 
 
 #_____________________________ TO REGISTER ORGANIZATION ______________________#

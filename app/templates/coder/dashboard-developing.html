@@ -153,28 +153,6 @@
                     </div>
                 </div>
                 <!-- HOW TO IMPROVE -->
-            <div class="improve" >
-                <div class="panel panel-success" id="improve">
-                    <div id="steptwo">
-
-                    <div class="panel-heading" >
-                        <form name="form" method="post" action="/bad_smells">
-                            <br>
-                            {% csrf_token %}
-                            {% trans "<input type='image' src='static/app/images/badsmells_en.png' />" %}
-                            <input type="hidden" name="duplicated" value="{{ duplicateScript }}" />
-                            <input type="hidden" name="backdrop" value="{{ backdropNaming }}" />
-                            <input type="hidden" name="sprite" value="{{ spriteNaming }}" />
-                            <input type="hidden" name="dead" value="{{ deadCode }}" />
-                            {% csrf_token %}
-                        </form>
-                        <p>{% trans "Check the errors that your project has. Bad practices in programming are very important." %}</p>
-                        <br>
-                    </div>
-                </div>
-                </div>
-
-            </div>
 
             <div class="improve" >
                 <div class="panel panel-success" id="improve">
