@@ -122,6 +122,8 @@ class BlocksMapper():
             block_name = "next costume"
         elif block_name == "switchbackdropto":
             block_name = "switch backdrop to ( v)"
+        elif block_name == "switchbackdroptoandwait":
+            block_name = "switch backdrop to ( v) and wait"
         elif block_name == "nextbackdrop":
             block_name = "next backdrop"
         elif block_name == "changesizeby":
