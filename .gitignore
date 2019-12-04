@@ -24,6 +24,7 @@ configuration/*
 mydatabase
 logFile.txt
 output.aux
+output.pdf
 env/
 build/
 develop-eggs/
