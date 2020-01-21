@@ -739,6 +739,11 @@ msgid "Check the errors that your project has. Bad practices in programming are 
 msgstr "Ελέγξτε τα λάθη που έχει το έργο σας. Οι κακές πρακτικές προγραμματισμού είναι πολύ σημαντικές."
 
 
+#: templates/bad_smells/main.html:123
+msgid "Do you want to know more about your programming level?"
+msgstr "Θέλετε να μάθετε περισσότερα σχετικά με το επίπεδο προγραμματισμού σας;"
+
+
 #: templates/coder/downloads.html:7 templates/organization/downloads.html:7
 msgid "Download my CSV files."
 msgstr "Κατεβάστε το αρχείο .csv"

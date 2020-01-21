@@ -736,7 +736,7 @@ msgid "<input type='image' src='static/app/images/badsmells_en.png' />"
 msgstr "<input type='image' src='static/app/images/badsmells_es.png' />"
 
 #: templates/bad_smells/main.html:123
-msgid "Do you want to know more about your progamming level?"
+msgid "Do you want to know more about your programming level?"
 msgstr "¿Quieres saber más sobre tu nivel de programación?"
 
 

@@ -750,6 +750,10 @@ msgstr "<img src='static/app/images/badsmells_ca.png'>"
 msgid "<input type='image' src='static/app/images/badsmells_en.png' />"
 msgstr "<input type='image' src='static/app/images/badsmells_ca.png' />"
 
+#: templates/bad_smells/main.html:123
+msgid "Do you want to know more about your programming level?"
+msgstr "Vols saber més sobre el teu nivell de programació?"
+
 
 #: templates/main/dashboard-developing.html:192
 #: templates/main/dashboard-master.html:171

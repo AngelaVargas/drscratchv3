@@ -113,7 +113,7 @@
         <br>
         <form name="form" method="post" action="/show_dashboard">
         {% csrf_token %}
-            <button type="submit" id ="showdashboard" class="btn btn-secundary standard-button" >{% trans "Do you want to know more about your progamming level?" %}</button>
+            <button type="submit" id ="showdashboard" class="btn btn-secundary standard-button" >{% trans "Do you want to know more about your programming level?" %}</button>
             <input type="hidden" name="mastery" value="{{ mastery }}" />
             <input type="hidden" name="user" value="{{ user }}" />
             <input type="hidden" name="filename" value="{{ filename }}" />
