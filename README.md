@@ -5,6 +5,12 @@ drScratch is an analytical tool that evaluates your Scratch projects in a variet
 
 You can try a beta version of drScratch at http://drscratch.org
 
+### How to run drScratch server
+```console
+make build
+make start
+```
+
 ### How to access to containers
 ```console
 $ docker run -d -p 3306:3306 --name drscratchv3_database -e MYSQL_ROOT_PASSWORD=password mysql
