@@ -279,11 +279,11 @@ def _make_analysis_by_upload(request):
         version = check_version(filename.filename)
 
         if version == "1.4":
-            fileSaved = dir_zips + unique_id + ".sb"
+            file_saved = dir_zips + unique_id + ".sb"
         elif version == "2.0":
-            fileSaved = dir_zips + unique_id + ".sb2"
+            file_saved = dir_zips + unique_id + ".sb2"
         else:
-            fileSaved = dir_zips + unique_id + ".sb3"
+            file_saved = dir_zips + unique_id + ".sb3"
 
         # Create log
         pathLog = os.path.dirname(os.path.dirname(__file__)) + "/log/"
@@ -295,7 +295,7 @@ def _make_analysis_by_upload(request):
 
         # Save file in server
         counter = 0
-        file_name = handler_upload(fileSaved, counter)
+        file_name = handler_upload(file_saved, counter)
 
         with open(file_name, 'wb+') as destination:
             for chunk in file.chunks():
@@ -307,11 +307,11 @@ def _make_analysis_by_upload(request):
             traceback.print_exc()
             filename.method = 'project/error'
             filename.save()
-            oldPathProject = fileSaved
-            newPathProject = fileSaved.split("/uploads/")[0] + \
+            old_path_project = file_saved
+            new_path_project = file_saved.split("/uploads/")[0] + \
                              "/error_analyzing/" + \
-                             fileSaved.split("/uploads/")[1]
-            shutil.copy(oldPathProject, newPathProject)
+                             file_saved.split("/uploads/")[1]
+            shutil.copy(old_path_project, new_path_project)
             d = {'Error': 'analyzing'}
             return d
 
