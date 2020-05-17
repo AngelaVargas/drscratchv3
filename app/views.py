@@ -488,7 +488,7 @@ def download_scratch_project_from_servers(path_project, id_project):
     except urllib2.HTTPError as e:
         # Two ways, id does not exist in servers or id is in other server
         logger.error('HTTPError %s', e.message)
-        url_json_scratch = "https://projects.scratch.mit.edu/{}".format(id_project)
+        url_json_scratch = "http://127.0.0.1:3000/api/{}".format(id_project)
         response_from_scratch = urllib2.urlopen(url_json_scratch)
         path_json_file = path_utemp + '_old_project.json'
     except urllib2.URLError as e:
