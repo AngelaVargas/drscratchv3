@@ -11,6 +11,11 @@ make build
 make start
 ```
 
+### How to activate translations
+```console
+make translate
+```
+
 ### How to access to containers
 ```console
 $ docker run -d -p 3306:3306 --name drscratchv3_database -e MYSQL_ROOT_PASSWORD=password mysql
