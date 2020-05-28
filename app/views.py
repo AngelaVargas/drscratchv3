@@ -1002,13 +1002,14 @@ def learn(request, page):
                'Control':'Flow',
                'Abstraccion':'Abstraction'}
     elif request.LANGUAGE_CODE == "ca":
-        dic = {u'Lògica':'Logic',
+        page = unicodedata.normalize('NFKD', page).encode('ascii', 'ignore')
+        dic = {u'Logica':'Logic',
                u'Paral':'Parallelism',
-               u'Representació':'Data',
-               u'Sincronització':'Synchronization',
+               u'Representacio':'Data',
+               u'Sincronitzacio':'Synchronization',
                u'Interactivitat':'User',
                u'Controls':'Flow',
-               u'Abstracció':'Abstraction'}
+               u'Abstraccio':'Abstraction'}
     elif request.LANGUAGE_CODE == "gl":
         page = unicodedata.normalize('NFKD',page).encode('ascii', 'ignore')
         dic = {'Loxica':'Logic',
@@ -1069,9 +1070,6 @@ def learn(request, page):
                u'Interatividade':'User',
                u'Controle':'Flow',
                u'Abstracao':'Abstraction'}
-
-    print(dic)
-    print(page)
 
     if page in dic:
         page = dic[page]
