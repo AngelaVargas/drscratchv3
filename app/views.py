@@ -974,13 +974,11 @@ def translate(request, d, filename):
 
 #_______________________________ LEARN MORE __________________________________#
 
-def learn(request,page):
+def learn(request, page):
     """Shows pages to learn more about CT"""
-
 
     flagUser = 0
     #Unicode to string(page)
-
 
     if request.user.is_authenticated():
         user = request.user.username
@@ -994,10 +992,8 @@ def learn(request,page):
                u'User':'User',
                u'Flow':'Flow',
                u'Abstraction':'Abstraction'}
-
-
     elif request.LANGUAGE_CODE == "es":
-        page = unicodedata.normalize('NFKD',page).encode('ascii','ignore')
+        page = unicodedata.normalize('NFKD',page).encode('ascii', 'ignore')
         dic = {'Pensamiento':'Logic',
                'Paralelismo':'Parallelism',
                'Representacion':'Data',
@@ -1005,7 +1001,6 @@ def learn(request,page):
                'Interactividad':'User',
                'Control':'Flow',
                'Abstraccion':'Abstraction'}
-
     elif request.LANGUAGE_CODE == "ca":
         dic = {u'Logica':'Logic',
                u'Paral':'Parallelism',
@@ -1014,9 +1009,8 @@ def learn(request,page):
                u'Interactivitat':'User',
                u'Controls':'Flow',
                u'Abstraccio':'Abstraction'}
-
     elif request.LANGUAGE_CODE == "gl":
-        page = unicodedata.normalize('NFKD',page).encode('ascii','ignore')
+        page = unicodedata.normalize('NFKD',page).encode('ascii', 'ignore')
         dic = {'Loxica':'Logic',
                'Paralelismo':'Parallelism',
                'Representacion':'Data',
@@ -1024,9 +1018,8 @@ def learn(request,page):
                'Interactividade':'User',
                'Control':'Flow',
                'Abstraccion':'Abstraction'}
-
     elif request.LANGUAGE_CODE == "pt":
-        page = unicodedata.normalize('NFKD',page).encode('ascii','ignore')
+        page = unicodedata.normalize('NFKD',page).encode('ascii', 'ignore')
         dic = {'Logica':'Logic',
                'Paralelismo':'Parallelism',
                'Representacao':'Data',
@@ -1034,7 +1027,6 @@ def learn(request,page):
                'Interatividade':'User',
                'Controle':'Flow',
                'Abstracao':'Abstraction'}
-
     elif request.LANGUAGE_CODE == "el":
         dic = {u'Λογική':'Logic',
            u'Παραλληλισμός':'Parallelism',
@@ -1043,9 +1035,8 @@ def learn(request,page):
            u'Αλληλεπίδραση':'User',
            u'Έλεγχος':'Flow',
            u'Αφαίρεση':'Abstraction'}
-
     elif request.LANGUAGE_CODE == "eu":
-        page = unicodedata.normalize('NFKD',page).encode('ascii','ignore')
+        page = unicodedata.normalize('NFKD',page).encode('ascii', 'ignore')
         dic = {u'Logika':'Logic',
            u'Paralelismoa':'Parallelism',
            u'Datu':'Data',
@@ -1053,7 +1044,6 @@ def learn(request,page):
            u'Erabiltzailearen':'User',
            u'Kontrol':'Flow',
            u'Abstrakzioa':'Abstraction'}
-
     elif request.LANGUAGE_CODE == "it":
         page = unicodedata.normalize('NFKD',page).encode('ascii','ignore')
         dic = {u'Logica':'Logic',
@@ -1063,7 +1053,6 @@ def learn(request,page):
            u'Interattivita':'User',
            u'Controllo':'Flow',
            u'Astrazione':'Abstraction'}
-
     elif request.LANGUAGE_CODE == "ru":
         dic = {u'Логика': 'Logic',
                u'Параллельность': 'Parallelism',
@@ -1072,7 +1061,6 @@ def learn(request,page):
                u'Интерактивность': 'User',
                u'Управление': 'Flow',
                u'Абстракция': 'Abstraction'}
-
     else:
         dic = {u'Logica':'Logic',
                u'Paralelismo':'Parallelism',
@@ -1085,21 +1073,13 @@ def learn(request,page):
     if page in dic:
         page = dic[page]
     
-
     page = "learn/" + page + ".html"
 
     if request.user.is_authenticated():
-        #Find which is authenticated (organization or coder or none)
         user = segmentation(request)
         username = request.user.username
-        #return render_to_response(page, {'flagUser':flagUser, 'user':user,
-        #                                'username':username},
-        #                        RC(request))
         return render(request, page, {'flagUser':flagUser, 'user':user, 'username':username})
     else:
-
-        #return render_to_response(page,
-        #                        RC(request))
         return render(request, page)
 
 
