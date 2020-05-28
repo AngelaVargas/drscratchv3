@@ -1,0 +1,20 @@
+---
+
+- name: Create a Vagrant VM for Dr. Scratch V3
+  hosts: vagrant-drscratchv3
+  become: yes
+  become_user: root
+  remote_user: vagrant
+  vars_files:
+    - env_vars/base.yml
+    - env_vars/vagrant.yml
+  module_defaults:
+    apt:
+      force_apt_get: true
+
+  roles:
+    - base
+    - django
+    - redis
+    - web
+    - nginx

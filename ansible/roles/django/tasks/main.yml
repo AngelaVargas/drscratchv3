@@ -1,0 +1,40 @@
+---
+
+- name: Create the dev settings_local.py if it doesn't exist
+  template:
+    src: settings_local.dev.py.j2
+    dest: "{{ django_path }}/settings_local.py"
+    force: no
+  when: django_debug|bool
+
+- name: Create the production settings_local.py if it doesn't exist
+  template:
+    src: settings_local.prod.py.j2
+    dest: "{{ django_path }}/settings_local.py"
+    force: no
+  when: not django_debug|bool
+
+- name: Create the Django log directory
+  file: path=/var/log/django state=directory owner={{ user_name }} group={{ user_name }} mode=0700
+
+- name: Run the Django migrate command
+  django_manage: command=migrate
+                 app_path={{ django_path }}
+                 virtualenv={{ virtualenv_path }}
+                 settings={{ django_settings }}
+  become: no
+  when: django_migrate|bool
+
+- name: Run manage.py collectstatic
+  django_manage: command=collectstatic
+                 app_path={{ django_path }}
+                 virtualenv={{ virtualenv_path }}
+                 settings={{ django_settings }}
+  become: no
+  when: django_collectstatic|bool
+
+# this is much faster than using django_manage command, and we don't have to identify fixtures individually
+- name: Load development fixtures
+  shell: "{{ virtualenv_path }}/bin/python {{ django_path }}/manage.py loaddata {{ django_path }}/fixtures/*"
+  become: no
+  when: django_load_fixtures|bool

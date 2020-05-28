@@ -1,0 +1,29 @@
+---
+
+- name: Install common server packages
+  apt:
+    name:
+      - build-essential
+      - htop
+      - vim
+      - unzip
+      - curl
+    state: present
+
+- import_role:
+    name: python
+
+- import_role:
+    name: postgresql
+
+- import_role:
+    name: nodejs
+
+- import_role:
+    name: django
+
+- import_role:
+    name: gunicorn
+
+- import_role:
+    name: nginx

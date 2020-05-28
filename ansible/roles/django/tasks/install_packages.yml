@@ -1,0 +1,10 @@
+---
+
+- name: install additional packages
+  apt:
+    update_cache: "{{ update_apt_cache }}"
+    state: present
+    name:
+      - texlive-latex-recommended
+      - gettext
+      - libpq-dev

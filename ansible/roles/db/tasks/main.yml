@@ -1,0 +1,45 @@
+---
+
+- name: ensure apt cache is up to date
+  apt: update_cache=yes
+
+- name: ensure packages are installed
+  apt:
+    name: "{{ item }}"
+  with_items:
+    - libmysqlclient
+    - libmysqld-dev
+
+- name: ensure mysql is started and enabled on boot
+  service:
+    name: mysql
+    state: started
+    enabled: "{{ mysql__enabled__on_startup }}"
+  register: mysql_service_configuration
+
+- name: install python mysqldb module
+  pip:
+    name: mysqlclient
+
+- name: create mysql app database
+  mysql_db:
+    name: "{{ mysql__db_name }}"
+    state: present
+
+- name: create mysql app user
+  mysql_user:
+    name: "{{ mysql__db_user }}"
+    host: localhost
+    password: "{{ mysql__db_password }}"
+    priv: "*.*:ALL"
+    state: present
+
+- name: Ensure database is created
+  become_user: scratcher
+
+- name: Ensure user has access to database
+  become_user: scratcher
+  mysql_user:
+    db: drscratchv3
+
+
