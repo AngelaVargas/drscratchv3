@@ -7,7 +7,7 @@ services:
       - "3306:3306"
     environment:
       - MYSQL_DATABASE=${DRSCRATCH_DATABASE_NAME}
-      - MYSQL_USER=${DRSCRATCH_DATABASE_USER}
+      #- MYSQL_USER=${DRSCRATCH_DATABASE_USER}
       - MYSQL_ROOT_PASSWORD=${DRSCRATCH_DATABASE_ROOT_PASSWORD}
     healthcheck:
       test: "/etc/init.d/mysql status"
