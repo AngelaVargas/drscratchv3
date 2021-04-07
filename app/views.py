@@ -1612,7 +1612,7 @@ def analyze_CSV(request):
                 try:
                     os.remove(dir_zips + "project.json")
                 except:
-                    print "No existe"
+                    print("No existe")
                 
                 if row == 2:
                     type_csv = "2_row"
@@ -1629,15 +1629,15 @@ def analyze_CSV(request):
                         elif slashNum == 5:
                             idProject = url.split('/')[-2]
                     try:
-                        pathProject, file = send_request_getsb3(idProject, username, method)
-                        d = analyze_project(request, pathProject, file)
+                        path_project, file = send_request_getsb3(idProject, username, method)
+                        d = analyze_project(request, path_project, file)
                     except:
                         d = ["Error analyzing project", url]
 
                     try:
                         os.remove(dir_zips + "project.json")
                     except:
-                        print "No existe"
+                        print("No existe")
 
                     dic = {}
                     dic[line] = d
@@ -1655,15 +1655,15 @@ def analyze_CSV(request):
                         elif slashNum == 5:
                             idProject = url.split('/')[-2]
                     try:
-                        pathProject, file = send_request_getsb3(idProject, username, method)
-                        d = analyze_project(request, pathProject, file)
+                        path_project, file = send_request_getsb3(idProject, username, method)
+                        d = analyze_project(request, path_project, file)
                     except:
                         d = ["Error analyzing project", url]
 
                     try:
                         os.remove(dir_zips + "project.json")
                     except:
-                        print "No existe"
+                        print("No existe")
 
 
                     dic = {}
