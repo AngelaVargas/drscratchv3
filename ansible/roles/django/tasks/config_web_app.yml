@@ -1,20 +1,9 @@
 ---
 
-- name: install known_hosts file to access GitHub
-  copy: src=ssh_conf/known_hosts dest={{ssh_dir}}/known_hosts
+- name: Install packages required by the Django app inside virtualenv
+  pip: virtualenv={{ virtualenv_path }} requirements={{ requirements_file }}
 
-- name: checkout latest web app code
-  git: repo={{code_repository}} dest={{app_code_dir}}
-
-- name: check if virtualenv already exists
-  stat: path={{virtualenv_dir}}
-  register: venv_dir
-
-- name: create virtualenv for Django web application
-  shell: virtualenv {{virtualenv_dir}}
-  when: venv_dir.stat.isdir is not defined
-
-- name: install web application dependencies listed in requirements.txt
+- name: Install web application dependencies listed in requirements.txt
   pip: requirements={{requirements_file}}
        virtualenv={{virtualenv_dir}}
 
@@ -26,32 +15,34 @@
   command: mkdir {{app_code_dir}}/static
   when: static_dir.stat.isdir is not defined
 
-- name: Django collectstatic
-  django_manage: command=collectstatic
-                 app_path={{app_code_dir}}
-                 virtualenv={{virtualenv_dir}}
-                 settings={{django_settings}}
-  environment: django_env_vars
+- name: Run the Django syncdb command
+  django_manage:
+    command: syncdb
+    app_path: "{{ project_path }}"
+    virtualenv: "{{ virtualenv_path }}"
+    settings: "{{ django_settings_file }}"
+  environment: "{{ django_environment }}"
+  when: run_django_syncdb is defined and run_django_syncdb
+  tags: django.syncdb
 
-- name: Django syncdb
-  django_manage: command=syncdb
-                 app_path={{app_code_dir}}
-                 virtualenv={{virtualenv_dir}}
-                 settings={{django_settings}}
-  environment: django_env_vars
+- name: Run Django database migrations
+  django_manage:
+    command: migrate
+    app_path: "{{ project_path }}"
+    virtualenv: "{{ virtualenv_path }}"
+    settings: "{{ django_settings_file }}"
+  environment: "{{ django_environment }}"
+  when: run_django_db_migrations is defined and run_django_db_migrations
+  tags: django.migrate
 
+- name: Run Django collectstatic
+  django_manage:
+    command: collectstatic
+    app_path: "{{ project_path }}"
+    virtualenv: "{{ virtualenv_path }}"
+    settings: "{{ django_settings_file }}"
+  environment: "{{ django_environment }}"
+  when: run_django_collectstatic is defined and run_django_collectstatic
+  notify: restart application
+  tags: django.collectstatic
 
-- name: Django migrate
-  django_manage: command=migrate
-                 app_path={{app_code_dir}}
-                 virtualenv={{virtualenv_dir}}
-                 settings={{django_settings}}
-  environment: django_env_vars
-
-- name: Django loaddata
-  django_manage: command=loaddata
-                 app_path={{app_code_dir}}
-                 virtualenv={{virtualenv_dir}}
-                 fixtures={{fixtures_file}}
-                 settings={{django_settings}}
-  environment: django_env_vars

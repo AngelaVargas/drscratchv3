@@ -1,0 +1,35 @@
+---
+
+- name: setup the git repo
+  environment:
+    TMPDIR: "/var/tmp"
+  git: repo={{ git_repo }}
+       version={{ git_branch }}
+       dest={{ project_path }}
+       accept_hostkey=yes
+  when: setup_git_repo is defined and setup_git_repo
+  notify: restart application
+  tags: git
+
+- name: Delete all .pyc files
+  command: find . -name '*.pyc' -delete
+  args:
+    chdir: "{{ project_path }}"
+  tags: git
+  changed_when: false
+
+- name: install known_hosts file to access GitHub
+  copy: src=ssh_conf/known_hosts dest={{ssh_dir}}/known_hosts
+
+- name: checkout latest web app code
+  git: repo={{ repo_url }} dest={{ proj_path }} accept_hostkey=yes
+
+- name: ensure git repo is present
+  git:
+    repo: {{ repo_url }}
+    dest: {{ proj_path }}
+
+- name: Install requirements
+  pip:
+    requirements: /var/www/drscratchv3/requirements.txt
+    executable: /var/venv/bin/pip

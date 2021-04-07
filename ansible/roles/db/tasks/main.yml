@@ -3,43 +3,54 @@
 - name: ensure apt cache is up to date
   apt: update_cache=yes
 
-- name: ensure packages are installed
+- name: install mysql
+  apt: name={{ item }} state=installed
+  with_items:
+    - mysql-server
+  tags: packages
+
+- name: ensure python packages are installed
   apt:
     name: "{{ item }}"
   with_items:
     - libmysqlclient
     - libmysqld-dev
 
-- name: ensure mysql is started and enabled on boot
-  service:
-    name: mysql
-    state: started
-    enabled: "{{ mysql__enabled__on_startup }}"
-  register: mysql_service_configuration
-
-- name: install python mysqldb module
-  pip:
-    name: mysqlclient
-
-- name: create mysql app database
-  mysql_db:
-    name: "{{ mysql__db_name }}"
-    state: present
+- name: ensure mysql service is running
+  service: name=mysql state=started enabled=yes
 
 - name: create mysql app user
   mysql_user:
-    name: "{{ mysql__db_user }}"
+    name: "{{ mysql_db_user }}"
     host: localhost
-    password: "{{ mysql__db_password }}"
+    password: "{{ mysql_db_password }}"
     priv: "*.*:ALL"
     state: present
 
-- name: Ensure database is created
-  become_user: scratcher
+- name: create mysql app database
+  mysql_db:
+    name: "{{ mysql_db_name }}"
+    owner: "{{ mysql_db_user }}"
+  become: True
+  become_user: mysql
 
-- name: Ensure user has access to database
-  become_user: scratcher
+- name: ensure database is created
+  mysql_db: name={{ db_name }} state=present encoding=utf8
+
+- name: ensure database is created
+  become_user: "{{ mysql_db_user }}"
+
+- name: ensure user has access to database
+  become_user: "{{ mysql_db_user }}"
   mysql_user:
-    db: drscratchv3
+    db: "{{ mysql_db_name }}"
+
+
+
+
+
+- name: ensure user has access to the database
+  mysql_user: name={{ db_user }} password={{ db_password }} priv='{{ db_name }}.*:ALL' state=present
+
 
 

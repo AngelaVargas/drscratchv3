@@ -1,11 +1,8 @@
 ---
 
 - name: Install base packages
-  apt:
-    name: "{{ item }}"
-    update_cache: yes
-    state: installed
-    force: yes
+  apt: pkg={{ item }} update_cache=yes
+  become: True
   with_items:
     - build-essential
     - acl
@@ -29,13 +26,3 @@
     - libssl-dev
     - libssl-doc
   tags: packages
-
-- name: Ensure git repo is present
-  git:
-    repo: https://github.com/AngelaVargas/drscratchv3
-    dest: /var/www/drscratchv3
-
-- name: Install requirements
-  pip:
-    requirements: /var/www/drscratchv3/requirements.txt
-    executable: /var/venv/bin/pip

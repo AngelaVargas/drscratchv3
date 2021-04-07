@@ -15,6 +15,5 @@
   roles:
     - base
     - django
-    - redis
     - web
     - nginx
